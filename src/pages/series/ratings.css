@@ -1,0 +1,67 @@
+.rating-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  height: 65px;
+}
+
+.icon-star:before {
+  font-size: 2rem;
+  content: '\f005';
+  /* \f089  half icon*/
+  cursor: pointer;
+}
+
+.icon-star-small:before {
+  font-size: 1rem;
+  content: '\f005';
+  cursor: pointer;
+}
+
+.checked {
+  color: orange;
+}
+
+.ratings {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 9px;
+  margin-left: 5px;
+}
+
+.icons {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+.average-rating {
+  font-size: 16px;
+  height: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin-left: 5px;
+}
+
+.rating-text {
+  font-size: 16px;
+  height: 20px;
+  font-weight: 500;
+  color: #fff;
+  margin-left: 5px;
+}
+
+.fa-thumbs-up,
+.fa-thumbs-down {
+  font-size: 1.8rem;
+}
+
+.fa-thumbs-up:hover,
+.fa-thumbs-down:hover {
+  color: #00dc89;
+}

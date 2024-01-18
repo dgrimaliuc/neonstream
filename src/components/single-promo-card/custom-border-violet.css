@@ -1,0 +1,97 @@
+.border-box-violet {
+  background-image: repeating-linear-gradient(
+      32deg,
+      #ac80ff,
+      #ac80ff 9.8px,
+      transparent 20px,
+      transparent 25.39px,
+      #ac80ff 31px
+    ),
+    repeating-linear-gradient(
+      122deg,
+      #ac80ff,
+      #ac80ff 9.8px,
+      transparent 20px,
+      transparent 25.39px,
+      #ac80ff 31px
+    ),
+    repeating-linear-gradient(
+      212deg,
+      #ac80ff,
+      #ac80ff 9.8px,
+      transparent 20px,
+      transparent 25.39px,
+      #ac80ff 31px
+    ),
+    repeating-linear-gradient(
+      302deg,
+      #ac80ff,
+      #ac80ff 9.8px,
+      transparent 20px,
+      transparent 25.39px,
+      #ac80ff 31px
+    );
+  background-size: 4px calc(100% + 36.55px), calc(100% + 36.55px) 4px,
+    4px calc(100% + 36.55px), calc(100% + 36.55px) 4px;
+  background-position: 0 0, 0 0, 100% 0, 0 100%;
+  background-repeat: no-repeat;
+  animation: borderAnimation 0.7s infinite linear;
+}
+
+@keyframes borderAnimation {
+  from {
+    background-position: 0 0, -36.55px 0, 100% -36.55px, 0 100%;
+  }
+  to {
+    background-position: 0 -36.55px, 0 0, 100% 0, -36.55px 100%;
+  }
+}
+
+.border-box-violet-reverse {
+  background-image: repeating-linear-gradient(
+      212deg,
+      #ac80ff,
+      #ac80ff 9.8px,
+      transparent 20px,
+      transparent 25.39px,
+      #ac80ff 31px
+    ),
+    repeating-linear-gradient(
+      302deg,
+      #ac80ff,
+      #ac80ff 9.8px,
+      transparent 20px,
+      transparent 25.39px,
+      #ac80ff 31px
+    ),
+    repeating-linear-gradient(
+      32deg,
+      #ac80ff,
+      #ac80ff 9.8px,
+      transparent 20px,
+      transparent 25.39px,
+      #ac80ff 31px
+    ),
+    repeating-linear-gradient(
+      122deg,
+      #ac80ff,
+      #ac80ff 9.8px,
+      transparent 20px,
+      transparent 25.39px,
+      #ac80ff 31px
+    );
+  background-size: 4px calc(100% + 36.55px), calc(100% + 36.55px) 4px,
+    4px calc(100% + 36.55px), calc(100% + 36.55px) 4px;
+  background-position: 0 0, 0 0, 100% 0, 0 100%;
+  background-repeat: no-repeat;
+  animation: borderAnimationReverse 0.7s infinite linear reverse;
+}
+
+@keyframes borderAnimationReverse {
+  from {
+    background-position: 0 0, -36.55px 0, 100% -36.55px, 0 100%;
+  }
+  to {
+    background-position: 0 -36.55px, 0 0, 100% 0, -36.55px 100%;
+  }
+}

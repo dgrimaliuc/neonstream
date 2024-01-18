@@ -1,0 +1,121 @@
+:root {
+  --single-card-background: #121b23;
+}
+.single-card-wrapper,
+.single-promo-card-wrapper {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  display: block;
+  background-color: var(--single-card-background);
+  /* background-color: #24c084; */
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+}
+
+/* .single-card-wrapper::after, */
+.single-promo-card-wrapper::after {
+  position: absolute;
+  content: '';
+  aspect-ratio: inherit;
+  bottom: 0;
+  display: block;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 0;
+  background: linear-gradient(
+      to bottom,
+      #0000 min(40vh, 50%),
+      var(--main-background-color) 100%
+    ),
+    linear-gradient(to var(--cr-end-direction), #000c 0, #0009 30%, #0000 70%);
+}
+
+.background-images-container {
+  position: relative;
+}
+
+.single-card-container,
+.single-promo-card-container {
+  position: relative;
+  padding: 0px 7px 0px 7px;
+  /* border: solid red; */
+  width: 900px;
+  /* max-width: 800px; */
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.single-promo-card {
+  /* border: solid blue; */
+  position: relative;
+  width: 100%;
+  height: 350px;
+  display: flex;
+  gap: 20px;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.animated-boxes {
+  position: absolute;
+  height: 100%;
+  width: 420px;
+  z-index: 0;
+  /* max-width: ; */
+}
+
+.space-box {
+  width: 150px;
+  height: 150px;
+}
+
+.top-place {
+  position: absolute;
+  top: 25px;
+  left: 2px;
+}
+
+.bottom-place {
+  position: absolute;
+  bottom: 30px;
+  right: 2px;
+}
+
+.single-card-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  z-index: 2;
+  align-items: flex-start;
+  padding: 0px 40px;
+  min-width: 424px;
+}
+
+.image-right {
+  align-self: flex-end;
+}
+
+.content-card-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 50px 00px;
+  min-width: 400px;
+}
+
+.single-show-card-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: left;
+  user-select: text;
+}

@@ -1,0 +1,24 @@
+.header-image {
+  width: 100%;
+  height: 100%;
+  object-position: center top;
+  object-fit: cover;
+}
+
+.img-gradient {
+  z-index: 0;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 16, 22, 0.4);
+  background-image: linear-gradient(185deg, transparent, rgb(10, 16, 22) 95%),
+    linear-gradient(transparent, rgb(10, 16, 22) 95%);
+}
+
+.back-picture {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}

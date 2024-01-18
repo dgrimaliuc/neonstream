@@ -1,0 +1,10 @@
+.single-card-image-violet {
+  position: relative;
+  width: 172px;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 0px 0px 10px 0px rgba(142, 80, 190, 0.999);
+  z-index: 2;
+}

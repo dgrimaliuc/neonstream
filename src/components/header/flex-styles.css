@@ -1,0 +1,23 @@
+.flex-item {
+  flex: 1;
+  /* border: 1px solid white; */
+}
+
+.grow-2 {
+  flex-grow: 2;
+}
+
+.row-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  /* margin: 0 20px; */
+}
+
+.flx-1 {
+  flex: 1;
+}
+
+.flx-2 {
+  flex: 2;
+}

@@ -1,0 +1,71 @@
+.season-content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* align-items: center; */
+  margin: auto auto 88px;
+  width: 1000px;
+}
+
+.season-content-container h2 {
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.seasons-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* margin-bottom: 24px; */
+}
+
+
+.seasons-container {
+  padding-top: 12px;
+  margin-top: 20px;
+  display: flex;
+  gap: 48px;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.seasons-container span {
+  color: rgb(157, 159, 161);
+  font-size: 18px;
+}
+
+.cards-section::-webkit-scrollbar {
+  display: none;
+}
+
+.selected span {
+  color: white;
+}
+
+.season {
+  cursor: pointer;
+}
+
+.season::after {
+  height: 3px;
+  content: '';
+  width: 100%;
+  display: block;
+  margin-top: 16px;
+  bottom: -1px;
+  border-radius: 7px;
+  background-color: transparent;
+}
+
+.selected::after {
+  background-color: rgb(0, 220, 137);
+}

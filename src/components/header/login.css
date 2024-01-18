@@ -1,0 +1,8 @@
+.login {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  justify-content: flex-end;
+  padding: 20px 40px;
+  min-width: 240px;
+}
