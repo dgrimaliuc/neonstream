@@ -5,9 +5,11 @@ import './logo.css';
 import './navigation.css';
 import './search-input.css';
 
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 export default function Header() {
+  const { search } = useLocation();
+  const filter = new URLSearchParams(search).get('filter');
   return (
     <>
       <header className={classes.header}>
@@ -37,9 +39,17 @@ export default function Header() {
                 isActive ? classes['active-tab'] : undefined
               }
             >
-              Home
+              <span>Home</span>
             </NavLink>
-            <div role='button'>All</div>
+            <NavLink
+              to='/browse'
+              role='button'
+              className={({ isActive }) =>
+                isActive && !filter ? classes['active-tab'] : undefined
+              }
+            >
+              <span>All</span>
+            </NavLink>
             <NavLink
               to='/series'
               role='button'
@@ -47,10 +57,28 @@ export default function Header() {
                 isActive ? classes['active-tab'] : undefined
               }
             >
-              Series
+              <span>Series</span>
             </NavLink>
-            <div role='button'>Movies</div>
-            <div role='button'>Watchlist</div>
+            <NavLink
+              to='/browse?filter=movies'
+              role='button'
+              className={({ isActive }) =>
+                isActive && filter === 'movies'
+                  ? classes['active-tab']
+                  : undefined
+              }
+            >
+              <span>Movies</span>
+            </NavLink>
+            <NavLink
+              to='watchlist'
+              role='button'
+              className={({ isActive }) =>
+                isActive ? classes['active-tab'] : undefined
+              }
+            >
+              <span>Watchlist</span>
+            </NavLink>
           </div>
         </div>
         <div className='login flx-1 text'>
@@ -58,7 +86,7 @@ export default function Header() {
           <div role='button'>Sign Up</div>
         </div>
       </header>
-      <div className='header-spacer'></div>
+      <div className={classes['header-spacer']}></div>
     </>
   );
 }

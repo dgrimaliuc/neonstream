@@ -1,0 +1,80 @@
+:root {
+  --hover-opacity: 0;
+}
+
+.episode-card {
+  padding: 10px 10px 0px 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-start; */
+  width: 240px;
+  height: 250px;
+  cursor: pointer;
+}
+
+.episode-card:hover {
+  background-color: #a0a0a016;
+  transition: background-color 0.5s ease;
+  --hover-opacity: 1;
+}
+
+
+/* 
+.hover-episode-wrapper .fa-play-circle {
+  position: absolute;
+  font-size: 3.5rem;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  opacity: 0.8;
+} */
+
+.hover-episode-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--hover-menu-item-color);
+  opacity: var(--hover-opacity);
+}
+
+
+.episode-card-title {
+  color: white;
+}
+
+.episode-meta-container {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 0 10px;
+  align-items: center;
+}
+
+.movie-meta {
+  color: aqua;
+}
+
+.series-meta {
+  color: #00e18c;
+}
+
+.fa-heart-o:hover,
+.fa-trash-o:hover {
+  color: white;
+  font-weight: 700;
+}
+
+.episode-actions {
+  display: flex;
+  justify-content: space-between;
+  width: 55px;
+  font-size: 1.5rem;
+}

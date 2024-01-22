@@ -2,7 +2,12 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import RootLayout from './pages/RootLayout';
 
 import HomePage from './pages/home/Home';
-import Series from './pages/series/Series';
+import SeriesPage from './pages/series/Series';
+import BrowsePage from './pages/browse/Browse';
+import History from './pages/history/History';
+import WatchPage from './pages/watch/Watch';
+import WatchlistPage from './pages/watchlist/Watchlist';
+import CustomListsPage from './pages/custom-lists/CustomLists';
 
 const router = createBrowserRouter([
   {
@@ -11,7 +16,19 @@ const router = createBrowserRouter([
     id: 'root',
     children: [
       { index: true, element: <HomePage /> },
-      { path: 'series', element: <Series /> },
+      { path: 'series', element: <SeriesPage /> },
+      { path: 'browse', element: <BrowsePage /> },
+      { path: 'watch', element: <WatchPage /> },
+      { path: 'watchlist', element: <WatchlistPage /> },
+      { path: 'custom-lists', element: <CustomListsPage /> },
+      { path: 'history', element: <History /> },
+      {
+        path: 'auth',
+        children: [
+          { index: true, element: <div>Login</div> },
+          { path: 'register', element: <div>Register</div> },
+        ],
+      },
     ],
   },
 ]);

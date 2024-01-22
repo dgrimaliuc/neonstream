@@ -1,0 +1,42 @@
+
+.custom-list {
+  position: relative;
+  flex-basis: 49%;
+  padding: 20px;
+  background-color: rgba(143, 144, 143, 0.081);
+  height: 105px;
+  cursor: pointer;
+}
+
+.custom-list:hover {
+  background-color: rgba(143, 144, 143, 0.2);
+}
+
+.cl-settings-wrapper {
+  position: absolute;
+  top: 15px;
+  right: 5px;
+  padding: 10px 12px 10px 8px;
+  z-index: 100;
+}
+
+.custom-list .fa-ellipsis-v {
+  width: 24px;
+  height: 24px;
+  font-size: 1.3rem;
+  /* transform: translate(40%, 10%); */
+  line-height: 1.25;
+  text-align: center;
+}
+
+.fa-ellipsis-v:hover {
+  font-weight: 550;
+  color: white;
+}
+
+.cl-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: white;
+}

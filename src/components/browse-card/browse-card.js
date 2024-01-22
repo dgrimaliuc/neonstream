@@ -7,7 +7,7 @@ export default function BrowseCard() {
         <a href='#' className='browse-card-body text-decoration-off'>
           <div className='browse-card-poster'>
             <div className='browse-card-hover'>
-              <i className='play-icon fa fa-play beat'></i>
+              <i className='fa-play' />
             </div>
             <picture>
               <img
@@ -17,9 +17,11 @@ export default function BrowseCard() {
               />
             </picture>
           </div>
-          <p>
-            <span>The Big Bang Theory</span> 2006
-          </p>
+          <div className='browse-card-info'>
+            <p>
+              <div>The Big Bang Theory</div> 2006
+            </p>
+          </div>
         </a>
       </div>
     </div>

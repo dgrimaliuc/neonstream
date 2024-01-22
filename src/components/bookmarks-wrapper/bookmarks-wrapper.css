@@ -1,0 +1,8 @@
+.bookmarks-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 60px;
+  width: 1050px;
+  margin: auto;
+}

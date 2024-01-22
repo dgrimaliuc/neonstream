@@ -13,7 +13,10 @@ import smallWideImg1 from '../../assets/One Piece/episodes/one-peace-1-2.jpeg';
 import smallWideImg2 from '../../assets/One Piece/episodes/one-peace-1-1.jpeg';
 import imgWide from '../../assets/One Piece/One Piece Wide.jpg';
 import Controls from '../../components/controls/controls';
+import Carousel from '../../components/carousel/carousel';
+import Pagination from './pagination/pagination';
 
+import { Link } from 'react-router-dom';
 export default function Series() {
   return (
     <>
@@ -41,8 +44,10 @@ export default function Series() {
             <div className='actions'>
               <div className='watch-now-wrapper'>
                 <button className='watch-now-btn'>
-                  <span className='fa-play'></span>
-                  Watch Now
+                  <Link to='/watch'>
+                    <span className='fa-play'></span>
+                    Watch Now
+                  </Link>
                 </button>
               </div>
               <button className='default-button'>
@@ -266,11 +271,13 @@ export default function Series() {
                 </p>
               </div>
             </div>
-            <div id='pagination'></div>
+            <div id='pagination'>
+              <Pagination />
+            </div>
           </div>
         </section>
         <section id='recom'>
-          <div id='carousel'></div>
+          <Carousel />
         </section>
       </div>
     </>

@@ -7,19 +7,19 @@
 }
 
 .pagination-bubble {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-weight: 700;
-  background-color: rgb(53, 60, 64);
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  color: rgb(127, 131, 133);
-  font-size: 1.2em;
-  cursor: pointer;
-  user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: 700;
+    background-color: rgb(53, 60, 64);
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    user-select: none;
 }
 
 .active {
@@ -34,7 +34,7 @@
   cursor: pointer;
   backface-visibility: hidden;
   pointer-events: none;
-  opacity: 0.4;
+  opacity: 0.6;
 }
 
 .left-arrow {
@@ -44,4 +44,11 @@
 
 .right-arrow {
   margin-left: 42px;
+}
+
+.page-number{
+  /* text-align: center; */
+  /* width: 100%; */
+  /* margin: auto; */
+  height: fit-content;
 }

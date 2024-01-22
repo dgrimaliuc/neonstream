@@ -6,3 +6,12 @@
   padding: 0 20px;
   justify-content: flex-start;
 }
+
+.navigation span {
+  padding: 10px 20px;
+}
+
+.navigation span:hover {
+  color: #fff;
+  background-color: var(--hover-menu-item-color);
+}

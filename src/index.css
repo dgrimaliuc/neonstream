@@ -8,6 +8,8 @@
 
 :root {
   --main-background-color: #0a1016;
+  --hover-menu-item-color: #a0a0a016;
+  --green-color: #00dc89;;
 }
 
 a {
@@ -18,7 +20,6 @@ a {
 body {
   color: #a6b9aff5;
   background: var(--main-background-color);
-  line-height: 1;
   font-family: ProximaNova-Medium, system-ui, Arial, sans-serif;
 }
 

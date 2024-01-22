@@ -1,0 +1,5 @@
+.history-content-box {
+  display: flex;
+  gap: 20px;
+  flex-flow: row wrap;
+}

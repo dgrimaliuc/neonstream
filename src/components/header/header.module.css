@@ -1,4 +1,3 @@
-
 .header {
   position: fixed;
   top: 0;
@@ -12,10 +11,9 @@
 }
 
 .header .active-tab {
-   color: white;
-   border-bottom: rgb(0, 220, 137) solid;
+  color: white;
+  border-bottom: var(--green-color) solid 1.8px;
 }
-
 
 .header-spacer {
   height: 95px;

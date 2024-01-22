@@ -1,0 +1,64 @@
+.watchlist-header {
+  width: 100%;
+  padding-bottom: 26px;
+}
+
+.watchlist-header h2 {
+  text-align: center;
+}
+
+.watchlist-header h2 span {
+  margin-right: 15px;
+}
+
+.watchlist-tabs {
+  position: relative;
+  display: flex;
+  flex-flow: column unwrap;
+  justify-content: center;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.watchlist-tabs::after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #a0a0a085;
+  /* clear: both; */
+}
+
+.watchlist-tab {
+  position: relative;
+  padding: 20px 40px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  color: #a0a0a0;
+  font-weight: 500;
+}
+
+.wl-tab-active {
+  color: #fff;
+}
+
+.wl-tab-active::after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  content: '';
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: var(--green-color);
+}
+
+.watchlist-tab:hover {
+  color: #fff;
+  background-color: var(--hover-menu-item-color);
+}
