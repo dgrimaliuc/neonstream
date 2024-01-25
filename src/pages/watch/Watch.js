@@ -2,29 +2,19 @@ import './watch.css';
 
 import upNexImg from '../../assets/One Piece/episodes/one-peace-1-1.jpeg';
 import upPrevImg from '../../assets/One Piece/episodes/one-peace-1-2.jpeg';
+import ReactPlayer from 'react-player';
 
 export default function WatchPage() {
   return (
     <>
       <div className='watch-wrapper'>
         <div className='player-container'>
-          {/* <iframe
-          data-v-36722e70=""
-          frameborder="0"
-          width="100%"
-          height="100%"
-          referrerpolicy="no-referrer-when-downgrade"
-          src="https://geo.dailymotion.com/player/xb9cu.html?video=x8mcup6"
-          allowfullscreen="allowfullscreen"
-          allow="autoplay"
-        ></iframe>  */}
-          <iframe
+          <ReactPlayer
+            url='https://cdn4573.vb24131crasosnemesis.com/stream2/cdn-400/8e93f2e41d9aa6c8d265bdcb958d3be4/MJTMsp1RshGTygnMNRUR2N2MSlnWXZEdMNDZzQWe5MDZzMmdZJTO1R2RWVHZDljekhkSsl1VwYnWtx2cihVT250RRpnWUt2dNRVV1klaOtmWtpUbNpXRy4ERWlWW6dmeNp2Z6llajJTT6lVP:1706178870:35.155.107.187:e93d252731dae4f859ca0b6b5b913358ab2dd187e6058ddd973904e6f5ebdf61/index.m3u8'
             width='100%'
             height='100%'
-            src='https://torn-as.newplayjj.com:9443/?token_movie=850ac523fef9911889abb04442711d&amp;token=c794d04d2e71e014b4339e629f6539'
-            frameborder='0'
-            allowfullscreen=''
-          ></iframe>
+            controls={true}
+          ></ReactPlayer>
         </div>
       </div>
       <div className='watch-info-wrapper'>
@@ -44,7 +34,7 @@ export default function WatchPage() {
             <span className='tag single-card-tag'>Adventure</span>
             <span className='tag single-card-tag'>Comedy</span>
             <span className='tag single-card-tag'>Fantasy</span>
-            <span className='tag single-card-tag'>Shounen</span>
+            <span className='tag single-card-tag'>Show</span>
             <span className='tag single-card-tag'>Super Power</span>
           </div>
 

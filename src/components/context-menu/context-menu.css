@@ -2,22 +2,22 @@
   position: absolute;
   top: 100%;
   right: 0;
-  z-index: 100;
+  z-index: 1;
   display: flex;
   flex-flow: column nowrap;
   align-items: flex-start;
   background: #23252b;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px 0 rgb(0, 0, 0);
   transform: translateY(-10px);
 }
 
-.context-menu .contex-item {
+.context-menu .context-item {
   padding: 7px 16px 7px 16px;
   width: 100%;
   color: #a0a0a0;
 }
 
-.contex-item:hover {
+.context-item:hover {
   background-color: #141519;
   color: #fff;
   transition: background-color 0.5s ease;

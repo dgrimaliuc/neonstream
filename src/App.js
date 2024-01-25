@@ -8,6 +8,7 @@ import History from './pages/history/History';
 import WatchPage from './pages/watch/Watch';
 import WatchlistPage from './pages/watchlist/Watchlist';
 import CustomListsPage from './pages/custom-lists/CustomLists';
+import Authentification from './pages/auth/auth';
 
 const router = createBrowserRouter([
   {
@@ -22,14 +23,10 @@ const router = createBrowserRouter([
       { path: 'watchlist', element: <WatchlistPage /> },
       { path: 'custom-lists', element: <CustomListsPage /> },
       { path: 'history', element: <History /> },
-      {
-        path: 'auth',
-        children: [
-          { index: true, element: <div>Login</div> },
-          { path: 'register', element: <div>Register</div> },
-        ],
-      },
+      { path: 'login', element: <Authentification /> },
+      { path: 'register', element: <Authentification /> },
     ],
+    errorElement: <div>Not Found</div>,
   },
 ]);
 

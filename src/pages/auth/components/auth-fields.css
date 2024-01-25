@@ -1,0 +1,11 @@
+.forgot-password {
+  position: relative;
+  left: 3px;
+  text-align: left;
+}
+
+.forgot-password a {
+  font-size: 12px;
+  color: white;
+  text-transform: uppercase;
+}

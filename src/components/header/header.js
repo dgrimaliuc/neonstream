@@ -5,7 +5,7 @@ import './logo.css';
 import './navigation.css';
 import './search-input.css';
 
-import { NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 export default function Header() {
   const { search } = useLocation();
@@ -82,8 +82,8 @@ export default function Header() {
           </div>
         </div>
         <div className='login flx-1 text'>
-          <div role='button'>Login</div>
-          <div role='button'>Sign Up</div>
+          <Link to='login'>Login</Link>
+          <Link to='register'>Sign Up</Link>
         </div>
       </header>
       <div className={classes['header-spacer']}></div>
