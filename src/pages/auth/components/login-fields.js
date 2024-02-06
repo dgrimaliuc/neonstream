@@ -31,7 +31,7 @@ export default function LoginFields() {
           onBlur={handleBlurPass}
         />
       </div>
-      <span class='forgot-password'>
+      <span className='forgot-password'>
         <Link to='/forgot-password'>FORGOT PASSWORD?</Link>
       </span>
     </>

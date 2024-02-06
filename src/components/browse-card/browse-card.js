@@ -1,6 +1,8 @@
 import './browse-card.css';
 
-export default function BrowseCard() {
+export default function BrowseCard({ title, poster, type }) {
+  if (!poster) return;
+
   return (
     <div>
       <div className='browse-card'>
@@ -12,14 +14,15 @@ export default function BrowseCard() {
             <picture>
               <img
                 className='browse-card-poster'
-                src='https://img.rgstatic.com/content/show/44274ca8-ea80-4e4d-9e0d-eb7c390b4580/poster-342.jpg'
-                alt=' The Big Bang Theory Poster'
+                // to change base url with config base_url
+                src={`https://media.themoviedb.org/t/p/w220_and_h330_face${poster}`}
+                alt={title}
               />
             </picture>
           </div>
           <div className='browse-card-info'>
             <p>
-              <div>The Big Bang Theory</div> 2006
+              <span>{title}</span> 2006
             </p>
           </div>
         </a>

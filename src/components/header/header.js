@@ -1,18 +1,16 @@
-import classes from './header.module.css';
+import './header.css';
 import './flex-styles.css';
 import './login.css';
 import './logo.css';
 import './navigation.css';
 import './search-input.css';
 
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 export default function Header() {
-  const { search } = useLocation();
-  const filter = new URLSearchParams(search).get('filter');
   return (
     <>
-      <header className={classes.header}>
+      <header>
         <div className='logo flex-item neonText'>
           <div className='text-logo' role='button'>
             New Wave
@@ -32,51 +30,19 @@ export default function Header() {
             </div>
           </div>
           <div className='navigation text'>
-            <NavLink
-              to='/'
-              role='button'
-              className={({ isActive }) =>
-                isActive ? classes['active-tab'] : undefined
-              }
-            >
+            <NavLink to='/' role='button'>
               <span>Home</span>
             </NavLink>
-            <NavLink
-              to='/browse'
-              role='button'
-              className={({ isActive }) =>
-                isActive && !filter ? classes['active-tab'] : undefined
-              }
-            >
+            <NavLink end to='/browse' role='button'>
               <span>All</span>
             </NavLink>
-            <NavLink
-              to='/series'
-              role='button'
-              className={({ isActive }) =>
-                isActive ? classes['active-tab'] : undefined
-              }
-            >
+            <NavLink to='/browse/series' role='button'>
               <span>Series</span>
             </NavLink>
-            <NavLink
-              to='/browse?filter=movies'
-              role='button'
-              className={({ isActive }) =>
-                isActive && filter === 'movies'
-                  ? classes['active-tab']
-                  : undefined
-              }
-            >
+            <NavLink to='/browse/movies' role='button'>
               <span>Movies</span>
             </NavLink>
-            <NavLink
-              to='watchlist'
-              role='button'
-              className={({ isActive }) =>
-                isActive ? classes['active-tab'] : undefined
-              }
-            >
+            <NavLink to='watchlist' role='button'>
               <span>Watchlist</span>
             </NavLink>
           </div>
@@ -86,7 +52,7 @@ export default function Header() {
           <Link to='register'>Sign Up</Link>
         </div>
       </header>
-      <div className={classes['header-spacer']}></div>
+      <div className='header-spacer'></div>
     </>
   );
 }

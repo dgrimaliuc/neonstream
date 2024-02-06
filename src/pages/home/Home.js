@@ -1,49 +1,24 @@
 import './Home.css';
 
+// import MovieDB from 'moviedb/lib/moviedb';
+// import { MovieDb } from 'moviedb-axi-promise';
 import Carousel from '../../components/carousel/carousel';
 import Header from '../../components/header/header';
 import HeroCarousel from '../../components/hero-carousel/hero-carousel';
 import SinglePromoCardNeon from '../../components/single-promo-card/single-promo-card-neon';
 import SinglePromoCardViolet from '../../components/single-promo-card/single-promo-card-violet';
 import SingleCard from '../../components/single-card/single-card';
-/*
+import { useCallback, useEffect, useRef, useState } from 'react';
 
- <head>
-    <link rel="stylesheet" href="/footer/footer.css" />
-    <link
-      rel="stylesheet"
-      href="../components/hero-carousel/hero-carousel.css"
-    />
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.js"
-      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-      crossorigin="anonymous"
-    ></script>
-
-    <script>
-      $('#hero-carousel').load(
-        '../components/hero-carousel/hero-carousel.html'
-      );
-      $('.carousel').each(function (index, element) {
-        $.get('../components/carousel/carousel.html', function (data) {
-          $(element).html(data);
-        });
-      });
-      $('#promo-card').load(
-        '../components/single-promo-card/single-promo-card-violet.html'
-      );
-      $('#promo-card-neon').load(
-        '../components/single-promo-card/single-promo-card-neon.html'
-      );
-      $('#single-card').load('../components/single-card/single-card.html');
-    </script>
-  </head>
-
-*/
 function Home() {
+  useEffect(() => {
+    const fc = async () => {
+      // await mdb.searchMovie({ query: 'alien' }).catch(console.error);
+    };
+    fc();
+  }, []);
   return (
     <>
-      {/* <Header /> */}
       <div className='home-container'>
         <HeroCarousel />
 

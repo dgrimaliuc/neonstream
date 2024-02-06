@@ -2,6 +2,11 @@
   --episode-background-opacity: 0;
 } */
 
+.controls,
+.servers {
+  display: none;
+}
+
 .player-container {
   position: relative;
   width: 100%;

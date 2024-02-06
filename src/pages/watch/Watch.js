@@ -1,19 +1,24 @@
 import './watch.css';
-
 import upNexImg from '../../assets/One Piece/episodes/one-peace-1-1.jpeg';
 import upPrevImg from '../../assets/One Piece/episodes/one-peace-1-2.jpeg';
+import { useEffect, useRef, useState } from 'react';
+import axios from 'axios';
 import ReactPlayer from 'react-player';
 
 export default function WatchPage() {
+  axios.get(
+    'https://api.themoviedb.org/3/tv/61888?api_key=13dcd6ddc1a270f0239c5503c49237b3&language=en-US'
+  );
   return (
     <>
       <div className='watch-wrapper'>
         <div className='player-container'>
           <ReactPlayer
-            url='https://cdn4573.vb24131crasosnemesis.com/stream2/cdn-400/8e93f2e41d9aa6c8d265bdcb958d3be4/MJTMsp1RshGTygnMNRUR2N2MSlnWXZEdMNDZzQWe5MDZzMmdZJTO1R2RWVHZDljekhkSsl1VwYnWtx2cihVT250RRpnWUt2dNRVV1klaOtmWtpUbNpXRy4ERWlWW6dmeNp2Z6llajJTT6lVP:1706178870:35.155.107.187:e93d252731dae4f859ca0b6b5b913358ab2dd187e6058ddd973904e6f5ebdf61/index.m3u8'
+            url='https://www.youtube.com/watch?v=7NK_JOkuSVY'
             width='100%'
             height='100%'
             controls={true}
+            // playing={аф}
           ></ReactPlayer>
         </div>
       </div>

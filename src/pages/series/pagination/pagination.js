@@ -17,7 +17,7 @@ export default function Pagination() {
         tabIndex='0'
         className='pagination-bubble active'
       >
-        <span classNameName='page-number'>1</span>
+        <span className='page-number'>1</span>
       </div>
       <div
         id='pagination-bubble'

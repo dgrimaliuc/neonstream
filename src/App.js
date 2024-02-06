@@ -13,12 +13,22 @@ import Authentification from './pages/auth/auth';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <RootLayout />,
     id: 'root',
+    element: <RootLayout />,
     children: [
       { index: true, element: <HomePage /> },
       { path: 'series', element: <SeriesPage /> },
-      { path: 'browse', element: <BrowsePage /> },
+      {
+        path: 'browse',
+        children: [
+          {
+            index: true,
+            element: <BrowsePage />,
+          },
+          { path: 'movies', element: <BrowsePage /> },
+          { path: 'series', element: <BrowsePage /> },
+        ],
+      },
       { path: 'watch', element: <WatchPage /> },
       { path: 'watchlist', element: <WatchlistPage /> },
       { path: 'custom-lists', element: <CustomListsPage /> },
@@ -33,10 +43,6 @@ const router = createBrowserRouter([
 export default function App() {
   return (
     <>
-      <link
-        rel='stylesheet'
-        href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
-      />
       <RouterProvider router={router} />
     </>
   );
