@@ -19,37 +19,35 @@ const reducer = (state, action) => {
       return { ...state, page: state.page + 1 };
     case 'set_initial':
       return {
-        content: [],
         page: 1,
-        total: 0,
-        isMounting: false,
-        prevLocation: '',
+        content: [],
+        prevLocation: state.prevLocation,
       };
     case 'set_mounted_state':
       return { ...state, isMounting: true };
     case 'add_content':
       return { ...state, content: [...state.content, ...action.payload] };
+    case 'set_prev_location':
+      return { ...state, prevLocation: action.payload };
     default:
       return state;
   }
 };
 
 export default function Browse() {
+  const location = useLocation();
   const [state, dispatch] = useReducer(reducer, {
     page: 1,
-    total: 0,
-    isMounting: false,
     content: [],
+    prevLocation: location.pathname,
   });
-  const { page, content, isMounting } = state;
 
-  const location = useLocation();
-  const [prevLocation, setPrevLocation] = useState(location.pathname);
+  const { page, content, prevLocation } = state;
+
   const observer = useMemo(() => {
     return new Observer(
       () => document.querySelector('.loader'),
       async () => dispatch({ type: 'increment_page' })
-      // 100
     );
   }, []);
 
@@ -72,10 +70,11 @@ export default function Browse() {
     if (prevLocation === location.pathname) {
       fetcher().then(() => observer.observe());
     }
-  }, [isMounting, location.pathname, observer, page, prevLocation]);
+  }, [location.pathname, observer, page, prevLocation]);
 
   useEffect(() => {
-    setPrevLocation(location.pathname);
+    dispatch({ type: 'set_prev_location', payload: location.pathname });
+
     return () => {
       dispatch({ type: 'set_initial' });
     };
@@ -104,7 +103,7 @@ export default function Browse() {
             poster={c.poster_path}
           />
         ))}
-        <Spinner display />
+        {page < 500 && <Spinner display />}
       </div>
     </div>
   );

@@ -24,14 +24,12 @@ export async function browsePopularContent(customProps) {
 
 export async function popularMovies(customProps) {
   const props = { ...discoverProps, ...customProps };
-  const res = await mdb.moviePopular(props);
-  return res.results.sort(() => Math.random() - 0.5);
+  return (await mdb.moviePopular(props)).results;
 }
 
 export async function popularSeries(customProps) {
   const props = { ...discoverProps, ...customProps };
-  const res = await mdb.tvPopular(props);
-  return res.results.sort(() => Math.random() - 0.5);
+  return (await mdb.tvPopular(props)).results;
 }
 
 export default mdb;
