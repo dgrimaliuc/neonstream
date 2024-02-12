@@ -1,12 +1,13 @@
+import { getPoster } from '../../utils/images';
 import './browse-card.css';
 
-export default function BrowseCard({ title, poster, type }) {
+export default function BrowseCard({ title, poster }) {
   if (!poster) return;
 
   return (
     <div>
       <div className='browse-card'>
-        <a href='#' className='browse-card-body text-decoration-off'>
+        <a href='/' className='browse-card-body text-decoration-off'>
           <div className='browse-card-poster'>
             <div className='browse-card-hover'>
               <i className='fa-play' />
@@ -14,8 +15,7 @@ export default function BrowseCard({ title, poster, type }) {
             <picture>
               <img
                 className='browse-card-poster'
-                // to change base url with config base_url
-                src={`https://media.themoviedb.org/t/p/w220_and_h330_face${poster}`}
+                src={getPoster(poster)}
                 alt={title}
               />
             </picture>

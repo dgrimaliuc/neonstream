@@ -1,9 +1,8 @@
-
 .controls {
   /* opacity: 0.4; */
   user-select: none;
   position: static;
-  margin-right: 10px;
+  margin-right: 12px;
 }
 
 .control {

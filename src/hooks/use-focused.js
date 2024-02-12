@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const useFocused = () => {
+export const useFocused = () => {
   const [isFocused, setIsFocused] = useState(false);
 
   const handleFocus = () => {
@@ -13,5 +13,3 @@ const useFocused = () => {
 
   return [isFocused, handleFocus, handleBlur];
 };
-
-export default useFocused;

@@ -18,7 +18,6 @@ router.post("/movie", validateMovie(), async (req, res) => {
     const movie = req.body;
     await addMovie(movie);
   } catch (err) {
-    console.log(err);
     res.status(500).json({ message: "Something went wrong" });
   }
 

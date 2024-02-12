@@ -17,7 +17,7 @@ const TMDBContext = createContext({
 
 export default TMDBContext;
 
-export function CartActionsContextProvider({ children }) {
+export function TMDBContextProvider({ children }) {
   const [tmdbConfig, setTmdbConfig] = useState(null);
 
   function setConfig(config) {

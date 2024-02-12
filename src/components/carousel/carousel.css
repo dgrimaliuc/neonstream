@@ -41,3 +41,9 @@
 .cards-section::-webkit-scrollbar {
   display: none;
 }
+
+.cards-section .episode-card {
+  min-width: 300px;
+  /* padding: 0px 0px 0px 0px; */
+  background-color: var(--card-background-color);
+}

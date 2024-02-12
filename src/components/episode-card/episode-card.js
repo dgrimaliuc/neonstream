@@ -1,23 +1,30 @@
 import './episode-card.css';
 
-import img from '../../assets/One Piece/episodes/one-peace-1-1.jpeg';
 import PlayableThumbnail from '../playable-thumbnail/playable-thumbnail';
+import { getBackdrop } from '../../utils/images';
 
-export default function EpisodeCard({ showProgress, showIcon }) {
+export default function EpisodeCard({
+  showProgress,
+  showIcon,
+  backdrop,
+  title,
+  type,
+}) {
+  if (!backdrop) return;
   return (
     <>
       <div className='episode-card'>
         <PlayableThumbnail
-          img={img}
+          img={getBackdrop(backdrop)}
           showProgress={showProgress}
           showIcon={showIcon}
         />
         <div className='episode-info'>
-          <p className='episode-card-title'>S1 E1 - One Piece</p>
+          <p className='episode-card-title'>{title}</p>
           <div className='text-caption'>Watch now</div>
         </div>
         <div className='episode-meta-container'>
-          <div className='episode-meta text-caption movie-meta'>Series</div>
+          <div className='episode-meta text-caption movie-meta'>Movie</div>
           <div className='episode-actions'>
             <span>
               <i className='fa-heart-o'></i>

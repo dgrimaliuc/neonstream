@@ -1,15 +1,18 @@
 export class Observer {
-  constructor(findElement, onObserve, delay = 100) {
+  constructor(findElement, onObserve) {
     this.findElement = findElement;
     this.onObserve = onObserve;
-    this.observer = new IntersectionObserver((entries) => {
-      entries.forEach(async (entry) => {
-        if (entry.isIntersecting) {
-          this.disconnect();
-          await this.onObserve();
-        }
-      });
-    });
+    this.observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(async (entry) => {
+          if (entry.isIntersecting) {
+            this.disconnect();
+            await this.onObserve();
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
   }
 
   observe() {

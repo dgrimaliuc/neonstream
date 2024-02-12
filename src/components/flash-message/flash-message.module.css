@@ -1,0 +1,76 @@
+:root {
+  --flash-message-text-color: black;
+  --flash-message-font-size: 1.1rem;
+  --flash-message-width: 100%;
+  --flash-message-background-color-success: #38e282;
+  --flash-message-background-color-error: #ec120e;
+  --flash-message-height: 65px;
+}
+
+.flash_message_wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--flash-message-width);
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+  background-color: var(--flash-message-background-color-success);
+  height: var(--flash-message-height);
+  color: var(--flash-message-text-color);
+  font-size: var(--flash-message-font-size);
+  transition: top 0.5s ease-in-out;
+}
+
+.flash_message_wrapper.visible {
+  top: 95px;
+}
+
+.flash_message_wrapper.hidden {
+  top: 0;
+  /* display: none; */
+}
+
+.flash_message_wrapper.error {
+  background-color: var(--flash-message-background-color-error);
+}
+
+.flash_message_wrapper [class*='fa-close'] {
+  font-size: 2rem;
+}
+
+.flash_message {
+  /* width: 100%; */
+  flex: 1;
+  text-align: center;
+}
+
+.close_container {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 45px;
+  align-self: flex-end;
+}
+
+.close_container:hover {
+  background-color: #5def9c;
+}
+
+/*
+
+
+  transition: top 0.3s, left 0.3s, font-size 0.3s;
+}
+
+.focused .placeholder {
+  top: -10px;
+  left: 1px;
+  font-size: 14px;
+  color: rgb(95, 95, 95);
+}
+
+*/

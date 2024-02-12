@@ -4,14 +4,14 @@ import './index.css';
 import './buttons.css';
 import './text.css';
 import App from './App';
-import { CartActionsContextProvider } from './store/context/configurationProvider';
+import { TMDBContextProvider } from './store/context/configurationProvider';
 // import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <CartActionsContextProvider>
+  <TMDBContextProvider>
     <App />
-  </CartActionsContextProvider>
+  </TMDBContextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

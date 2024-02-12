@@ -12,7 +12,7 @@ export default function SingleCard() {
               <picture>
                 <img
                   className='single-card-poster'
-                  src={img}
+                  src='https://image.tmdb.org/t/p/w1280/A7EByudX0eOzlkQ2FIbogzyazm2.jpg'
                   alt='One Piece Square'
                 />
               </picture>

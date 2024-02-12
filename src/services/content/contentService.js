@@ -5,6 +5,7 @@ const mdb = new MovieDb(apiKey);
 const discoverProps = {
   with_original_language: 'en',
   include_adult: false,
+  page: 1,
 };
 
 export async function getConfig() {
@@ -30,6 +31,36 @@ export async function popularMovies(customProps) {
 export async function popularSeries(customProps) {
   const props = { ...discoverProps, ...customProps };
   return (await mdb.tvPopular(props)).results;
+}
+
+export async function recommendedMovies(customProps) {
+  const props = { ...discoverProps, ...customProps, id: 1029575 };
+  return (await mdb.movieRecommendations(props)).results;
+}
+
+export async function recommendedSeries(customProps) {
+  const props = { ...discoverProps, ...customProps, id: 42009 };
+  return (await mdb.tvRecommendations(props)).results;
+}
+
+export async function topRatedMovies(customProps) {
+  const props = { ...discoverProps, ...customProps };
+  return (await mdb.movieTopRated(props)).results;
+}
+
+export async function topRatedSeries(customProps) {
+  const props = { ...discoverProps, ...customProps };
+  return (await mdb.tvTopRated(props)).results;
+}
+
+export async function nowPlayingMovies(customProps) {
+  const props = { ...discoverProps, ...customProps };
+  return (await mdb.movieNowPlaying(props)).results;
+}
+
+export async function airingTodaySeries(customProps) {
+  const props = { ...discoverProps, ...customProps };
+  return (await mdb.tvAiringToday(props)).results;
 }
 
 export default mdb;

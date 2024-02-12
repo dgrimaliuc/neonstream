@@ -9,6 +9,8 @@ import WatchPage from './pages/watch/Watch';
 import WatchlistPage from './pages/watchlist/Watchlist';
 import CustomListsPage from './pages/custom-lists/CustomLists';
 import Authentification from './pages/auth/auth';
+import { Provider } from 'react-redux';
+import store from './store';
 
 const router = createBrowserRouter([
   {
@@ -43,7 +45,9 @@ const router = createBrowserRouter([
 export default function App() {
   return (
     <>
-      <RouterProvider router={router} />
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
     </>
   );
 }

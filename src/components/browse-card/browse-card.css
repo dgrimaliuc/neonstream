@@ -4,6 +4,7 @@
 }
 
 .browse-card {
+  background-color: var(--card-background-color);
   position: relative;
   width: 160px;
   /* height: 360px; */

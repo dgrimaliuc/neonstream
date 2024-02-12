@@ -68,7 +68,7 @@
   position: absolute;
   background-size: cover;
   border-radius: var(--border-radius);
-  background-image: url('../../assets/One\ Piece/One\ Piece\ Square.png');
+  background-image: url('https://media.themoviedb.org/t/p/w1066_and_h600_bestv2/4MCKNAc6AbWjEsM2h9Xc29owo4z.jpg');
   width: 50%;
   z-index: 0;
 }

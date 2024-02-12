@@ -9,76 +9,48 @@ import {
 import Spinner from '../../components/spinner/spinner';
 
 import { useLocation } from 'react-router-dom';
-import { useEffect, useMemo, useReducer, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { sleep } from '../../utils/utils';
-import { Observer } from '../../utils/observer';
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'increment_page':
-      return { ...state, page: state.page + 1 };
-    case 'set_initial':
-      return {
-        page: 1,
-        content: [],
-        prevLocation: state.prevLocation,
-      };
-    case 'set_mounted_state':
-      return { ...state, isMounting: true };
-    case 'add_content':
-      return { ...state, content: [...state.content, ...action.payload] };
-    case 'set_prev_location':
-      return { ...state, prevLocation: action.payload };
-    default:
-      return state;
-  }
-};
+import { useObserver } from '../../hooks/useObserver';
+import { useDispatch, useSelector } from 'react-redux';
+import { browseContentActions } from '../../store';
+const { incrementPage, setInitial, addContent } = browseContentActions;
 
 export default function Browse() {
   const location = useLocation();
-  const [state, dispatch] = useReducer(reducer, {
-    page: 1,
-    content: [],
-    prevLocation: location.pathname,
-  });
-
-  const { page, content, prevLocation } = state;
-
-  const observer = useMemo(() => {
-    return new Observer(
-      () => document.querySelector('.loader'),
-      async () => dispatch({ type: 'increment_page' })
-    );
-  }, []);
+  const dispatch = useDispatch();
+  const observer = useObserver('.loader', () => dispatch(incrementPage()));
+  const [prevLocation, setPrevLocation] = useState(location.pathname);
+  const { page, content } = useSelector((state) => state.browseContent);
 
   useEffect(() => {
     const fetcher = async () => {
-      let res = [];
       await sleep(700);
       switch (location.pathname) {
         case '/browse/movies':
-          res = await popularMovies({ page });
-          break;
+          return await popularMovies({ page });
         case '/browse/series':
-          res = await popularSeries({ page });
-          break;
+          return await popularSeries({ page });
         default:
-          res = await browsePopularContent({ page });
+          return await browsePopularContent({ page });
       }
-      dispatch({ type: 'add_content', payload: res });
     };
     if (prevLocation === location.pathname) {
-      fetcher().then(() => observer.observe());
+      fetcher()
+        .then((res) => {
+          dispatch(addContent(res));
+        })
+        .then(() => observer.observe());
     }
-  }, [location.pathname, observer, page, prevLocation]);
+  }, [dispatch, location.pathname, observer, page, prevLocation]);
 
   useEffect(() => {
-    dispatch({ type: 'set_prev_location', payload: location.pathname });
+    setPrevLocation(location.pathname);
 
     return () => {
-      dispatch({ type: 'set_initial' });
+      dispatch(setInitial());
     };
-  }, [location.pathname]);
+  }, [dispatch, location.pathname]);
 
   return (
     <div className='browse-wrapper'>
