@@ -1,0 +1,17 @@
+.content-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 53vh;
+  min-width: 500px;
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+}
+
+.title {
+  font-size: 52px;
+  color: white;
+  user-select: text;
+}

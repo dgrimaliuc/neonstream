@@ -37,8 +37,8 @@ export default function RegisterField() {
         </label>
         <input
           type='password'
-          name='password1'
-          id='password1'
+          name='password'
+          id='password'
           onFocus={handleFocusPass}
           onBlur={handleBlurPass}
         />

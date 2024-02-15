@@ -63,4 +63,9 @@ export async function airingTodaySeries(customProps) {
   return (await mdb.tvAiringToday(props)).results;
 }
 
+export async function upcomingMovies(customProps) {
+  const props = { ...discoverProps, ...customProps };
+  return (await mdb.upcomingMovies(props)).results;
+}
+
 export default mdb;

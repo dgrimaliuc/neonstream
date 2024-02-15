@@ -1,0 +1,46 @@
+:root {
+  --content-height: 100px;
+}
+
+.description-wrapper {
+  width: 100%;
+  max-width: 770px;
+  position: relative;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
+  line-height: 25px;
+  font-weight: 400;
+  white-space: normal;
+  text-align: left;
+  hyphens: auto;
+  cursor: pointer;
+  overflow: hidden;
+  max-height: var(--content-height);
+  transition: max-height 2s linear;
+}
+
+.description-wrapper.expanded .description-gradient {
+  mask-image: none;
+}
+
+.description-wrapper.expanded {
+  --content-height: 300px;
+  color: #ffffff9e;
+  transition: max-height 2s linear;
+}
+
+.description-gradient {
+  cursor: pointer;
+  /* mask-image: linear-gradient(black -24%, transparent 90%); */
+}
+
+.description-container {
+  will-change: max-height;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+.gradient-height {
+  position: relative;
+  padding-bottom: 24px;
+}

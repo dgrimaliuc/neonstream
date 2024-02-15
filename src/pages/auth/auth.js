@@ -23,13 +23,13 @@ export default function Authentification() {
                 Register
               </NavLink>
             </div>
-            <form className='auth-form'>
+            <div className='auth-form'>
               {isRegister ? <RegisterField /> : <LoginFields />}
 
               <div className='form-controls'>
                 <button>{isRegister ? 'Register' : 'Log In'}</button>
               </div>
-            </form>
+            </div>
           </form>
         </div>
       </div>

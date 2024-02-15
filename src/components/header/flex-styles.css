@@ -1,6 +1,5 @@
 .flex-item {
   flex: 1;
-  /* border: 1px solid white; */
 }
 
 .grow-2 {
@@ -11,7 +10,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  /* margin: 0 20px; */
 }
 
 .flx-1 {

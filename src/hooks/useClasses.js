@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-export function useClasses(initial) {
-  const [classes, setClasses] = useState(initial);
+export function useClasses(...initial) {
+  const [classes, setClasses] = useState(initial.join(' '));
 
   function addClass(className, append = true) {
     if (append) {
@@ -15,5 +15,9 @@ export function useClasses(initial) {
     setClasses(classes.replace(className, '').trim());
   }
 
-  return [classes, addClass, removeClass, setClasses];
+  function setInitial() {
+    setClasses(initial.join(' '));
+  }
+
+  return { classes, addClass, setInitial, removeClass, setClasses };
 }

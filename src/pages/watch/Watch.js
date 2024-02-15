@@ -4,6 +4,7 @@ import upPrevImg from '../../assets/One Piece/episodes/one-peace-1-2.jpeg';
 import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import ReactPlayer from 'react-player';
+import Tags from '../../components/tags/tags';
 
 export default function WatchPage() {
   axios.get(
@@ -34,14 +35,7 @@ export default function WatchPage() {
               </span>
             </span>
           </div>
-          <div className='tags'>
-            <span className='tag single-card-tag'>Action</span>
-            <span className='tag single-card-tag'>Adventure</span>
-            <span className='tag single-card-tag'>Comedy</span>
-            <span className='tag single-card-tag'>Fantasy</span>
-            <span className='tag single-card-tag'>Show</span>
-            <span className='tag single-card-tag'>Super Power</span>
-          </div>
+          <Tags />
 
           <div className='watch-actions'>
             <span className='watch-action'>
@@ -51,7 +45,7 @@ export default function WatchPage() {
               <i className='fa-thumbs-down'></i> <span>10</span>
             </span>
           </div>
-          <div className='description content-description'>
+          <div className='description-wrapper content-description'>
             <div className='description-gradient'>
               <div className='description-gradient-length'>
                 <div className='description-container'>
@@ -81,7 +75,7 @@ export default function WatchPage() {
                 <div className='up-next-info-box'>
                   <h5>Episode title</h5>
 
-                  <p className='description'>20m</p>
+                  <p className='description-wrapper'>20m</p>
                 </div>
               </div>
             </a>
@@ -98,7 +92,7 @@ export default function WatchPage() {
                 <div className='up-next-info-box'>
                   <h5>Episode title</h5>
 
-                  <p className='description'>20m</p>
+                  <p className='description-wrapper'>20m</p>
                 </div>
               </div>
             </a>

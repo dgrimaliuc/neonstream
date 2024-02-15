@@ -1,0 +1,46 @@
+.actions {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  gap: 16px;
+  width: 100%;
+  font-family: ProximaNova-Bold, Arial, sans-serif;
+}
+
+.watch-now-btn {
+  background: linear-gradient(145deg, #00e18c, #00e36a);
+  border: none;
+  outline: none;
+  color: #081118;
+  cursor: pointer;
+  line-height: 1;
+  font-family: ProximaNova-Bold, Arial, sans-serif;
+  letter-spacing: 1px;
+  font-size: 16px;
+  padding: 16px 20px;
+  height: 48px;
+  min-width: 228px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.default-button {
+  background: #31373b;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  line-height: 1;
+  outline: none;
+  font-size: 1rem;
+  font-family: ProximaNova-Bold, Arial, sans-serif;
+  padding: 12px 32px;
+  min-width: 240px;
+  border-radius: 5px;
+  height: 48px;
+  position: relative;
+}
+
+.watch-now-btn span,
+.default-button span {
+  margin-right: 5px;
+}

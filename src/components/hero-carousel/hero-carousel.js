@@ -26,7 +26,8 @@ export default function HeroCarousel() {
             {/* <div className="img-gradient"></div>  */}
             <img
               className='hero-carousel-picture'
-              src='https://media.themoviedb.org/t/p/w1280/r9oTasGQofvkQY5vlUXglneF64Z.jpg'
+              src={img}
+              //'https://media.themoviedb.org/t/p/w1280/r9oTasGQofvkQY5vlUXglneF64Z.jpg'
               //   One Piece/One Piece Wide.jpg
               alt='One Peace'
             />

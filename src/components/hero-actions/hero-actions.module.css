@@ -1,0 +1,25 @@
+.hero-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.rounded-button {
+  background: #31373b;
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  height: 56px;
+  width: 56px;
+  font-size: 30px;
+  padding-top: 2px;
+}
+
+.action-label {
+  color: #cecfd0;
+  text-align: center;
+  margin-top: 4px;
+}

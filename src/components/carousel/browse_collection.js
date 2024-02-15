@@ -1,11 +1,9 @@
 import './carousel.css';
 
 import BrowseCard from '../browse-card/browse-card';
-import Controls from '../controls/controls';
 import { useReducer, useState } from 'react';
 import {
   airingTodaySeries,
-  browsePopularContent,
   nowPlayingMovies,
   popularMovies,
   popularSeries,
@@ -13,10 +11,8 @@ import {
   recommendedSeries,
   topRatedMovies,
   topRatedSeries,
+  upcomingMovies,
 } from '../../services/content/contentService';
-import { createReducer } from '@reduxjs/toolkit';
-import { useResolvedPath } from 'react-router-dom';
-import EpisodeCard from '../episode-card/episode-card';
 import Carousel from './carousel';
 
 function reducer(state, action) {
@@ -34,7 +30,7 @@ function reducer(state, action) {
   // ...
 }
 
-export default function BrowseCollection({ type }) {
+export default function BrowseCollection({ type, onFinish }) {
   const [state, dispatch] = useReducer(reducer, { content: [], title: '' });
 
   useState(() => {
@@ -112,11 +108,20 @@ export default function BrowseCollection({ type }) {
             },
           });
           break;
+        case 'upcoming_movies':
+          dispatch({
+            type: 'set_all',
+            payload: {
+              title: 'Upcoming Movies',
+              content: await upcomingMovies(),
+            },
+          });
+          break;
         default:
           console.log('default');
       }
     };
-    fetcher();
+    fetcher().then(() => onFinish && onFinish());
   }, [type]);
 
   return (

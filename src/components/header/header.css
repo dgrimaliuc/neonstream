@@ -14,20 +14,7 @@ header .active span {
   color: white;
   border-bottom: var(--green-color) solid 1.8px;
 }
-header .active {
-  pointer-events: none;
-}
 
 .header-spacer {
   height: 95px;
-  /* z-index: 6; */
 }
-
-/* .description {
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 1.5;
-  letter-spacing: 1px;
-  margin-top: 10px;
-  max-width: 500px;
-} */

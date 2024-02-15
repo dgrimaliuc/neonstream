@@ -6,69 +6,11 @@
   margin-bottom: 15px;
 }
 
-.title {
-  font-size: 52px;
-  color: white;
-  user-select: text;
-}
-
 .text {
   font-size: 15px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 2px;
-}
-
-.mini-title {
-  font-size: 28px;
-  line-height: 1;
-  color: #fff;
-  margin-right: 24px;
-  margin-bottom: 4px;
-}
-
-.action-label {
-  color: #cecfd0;
-  text-align: center;
-  margin-top: 4px;
-}
-
-.watched-by {
-  color: rgba(255, 255, 255, 0.72);
-  font-weight: 400;
-}
-
-.description {
-  width: 100%;
-  max-width: 770px;
-  position: relative;
-  margin: 0;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 16px;
-  line-height: 25px;
-  font-weight: 400;
-  white-space: normal;
-  text-align: left;
-  hyphens: auto;
-}
-
-.description-gradient {
-  cursor: pointer;
-  mask-image: linear-gradient(to bottom, black -24%, transparent 90%);
-}
-
-.description-gradient-length {
-  position: relative;
-  padding-bottom: 24px;
-}
-
-.description-container {
-  will-change: max-height;
-  transition: max-height 200ms cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-  /* white-space: pre-wrap; */
-  word-wrap: break-word;
-  max-height: 175px;
 }
 
 h1 {

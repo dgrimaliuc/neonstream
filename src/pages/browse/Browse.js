@@ -46,6 +46,7 @@ export default function Browse() {
 
   useEffect(() => {
     setPrevLocation(location.pathname);
+    window.scrollTo(0, 0);
 
     return () => {
       dispatch(setInitial());
@@ -75,7 +76,7 @@ export default function Browse() {
             poster={c.poster_path}
           />
         ))}
-        {page < 500 && <Spinner display />}
+        <Spinner display={page < 500} />
       </div>
     </div>
   );

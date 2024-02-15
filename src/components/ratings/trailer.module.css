@@ -1,0 +1,17 @@
+.play-trailer-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 125px;
+  height: 18px;
+  gap: 8px;
+  margin-left: 30px;
+  align-items: center;
+}
+
+.play-trailer-link {
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+  color: #fff;
+}
