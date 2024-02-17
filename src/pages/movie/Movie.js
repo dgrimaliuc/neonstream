@@ -3,17 +3,16 @@ import BackgroundPicture from '../../components/content-page-components/backgrou
 
 import ContentHeader from '../../components/content-page-components/content-header/content-header';
 import HeroContentContainer from '../../components/content-page-components/hero-content-container/hero-content-container';
-import SeasonsContainer from '../../components/content-page-components/seasons-container/seasons-container';
 
-export default function SeriesPage() {
+export default function MoviePage() {
   return (
     <>
       <BackgroundPicture />
       <ContentHeader />
       <HeroContentContainer />
-      <SeasonsContainer />
+      {/* <SeasonsContainer /> */}
       <section>
-        <BrowseCollection type='recommended_series' />
+        <BrowseCollection type='recommended_movies' />
       </section>
     </>
   );

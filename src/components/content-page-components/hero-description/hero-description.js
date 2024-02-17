@@ -1,20 +1,13 @@
-import { useState } from 'react';
 import { useClasses } from '../../../hooks/useClasses';
 import styles from './hero-description.module.css';
 
 export default function HeroDescription() {
-  const [classes, setClasses] = useState(styles['description-wrapper']);
-
-  // const { classes, setInitial, addClass } = useClasses(
-  //   styles['description-wrapper']
-  // );
+  const { classes, setInitial, addClass } = useClasses(
+    styles['description-wrapper']
+  );
 
   function expandHandler() {
-    if (classes.includes('expanded')) {
-      setClasses(styles['description-wrapper']);
-    } else {
-      setClasses(`${styles['description-wrapper']} ${styles['expanded']}`);
-    }
+    classes.includes('expanded') ? setInitial() : addClass(styles['expanded']);
   }
 
   return (

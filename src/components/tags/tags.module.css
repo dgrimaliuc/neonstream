@@ -19,4 +19,5 @@
   text-decoration: none;
   white-space: nowrap;
   user-select: text;
+  cursor: pointer;
 }

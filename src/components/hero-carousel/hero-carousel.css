@@ -16,6 +16,11 @@
 .hero-carousel-container {
   width: 100%;
 }
+.title {
+  font-size: 52px;
+  color: white;
+  user-select: text;
+}
 
 .hero-carousel-picture {
   position: relative;

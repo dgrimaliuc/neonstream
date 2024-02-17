@@ -11,6 +11,8 @@ import CustomListsPage from './pages/custom-lists/CustomLists';
 import Authentification from './pages/auth/auth';
 import { Provider } from 'react-redux';
 import store from './store';
+import MoviePage from './pages/movie/Movie';
+import ErrorPage from './pages/error/Error';
 
 const router = createBrowserRouter([
   {
@@ -19,8 +21,8 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: 'series', element: <SeriesPage /> },
-      { path: 'movie', element: <SeriesPage /> },
+      { path: ':id/series', element: <SeriesPage /> },
+      { path: ':id/movie', element: <MoviePage /> },
       {
         path: 'browse',
         children: [
@@ -39,7 +41,7 @@ const router = createBrowserRouter([
       { path: 'login', element: <Authentification /> },
       { path: 'register', element: <Authentification /> },
     ],
-    errorElement: <div>Not Found</div>,
+    errorElement: <ErrorPage />,
   },
 ]);
 

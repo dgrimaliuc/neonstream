@@ -1,5 +1,6 @@
 import './hero-carousel.css';
 import img from '../../assets/One Piece/One Piece Wide.jpg';
+import ActionsContainer from '../actions/actionsContainer';
 
 export default function HeroCarousel() {
   return (
@@ -43,20 +44,13 @@ export default function HeroCarousel() {
             nesciunt culpa quibusdam ipsa quos fugit modi natus exercitationem
             facilis sit voluptatem minus enim eius blanditiis possimus aut
             repudiandae quo, molestias veritatis, ratione nihil aliquam
-            necessitatibus error! Voluptate animi veritatis quas!
+            necessitatibus error! Voluptate animi veritatis quas! Lorem ipsum
+            dolor sit amet consectetur adipisicing elit. Optio nisi recusandae
+            cupiditate fugiat rem temporibus, corporis, repellendus earum soluta
+            voluptatem perferendis non quod dignissimos tempore eos nulla odio
+            ipsam mollitia!
           </div>
-          <div className='actions'>
-            <div className='watch-now-wrapper'>
-              <button className='watch-now-btn'>
-                <span className='fa-play'></span>
-                Watch Now
-              </button>
-            </div>
-            <button className='default-button'>
-              <span className='fa-plus'></span>
-              Add to Watchlist
-            </button>
-          </div>
+          <ActionsContainer addToList={false} />
         </div>
         <div className='hero-carousel-pagination'>
           <button className='hero-carousel__page page-is-active'>

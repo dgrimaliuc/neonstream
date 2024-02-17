@@ -1,4 +1,4 @@
-import ContentActionsContainer from '../../actions/contentActionsContainer';
+import ActionsContainer from '../../actions/actionsContainer';
 import Ratings from '../../ratings/ratings';
 import Tags from '../../tags/tags';
 import styles from './content-header.module.css';
@@ -10,7 +10,7 @@ export default function ContentHeader() {
         <span className='green-text'>WATCH</span>
         <h1 className={styles.title}>One Piece</h1>
         <Tags />
-        <ContentActionsContainer />
+        <ActionsContainer />
         <Ratings />
       </div>
     </>

@@ -1,7 +1,7 @@
 import styles from './actions.module.css';
 import { Link } from 'react-router-dom';
 
-export default function ContentActionsContainer() {
+export default function ActionsContainer({ addToList = true }) {
   return (
     <div className={styles.actions}>
       <div>
@@ -16,10 +16,12 @@ export default function ContentActionsContainer() {
         <span className='fa-plus'></span>
         Add to Watchlist
       </button>
-      <button className={styles['default-button']}>
-        <span className='fa-bars'></span>
-        Add to List
-      </button>
+      {addToList && (
+        <button className={styles['default-button']}>
+          <span className='fa-bars'></span>
+          Add to List
+        </button>
+      )}
     </div>
   );
 }

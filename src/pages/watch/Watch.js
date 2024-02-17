@@ -5,22 +5,14 @@ import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import ReactPlayer from 'react-player';
 import Tags from '../../components/tags/tags';
+import VidsrcPlayer from '../../components/player/vidsrcPlayer';
 
 export default function WatchPage() {
-  axios.get(
-    'https://api.themoviedb.org/3/tv/61888?api_key=13dcd6ddc1a270f0239c5503c49237b3&language=en-US'
-  );
   return (
     <>
       <div className='watch-wrapper'>
         <div className='player-container'>
-          <ReactPlayer
-            url='https://www.youtube.com/watch?v=7NK_JOkuSVY'
-            width='100%'
-            height='100%'
-            controls={true}
-            // playing={аф}
-          ></ReactPlayer>
+          <VidsrcPlayer url='https://vidsrc.to/embed/movie/940551' />
         </div>
       </div>
       <div className='watch-info-wrapper'>

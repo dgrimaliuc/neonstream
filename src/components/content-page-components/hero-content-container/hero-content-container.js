@@ -9,7 +9,7 @@ export default function HeroContentContainer() {
     <div className={heroStyles['hero-content-wrapper']}>
       <div className={heroStyles['hero-left-section']}>
         <span className={heroStyles['hero-image-wrapper']}>
-          <picture className=''>
+          <picture>
             <img
               className={heroStyles['hero-image']}
               src={tallImg}

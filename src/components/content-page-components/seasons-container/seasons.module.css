@@ -1,13 +1,12 @@
-.season-content-container {
+.seasons-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  /* align-items: center; */
   margin: auto auto 88px;
   width: 1000px;
 }
 
-.season-content-container h2 {
+.seasons-wrapper h2 {
   color: white;
   font-size: 24px;
   font-weight: 700;
@@ -19,9 +18,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  /* margin-bottom: 24px; */
 }
-
 
 .seasons-container {
   padding-top: 12px;
@@ -53,6 +50,7 @@
 
 .season {
   cursor: pointer;
+  /* flex: 1 0 200px; */
 }
 
 .season::after {
