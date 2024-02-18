@@ -110,9 +110,8 @@
   color: rgba(255, 255, 255, 0.8);
   text-align: left;
   width: 100%;
-  height: 135px;
+  height: 98px;
   overflow: hidden;
-  /* height: 50%; */
 }
 
 .single-card-actions {

@@ -3,14 +3,14 @@ import './not-found.css';
 export default function ErrorPage() {
   return (
     <div id='notfound'>
-      <div class='notfound-bg'>
+      <div className='notfound-bg'>
         <div></div>
         <div></div>
         <div></div>
         <div></div>
       </div>
-      <div class='notfound'>
-        <div class='notfound-404'>
+      <div className='notfound'>
+        <div className='notfound-404'>
           <h1>404</h1>
         </div>
         <h2>Page Not Found</h2>
@@ -19,18 +19,18 @@ export default function ErrorPage() {
           changed or is temporarily unavailable.
         </p>
         <a href='#'>Homepage</a>
-        <div class='notfound-social'>
+        <div className='notfound-social'>
           <a href='#'>
-            <i class='fa fa-facebook'></i>
+            <i className='fa fa-facebook'></i>
           </a>
           <a href='#'>
-            <i class='fa fa-twitter'></i>
+            <i className='fa fa-twitter'></i>
           </a>
           <a href='#'>
-            <i class='fa fa-pinterest'></i>
+            <i className='fa fa-pinterest'></i>
           </a>
           <a href='#'>
-            <i class='fa fa-google-plus'></i>
+            <i className='fa fa-google-plus'></i>
           </a>
         </div>
       </div>

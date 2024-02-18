@@ -1,3 +1,4 @@
+import ActionsContainer from '../actions/actionsContainer';
 import './custom-border-neon.css';
 import './single-promo-card-neon.css';
 import './single-promo-card.css';
@@ -43,19 +44,7 @@ export default function SinglePromoCardNeon() {
               praesentium ipsa enim, unde eaque accusamus architecto, deserunt
               pariatur! Natus deleniti fugit odio ratione inventore?
             </div>
-            <div className='actions'>
-              <div className='watch-now-wrapper'>
-                <button className='watch-now-btn'>
-                  <span className='fa-play'></span>
-                  Watch Now
-                </button>
-              </div>
-              <div>
-                <button className='wl-button'>
-                  <span className='fa-bookmark'></span>
-                </button>
-              </div>
-            </div>
+            <ActionsContainer addToList={false} wlMinimal />
           </div>
         </div>
       </div>

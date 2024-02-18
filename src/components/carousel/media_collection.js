@@ -18,7 +18,6 @@ export default function MediaCollection({ type }) {
   const [state, dispatch] = useReducer(reducer, { content: [], title: '' });
 
   useState(() => {
-    console.log('observe');
     const fetcher = async () => {
       switch (type) {
         case 'continue_watching':

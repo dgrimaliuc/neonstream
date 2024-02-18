@@ -38,11 +38,13 @@
   background-color: rgb(0, 220, 137);
   color: rgb(10, 17, 22);
 }
+
 .arrow {
   position: relative;
 }
 
-[class*='arrow'] {
+.left-arrow,
+.right-arrow {
   width: 19.5px;
   height: 19px;
   cursor: pointer;
@@ -50,17 +52,18 @@
   opacity: 0.6;
 }
 
-[class*='arrow']:hover {
+.left-arrow:hover,
+.right-arrow:hover {
   opacity: 1;
 }
 
 .left-arrow {
   transform: rotate(180deg);
-  margin-right: 42px;
+  margin-right: 25px;
 }
 
 .right-arrow {
-  margin-left: 42px;
+  margin-left: 25px;
 }
 
 .page-number {

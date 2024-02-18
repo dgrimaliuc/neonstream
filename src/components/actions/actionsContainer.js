@@ -1,7 +1,10 @@
 import styles from './actions.module.css';
 import { Link } from 'react-router-dom';
 
-export default function ActionsContainer({ addToList = true }) {
+export default function ActionsContainer({
+  addToList = true,
+  wlMinimal = false,
+}) {
   return (
     <div className={styles.actions}>
       <div>
@@ -12,10 +15,16 @@ export default function ActionsContainer({ addToList = true }) {
           </Link>
         </button>
       </div>
-      <button className={styles['default-button']}>
-        <span className='fa-plus'></span>
-        Add to Watchlist
-      </button>
+      {wlMinimal ? (
+        <button className='wl-button'>
+          <span className='fa-bookmark'></span>
+        </button>
+      ) : (
+        <button className={styles['default-button']}>
+          <span className='fa-plus'></span>
+          Add to Watchlist
+        </button>
+      )}
       {addToList && (
         <button className={styles['default-button']}>
           <span className='fa-bars'></span>

@@ -1,5 +1,6 @@
 import './single-card.css';
 import img from '../../assets/One Piece/One Piece Tall.jpg';
+import ActionsContainer from '../actions/actionsContainer';
 
 export default function SingleCard() {
   return (
@@ -42,21 +43,12 @@ export default function SingleCard() {
               sed et, reiciendis enim dolore ab quae quis soluta animi mollitia,
               ipsa eos laborum. Aliquam placeat error praesentium laborum
               necessitatibus. Lorem ipsum dolor sit amet consectetur adipisicing
-              elit.
+              elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Corrupti modi dolores cumque alias ad voluptas et quia quas
+              commodi reiciendis, itaque laborum id. Tenetur et hic, tempora
+              assumenda facilis sint!
             </div>
-            <div className='actions single-card-actions'>
-              <div className='watch-now-wrapper'>
-                <button className='watch-now-btn'>
-                  <span className='fa-play'></span>
-                  Watch Now
-                </button>
-              </div>
-              <div>
-                <button className='wl-button'>
-                  <span className='fa-bookmark'></span>
-                </button>
-              </div>
-            </div>
+            <ActionsContainer addToList={false} wlMinimal />
           </div>
         </div>
       </div>

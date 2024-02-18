@@ -12,7 +12,8 @@ import Authentification from './pages/auth/auth';
 import { Provider } from 'react-redux';
 import store from './store';
 import MoviePage from './pages/movie/Movie';
-import ErrorPage from './pages/error/Error';
+import ErrorPage from './pages/error/ErrorNeon';
+import NotFound from './pages/error/NotFound';
 
 const router = createBrowserRouter([
   {
@@ -41,7 +42,7 @@ const router = createBrowserRouter([
       { path: 'login', element: <Authentification /> },
       { path: 'register', element: <Authentification /> },
     ],
-    errorElement: <ErrorPage />,
+    errorElement: <NotFound />,
   },
 ]);
 
