@@ -1,4 +1,4 @@
-import { useFocused } from '../../../hooks/use-focused';
+import { useFocused } from '../../../hooks';
 
 export default function RegisterField() {
   const [isFocusedEmail, handleFocusEmail, handleBlurEmail] = useFocused();

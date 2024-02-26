@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from './flash-message.module.css';
-import { useClasses } from '../../hooks/useClasses';
-import { useTimer } from '../../hooks/useTimer';
+import { useClasses } from '../../hooks';
+import { useTimer } from '../../hooks';
 
 export default function FlashMessage({
   timeout = 4000,

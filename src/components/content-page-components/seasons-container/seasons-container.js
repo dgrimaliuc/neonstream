@@ -2,7 +2,7 @@ import styles from './seasons.module.css';
 import SeasonsHeader from './seasons-header';
 import Season from './season';
 import EpisodesContainer from './episodes-container/episodes-container';
-import { usePagination } from '../../../hooks/usePagination';
+import { usePagination } from '../../../hooks';
 
 export default function SeasonsContainer({ seasonsTotal, seasonsMetadata }) {
   const { selected, select, iterator, nextPage, prevPage } = usePagination(

@@ -11,7 +11,7 @@ import Spinner from '../../components/spinner/spinner';
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { sleep } from '../../utils/jsUtils';
-import { useObserver } from '../../hooks/useObserver';
+import { useObserver } from '../../hooks';
 import { useDispatch, useSelector } from 'react-redux';
 import { browseContentActions } from '../../store';
 const { incrementPage, setInitial, addContent } = browseContentActions;

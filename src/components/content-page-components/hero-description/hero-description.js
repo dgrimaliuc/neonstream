@@ -1,4 +1,4 @@
-import { useClasses } from '../../../hooks/useClasses';
+import { useClasses } from '../../../hooks';
 import styles from './hero-description.module.css';
 
 export default function HeroDescription({ description = 'Undefined' }) {

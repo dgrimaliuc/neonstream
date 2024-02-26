@@ -1,6 +1,6 @@
 import styles from './pagination.module.css';
 
-import { usePagination } from '../../hooks/usePagination';
+import { usePagination } from '../../hooks';
 import Buble from './buble';
 
 export default function Pagination({ total = 50 }) {

@@ -1,4 +1,4 @@
-import { useClasses } from '../../hooks/useClasses';
+import { useClasses } from '../../hooks';
 import rateStyles from './ratings.module.css';
 import trailerStyles from './trailer.module.css';
 

@@ -1,6 +1,6 @@
 import './auth-fields.css';
 import { Link } from 'react-router-dom';
-import { useFocused } from '../../../hooks/use-focused';
+import { useFocused } from '../../../hooks';
 
 export default function LoginFields() {
   const [isFocusedEmail, handleFocusEmail, handleBlurEmail] = useFocused();

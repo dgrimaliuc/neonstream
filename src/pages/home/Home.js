@@ -6,7 +6,7 @@ import SinglePromoCardViolet from '../../components/single-promo-card/single-pro
 import SingleCard from '../../components/single-card/single-card';
 import MediaCollection from '../../components/carousel/media_collection';
 import BrowseCollection from '../../components/carousel/browse_collection';
-import { useObserver } from '../../hooks/useObserver';
+import { useObserver } from '../../hooks';
 import { useEffect, useState } from 'react';
 import { sleep } from '../../utils/jsUtils';
 import Spinner from '../../components/spinner/spinner';
