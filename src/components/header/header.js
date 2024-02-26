@@ -36,7 +36,7 @@ export default function Header() {
             <NavLink end to='/browse' role='button'>
               <span>All</span>
             </NavLink>
-            <NavLink to='/browse/series' role='button'>
+            <NavLink to='/browse/tv' role='button'>
               <span>Series</span>
             </NavLink>
             <NavLink to='/browse/movies' role='button'>

@@ -8,7 +8,7 @@ import MediaCollection from '../../components/carousel/media_collection';
 import BrowseCollection from '../../components/carousel/browse_collection';
 import { useObserver } from '../../hooks/useObserver';
 import { useEffect, useState } from 'react';
-import { sleep } from '../../utils/utils';
+import { sleep } from '../../utils/jsUtils';
 import Spinner from '../../components/spinner/spinner';
 
 function Home() {

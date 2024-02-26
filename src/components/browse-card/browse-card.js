@@ -1,13 +1,13 @@
-import { getPoster } from '../../utils/images';
+import { getPoster, getYear } from '../../utils';
 import './browse-card.css';
 
-export default function BrowseCard({ title, poster }) {
+export default function BrowseCard({ title, poster, to, date }) {
   if (!poster) return;
 
   return (
     <div>
       <div className='browse-card'>
-        <a href='/' className='browse-card-body text-decoration-off'>
+        <a href={to} className='browse-card-body text-decoration-off'>
           <div className='browse-card-poster'>
             <div className='browse-card-hover'>
               <i className='fa-play' />
@@ -22,7 +22,7 @@ export default function BrowseCard({ title, poster }) {
           </div>
           <div className='browse-card-info'>
             <p>
-              <span>{title}</span> 2006
+              <span>{title}</span> ({getYear(date)})
             </p>
           </div>
         </a>

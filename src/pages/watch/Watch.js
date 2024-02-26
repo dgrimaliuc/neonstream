@@ -1,19 +1,14 @@
 import './watch.css';
 import upNexImg from '../../assets/One Piece/episodes/one-peace-1-1.jpeg';
 import upPrevImg from '../../assets/One Piece/episodes/one-peace-1-2.jpeg';
-import { useEffect, useRef, useState } from 'react';
-import axios from 'axios';
-import ReactPlayer from 'react-player';
 import Tags from '../../components/tags/tags';
-import VidsrcPlayer from '../../components/player/vidsrcPlayer';
+import Player from '../../components/player/player';
 
 export default function WatchPage() {
   return (
     <>
       <div className='watch-wrapper'>
-        <div className='player-container'>
-          <VidsrcPlayer url='https://vidsrc.to/embed/movie/940551' />
-        </div>
+        <Player path='movie/940551' />
       </div>
       <div className='watch-info-wrapper'>
         <div className='media-info-container'>

@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
-import mdb from '../../services/content/contentService';
+import { mdb } from '../../services/content';
 
 const TMDBContext = createContext({
   images: {

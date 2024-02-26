@@ -1,6 +1,6 @@
 import styles from './seasons.module.css';
 
-export default function Season({ isSelected, title, onClick }) {
+export default function Season({ isSelected, seasonNumber, onClick }) {
   const classes = `${styles.season} ${
     isSelected ? styles.selected : ''
   }`.trim();
@@ -8,7 +8,7 @@ export default function Season({ isSelected, title, onClick }) {
   return (
     <div>
       <button className={classes} onClick={onClick}>
-        <span>{title}</span>
+        <span>Season {seasonNumber}</span>
       </button>
     </div>
   );

@@ -1,10 +1,16 @@
-import tallImg from '../../../assets/One Piece/One Piece Tall.jpg';
+import { getPoster } from '../../../utils/images';
 import HeroActions from '../../hero-actions/hero-actions';
 import Tags from '../../tags/tags';
 import HeroDescription from '../hero-description/hero-description';
 import heroStyles from './hero-content-container.module.css';
 
-export default function HeroContentContainer() {
+export default function HeroContentContainer({
+  picture,
+  title,
+  tags,
+  description,
+  year,
+}) {
   return (
     <div className={heroStyles['hero-content-wrapper']}>
       <div className={heroStyles['hero-left-section']}>
@@ -12,8 +18,8 @@ export default function HeroContentContainer() {
           <picture>
             <img
               className={heroStyles['hero-image']}
-              src={tallImg}
-              alt='One Peace'
+              src={getPoster(picture, 3)}
+              alt='Poster'
             />
           </picture>
         </span>
@@ -21,11 +27,13 @@ export default function HeroContentContainer() {
       </div>
       <div className={heroStyles['hero-content']}>
         <div className={heroStyles['hero-content-header']}>
-          <h2 className={heroStyles['hero-title']}>One Peace (1997)</h2>
+          <h2 className={heroStyles['hero-title']}>
+            {title} ({year})
+          </h2>
           <span className={heroStyles['watched-by']}>8.7K views </span>
         </div>
-        <Tags />
-        <HeroDescription />
+        <Tags tags={tags} />
+        <HeroDescription description={description} />
       </div>
     </div>
   );

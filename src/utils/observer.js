@@ -20,7 +20,7 @@ export class Observer {
     if (element) {
       this.observer.observe(element);
     } else {
-      console.error('Element not found', element);
+      console.log('Element not found', element);
     }
   }
 

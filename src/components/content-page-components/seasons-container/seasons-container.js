@@ -4,9 +4,12 @@ import Season from './season';
 import EpisodesContainer from './episodes-container/episodes-container';
 import { usePagination } from '../../../hooks/usePagination';
 
-export default function SeasonsContainer({ total = 5 }) {
-  const { selected, select, iterator, nextPage, prevPage } =
-    usePagination(total);
+export default function SeasonsContainer({ seasonsTotal, seasonsMetadata }) {
+  const { selected, select, iterator, nextPage, prevPage } = usePagination(
+    seasonsTotal,
+    styles['seasons-container'],
+    styles.selected
+  );
 
   return (
     <section className={styles['seasons-wrapper']}>
@@ -16,12 +19,12 @@ export default function SeasonsContainer({ total = 5 }) {
           <Season
             key={i}
             isSelected={selected === i}
-            title={`Season ${i}`}
+            seasonNumber={i}
             onClick={select.bind(null, i)}
           />
         ))}
       </nav>
-      <EpisodesContainer />
+      <EpisodesContainer seasonMetadata={seasonsMetadata[selected]} />
     </section>
   );
 }

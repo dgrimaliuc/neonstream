@@ -69,7 +69,7 @@
 
 .permission_denied h3 span:after {
   content: '';
-  border-bottom: 3px solid var(--green-color);
+  border-bottom: 2px solid var(--green-color);
   position: absolute;
   left: 0;
   top: 43%;

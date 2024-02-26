@@ -1,20 +1,15 @@
 import styles from './tags.module.css';
 
-export default function Tags() {
-  const tags = [
-    'Action',
-    'Adventure',
-    'Comedy',
-    'Drama',
-    'Fantasy',
-    'Shounen',
-    'Super Power',
-  ];
+export default function Tags({ tags = [] }) {
+  let t = tags.map((tag) => tag.name);
+  if (tags.length === 0) {
+    t = ['Undefined'];
+  }
   return (
     <div className={styles.tags}>
-      {tags.map((tag, index) => (
+      {t.map((tag, index) => (
         <span key={index} className={styles.tag}>
-          {tag.trim()}
+          {tag}
         </span>
       ))}
     </div>

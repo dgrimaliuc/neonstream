@@ -1,6 +1,4 @@
 request to config: https://popcorntimeonline.xyz/js/app.config.js?v=new 
-regex to get api key: tmd[a-z_]+:"([^"]*)"
-
 
 tall image : https://image.tmdb.org/t/p/w780/7MhXiTmTl16LwXNPbWCmqxj7UxH.jpg
 sall tall image : https://image.tmdb.org/t/p/w185/7MhXiTmTl16LwXNPbWCmqxj7UxH.jpg 

@@ -1,7 +1,7 @@
 import './carousel.css';
 
 import BrowseCard from '../browse-card/browse-card';
-import { useReducer, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import {
   airingTodaySeries,
   nowPlayingMovies,
@@ -12,8 +12,9 @@ import {
   topRatedMovies,
   topRatedSeries,
   upcomingMovies,
-} from '../../services/content/contentService';
+} from '../../services/content';
 import Carousel from './carousel';
+import { useParams } from 'react-router-dom';
 
 function reducer(state, action) {
   switch (action.type) {
@@ -27,13 +28,22 @@ function reducer(state, action) {
     default:
       throw new Error();
   }
-  // ...
 }
 
-export default function BrowseCollection({ type, onFinish }) {
-  const [state, dispatch] = useReducer(reducer, { content: [], title: '' });
+// const contentTypes = {
+//   [POPULAR_SERIES_TYPE]: PopularSeriesObject
+// }
 
-  useState(() => {
+const setAll = (title, content) => ({
+  type: 'set_all',
+  payload: { title, content },
+});
+
+export default function BrowseCollection({ type }) {
+  const [state, dispatch] = useReducer(reducer, { content: [], title: '' });
+  const params = useParams();
+
+  useEffect(() => {
     const fetcher = async () => {
       switch (type) {
         case 'popular_series':
@@ -59,7 +69,7 @@ export default function BrowseCollection({ type, onFinish }) {
             type: 'set_all',
             payload: {
               title: 'Recommended Movies',
-              content: await recommendedMovies(),
+              content: await recommendedMovies({ id: params.id || 1029575 }),
             },
           });
           break;
@@ -68,7 +78,7 @@ export default function BrowseCollection({ type, onFinish }) {
             type: 'set_all',
             payload: {
               title: 'Recommended Series',
-              content: await recommendedSeries(),
+              content: await recommendedSeries({ id: params.id || 42009 }),
             },
           });
           break;
@@ -118,11 +128,11 @@ export default function BrowseCollection({ type, onFinish }) {
           });
           break;
         default:
-          console.log('default');
+          break;
       }
     };
-    fetcher().then(() => onFinish && onFinish());
-  }, [type]);
+    fetcher();
+  }, [params.id, type]);
 
   return (
     <Carousel title={state.title}>
@@ -132,6 +142,8 @@ export default function BrowseCollection({ type, onFinish }) {
             key={i}
             title={card.name || card.title}
             poster={card.poster_path}
+            date={card.release_date || card.first_air_date}
+            to={`/${card.media_type}/${card.id}`}
           />
         );
       })}

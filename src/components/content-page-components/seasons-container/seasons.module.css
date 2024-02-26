@@ -24,7 +24,7 @@
   padding-top: 12px;
   margin-top: 20px;
   display: flex;
-  gap: 48px;
+  gap: 29px;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
@@ -50,6 +50,7 @@
 
 .season {
   cursor: pointer;
+  min-width: 6rem;
   /* flex: 1 0 200px; */
 }
 

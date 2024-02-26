@@ -1,7 +1,7 @@
 import './carousel.css';
 
-import { useReducer, useState } from 'react';
-import { popularSeries } from '../../services/content/contentService';
+import { useEffect, useReducer, useState } from 'react';
+import { popularSeries } from '../../services/content';
 import EpisodeCard from '../episode-card/episode-card';
 import Carousel from './carousel';
 
@@ -17,7 +17,7 @@ function reducer(state, action) {
 export default function MediaCollection({ type }) {
   const [state, dispatch] = useReducer(reducer, { content: [], title: '' });
 
-  useState(() => {
+  useEffect(() => {
     const fetcher = async () => {
       switch (type) {
         case 'continue_watching':
@@ -42,6 +42,8 @@ export default function MediaCollection({ type }) {
             showIcon={true}
             title={card.name}
             backdrop={card.backdrop_path}
+            date={card.first_air_date || card.release_date}
+            to={`/${card.media_type}/${card.id}`}
           />
         );
       })}

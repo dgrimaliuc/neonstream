@@ -1,26 +1,29 @@
 import './episode-card.css';
 
 import PlayableThumbnail from '../playable-thumbnail/playable-thumbnail';
-import { getBackdrop } from '../../utils/images';
+import { getBackdrop, getYear } from '../../utils';
 
 export default function EpisodeCard({
   showProgress,
   showIcon,
   backdrop,
   title,
-  type,
+  to,
+  date,
 }) {
   if (!backdrop) return;
   return (
     <>
-      <div className='episode-card'>
+      <a className='episode-card' href={to}>
         <PlayableThumbnail
           img={getBackdrop(backdrop)}
           showProgress={showProgress}
           showIcon={showIcon}
         />
         <div className='episode-info'>
-          <p className='episode-card-title'>{title}</p>
+          <p className='episode-card-title'>
+            {title} ({getYear(date)})
+          </p>
           <div className='text-caption'>Watch now</div>
         </div>
         <div className='episode-meta-container'>
@@ -34,7 +37,7 @@ export default function EpisodeCard({
             </span>
           </div>
         </div>
-      </div>
+      </a>
     </>
   );
 }

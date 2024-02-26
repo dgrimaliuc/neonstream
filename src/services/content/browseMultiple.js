@@ -1,6 +1,4 @@
-import { MovieDb } from 'tmdb-promise';
-const apiKey = '13dcd6ddc1a270f0239c5503c49237b3';
-const mdb = new MovieDb(apiKey);
+import { mdb } from './index';
 
 const discoverProps = {
   with_original_language: 'en',
@@ -34,12 +32,12 @@ export async function popularSeries(customProps) {
 }
 
 export async function recommendedMovies(customProps) {
-  const props = { ...discoverProps, ...customProps, id: 1029575 };
+  const props = { ...discoverProps, id: 1029575, ...customProps };
   return (await mdb.movieRecommendations(props)).results;
 }
 
 export async function recommendedSeries(customProps) {
-  const props = { ...discoverProps, ...customProps, id: 42009 };
+  const props = { ...discoverProps, id: 42009, ...customProps };
   return (await mdb.tvRecommendations(props)).results;
 }
 
@@ -67,5 +65,3 @@ export async function upcomingMovies(customProps) {
   const props = { ...discoverProps, ...customProps };
   return (await mdb.upcomingMovies(props)).results;
 }
-
-export default mdb;

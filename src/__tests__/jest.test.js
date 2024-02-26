@@ -1,5 +1,5 @@
+import { MovieDb } from 'tmdb-promise';
 const apiKey = '13dcd6ddc1a270f0239c5503c49237b3';
-const { MovieDb } = require('tmdb-promise');
 
 test('should search for Zoolander', async () => {
   let api = new MovieDb(apiKey);

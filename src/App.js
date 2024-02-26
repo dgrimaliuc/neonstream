@@ -2,7 +2,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import RootLayout from './pages/RootLayout';
 
 import HomePage from './pages/home/Home';
-import SeriesPage from './pages/series/Series';
+import SeriesPage, { loadTv } from './pages/series/Series';
 import BrowsePage from './pages/browse/Browse';
 import History from './pages/history/History';
 import WatchPage from './pages/watch/Watch';
@@ -11,8 +11,7 @@ import CustomListsPage from './pages/custom-lists/CustomLists';
 import Authentification from './pages/auth/auth';
 import { Provider } from 'react-redux';
 import store from './store';
-import MoviePage from './pages/movie/Movie';
-import ErrorPage from './pages/error/ErrorNeon';
+import MoviePage, { loadMovie } from './pages/movie/Movie';
 import NotFound from './pages/error/NotFound';
 
 const router = createBrowserRouter([
@@ -22,8 +21,8 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: ':id/series', element: <SeriesPage /> },
-      { path: ':id/movie', element: <MoviePage /> },
+      { path: '/tv/:id', element: <SeriesPage />, loader: loadTv },
+      { path: '/movie/:id', element: <MoviePage />, loader: loadMovie },
       {
         path: 'browse',
         children: [
@@ -32,7 +31,7 @@ const router = createBrowserRouter([
             element: <BrowsePage />,
           },
           { path: 'movies', element: <BrowsePage /> },
-          { path: 'series', element: <BrowsePage /> },
+          { path: 'tv', element: <BrowsePage /> },
         ],
       },
       { path: 'watch', element: <WatchPage /> },

@@ -5,12 +5,12 @@ import {
   browsePopularContent,
   popularMovies,
   popularSeries,
-} from '../../services/content/contentService';
+} from '../../services/content/browseMultiple';
 import Spinner from '../../components/spinner/spinner';
 
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { sleep } from '../../utils/utils';
+import { sleep } from '../../utils/jsUtils';
 import { useObserver } from '../../hooks/useObserver';
 import { useDispatch, useSelector } from 'react-redux';
 import { browseContentActions } from '../../store';
@@ -29,7 +29,7 @@ export default function Browse() {
       switch (location.pathname) {
         case '/browse/movies':
           return await popularMovies({ page });
-        case '/browse/series':
+        case '/browse/tv':
           return await popularSeries({ page });
         default:
           return await browsePopularContent({ page });
@@ -69,11 +69,14 @@ export default function Browse() {
         </div>
       </div>
       <div className='content-wrapper'>
-        {content.map((c, i) => (
+        {content.map((card, i) => (
           <BrowseCard
             key={i}
-            title={c.title || c.name}
-            poster={c.poster_path}
+            title={card.title || card.name}
+            poster={card.poster_path}
+            date={card.release_date || card.first_air_date}
+            to={`/${card.media_type}/${card.id}`}
+            {...card}
           />
         ))}
         <Spinner display={page < 500} />
