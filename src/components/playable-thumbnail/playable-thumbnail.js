@@ -1,8 +1,9 @@
+import { getBackdrop } from '../../utils';
 import WatchProgressBar from '../watch-progress-bar/watch-progress-bar';
 import './playable-thumbnail.css';
 
 export default function PlayableThumbnail({
-  img,
+  image,
   showProgress = 'auto',
   showIcon = 'auto',
 }) {
@@ -14,7 +15,15 @@ export default function PlayableThumbnail({
         <div className='playable-thumbnail' style={opacityStyle}>
           <i className='fa-play-circle'></i>
         </div>
-        <img className='thumbnail-img' src={img} alt='episode-thumbnail' />
+        <div className='thumbnail-img-wrapper'>
+          {image && (
+            <img
+              className='thumbnail-img'
+              src={getBackdrop(image)}
+              alt='episode-thumbnail'
+            />
+          )}
+        </div>
         <WatchProgressBar showProgress={showProgress} />
       </div>
     </>

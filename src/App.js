@@ -13,6 +13,9 @@ import { Provider } from 'react-redux';
 import store from './store';
 import MoviePage, { loadMovie } from './pages/movie/Movie';
 import NotFound from './pages/error/NotFound';
+import BrowseAll from './pages/browse/BrowseAll';
+import BrowseMovies from './pages/browse/BrowseMovies';
+import BrowseSeries from './pages/browse/BrowseSeries';
 
 const router = createBrowserRouter([
   {
@@ -21,20 +24,24 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: '/tv/:id', element: <SeriesPage />, loader: loadTv },
+      {
+        path: '/tv/:id',
+        element: <SeriesPage />,
+        loader: loadTv,
+      },
       { path: '/movie/:id', element: <MoviePage />, loader: loadMovie },
       {
         path: 'browse',
         children: [
           {
             index: true,
-            element: <BrowsePage />,
+            element: <BrowseAll />,
           },
-          { path: 'movies', element: <BrowsePage /> },
-          { path: 'tv', element: <BrowsePage /> },
+          { path: 'movies', element: <BrowseMovies /> },
+          { path: 'tv', element: <BrowseSeries /> },
         ],
       },
-      { path: 'watch', element: <WatchPage /> },
+      { path: '/watch/:id', element: <WatchPage /> },
       { path: 'watchlist', element: <WatchlistPage /> },
       { path: 'custom-lists', element: <CustomListsPage /> },
       { path: 'history', element: <History /> },

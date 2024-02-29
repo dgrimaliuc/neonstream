@@ -1,4 +1,4 @@
-import './episode-card.css';
+import classes from './episode-card.module.css';
 
 import PlayableThumbnail from '../playable-thumbnail/playable-thumbnail';
 import { getBackdrop, getYear } from '../../utils';
@@ -14,30 +14,34 @@ export default function EpisodeCard({
   if (!backdrop) return;
   return (
     <>
-      <a className='episode-card' href={to}>
-        <PlayableThumbnail
-          img={getBackdrop(backdrop)}
-          showProgress={showProgress}
-          showIcon={showIcon}
-        />
-        <div className='episode-info'>
-          <p className='episode-card-title'>
-            {title} ({getYear(date)})
-          </p>
-          <div className='text-caption'>Watch now</div>
-        </div>
-        <div className='episode-meta-container'>
-          <div className='episode-meta text-caption movie-meta'>Movie</div>
-          <div className='episode-actions'>
-            <span>
-              <i className='fa-heart-o'></i>
-            </span>
-            <span>
-              <i className='fa-trash-o'></i>
-            </span>
+      <div>
+        <a className={classes['episode-card']} href={to}>
+          <div className={classes['thumbnail-container']}>
+            <PlayableThumbnail
+              image={backdrop}
+              showProgress={showProgress}
+              showIcon={showIcon}
+            />
           </div>
-        </div>
-      </a>
+          <div className={classes['episode-info']}>
+            <p className={classes['episode-card-title']}>
+              {title} ({getYear(date)})
+            </p>
+            <div className='text-caption'>Watch now</div>
+          </div>
+          <div className={classes['episode-meta-container']}>
+            <div className={`text-caption ${classes['movie-meta']}`}>Movie</div>
+            <div className={classes['episode-actions']}>
+              <span>
+                <i className='fa-heart-o'></i>
+              </span>
+              <span>
+                <i className='fa-trash-o'></i>
+              </span>
+            </div>
+          </div>
+        </a>
+      </div>
     </>
   );
 }

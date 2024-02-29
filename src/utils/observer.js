@@ -6,7 +6,6 @@ export class Observer {
       (entries) => {
         entries.forEach(async (entry) => {
           if (entry.isIntersecting) {
-            this.disconnect();
             await this.onObserve();
           }
         });
@@ -20,7 +19,6 @@ export class Observer {
     if (element) {
       this.observer.observe(element);
     } else {
-      console.log('Element not found', element);
     }
   }
 

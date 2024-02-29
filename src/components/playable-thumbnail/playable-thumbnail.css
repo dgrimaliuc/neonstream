@@ -1,10 +1,6 @@
 .thumbnail-wrapper {
-  position: relative;
   margin-bottom: 15px;
-}
-
-.playable-thumbnail {
-    opacity: var(--hover-opacity);
+  /* height: 100%; */
 }
 
 .playable-thumbnail .fa-play-circle {
@@ -21,4 +17,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.thumbnail-img-wrapper {
+  width: 100%;
+  /* height: 100%; */
 }

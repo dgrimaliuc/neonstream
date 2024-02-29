@@ -1,4 +1,4 @@
-const config = JSON.parse(localStorage.getItem('tmdbConfig'));
+const config = JSON.parse(localStorage.getItem('tmdbConfig')) || { images: [] };
 const { images } = config;
 const { base_url, poster_sizes, backdrop_sizes } = images;
 

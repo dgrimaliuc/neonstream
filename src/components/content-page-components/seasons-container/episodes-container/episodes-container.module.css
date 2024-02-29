@@ -1,62 +1,19 @@
 .episodes-container {
+  position: relative;
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  gap: 30px;
   width: 100%;
+  margin-top: 20px;
+  /* margin: ; */
 }
 
-.poster {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.episode {
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-  margin-top: 35px;
-  gap: 20px;
-}
-
-.episode:hover {
-  background-color: rgba(89, 86, 86, 0.248);
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-}
-.episode picture {
-  display: inline-block;
-  width: fit-content;
-  cursor: pointer;
-}
-
-.episode img {
-  height: 182px;
-  border-radius: 5px;
-  object-fit: cover;
-}
-
-.episode-header h5 {
-  font-size: 18px;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 8px;
-  display: inline-block;
-  margin-right: 5px;
-}
-
-.episode-title {
-  color: rgba(220, 220, 220, 0.891);
-  font-size: 19px;
-  margin-left: 10px;
-}
-
-.episode-description {
+/* .episode-description {
   color: rgba(206, 207, 208, 0.677);
   margin-bottom: 4px;
   line-height: 20px;
   font-weight: 400;
   font-size: 16px;
-  margin-top: 15px;
-}
+} */
