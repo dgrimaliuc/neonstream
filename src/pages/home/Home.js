@@ -6,28 +6,12 @@ import SinglePromoCardViolet from '../../components/single-promo-card/single-pro
 import SingleCard from '../../components/single-card/single-card';
 import MediaCollection from '../../components/carousel/media_collection';
 import BrowseCollection from '../../components/carousel/browse_collection';
-import { useObserver } from '../../hooks';
+import { useObserver, useSplitArray } from '../../hooks';
 import { useEffect, useState } from 'react';
-import { sleep } from '../../utils/jsUtils';
+import { renderArray, sleep } from '../../utils/jsUtils';
 import Spinner from '../../components/spinner/spinner';
 
 function Home() {
-  const [element, setElement] = useState(null);
-  const [loadIndex, setLoadIndex] = useState(1);
-  const observer = useObserver(element, () => {
-    sleep(1000).then(() => setLoadIndex((prev) => prev + 1));
-  });
-
-  useEffect(() => {
-    observer.observe();
-    return () => observer.disconnect();
-  }, [observer, loadIndex]);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    setElement('.loader');
-  }, []);
-
   const feed = [
     <MediaCollection type='continue_watching' />,
     <BrowseCollection type='upcoming_movies' />,
@@ -49,16 +33,33 @@ function Home() {
     <BrowseCollection type='now_playing_movies' />,
     <BrowseCollection type='airing_today_series' />,
   ];
+
+  const [element, setElement] = useState(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setElement('.loader');
+  }, []);
+
+  const { chunks, loadIndex, loadMore, isEnd } = useSplitArray(feed, 3);
+
+  const observer = useObserver(element, () => {
+    sleep(1000).then(() => loadMore());
+  });
+
+  useEffect(() => {
+    observer.observe();
+    return () => observer.disconnect();
+  }, [observer, loadIndex]);
+
   return (
     <>
       <div className='home-container'>
         <HeroCarousel />
 
         <section className='collections-container'>
-          {feed.slice(0, loadIndex).map((c, i) => (
-            <div key={i}>{c}</div>
-          ))}
-          <Spinner display={loadIndex < feed.length} />
+          {renderArray(chunks, loadIndex)}
+          <Spinner display={!isEnd} />
         </section>
       </div>
     </>

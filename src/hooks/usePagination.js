@@ -1,6 +1,11 @@
 import { useState } from 'react';
 
-export function usePagination(total, cntainerClass, activeClass) {
+export function usePagination(
+  total,
+  containerClass,
+  activeClass,
+  firstPage = 1
+) {
   const [selected, setSelected] = useState(1);
 
   function select(id) {
@@ -9,7 +14,7 @@ export function usePagination(total, cntainerClass, activeClass) {
   }
 
   function scrollToLeft() {
-    const container = document.getElementsByClassName(cntainerClass)[0];
+    const container = document.getElementsByClassName(containerClass)[0];
     const element = document.getElementsByClassName(activeClass)[0];
     if (container && element) {
       const elementOffsetLeft = element.offsetLeft;
@@ -23,7 +28,7 @@ export function usePagination(total, cntainerClass, activeClass) {
   }
 
   function scrollToRight() {
-    const container = document.getElementsByClassName(cntainerClass)[0];
+    const container = document.getElementsByClassName(containerClass)[0];
     const element = document.getElementsByClassName(activeClass)[0];
     if (container && element) {
       const elementOffsetLeft = element.offsetLeft;
@@ -49,7 +54,7 @@ export function usePagination(total, cntainerClass, activeClass) {
   }
 
   function prevPage(scroll = true) {
-    if (selected === 1) return;
+    if (selected === firstPage) return;
     select(selected - 1);
     if (scroll) {
       scrollToRight();

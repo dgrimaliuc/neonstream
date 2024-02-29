@@ -39,10 +39,7 @@ export default function SeriesPage() {
         description={overview}
         year={getYear(first_air_date)}
       />
-      <SeasonsContainer
-        seasonsTotal={number_of_seasons}
-        seasonsMetadata={seasons}
-      />
+      <SeasonsContainer seasonsTotal={number_of_seasons} seasons={seasons} />
       <section>
         <BrowseCollection type='recommended_series' />
       </section>
