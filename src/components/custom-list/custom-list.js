@@ -17,7 +17,7 @@ export default function CustomList() {
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
-  }, []);
+  }, [handleClickOutside]);
 
   return (
     <div className='custom-list'>

@@ -1,89 +1,45 @@
 import './hero-carousel.css';
-import img from '../../assets/One Piece/One Piece Wide.jpg';
-import ActionsContainer from '../actions/actionsContainer';
+import HeroCardArrow from './components/arrows/arrow';
+import HeroCard from './hero-card/hero-card';
+import HeroCarouselPagination from './pagination/hero-carousel-pagination-container';
+import HeroCardsWrapper from './hero-cards-wrapper';
+import { useTabs } from '../../hooks';
+import { useEffect } from 'react';
 
-export default function HeroCarousel() {
+export default function HeroCarousel({ ids = [] }) {
+  const { selected, select, prevPage, nextPage } = useTabs(ids.length);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      nextPage();
+    }, 10000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [nextPage]);
+
   return (
     <div className='hero-carousel-wrapper'>
-      <div className='hero-carousel-arrows'>
-        <div
-          className='arrow'
-          data-direction='backward'
-          role='button'
-          tabIndex='0'
-          disabled=''
-        >
-          <img
-            className='arrow-left'
-            src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCA4IDExIj48dGl0bGU+UGF0aCAzIENvcHkgNzwvdGl0bGU+PGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+PGcgaWQ9IlYxLjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiPjxnIGlkPSJob21lUGFnZS0tLW9uJmFtcDtPZmZTb3VyY2VzLS0tc3RhcnQiIHN0cm9rZT0iI0ZGRiIgc3Ryb2tlLXdpZHRoPSIyIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzIyLjAwMDAwMCwgLTg2MC4wMDAwMDApIj48cG9seWxpbmUgaWQ9IlBhdGgtMy1Db3B5LTciIHBvaW50cz0iMzIxLjA4MSA4NjguMDgxIDMyNS41NDIgODYyLjcxOCAzMzAuMDgxIDg2OC4wODEiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMyNS41ODA3NzMsIDg2NS41MDAwMDApIHJvdGF0ZSgtMjcwLjAwMDAwMCkgdHJhbnNsYXRlKC0zMjUuNTgwNzczLCAtODY1LjUwMDAwMCkiLz48L2c+PC9nPjwvc3ZnPg=='
-            alt='scroll left'
-          />
-        </div>
-      </div>
+      <HeroCardArrow direction='left' onClick={prevPage} />
 
-      <div className='hero-carousel-container'>
-        <div className='hero-carousel-poster'>
-          <picture className='hero-background'>
-            {/* <div className="img-gradient"></div>  */}
-            <img
-              className='hero-carousel-picture'
-              src={img}
-              //'https://media.themoviedb.org/t/p/w1280/r9oTasGQofvkQY5vlUXglneF64Z.jpg'
-              //   One Piece/One Piece Wide.jpg
-              alt='One Peace'
-            />
-          </picture>
-        </div>
-        <div className='hero-card-info'>
-          <a href='#' className='title text-decoration-off'>
-            Title
-          </a>
-          <div className='hero-card-description'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt ea
-            laboriosam numquam rem. Harum quis placeat dolorem? Quisquam quasi
-            nesciunt culpa quibusdam ipsa quos fugit modi natus exercitationem
-            facilis sit voluptatem minus enim eius blanditiis possimus aut
-            repudiandae quo, molestias veritatis, ratione nihil aliquam
-            necessitatibus error! Voluptate animi veritatis quas! Lorem ipsum
-            dolor sit amet consectetur adipisicing elit. Optio nisi recusandae
-            cupiditate fugiat rem temporibus, corporis, repellendus earum soluta
-            voluptatem perferendis non quod dignissimos tempore eos nulla odio
-            ipsam mollitia!
-          </div>
-          <ActionsContainer addToList={false} />
-        </div>
-        <div className='hero-carousel-pagination'>
-          <button className='hero-carousel__page page-is-active'>
-            <div className='hero-carousel__page-pill'>
-              <span className='hero-carousel__page-loader'></span>
-            </div>
-          </button>
-          <button className='hero-carousel__page'>
-            <div className='hero-carousel__page-pill'>
-              <span className='hero-carousel__page-loader'></span>
-            </div>
-          </button>
-          <button className='hero-carousel__page'>
-            <div className='hero-carousel__page-pill'>
-              <span className='hero-carousel__page-loader'></span>
-            </div>
-          </button>
-        </div>
-      </div>
-      <div className='hero-carousel-arrows'>
-        <div
-          className='arrow'
-          data-direction='forward'
-          role='button'
-          tabIndex='0'
-        >
-          <img
-            className='arrow-right'
-            src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCA4IDExIj48dGl0bGU+UGF0aCAzIENvcHkgNzwvdGl0bGU+PGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+PGcgaWQ9IlYxLjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiPjxnIGlkPSJob21lUGFnZS0tLW9uJmFtcDtPZmZTb3VyY2VzLS0tc3RhcnQiIHN0cm9rZT0iI0ZGRiIgc3Ryb2tlLXdpZHRoPSIyIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzIyLjAwMDAwMCwgLTg2MC4wMDAwMDApIj48cG9seWxpbmUgaWQ9IlBhdGgtMy1Db3B5LTciIHBvaW50cz0iMzIxLjA4MSA4NjguMDgxIDMyNS41NDIgODYyLjcxOCAzMzAuMDgxIDg2OC4wODEiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMyNS41ODA3NzMsIDg2NS41MDAwMDApIHJvdGF0ZSgtMjcwLjAwMDAwMCkgdHJhbnNsYXRlKC0zMjUuNTgwNzczLCAtODY1LjUwMDAwMCkiLz48L2c+PC9nPjwvc3ZnPg=='
-            alt='scroll right'
+      <HeroCardsWrapper>
+        {ids.map((ob, i) => (
+          <HeroCard
+            key={i}
+            active={i === selected}
+            id={ob.id}
+            mediaType={ob.type}
           />
-        </div>
-      </div>
+        ))}
+        <HeroCarouselPagination
+          total={ids.length}
+          selected={selected}
+          onClick={select}
+        />
+      </HeroCardsWrapper>
+
+      <HeroCardArrow direction='right' onClick={nextPage} />
     </div>
   );
 }

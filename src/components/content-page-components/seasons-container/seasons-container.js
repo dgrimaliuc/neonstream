@@ -5,12 +5,16 @@ import EpisodesContainer from './episodes-container/episodes-container';
 import { usePagination } from '../../../hooks';
 
 export default function SeasonsContainer({ seasonsTotal, seasons }) {
+  const firstSeasonNumber = seasons[0].season_number;
+
   const { selected, select, nextPage, prevPage } = usePagination(
     seasonsTotal,
     styles['seasons-container'],
     styles.selected,
-    seasons[0].season_number
+    firstSeasonNumber
   );
+
+  const selectedSeason = seasons[selected + (firstSeasonNumber ? -1 : 0)];
 
   return (
     <section className={styles['seasons-wrapper']}>
@@ -20,18 +24,16 @@ export default function SeasonsContainer({ seasonsTotal, seasons }) {
           return (
             <Season
               key={i}
-              isSelected={selected === s.season_number}
+              isSelected={selectedSeason.season_number === s.season_number}
               seasonNumber={s.season_number}
               seasonTitle={s.name}
-              onClick={select.bind(null, s.season_number)}
+              onClick={select.bind(null, i + (firstSeasonNumber ? 1 : 0))}
               // disabled={s.episode_count === 0}
             />
           );
         })}
       </nav>
-      <EpisodesContainer
-        seasonMetadata={seasons.find((s) => s.season_number === selected)}
-      />
+      <EpisodesContainer seasonMetadata={selectedSeason} />
     </section>
   );
 }

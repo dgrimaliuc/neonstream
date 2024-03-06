@@ -1,10 +1,10 @@
-import { useEffect } from 'react';
-import { makeCancelable, sleep } from '../utils';
+import { useCallback, useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useObserver } from './useObserver';
 import { browseContentActions } from '../store';
 import browseActions from '../actions/browse';
+import { useQuery } from './useQuery';
 const { incrementPage, setInitial, addContent } = browseContentActions;
 
 export function useBrowseLoader(mode) {
@@ -15,6 +15,17 @@ export function useBrowseLoader(mode) {
     dispatch(incrementPage({ mode }));
   });
 
+  const { loading, data, error } = useQuery(
+    useCallback(async () => await browseActions[mode]({ page }), [mode, page])
+  );
+
+  useEffect(() => {
+    if (data) {
+      dispatch(addContent({ mode, content: data }));
+      observer.observe();
+    }
+  }, [data, dispatch, mode, observer]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -24,19 +35,5 @@ export function useBrowseLoader(mode) {
     };
   }, [dispatch, mode, observer]);
 
-  useEffect(() => {
-    let promise = makeCancelable(
-      sleep(1000).then(() => browseActions[mode]({ page }))
-    );
-
-    promise.then((res) => {
-      dispatch(addContent({ mode, content: res }));
-      observer.observe();
-    });
-    return () => {
-      promise.cancel();
-    };
-  }, [dispatch, mode, observer, page]);
-
-  return { content, page };
+  return { content, page, loading, error };
 }

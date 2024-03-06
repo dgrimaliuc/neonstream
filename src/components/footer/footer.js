@@ -58,7 +58,6 @@ export default function Footer() {
               <a
                 tabIndex='0'
                 href='https://www.youtube.com/user/crunchyroll/'
-                target='_blank'
                 className='as'
               >
                 <span>
@@ -82,7 +81,6 @@ export default function Footer() {
               <a
                 tabIndex='0'
                 href='https://www.facebook.com/Crunchyroll/'
-                target='_blank'
                 className='as'
               >
                 <span>
@@ -106,7 +104,6 @@ export default function Footer() {
               <a
                 tabIndex='0'
                 href='https://twitter.com/crunchyroll'
-                target='_blank'
                 className='as'
               >
                 <span>
@@ -130,7 +127,6 @@ export default function Footer() {
               <a
                 tabIndex='0'
                 href='https://www.instagram.com/crunchyroll/'
-                target='_blank'
                 className='as'
               >
                 <span>
@@ -156,7 +152,6 @@ export default function Footer() {
               <a
                 tabIndex='0'
                 href='https://www.tiktok.com/@crunchyroll'
-                target='_blank'
                 className='as'
               >
                 <span>
@@ -177,12 +172,7 @@ export default function Footer() {
               </a>
             </li>
             <li className='erc-footer-section-item'>
-              <a
-                tabIndex='0'
-                href='https://vk.com/crunchyroll'
-                target='_blank'
-                className='as'
-              >
+              <a tabIndex='0' href='https://vk.com/crunchyroll' className='as'>
                 <span>
                   <svg
                     className='left-icon'
@@ -201,12 +191,7 @@ export default function Footer() {
               </a>
             </li>
             <li className='erc-footer-section-item'>
-              <a
-                tabIndex='0'
-                href='https://ok.ru/crunchyroll'
-                target='_blank'
-                className='as'
-              >
+              <a tabIndex='0' href='https://ok.ru/crunchyroll' className='as'>
                 <span>
                   <svg
                     className='left-icon'

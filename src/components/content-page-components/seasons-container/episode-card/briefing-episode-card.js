@@ -20,7 +20,10 @@ export default function EpisodeCard({
   guest_stars,
 }) {
   return (
-    <a className={styles.episode} href={`/watch/${id}`}>
+    <a
+      className={styles.episode}
+      href={`/tv/${show_id}/watch/${season_number}/${episode_number}`}
+    >
       <div className={styles['thumbnail-container']}>
         <PlayableThumbnail showIcon='auto' showProgress image={still_path} />
       </div>

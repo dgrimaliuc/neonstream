@@ -7,16 +7,16 @@ export default function FlashMessage({
   timeout = 4000,
   message = 'Flash message',
 }) {
-  const [isVisibile, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(true);
   const [classes, addClass] = useClasses(styles.flash_message_wrapper);
   const [clearTimer, callback] = useTimer(() => {
     setIsVisible(false);
   }, timeout);
 
   useEffect(() => {
-    const classToAdd = isVisibile ? styles.visible : styles.hidden;
+    const classToAdd = isVisible ? styles.visible : styles.hidden;
     addClass(classToAdd, false);
-  }, [addClass, isVisibile]);
+  }, [addClass, isVisible]);
 
   useEffect(() => {
     return () => clearTimer();

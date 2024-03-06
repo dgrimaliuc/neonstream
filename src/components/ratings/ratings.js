@@ -3,7 +3,10 @@ import rateStyles from './ratings.module.css';
 import trailerStyles from './trailer.module.css';
 
 export default function Ratings() {
-  const { classes } = useClasses(rateStyles['icon-star'], rateStyles.checked);
+  const { c: classes } = useClasses(
+    rateStyles['icon-star'],
+    rateStyles.checked
+  );
 
   return (
     <div className={rateStyles['rating-section']}>

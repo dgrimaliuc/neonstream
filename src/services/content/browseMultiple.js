@@ -3,6 +3,7 @@ import { mdb } from './index';
 const discoverProps = {
   with_original_language: 'en',
   include_adult: false,
+  timeout: 1000,
   page: 1,
 };
 

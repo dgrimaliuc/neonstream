@@ -10,6 +10,7 @@ import { useObserver, useSplitArray } from '../../hooks';
 import { useEffect, useState } from 'react';
 import { renderArray, sleep } from '../../utils/jsUtils';
 import Spinner from '../../components/spinner/spinner';
+import { MOVIE, TV } from '../../data/constants';
 
 function Home() {
   const feed = [
@@ -55,7 +56,15 @@ function Home() {
   return (
     <>
       <div className='home-container'>
-        <HeroCarousel />
+        <HeroCarousel
+          ids={[
+            { id: 1227816, type: MOVIE },
+            { id: 866398, type: MOVIE },
+            { id: 60625, type: TV },
+            { id: 438631, type: MOVIE },
+            { id: 71446, type: TV },
+          ]}
+        />
 
         <section className='collections-container'>
           {renderArray(chunks, loadIndex)}

@@ -1,0 +1,40 @@
+.hero-carousel-arrows {
+  display: flex;
+  width: 64px;
+  position: relative;
+  pointer-events: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow {
+  display: block;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.arrow-left {
+  width: 34px;
+  height: 25px;
+  transform: rotate(180deg);
+  cursor: pointer;
+}
+
+.arrow-right {
+  position: relative;
+  width: 34px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.arrow:hover {
+  opacity: 0.8;
+}
+
+.button-spacer {
+  /* display: inline-block; */
+  margin-right: 5px !important;
+}

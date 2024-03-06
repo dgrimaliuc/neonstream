@@ -1,5 +1,5 @@
 import { mdb } from './index';
 
-export async function getMovie(customProps) {
-  return await mdb.movieInfo(customProps);
+export async function getMovie(id) {
+  return await mdb.movieInfo({ id });
 }

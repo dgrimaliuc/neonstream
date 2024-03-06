@@ -6,7 +6,7 @@ import Spinner from '../../components/spinner/spinner';
 import { useBrowseLoader } from '../../hooks/useBrowseLoader';
 
 export default function Browse({ mode }) {
-  const { content, page } = useBrowseLoader(mode);
+  const { content, page, error, loading } = useBrowseLoader(mode);
   return (
     <div className='browse-wrapper'>
       <div className='browse-header'>

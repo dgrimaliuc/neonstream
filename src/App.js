@@ -3,9 +3,8 @@ import RootLayout from './pages/RootLayout';
 
 import HomePage from './pages/home/Home';
 import SeriesPage, { loadTv } from './pages/series/Series';
-import BrowsePage from './pages/browse/Browse';
 import History from './pages/history/History';
-import WatchPage from './pages/watch/Watch';
+import WatchEpisodePage, { loadEpisode } from './pages/watch/WatchEpisode';
 import WatchlistPage from './pages/watchlist/Watchlist';
 import CustomListsPage from './pages/custom-lists/CustomLists';
 import Authentification from './pages/auth/auth';
@@ -25,6 +24,11 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       {
+        path: '/tv/:id/watch/:season/:episode',
+        element: <WatchEpisodePage />,
+        loader: loadEpisode,
+      },
+      {
         path: '/tv/:id',
         element: <SeriesPage />,
         loader: loadTv,
@@ -41,7 +45,6 @@ const router = createBrowserRouter([
           { path: 'tv', element: <BrowseSeries /> },
         ],
       },
-      { path: '/watch/:id', element: <WatchPage /> },
       { path: 'watchlist', element: <WatchlistPage /> },
       { path: 'custom-lists', element: <CustomListsPage /> },
       { path: 'history', element: <History /> },

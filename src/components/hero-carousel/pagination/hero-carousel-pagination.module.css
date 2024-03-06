@@ -1,0 +1,75 @@
+.hero-carousel-pagination-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  margin-left: 7px;
+}
+
+.hero-carousel__page-pill {
+  background-color: #ffffff80;
+  border-radius: 0.25rem;
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+  transform: translateZ(0);
+  transition: background-color 0.5s ease;
+  width: 100%;
+}
+
+.hero-carousel__page {
+  box-sizing: initial;
+  height: 0.5rem;
+  margin-top: -0.5rem;
+  padding: 8px 4px;
+  position: relative;
+  transform: translateZ(0);
+  transition: width 0.3s ease;
+  width: 1.5rem;
+  cursor: pointer;
+}
+
+@keyframes pageLoadIn {
+  0% {
+    opacity: 1;
+    transform: translateX(-100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pageLoadOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+}
+
+:root {
+  --cr-end-direction: right;
+}
+
+.hero-carousel__page-loader {
+  animation: pageLoadOut 0.5s ease;
+  background-color: hsl(149, 100%, 50%);
+  border-radius: 0.25rem;
+  height: 100%;
+  opacity: 0;
+  transform: translateX(-100%);
+  width: 100%;
+}
+
+.page-is-active .hero-carousel__page-loader {
+  animation: pageLoadIn 10s linear;
+  animation-play-state: running;
+}
+
+.page-is-active {
+  width: 3rem;
+}

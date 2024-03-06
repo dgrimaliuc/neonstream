@@ -11,11 +11,11 @@ export default function Header() {
   return (
     <>
       <header>
-        <div className='logo flex-item neonText'>
+        <a className='logo flex-item neonText' href='/'>
           <div className='text-logo' role='button'>
             New Wave
           </div>
-        </div>
+        </a>
         <div className='row-wrapper flx-2'>
           <div className='search'>
             <div id='cover'>

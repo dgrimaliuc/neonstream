@@ -14,18 +14,18 @@ export async function loadTv({ params }) {
 
 export default function SeriesPage() {
   const data = useLoaderData();
-  console.log(data);
+
   const {
     backdrop_path,
     name,
     poster_path,
     overview,
-    imdb_id,
+    // imdb_id,
     genres,
     first_air_date,
     number_of_seasons,
-    number_of_episodes,
-    adult,
+    // number_of_episodes,
+    // adult,
     seasons,
   } = data;
   return (

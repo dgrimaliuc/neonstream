@@ -69,7 +69,9 @@ export default function BrowseCollection({ type }) {
             type: 'set_all',
             payload: {
               title: 'Recommended Movies',
-              content: await recommendedMovies({ id: params.id || 1029575 }),
+              content: await recommendedMovies({
+                id: params.id || 1029575,
+              }),
             },
           });
           break;
@@ -78,7 +80,9 @@ export default function BrowseCollection({ type }) {
             type: 'set_all',
             payload: {
               title: 'Recommended Series',
-              content: await recommendedSeries({ id: params.id || 42009 }),
+              content: await recommendedSeries({
+                id: params.id || 42009,
+              }),
             },
           });
           break;

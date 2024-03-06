@@ -14,7 +14,7 @@
 .watchlist-tabs {
   position: relative;
   display: flex;
-  flex-flow: column unwrap;
+  flex-flow: row nowrap;
   justify-content: center;
   margin-bottom: 16px;
   text-transform: uppercase;

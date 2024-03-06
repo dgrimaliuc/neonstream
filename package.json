@@ -16,13 +16,15 @@
     "react-redux": "^9.1.0",
     "react-router-dom": "^6.21.2",
     "react-scripts": "5.0.1",
-    "tmdb-promise": "^0.0.2",
+    "tmdb-promise": "^0.0.4",
     "tsparticles-preset-stars": "^2.12.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "reauth": "firebase login --reauth",
+    "deploy": "firebase deploy",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

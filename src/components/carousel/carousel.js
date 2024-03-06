@@ -6,7 +6,7 @@ export default function Carousel({ children, title }) {
     <div className='carousel-wrapper'>
       <div className='carousel-header'>
         <h2 className='carousel-title'>{title}</h2>
-        <Controls />
+        {children.length > 0 && <Controls />}
       </div>
       <div className='cards-section'>{children}</div>
     </div>

@@ -5,7 +5,9 @@ export function useClasses(...initial) {
 
   function addClass(className, append = true) {
     if (append) {
-      setClasses(`${classes} ${className}`);
+      if (!classes.includes(className)) {
+        setClasses((c) => `${c} ${className}`);
+      }
     } else {
       setClasses(`${initial} ${className}`);
     }
@@ -22,5 +24,5 @@ export function useClasses(...initial) {
     setClasses(initialClasses());
   }
 
-  return { classes, addClass, setInitial, removeClass, setClasses };
+  return { c: classes, addClass, setInitial, removeClass, setClasses };
 }
