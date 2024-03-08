@@ -2,6 +2,9 @@ import { MovieDb } from 'tmdb-promise';
 import { makeCancelable } from '../utils';
 const apiKey = '13dcd6ddc1a270f0239c5503c49237b3';
 
+const SECONDS = 1000;
+jest.setTimeout(10 * SECONDS);
+
 test('should search for Zoolander', async () => {
   let api = new MovieDb(apiKey);
   const res = await api.searchMovie({ query: 'alien' });

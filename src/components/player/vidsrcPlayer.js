@@ -6,7 +6,6 @@ export default function VidsrcPlayer({ path }) {
       src={url}
       width='100%'
       height='100%'
-      allowTransparency
       allowFullScreen
       loading='lazy'
 

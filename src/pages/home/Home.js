@@ -8,7 +8,7 @@ import MediaCollection from '../../components/carousel/media_collection';
 import BrowseCollection from '../../components/carousel/browse_collection';
 import { useObserver, useSplitArray } from '../../hooks';
 import { useEffect, useState } from 'react';
-import { renderArray, sleep } from '../../utils/jsUtils';
+import { renderArray, sleep } from '../../utils';
 import Spinner from '../../components/spinner/spinner';
 import { MOVIE, TV } from '../../data/constants';
 

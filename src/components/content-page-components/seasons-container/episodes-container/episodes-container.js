@@ -2,11 +2,11 @@ import styles from './episodes-container.module.css';
 
 import EpisodeCard from '../episode-card/briefing-episode-card';
 import { useParams } from 'react-router-dom';
-import { useCallback, useEffect, useReducer, useState } from 'react';
 import { getSeasonDetails } from '../../../../services/content';
 // import { makeCancelable, sleep } from '../../../../utils';
 import LoadingEpisodesContainer from '../episodes-section-states/loading-episodes-container';
-import { useQuery } from '../../../../hooks';
+import { useDebounceQuery } from '../../../../hooks';
+import { useCallback } from 'react';
 
 export default function EpisodesContainer({ seasonMetadata }) {
   const { id: seriesId } = useParams();
@@ -21,7 +21,7 @@ export default function EpisodesContainer({ seasonMetadata }) {
     vote_average,
   } = seasonMetadata;
 
-  const { loading, data, error } = useQuery(
+  const { loading, data, error } = useDebounceQuery(
     useCallback(
       async () => await getSeasonDetails({ id: seriesId, season_number }),
       [season_number, seriesId]
