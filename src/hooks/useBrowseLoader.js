@@ -3,8 +3,8 @@ import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useObserver } from './useObserver';
 import { browseContentActions } from '../store';
-import browseActions from '../actions/browse';
-import { useQuery } from './useQuery';
+import { browseActions } from '../actions';
+import { useThrottlingQuery } from './';
 const { incrementPage, setInitial, addContent } = browseContentActions;
 
 export function useBrowseLoader(mode) {
@@ -15,7 +15,7 @@ export function useBrowseLoader(mode) {
     dispatch(incrementPage({ mode }));
   });
 
-  const { loading, data, error } = useQuery(
+  const { loading, data, error } = useThrottlingQuery(
     useCallback(async () => await browseActions[mode]({ page }), [mode, page])
   );
 

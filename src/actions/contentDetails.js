@@ -6,4 +6,4 @@ const contentDetailsActions = {
   [TV]: getSeries,
 };
 
-export default contentDetailsActions;
+export { contentDetailsActions };

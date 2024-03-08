@@ -10,16 +10,7 @@ import { useCallback } from 'react';
 
 export default function EpisodesContainer({ seasonMetadata }) {
   const { id: seriesId } = useParams();
-  const {
-    // air_date,
-    // episode_count,
-    id,
-    name,
-    overview,
-    // poster_path,
-    season_number,
-    vote_average,
-  } = seasonMetadata;
+  const { season_number } = seasonMetadata;
 
   const { loading, data, error } = useDebounceQuery(
     useCallback(

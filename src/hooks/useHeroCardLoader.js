@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import contentDetailsActions from '../actions/content-details';
+import { contentDetailsActions } from '../actions';
 import { useQuery } from './useQuery';
 import { MOVIE, TV } from '../data/constants';
 

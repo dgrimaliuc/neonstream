@@ -1,19 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { makeCancelable } from '../utils';
+import { useThrottling } from '.';
 
-export function useQuery(queryFunction) {
+export function useThrottlingQuery(asyncFetch = async () => {}, timeout = 500) {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    let isMounted = true;
-    let promise = null;
-
-    const fetchData = async () => {
+  const fetcher = useThrottling(
+    useCallback(async (promise, asyncFetch, isMounted) => {
       try {
         setLoading(true);
-        promise = makeCancelable(queryFunction());
+        promise = makeCancelable(asyncFetch());
         const result = await promise;
         if (isMounted) {
           setData(result);
@@ -25,17 +23,23 @@ export function useQuery(queryFunction) {
       } finally {
         setLoading(false);
       }
-    };
+    }, []),
+    timeout
+  );
 
-    fetchData();
+  useEffect(() => {
+    let isMounted = true;
+    let promise = null;
+    fetcher(promise, asyncFetch, isMounted);
 
     return () => {
-      isMounted = false;
       if (promise) {
         promise.cancel();
       }
+      isMounted = false;
     };
-  }, [queryFunction]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [asyncFetch, timeout]);
 
   return { loading, data, error };
 }

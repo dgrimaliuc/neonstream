@@ -11,4 +11,4 @@ const browseActions = {
   [BROWSE_ALL]: browsePopularContent,
 };
 
-export default browseActions;
+export { browseActions };

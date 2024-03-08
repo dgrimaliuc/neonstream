@@ -9,7 +9,7 @@ export default function RegisterField() {
     <>
       <div className={`form-group ${isFocusedName ? 'focused' : ''}`}>
         <label htmlFor='email' className='placeholder'>
-          Name
+          Username
         </label>
         <input
           type='text'

@@ -6,9 +6,7 @@ export class Observer {
       (entries) => {
         entries.forEach(async (entry) => {
           if (entry.isIntersecting) {
-            this.disconnect();
             await this.onObserve();
-          } else {
           }
         });
       },

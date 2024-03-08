@@ -1,10 +1,10 @@
 export function throttling(func, wait) {
   let throttle = false;
 
-  return () => {
+  return (...args) => {
     if (!throttle) {
       throttle = true;
-      func();
+      func.apply(this, args)
       setTimeout(() => {
         throttle = false;
       }, wait);

@@ -21,10 +21,10 @@ function Home() {
     <BrowseCollection type='popular_movies' />,
     <SinglePromoCardNeon />,
 
-    <BrowseCollection type='recommended_movies' />,
+    <BrowseCollection baseId={1029575} type='recommended_movies' />,
     <SingleCard />,
 
-    <BrowseCollection type='recommended_series' />,
+    <BrowseCollection baseId={42009} type='recommended_series' />,
     <SinglePromoCardViolet />,
 
     <BrowseCollection type='top_rated_movies' />,
@@ -34,17 +34,13 @@ function Home() {
     <BrowseCollection type='now_playing_movies' />,
     <BrowseCollection type='airing_today_series' />,
   ];
-
-  const [element, setElement] = useState(null);
+  const { chunks, loadIndex, loadMore, isEnd } = useSplitArray(feed, 3);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setElement('.loader');
   }, []);
 
-  const { chunks, loadIndex, loadMore, isEnd } = useSplitArray(feed, 3);
-
-  const observer = useObserver(element, () => {
+  const observer = useObserver('.loader', () => {
     sleep(1000).then(() => loadMore());
   });
 

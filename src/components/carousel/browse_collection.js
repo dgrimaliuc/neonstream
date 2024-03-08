@@ -15,14 +15,10 @@ import {
 } from '../../services/content';
 import Carousel from './carousel';
 import { useParams } from 'react-router-dom';
+import { collectionActions } from '../../actions';
 
 function reducer(state, action) {
   switch (action.type) {
-    case 'set_title':
-      return { ...state, title: action.payload };
-    case 'set_content':
-      return { ...state, content: action.payload };
-
     case 'set_all':
       return { ...state, ...action.payload };
     default:
@@ -30,113 +26,37 @@ function reducer(state, action) {
   }
 }
 
-// const contentTypes = {
-//   [POPULAR_SERIES_TYPE]: PopularSeriesObject
-// }
+const setAll = (dispatch, title, content) => {
+  dispatch({
+    type: 'set_all',
+    payload: {
+      title: title,
+      content: content,
+    },
+  });
+};
 
-const setAll = (title, content) => ({
-  type: 'set_all',
-  payload: { title, content },
-});
-
-export default function BrowseCollection({ type }) {
+export default function BrowseCollection({ type, baseId }) {
   const [state, dispatch] = useReducer(reducer, { content: [], title: '' });
   const params = useParams();
 
   useEffect(() => {
     const fetcher = async () => {
-      switch (type) {
-        case 'popular_series':
-          dispatch({
-            type: 'set_all',
-            payload: {
-              title: 'Popular Series',
-              content: await popularSeries(),
-            },
-          });
-          break;
-        case 'popular_movies':
-          dispatch({
-            type: 'set_all',
-            payload: {
-              title: 'Popular Movies',
-              content: await popularMovies(),
-            },
-          });
-          break;
-        case 'recommended_movies':
-          dispatch({
-            type: 'set_all',
-            payload: {
-              title: 'Recommended Movies',
-              content: await recommendedMovies({
-                id: params.id || 1029575,
-              }),
-            },
-          });
-          break;
-        case 'recommended_series':
-          dispatch({
-            type: 'set_all',
-            payload: {
-              title: 'Recommended Series',
-              content: await recommendedSeries({
-                id: params.id || 42009,
-              }),
-            },
-          });
-          break;
-        case 'top_rated_movies':
-          dispatch({
-            type: 'set_all',
-            payload: {
-              title: 'Top Rated Movies',
-              content: await topRatedMovies(),
-            },
-          });
-          break;
-        case 'top_rated_series':
-          dispatch({
-            type: 'set_all',
-            payload: {
-              title: 'Top Rated Series',
-              content: await topRatedSeries(),
-            },
-          });
-          break;
-        case 'now_playing_movies':
-          dispatch({
-            type: 'set_all',
-            payload: {
-              title: 'Now Playing Movies',
-              content: await nowPlayingMovies(),
-            },
-          });
-          break;
-        case 'airing_today_series':
-          dispatch({
-            type: 'set_all',
-            payload: {
-              title: 'Airing Today Series',
-              content: await airingTodaySeries(),
-            },
-          });
-          break;
-        case 'upcoming_movies':
-          dispatch({
-            type: 'set_all',
-            payload: {
-              title: 'Upcoming Movies',
-              content: await upcomingMovies(),
-            },
-          });
-          break;
-        default:
-          break;
-      }
+      /*
+  await recommendedMovies({
+              id: params.id || 1029575,
+            })
+
+            await recommendedSeries({
+              id: params.id || 42009,
+            })
+      */
+      const entity = collectionActions[type];
+      const content = await entity.action(baseId);
+      setAll(dispatch, entity.title, content);
     };
     fetcher();
-  }, [params.id, type]);
+  }, [baseId, params.id, type]);
 
   return (
     <Carousel title={state.title}>

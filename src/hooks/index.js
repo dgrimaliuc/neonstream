@@ -9,5 +9,8 @@ export * from './useQuery';
 export * from './useBrowseLoader';
 export * from './useHeroCardLoader';
 export * from './useTabs';
+export * from './useDebounce';
 export * from './useDebounceQuery';
 export * from './useCustomRef';
+export * from './useThrottlingQuery';
+export * from './useThrottling';
