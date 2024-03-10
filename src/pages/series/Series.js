@@ -7,6 +7,7 @@ import HeroContentContainer from '../../components/content-page-components/hero-
 import SeasonsContainer from '../../components/content-page-components/seasons-container/seasons-container';
 import { getSeries } from '../../services/content';
 import { getYear } from '../../utils';
+import { useEffect } from 'react';
 
 export async function loadTv({ params }) {
   return getSeries(params.id);

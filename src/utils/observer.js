@@ -18,7 +18,6 @@ export class Observer {
     const element = this.findElement();
     if (element) {
       this.observer.observe(element);
-    } else {
     }
   }
 

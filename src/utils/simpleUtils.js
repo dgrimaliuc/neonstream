@@ -5,3 +5,7 @@ export async function sleep(ms) {
 export function noop() {
   return () => {};
 }
+
+export function printLog(message) {
+  console.log(message);
+}

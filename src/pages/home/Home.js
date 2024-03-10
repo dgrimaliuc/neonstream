@@ -6,35 +6,48 @@ import SinglePromoCardViolet from '../../components/single-promo-card/single-pro
 import SingleCard from '../../components/single-card/single-card';
 import MediaCollection from '../../components/carousel/media_collection';
 import BrowseCollection from '../../components/carousel/browse_collection';
-import { useObserver, useSplitArray } from '../../hooks';
-import { useEffect, useState } from 'react';
+import { useObserver, useChunks } from '../../hooks';
+import { useEffect } from 'react';
 import { renderArray, sleep } from '../../utils';
 import Spinner from '../../components/spinner/spinner';
-import { MOVIE, TV } from '../../data/constants';
+import {
+  AIRING_TODAY_SERIES,
+  CONTINUE_WATCHING,
+  MOVIE,
+  NOW_PLAYING_MOVIES,
+  POPULAR_MOVIES,
+  POPULAR_SERIES,
+  RECOMMENDED_MOVIES,
+  RECOMMENDED_SERIES,
+  TOP_RATED_MOVIES,
+  TOP_RATED_SERIES,
+  TV,
+  UPCOMING_MOVIES,
+} from '../../data/constants';
 
 function Home() {
   const feed = [
-    <MediaCollection type='continue_watching' />,
-    <BrowseCollection type='upcoming_movies' />,
+    <MediaCollection type={CONTINUE_WATCHING} />,
+    <BrowseCollection type={UPCOMING_MOVIES} />,
     <SinglePromoCardViolet />,
-    <BrowseCollection type='popular_series' />,
-    <BrowseCollection type='popular_movies' />,
+    <BrowseCollection type={POPULAR_SERIES} />,
+    <BrowseCollection type={POPULAR_MOVIES} />,
     <SinglePromoCardNeon />,
 
-    <BrowseCollection baseId={1029575} type='recommended_movies' />,
+    <BrowseCollection baseId={1029575} type={RECOMMENDED_MOVIES} />,
     <SingleCard />,
 
-    <BrowseCollection baseId={42009} type='recommended_series' />,
+    <BrowseCollection baseId={42009} type={RECOMMENDED_SERIES} />,
     <SinglePromoCardViolet />,
 
-    <BrowseCollection type='top_rated_movies' />,
-    <BrowseCollection type='top_rated_series' />,
+    <BrowseCollection type={TOP_RATED_MOVIES} />,
+    <BrowseCollection type={TOP_RATED_SERIES} />,
     <SingleCard />,
 
-    <BrowseCollection type='now_playing_movies' />,
-    <BrowseCollection type='airing_today_series' />,
+    <BrowseCollection type={NOW_PLAYING_MOVIES} />,
+    <BrowseCollection type={AIRING_TODAY_SERIES} />,
   ];
-  const { chunks, loadIndex, loadMore, isEnd } = useSplitArray(feed, 3);
+  const { chunks, loadIndex, loadMore, isEnd } = useChunks(feed, 3);
 
   useEffect(() => {
     window.scrollTo(0, 0);

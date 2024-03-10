@@ -3,10 +3,12 @@ import styles from './episodes-container.module.css';
 import EpisodeCard from '../episode-card/briefing-episode-card';
 import { useParams } from 'react-router-dom';
 import { getSeasonDetails } from '../../../../services/content';
-// import { makeCancelable, sleep } from '../../../../utils';
 import LoadingEpisodesContainer from '../episodes-section-states/loading-episodes-container';
-import { useDebounceQuery } from '../../../../hooks';
-import { useCallback } from 'react';
+import { useDebounceQuery, useChunks } from '../../../../hooks';
+import { useCallback, useEffect } from 'react';
+import ErrorEpisodesContainer from '../episodes-section-states/error-episodes-container';
+import { printLog, makeFlatChunks } from '../../../../utils';
+import EpisodeLoadButton from './episode-load-button';
 
 export default function EpisodesContainer({ seasonMetadata }) {
   const { id: seriesId } = useParams();
@@ -18,17 +20,36 @@ export default function EpisodesContainer({ seasonMetadata }) {
       [season_number, seriesId]
     )
   );
+  const { chunks, loadIndex, loadMore, isEnd, setLoadIndex } = useChunks(
+    data ? data.episodes : [],
+    40
+  );
+
+  useEffect(() => {
+    setLoadIndex(1);
+  }, [setLoadIndex, season_number, seriesId]);
 
   if (loading) {
     return <LoadingEpisodesContainer />;
   } else if (error) {
-    return <LoadingEpisodesContainer message={error.message} />;
+    return <ErrorEpisodesContainer message={error.message} />;
   }
 
   return (
-    <div className={styles['episodes-container']}>
-      {data &&
-        (data.episodes || []).map((ep, i) => <EpisodeCard key={i} {...ep} />)}
+    <div className={styles['episodes-wrapper']}>
+      <div className={styles['episodes-container']}>
+        {data &&
+          makeFlatChunks(chunks, loadIndex).map((ep, i) => (
+            <EpisodeCard key={i} {...ep} />
+          ))}
+      </div>
+      <EpisodeLoadButton
+        loadIndex={loadIndex}
+        onClick={
+          loadIndex > 3 ? setLoadIndex.bind(null, chunks.length) : loadMore
+        }
+        isEnd={isEnd}
+      />
     </div>
   );
 }

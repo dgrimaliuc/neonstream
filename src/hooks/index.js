@@ -1,5 +1,5 @@
 export * from './useClasses';
-export * from './useSplitFeed';
+export * from './useChunks';
 export * from './useTimer';
 export * from './useFocused';
 export * from './useLocalStorage';

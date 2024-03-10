@@ -1,10 +1,9 @@
-import Spinner from '../../../spinner/spinner';
 import EpisodesStateContainer from './episodes-state-container';
 
-export default function LoadingEpisodesContainer({ message }) {
+export default function ErrorEpisodesContainer({ message }) {
   return (
     <EpisodesStateContainer>
-      <Spinner display />
+      <div>{message}</div>
     </EpisodesStateContainer>
   );
 }
