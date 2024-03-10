@@ -1,13 +1,14 @@
 import { useLoaderData } from 'react-router-dom';
-import BrowseCollection from '../../components/carousel/browse_collection';
-import BackgroundPicture from '../../components/content-page-components/background-picture/background-picture';
+import { BrowseCollection } from '../../components/carousel';
 
-import ContentHeader from '../../components/content-page-components/content-header/content-header';
-import HeroContentContainer from '../../components/content-page-components/hero-content-container/hero-content-container';
-import SeasonsContainer from '../../components/content-page-components/seasons-container/seasons-container';
+import {
+  SeasonsContainer,
+  HeroContentContainer,
+  ContentHeader,
+  BackgroundPicture,
+} from '../../components/content-page-components';
 import { getSeries } from '../../services/content';
-import { getYear } from '../../utils';
-import { useEffect } from 'react';
+import { getYear, printLog } from '../../utils';
 
 export async function loadTv({ params }) {
   return getSeries(params.id);
@@ -21,14 +22,14 @@ export default function SeriesPage() {
     name,
     poster_path,
     overview,
-    // imdb_id,
     genres,
     first_air_date,
     number_of_seasons,
-    // number_of_episodes,
+    number_of_episodes,
     // adult,
     seasons,
   } = data;
+
   return (
     <>
       <BackgroundPicture picture={backdrop_path} />
@@ -39,6 +40,7 @@ export default function SeriesPage() {
         title={name}
         description={overview}
         year={getYear(first_air_date)}
+        additional={`${number_of_seasons} Seasons - ${number_of_episodes} Episodes`}
       />
       <SeasonsContainer seasonsTotal={number_of_seasons} seasons={seasons} />
       <section>

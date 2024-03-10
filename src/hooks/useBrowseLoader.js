@@ -27,8 +27,6 @@ export function useBrowseLoader(mode) {
   }, [data, dispatch, mode, observer]);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-
     return () => {
       dispatch(setInitial({ mode }));
       observer.disconnect();

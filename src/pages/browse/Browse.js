@@ -2,11 +2,14 @@ import './browse.css';
 
 import BrowseCard from '../../components/browse-card/browse-card';
 
-import Spinner from '../../components/spinner/spinner';
+import { Spinner } from '../../components/spinner';
 import { useBrowseLoader } from '../../hooks/useBrowseLoader';
+import { useInitialScroll } from '../../hooks';
 
 export default function Browse({ mode }) {
   const { content, page, error } = useBrowseLoader(mode);
+  useInitialScroll({ timeout: 10 });
+
   return (
     <div className='browse-wrapper'>
       <div className='browse-header'>

@@ -10,6 +10,7 @@ export default function HeroContentContainer({
   tags,
   description,
   year,
+  additional = '',
 }) {
   return (
     <div className={heroStyles['hero-content-wrapper']}>
@@ -30,7 +31,7 @@ export default function HeroContentContainer({
           <h2 className={heroStyles['hero-title']}>
             {title} ({year})
           </h2>
-          <span className={heroStyles['watched-by']}>8.7K views </span>
+          {<span className={heroStyles['additional-info']}>{additional}</span>}
         </div>
         <Tags tags={tags} />
         <HeroDescription description={description} />

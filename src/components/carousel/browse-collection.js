@@ -1,18 +1,7 @@
 import './carousel.css';
 
 import BrowseCard from '../browse-card/browse-card';
-import { useEffect, useReducer, useState } from 'react';
-import {
-  airingTodaySeries,
-  nowPlayingMovies,
-  popularMovies,
-  popularSeries,
-  recommendedMovies,
-  recommendedSeries,
-  topRatedMovies,
-  topRatedSeries,
-  upcomingMovies,
-} from '../../services/content';
+import { useEffect, useReducer } from 'react';
 import Carousel from './carousel';
 import { useParams } from 'react-router-dom';
 import { collectionActions } from '../../actions';
@@ -41,21 +30,11 @@ export default function BrowseCollection({ type, baseId }) {
   const params = useParams();
 
   useEffect(() => {
-    const fetcher = async () => {
-      /*
-  await recommendedMovies({
-              id: params.id || 1029575,
-            })
-
-            await recommendedSeries({
-              id: params.id || 42009,
-            })
-      */
+    (async function () {
       const entity = collectionActions[type];
       const content = await entity.action(baseId);
       setAll(dispatch, entity.title, content);
-    };
-    fetcher();
+    })();
   }, [baseId, params.id, type]);
 
   return (

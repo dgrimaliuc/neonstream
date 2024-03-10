@@ -14,3 +14,4 @@ export * from './useDebounceQuery';
 export * from './useCustomRef';
 export * from './useThrottlingQuery';
 export * from './useThrottling';
+export * from './useInitialScroll';

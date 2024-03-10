@@ -6,6 +6,6 @@ export function noop() {
   return () => {};
 }
 
-export function printLog(message) {
-  console.log(message);
+export function printLog(...message) {
+  console.log(message.join(', '));
 }

@@ -13,7 +13,7 @@ export default function Header() {
       <header>
         <a className='logo flex-item neonText' href='/'>
           <div className='text-logo' role='button'>
-            New Wave
+            Neon
           </div>
         </a>
         <div className='row-wrapper flx-2'>

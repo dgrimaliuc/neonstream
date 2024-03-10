@@ -1,6 +1,6 @@
 import styles from './movie.module.css';
 import { useLoaderData } from 'react-router-dom';
-import BrowseCollection from '../../components/carousel/browse_collection';
+import { BrowseCollection } from '../../components/carousel';
 import BackgroundPicture from '../../components/content-page-components/background-picture/background-picture';
 
 import ContentHeader from '../../components/content-page-components/content-header/content-header';

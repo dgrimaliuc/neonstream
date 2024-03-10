@@ -1,4 +1,4 @@
-import Spinner from '../../../spinner/spinner';
+import { Spinner } from '../../../spinner';
 import EpisodesStateContainer from './episodes-state-container';
 
 export default function LoadingEpisodesContainer() {

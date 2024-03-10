@@ -1,15 +1,15 @@
-import './Home.css';
+import './home.css';
 
 import HeroCarousel from '../../components/hero-carousel/hero-carousel';
-import SinglePromoCardNeon from '../../components/single-promo-card/single-promo-card-neon';
-import SinglePromoCardViolet from '../../components/single-promo-card/single-promo-card-violet';
+import {
+  SinglePromoCardNeon,
+  SinglePromoCardViolet,
+} from '../../components/single-promo-card';
 import SingleCard from '../../components/single-card/single-card';
-import MediaCollection from '../../components/carousel/media_collection';
-import BrowseCollection from '../../components/carousel/browse_collection';
-import { useObserver, useChunks } from '../../hooks';
-import { useEffect } from 'react';
+import { MediaCollection, BrowseCollection } from '../../components/carousel';
+import { useObserver, useChunks, useInitialScroll } from '../../hooks';
 import { renderArray, sleep } from '../../utils';
-import Spinner from '../../components/spinner/spinner';
+import { Spinner } from '../../components/spinner';
 import {
   AIRING_TODAY_SERIES,
   CONTINUE_WATCHING,
@@ -49,18 +49,11 @@ function Home() {
   ];
   const { chunks, loadIndex, loadMore, isEnd } = useChunks(feed, 3);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  useInitialScroll({ timeout: 50 });
 
-  const observer = useObserver('.loader', () => {
+  useObserver('.loader', () => {
     sleep(1000).then(() => loadMore());
   });
-
-  useEffect(() => {
-    observer.observe();
-    return () => observer.disconnect();
-  }, [observer, loadIndex]);
 
   return (
     <>

@@ -1,6 +1,6 @@
 import './carousel.css';
 
-import { useEffect, useReducer, useState } from 'react';
+import { useEffect, useReducer } from 'react';
 import { popularSeries } from '../../services/content';
 import EpisodeCard from '../episode-card/episode-card';
 import Carousel from './carousel';
