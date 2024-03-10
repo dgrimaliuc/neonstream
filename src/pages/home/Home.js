@@ -1,4 +1,4 @@
-import './home.css';
+import classes from './home.module.css';
 
 import HeroCarousel from '../../components/hero-carousel/hero-carousel';
 import {
@@ -57,7 +57,7 @@ function Home() {
 
   return (
     <>
-      <div className='home-container'>
+      <div className={classes['home-container']}>
         <HeroCarousel
           ids={[
             { id: 1227816, type: MOVIE },
@@ -68,7 +68,7 @@ function Home() {
           ]}
         />
 
-        <section className='collections-container'>
+        <section className={classes['collections-container']}>
           {renderArray(chunks, loadIndex)}
           <Spinner display={!isEnd} />
         </section>
