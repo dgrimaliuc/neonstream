@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "neon-stream"
-  }
+  },
+  "targets": {
+    "neon-stream": {
+      "hosting": {
+        "neon-stream": [
+          "app"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
