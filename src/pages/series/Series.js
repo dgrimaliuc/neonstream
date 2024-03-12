@@ -8,7 +8,7 @@ import {
   BackgroundPicture,
 } from '../../components/content-page-components';
 import { getSeries } from '../../services/content';
-import { getYear, printLog } from '../../utils';
+import { getYear } from '../../utils';
 
 export async function loadTv({ params }) {
   return getSeries(params.id);

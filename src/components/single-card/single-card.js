@@ -1,5 +1,4 @@
 import './single-card.css';
-import img from '../../assets/One Piece/One Piece Tall.jpg';
 import ActionsContainer from '../actions/actionsContainer';
 
 export default function SingleCard() {

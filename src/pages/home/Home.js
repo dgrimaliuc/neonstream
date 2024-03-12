@@ -8,7 +8,7 @@ import {
 import SingleCard from '../../components/single-card/single-card';
 import { MediaCollection, BrowseCollection } from '../../components/carousel';
 import { useObserver, useChunks, useInitialScroll } from '../../hooks';
-import { printLog, renderArray, sleep } from '../../utils';
+import { renderArray, sleep } from '../../utils';
 import { Spinner } from '../../components/spinner';
 import {
   AIRING_TODAY_SERIES,
@@ -24,7 +24,6 @@ import {
   TV,
   UPCOMING_MOVIES,
 } from '../../data/constants';
-import { useEffect } from 'react';
 
 function Home() {
   const feed = [

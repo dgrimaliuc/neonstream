@@ -5,8 +5,8 @@ import './single-promo-card.css';
 import SinglePromoCardWrapper from './single-promo-card-wrapper';
 import { AnimatedContainer } from './animated-container';
 import SingleCardsImageWrapper from './single-cards-image-wrapper';
-import { useImagesLoader, useSingleContentLoader } from '../../hooks';
-import { useMemo } from 'react';
+// import { useImagesLoader, useSingleContentLoader } from '../../hooks';
+// import { useMemo } from 'react';
 
 export default function SinglePromoCardViolet({
   id = 1,
@@ -14,18 +14,18 @@ export default function SinglePromoCardViolet({
   firstImageIndex = 0,
   secondImageIndex = 2,
 }) {
-  const extraParams = useMemo(() => {
-    return {
-      append_to_response: 'images',
-      language: 'en-US',
-      include_image_language: 'en',
-    };
-  }, []);
-  const { loading, data, error } = useSingleContentLoader(
-    id,
-    mediaType,
-    extraParams
-  );
+  // const extraParams = useMemo(() => {
+  //   return {
+  //     append_to_response: 'images',
+  //     language: 'en-US',
+  //     include_image_language: 'en',
+  //   };
+  // }, []);
+  // const { loading, data, error } = useSingleContentLoader(
+  //   id,
+  //   mediaType,
+  //   extraParams
+  // );
 
   // if (loading) {
   //   return null;

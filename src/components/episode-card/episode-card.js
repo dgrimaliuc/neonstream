@@ -1,7 +1,7 @@
 import classes from './episode-card.module.css';
 
 import PlayableThumbnail from '../playable-thumbnail/playable-thumbnail';
-import { getBackdrop, getYear } from '../../utils';
+import { getYear } from '../../utils';
 
 export default function EpisodeCard({
   showProgress,

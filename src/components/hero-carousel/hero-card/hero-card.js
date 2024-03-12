@@ -7,7 +7,7 @@ import { useSingleContentLoader } from '../../../hooks';
 import { getBackdrop } from '../../../utils';
 
 export default function HeroCard({ active, id, mediaType }) {
-  const { data, error } = useSingleContentLoader(id, mediaType);
+  const { data } = useSingleContentLoader(id, mediaType);
 
   const {
     c: heroContainerClasses,
