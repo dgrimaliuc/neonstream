@@ -1,4 +1,3 @@
-import { getBackdrop } from '../../../../utils';
 import PlayableThumbnail from '../../../playable-thumbnail/playable-thumbnail';
 import styles from './briefing-episode-card.module.css';
 

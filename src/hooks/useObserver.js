@@ -2,13 +2,15 @@
 import { useEffect, useMemo } from 'react';
 import { Observer } from '../utils/observer';
 
-export function useObserver(cssSelector, onObserve) {
+export function useObserver({ css, observeOnMount = true }, onObserve) {
   const observer = useMemo(() => {
-    return new Observer(() => document.querySelector(cssSelector), onObserve);
-  }, [cssSelector]);
+    return new Observer(() => document.querySelector(css), onObserve);
+  }, [css]);
 
   useEffect(() => {
-    observer.observe();
+    if (observeOnMount) {
+      observer.observe();
+    }
     return () => observer.disconnect();
   }, [observer]);
   return observer;

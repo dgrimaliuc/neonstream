@@ -11,9 +11,12 @@ export function useBrowseLoader(mode) {
   const dispatch = useDispatch();
   const { page, content } = useSelector((state) => state.browseContent[mode]);
 
-  const observer = useObserver('.loader', () => {
-    dispatch(incrementPage({ mode }));
-  });
+  const observer = useObserver(
+    { css: '.loader', observeOnMount: false },
+    () => {
+      dispatch(incrementPage({ mode }));
+    }
+  );
 
   const { loading, data, error } = useThrottlingQuery(
     useCallback(async () => await browseActions[mode]({ page }), [mode, page])
@@ -22,14 +25,21 @@ export function useBrowseLoader(mode) {
   useEffect(() => {
     if (data) {
       dispatch(addContent({ mode, content: data }));
-      observer.observe();
     }
   }, [data, dispatch, mode, observer]);
+
+  /*
+  In order to not make two requests when browse page is loading
+  */
+  useEffect(() => {
+    if (content.length > 0) {
+      observer.observe();
+    }
+  }, [content, observer]);
 
   useEffect(() => {
     return () => {
       dispatch(setInitial({ mode }));
-      observer.disconnect();
     };
   }, [dispatch, mode, observer]);
 

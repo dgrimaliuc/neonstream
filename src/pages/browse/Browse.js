@@ -7,7 +7,7 @@ import { useBrowseLoader } from '../../hooks/useBrowseLoader';
 import { useInitialScroll } from '../../hooks';
 
 export default function Browse({ mode }) {
-  const { content, page, error } = useBrowseLoader(mode);
+  const { loading, content, page, error } = useBrowseLoader(mode);
   useInitialScroll({ timeout: 10 });
 
   return (

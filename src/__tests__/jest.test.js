@@ -6,7 +6,7 @@ const SECONDS = 1000;
 jest.setTimeout(10 * SECONDS);
 
 test('should search for Zoolander', async () => {
-  let api = new MovieDb(apiKey);
+  let api = new MovieDb({ apiKey });
   const res = await api.searchMovie({ query: 'alien' });
   console.log(JSON.stringify(res, null, 2));
 });

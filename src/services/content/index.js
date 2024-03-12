@@ -1,6 +1,6 @@
 import { MovieDb } from 'tmdb-promise';
-const apiKey = '13dcd6ddc1a270f0239c5503c49237b3';
-const mdb = new MovieDb(apiKey);
+const authToken = atob(process.env.REACT_APP_MDB_AUTH_TOKEN);
+const mdb = new MovieDb({ authToken });
 
 export const timeout = { timeout: 1000 };
 

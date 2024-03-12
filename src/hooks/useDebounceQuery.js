@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { makeCancelable } from '../utils';
 import { useDebounce } from './useDebounce';
 
-export function useDebounceQuery(asyncFetch = async () => {}, timeout = 600) {
+export function useDebounceQuery(asyncFetch = async () => {}, timeout = 500) {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);

@@ -1,4 +1,8 @@
 .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   min-width: 275px;
   text-align: center;
 }
@@ -6,7 +10,7 @@
 .neonText {
   color: #fff;
   text-shadow: 0 0 10px #d2facd, 0 0 21px #d9ffd6fb, 0 0 42px #0fa,
-    0 0 82px rgb(0, 255, 145);
+    0 0 82px #00ff91;
 }
 
 .text-logo {
@@ -15,6 +19,11 @@
   color: #0de2a5;
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin-top: 20px;
   font-family: 'Alegreya Sans SC';
+}
+
+.logo-img {
+  width: 70px;
+  height: 70px;
+  margin: 0 20px;
 }

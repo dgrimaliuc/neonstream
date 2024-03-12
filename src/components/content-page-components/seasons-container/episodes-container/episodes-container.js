@@ -7,7 +7,7 @@ import LoadingEpisodesContainer from '../episodes-section-states/loading-episode
 import { useDebounceQuery, useChunks } from '../../../../hooks';
 import { useCallback, useEffect } from 'react';
 import ErrorEpisodesContainer from '../episodes-section-states/error-episodes-container';
-import { printLog, makeFlatChunks } from '../../../../utils';
+import { makeFlatChunks } from '../../../../utils';
 import EpisodeLoadButton from './episode-load-button';
 
 export default function EpisodesContainer({ seasonMetadata }) {

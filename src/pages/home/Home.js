@@ -8,7 +8,7 @@ import {
 import SingleCard from '../../components/single-card/single-card';
 import { MediaCollection, BrowseCollection } from '../../components/carousel';
 import { useObserver, useChunks, useInitialScroll } from '../../hooks';
-import { renderArray, sleep } from '../../utils';
+import { printLog, renderArray, sleep } from '../../utils';
 import { Spinner } from '../../components/spinner';
 import {
   AIRING_TODAY_SERIES,
@@ -24,21 +24,26 @@ import {
   TV,
   UPCOMING_MOVIES,
 } from '../../data/constants';
+import { useEffect } from 'react';
 
 function Home() {
   const feed = [
     <MediaCollection type={CONTINUE_WATCHING} />,
     <BrowseCollection type={UPCOMING_MOVIES} />,
-    <SinglePromoCardViolet />,
+    <SinglePromoCardViolet
+      id={792307}
+      mediaType={MOVIE}
+      secondImageIndex={5}
+    />,
     <BrowseCollection type={POPULAR_SERIES} />,
     <BrowseCollection type={POPULAR_MOVIES} />,
-    <SinglePromoCardNeon />,
+    <SinglePromoCardNeon id={792307} mediaType={MOVIE} />,
 
     <BrowseCollection baseId={1029575} type={RECOMMENDED_MOVIES} />,
     <SingleCard />,
 
     <BrowseCollection baseId={42009} type={RECOMMENDED_SERIES} />,
-    <SinglePromoCardViolet />,
+    <SinglePromoCardViolet id={792307} mediaType={MOVIE} />,
 
     <BrowseCollection type={TOP_RATED_MOVIES} />,
     <BrowseCollection type={TOP_RATED_SERIES} />,
@@ -51,7 +56,7 @@ function Home() {
 
   useInitialScroll({ timeout: 50 });
 
-  useObserver('.loader', () => {
+  useObserver({ css: '.loader' }, () => {
     sleep(1000).then(() => loadMore());
   });
 

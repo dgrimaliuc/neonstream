@@ -12,6 +12,9 @@ export default function Header() {
     <>
       <header>
         <a className='logo flex-item neonText' href='/'>
+          <div>
+            <img src='/./logo.svg' alt='Saturn' />
+          </div>
           <div className='text-logo' role='button'>
             Neon
           </div>
