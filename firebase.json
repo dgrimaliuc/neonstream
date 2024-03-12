@@ -3,12 +3,9 @@
     "rules": "database.rules.json"
   },
   "hosting": {
+    "target": "neon-stream",
     "public": "build",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
         "source": "**",
