@@ -8,6 +8,7 @@ import HeroContentContainer from '../../components/content-page-components/hero-
 import { getMovie } from '../../services/content';
 import { getYear } from '../../utils';
 import Player from '../../components/player/player';
+import { RECOMMENDED_MOVIES } from '../../data/constants';
 
 export async function loadMovie({ params }) {
   return getMovie(params.id);
@@ -42,7 +43,7 @@ export default function MoviePage() {
         <Player path={`movie/${imdb_id}`} />
       </section>
       <section>
-        <BrowseCollection type='recommended_movies' />
+        <BrowseCollection type={RECOMMENDED_MOVIES} />
       </section>
     </>
   );

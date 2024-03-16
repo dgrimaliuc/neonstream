@@ -1,6 +1,6 @@
 import { getPoster } from '../../../utils/images';
 import HeroActions from '../../hero-actions/hero-actions';
-import Tags from '../../tags/tags';
+import { Genres } from '../../genres';
 import HeroDescription from '../hero-description/hero-description';
 import heroStyles from './hero-content-container.module.css';
 
@@ -33,7 +33,7 @@ export default function HeroContentContainer({
           </h2>
           {<span className={heroStyles['additional-info']}>{additional}</span>}
         </div>
-        <Tags tags={tags} />
+        <Genres tags={tags} />
         <HeroDescription description={description} />
       </div>
     </div>

@@ -1,12 +1,9 @@
+import { memo } from 'react';
 import SinglePromoCardContainer from './single-promo-card-container';
 import './single-promo-card-neon.css';
 import './single-promo-card.css';
 
-export default function SinglePromoCardNeon({
-  id,
-  mediaType,
-  secondImageIndex,
-}) {
+const SinglePromoCardNeon = memo(({ id, mediaType, secondImageIndex }) => {
   return (
     <SinglePromoCardContainer
       id={id}
@@ -17,4 +14,6 @@ export default function SinglePromoCardNeon({
       imageClassName='single-card-image-neon'
     />
   );
-}
+});
+
+export default SinglePromoCardNeon;

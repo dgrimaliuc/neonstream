@@ -40,7 +40,7 @@
   position: relative;
   width: 100%;
   height: 100%;
-  /* background-color: var(--main-background-color); */
+
   z-index: 0;
 }
 
@@ -49,7 +49,6 @@
   height: 100%;
   right: 0;
   z-index: 0;
-  /* object-fit: cover; */
 }
 
 .single-card-info-column {
@@ -59,21 +58,20 @@
   gap: 5px;
   align-items: flex-start;
   height: 100%;
-  /* max-height: 250px; */
   padding-top: 10px;
 }
 
 .blur_back {
   background-position: center !important;
   position: absolute;
-  background-size: cover;
+  object-fit: cover;
   border-radius: var(--border-radius);
-  background-image: url('https://media.themoviedb.org/t/p/w1066_and_h600_bestv2/4MCKNAc6AbWjEsM2h9Xc29owo4z.jpg');
+  /* background-image: url(''); */
   width: 50%;
   z-index: 0;
 }
 
-.single-card-info {
+.single-card-info-wrapper {
   left: 0;
   z-index: 1;
   height: 100%;
@@ -85,16 +83,11 @@
   padding: 15px;
 }
 
-.info-image-line {
-  /*  */
+.single-card-header {
   display: flex;
   flex-direction: row;
   gap: 20px;
 }
-
-/* .single-card-title {
-  margin-top: 10px;
-} */
 
 .single-card-poster {
   height: 250px;
@@ -121,13 +114,3 @@
   align-self: flex-end;
   width: fit-content;
 }
-
-/*
-
-  object-fit: cover;
-  object-position: center center;
-  overflow: hidden;
-    background-size: cover;
-  background-repeat: no-repeat;
-      object-fit: none;
-*/

@@ -1,0 +1,5 @@
+.icon-star-small:before {
+  font-size: 1rem;
+  content: '\f005';
+  cursor: pointer;
+}

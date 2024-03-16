@@ -1,7 +1,7 @@
 import './carousel.css';
 
 import BrowseCard from '../browse-card/browse-card';
-import { useEffect, useReducer } from 'react';
+import { memo, useEffect, useReducer } from 'react';
 import Carousel from './carousel';
 import { useParams } from 'react-router-dom';
 import { collectionActions } from '../../actions';
@@ -25,14 +25,14 @@ const setAll = (dispatch, title, content) => {
   });
 };
 
-export default function BrowseCollection({ type, baseId }) {
+const BrowseCollection = memo(({ type, baseId }) => {
   const [state, dispatch] = useReducer(reducer, { content: [], title: '' });
   const params = useParams();
 
   useEffect(() => {
     (async function () {
       const entity = collectionActions[type];
-      const content = await entity.action(baseId);
+      const content = await entity.action({ id: baseId || params.id });
       setAll(dispatch, entity.title, content);
     })();
   }, [baseId, params.id, type]);
@@ -52,4 +52,6 @@ export default function BrowseCollection({ type, baseId }) {
       })}
     </Carousel>
   );
-}
+});
+
+export default BrowseCollection;

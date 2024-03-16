@@ -22,7 +22,7 @@ export function makeFlatChunks(array, lastItemIndex = array.length - 1) {
   const slicedArray = array.slice(0, lastItemIndex);
   const components = slicedArray.flat();
   if (lastItemIndex === 0) {
-    return null;
+    return [];
   } else {
     return components;
   }

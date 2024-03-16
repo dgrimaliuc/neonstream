@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: w9jds/firebase-action@v12.4.0
         with:
-          args: hosting:channel:delete pr${{ github.event.pull_request.number }}-${{ github.head_ref }} --force
+          args: hosting:channel:list --site=neon-stream | awk -v pr_number="pr${{ github.event.pull_request.number }}" '$0 ~ pr_number { print $2 }' | xargs -I {} firebase hosting:channel:delete --site=neon-stream {} --force
         env:
           GCP_SA_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_NEON_STREAM }}
           PROJECT_ID: neon-stream

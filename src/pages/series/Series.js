@@ -9,6 +9,7 @@ import {
 } from '../../components/content-page-components';
 import { getSeries } from '../../services/content';
 import { getYear } from '../../utils';
+import { RECOMMENDED_SERIES } from '../../data/constants';
 
 export async function loadTv({ params }) {
   return getSeries(params.id);
@@ -44,7 +45,7 @@ export default function SeriesPage() {
       />
       <SeasonsContainer seasonsTotal={number_of_seasons} seasons={seasons} />
       <section>
-        <BrowseCollection type='recommended_series' />
+        <BrowseCollection type={RECOMMENDED_SERIES} />
       </section>
     </>
   );

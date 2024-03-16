@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useImageProps, useSingleContentLoader } from '../../hooks';
 import { getFilePathOrNull, getPoster } from '../../utils';
 import { AnimatedContainer } from './animated-container';
@@ -7,37 +8,41 @@ import './single-promo-card-neon.css';
 import SinglePromoCardWrapper from './single-promo-card-wrapper';
 import './single-promo-card.css';
 
-export default function SinglePromoCardContainer({
-  id,
-  mediaType,
-  secondImageIndex = 1,
-  animatedTopClassName,
-  animatedBottomClassName,
-  imageClassName,
-}) {
-  const extraParams = useImageProps();
+const SinglePromoCardContainer = memo(
+  ({
+    id,
+    mediaType,
+    secondImageIndex = 1,
+    animatedTopClassName,
+    animatedBottomClassName,
+    imageClassName,
+  }) => {
+    const extraParams = useImageProps();
 
-  const { data } = useSingleContentLoader(id, mediaType, extraParams);
+    const { data } = useSingleContentLoader(id, mediaType, extraParams);
 
-  if (!data) return null;
+    if (!data) return null;
 
-  return (
-    <SinglePromoCardWrapper
-      title={data.title || data.name}
-      description={data.overview}
-    >
-      <AnimatedContainer
-        topClassName={animatedTopClassName}
-        bottomClassName={animatedBottomClassName}
-      />
-      <SingleCardsImageWrapper
-        to={`/${mediaType}/${id}`}
-        topImage={getPoster(data.poster_path)}
-        bottomImage={getPoster(
-          getFilePathOrNull(data.images?.posters, secondImageIndex)
-        )}
-        className={imageClassName}
-      />
-    </SinglePromoCardWrapper>
-  );
-}
+    return (
+      <SinglePromoCardWrapper
+        title={data.title || data.name}
+        description={data.overview}
+      >
+        <AnimatedContainer
+          topClassName={animatedTopClassName}
+          bottomClassName={animatedBottomClassName}
+        />
+        <SingleCardsImageWrapper
+          to={`/${mediaType}/${id}`}
+          topImage={getPoster(data.poster_path)}
+          bottomImage={getPoster(
+            getFilePathOrNull(data.images?.posters, secondImageIndex)
+          )}
+          className={imageClassName}
+        />
+      </SinglePromoCardWrapper>
+    );
+  }
+);
+
+export default SinglePromoCardContainer;

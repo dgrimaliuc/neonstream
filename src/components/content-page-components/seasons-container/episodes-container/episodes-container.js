@@ -10,7 +10,10 @@ import ErrorEpisodesContainer from '../episodes-section-states/error-episodes-co
 import { makeFlatChunks } from '../../../../utils';
 import EpisodeLoadButton from './episode-load-button';
 
-export default function EpisodesContainer({ seasonMetadata }) {
+export default function EpisodesContainer({
+  seasonMetadata,
+  maxUserActions = 2,
+}) {
   const { id: seriesId } = useParams();
   const { season_number } = seasonMetadata;
 
@@ -20,9 +23,10 @@ export default function EpisodesContainer({ seasonMetadata }) {
       [season_number, seriesId]
     )
   );
+
   const { chunks, loadIndex, loadMore, isEnd, setLoadIndex } = useChunks(
     data ? data.episodes : [],
-    40
+    30
   );
 
   useEffect(() => {
@@ -44,9 +48,12 @@ export default function EpisodesContainer({ seasonMetadata }) {
           ))}
       </div>
       <EpisodeLoadButton
+        maxUserActions={maxUserActions}
         loadIndex={loadIndex}
         onClick={
-          loadIndex > 3 ? setLoadIndex.bind(null, chunks.length) : loadMore
+          loadIndex > maxUserActions
+            ? setLoadIndex.bind(null, chunks.length)
+            : loadMore
         }
         isEnd={isEnd}
       />

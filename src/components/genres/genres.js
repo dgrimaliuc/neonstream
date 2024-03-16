@@ -1,6 +1,6 @@
 import styles from './tags.module.css';
 
-export default function Tags({ tags = [] }) {
+export default function Genres({ tags = [] }) {
   let t = tags.map((tag) => tag.name);
   if (tags.length === 0) {
     t = ['Undefined'];
