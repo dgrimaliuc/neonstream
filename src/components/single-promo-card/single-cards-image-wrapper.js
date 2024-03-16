@@ -6,10 +6,11 @@ export default function SingleCardsImageWrapper({
   topImage,
   bottomImage,
   className,
+  to,
 }) {
   return (
     <div className='single-card-img-wrapper'>
-      <div>
+      <a href={to}>
         <picture>
           <img
             className={className}
@@ -17,8 +18,8 @@ export default function SingleCardsImageWrapper({
             alt=' The Big Bang Theory Poster'
           />
         </picture>
-      </div>
-      <div className='image-right'>
+      </a>
+      <a className='image-right' href={to}>
         <picture>
           <img
             className={className}
@@ -26,7 +27,7 @@ export default function SingleCardsImageWrapper({
             alt=' The Big Bang Theory Poster'
           />
         </picture>
-      </div>
+      </a>
     </div>
   );
 }

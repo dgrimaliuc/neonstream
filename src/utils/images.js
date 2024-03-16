@@ -32,3 +32,11 @@ function getOrDefault(size, source, defaultVal) {
   }
   return `/${source[size]}`;
 }
+
+export function getFilePathOrNull(array, index) {
+  try {
+    return array[index].file_path;
+  } catch (e) {
+    return null;
+  }
+}

@@ -1,3 +1,4 @@
+export * from './api';
 export * from './useClasses';
 export * from './useChunks';
 export * from './useTimer';
@@ -15,4 +16,3 @@ export * from './useCustomRef';
 export * from './useThrottlingQuery';
 export * from './useThrottling';
 export * from './useInitialScroll';
-export * from './useImagesLoader';

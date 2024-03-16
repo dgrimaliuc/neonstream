@@ -36,13 +36,17 @@ function Home() {
     />,
     <BrowseCollection type={POPULAR_SERIES} />,
     <BrowseCollection type={POPULAR_MOVIES} />,
-    <SinglePromoCardNeon id={792307} mediaType={MOVIE} />,
+    <SinglePromoCardNeon id={1399} mediaType={TV} />,
 
     <BrowseCollection baseId={1029575} type={RECOMMENDED_MOVIES} />,
     <SingleCard />,
 
     <BrowseCollection baseId={42009} type={RECOMMENDED_SERIES} />,
-    <SinglePromoCardViolet id={792307} mediaType={MOVIE} />,
+    <SinglePromoCardViolet
+      id={969492}
+      mediaType={MOVIE}
+      secondImageIndex={5}
+    />,
 
     <BrowseCollection type={TOP_RATED_MOVIES} />,
     <BrowseCollection type={TOP_RATED_SERIES} />,

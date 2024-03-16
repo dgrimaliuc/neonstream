@@ -6,9 +6,5 @@ const store = configureStore({
   },
 });
 
-// store.subscribe(() => {
-//   console.log(store.getState());
-// });
-
 export { browseContentActions } from './contentSlice';
 export default store;
