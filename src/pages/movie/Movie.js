@@ -25,6 +25,7 @@ export default function MoviePage() {
     imdb_id,
     genres,
     release_date,
+    // tagline,
     // adult,
   } = data;
 

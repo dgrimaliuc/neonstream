@@ -7,5 +7,7 @@ YouTrack: <!--<TICKET>-->
 ---
 
 - [ ] Create a new feature
-- [ ] Fix bugs
+- [ ] Update an existing feature
+- [ ] Redesign
+- [ ] Bug fix
 - [ ] Project improvement

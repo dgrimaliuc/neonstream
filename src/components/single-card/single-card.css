@@ -10,7 +10,8 @@
 .single-card-container {
   position: relative;
   gap: 20px;
-  width: 1200px;
+  /* width: 1200px; */
+  width: 1000px;
   min-width: 450px;
   align-items: flex-start;
   box-shadow: 0px 0px 100px -25px #7e8683;
