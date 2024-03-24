@@ -4,9 +4,10 @@ export function usePagination(
   total,
   containerClass,
   activeClass,
-  firstPage = 1
+  firstPage = 1,
+  initialSelected = 1
 ) {
-  const [selected, setSelected] = useState(1);
+  const [selected, setSelected] = useState(initialSelected);
 
   function select(id) {
     if (id === selected) return;
@@ -42,7 +43,7 @@ export function usePagination(
   }
 
   function iterator(callback) {
-    return Array.from({ length: total }).map((_, i) => callback(i + 1));
+    return Array.from({ length: total }).map((_, i) => callback(i));
   }
 
   function nextPage(scroll = true) {

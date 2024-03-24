@@ -16,6 +16,7 @@ export default function HeroDescription({ description = 'Undefined' }) {
 
   return (
     <div className={heroDescription} onClick={expandHandler}>
+      <h4 className={styles['description-title']}>Overview</h4>
       <div className={styles['description-gradient']}>
         <div className={styles['description-container']}>
           <p>{description}</p>

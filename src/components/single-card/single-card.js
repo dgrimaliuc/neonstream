@@ -1,14 +1,12 @@
 import './single-card.css';
 import ActionsContainer from '../actions/actionsContainer';
-import { useImageProps, useSingleContentLoader } from '../../hooks';
+import { useSingleContentLoader } from '../../hooks';
 import { getBackdrop, getPoster, getYear } from '../../utils';
 import { Genres } from '../genres';
 import { memo } from 'react';
 
 const SingleCard = memo(({ id, mediaType }) => {
-  const extraParams = useImageProps();
-
-  const { data } = useSingleContentLoader(id, mediaType, extraParams);
+  const { data } = useSingleContentLoader(id, mediaType);
 
   if (!data) return null;
 
@@ -57,7 +55,7 @@ const SingleCard = memo(({ id, mediaType }) => {
                     <span className='icon-star-small' /> ({vote_count})
                   </span>
                 </div>
-                <Genres tags={genres} />
+                <Genres genres={genres} />
               </div>
             </div>
 

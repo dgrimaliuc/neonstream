@@ -1,13 +1,35 @@
-import styles from './player.module.css';
-import VidsrcPlayer from './vidsrcPlayer';
+import ReactPlayer from 'react-player';
 
-export default function Player({ path, title = 'Original Audio' }) {
+export default function Player({
+  url,
+  playing,
+  controls,
+  playIcon,
+  style,
+  className,
+  light,
+}) {
   return (
-    <>
-      {/* <h1>{title}</h1> */}
-      <div className={styles['player-container']}>
-        <VidsrcPlayer path={path} />
-      </div>
-    </>
+    <ReactPlayer
+      className={className}
+      light={light}
+      url={url}
+      width='100%'
+      height='100%'
+      controls={controls}
+      playing={playing}
+      playIcon={playIcon}
+      style={style}
+      config={{
+        youtube: {
+          playerVars: {
+            showinfo: 0,
+            modestbranding: 1,
+            rel: 0,
+            iv_load_policy: 3,
+          },
+        },
+      }}
+    />
   );
 }

@@ -25,10 +25,8 @@ export default function SeasonsContainer({ seasonsTotal, seasons }) {
             <Season
               key={i}
               isSelected={selectedSeason.season_number === s.season_number}
-              seasonNumber={s.season_number}
               seasonTitle={s.name}
               onClick={select.bind(null, i + (firstSeasonNumber ? 1 : 0))}
-              // disabled={s.episode_count === 0}
             />
           );
         })}

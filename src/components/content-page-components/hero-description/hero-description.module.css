@@ -11,8 +11,14 @@
   hyphens: auto;
   cursor: pointer;
   overflow: hidden;
-  max-height: 80px;
+  max-height: 90px;
   transition: max-height 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0px 5px;
+}
+
+.description-title {
+  line-height: 2.5rem;
+  font-size: 1.25rem;
 }
 
 .description-wrapper.expanded .description-gradient {
@@ -20,7 +26,7 @@
 }
 
 .description-wrapper.expanded {
-  max-height: 175px;
+  max-height: 190px;
 }
 
 .description-gradient {

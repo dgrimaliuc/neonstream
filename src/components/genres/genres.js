@@ -1,8 +1,8 @@
 import styles from './tags.module.css';
 
-export default function Genres({ tags = [] }) {
-  let t = tags.map((tag) => tag.name);
-  if (tags.length === 0) {
+export default function Genres({ genres = [] }) {
+  let t = genres.map((tag) => tag.name);
+  if (genres.length === 0) {
     t = ['Undefined'];
   }
   return (

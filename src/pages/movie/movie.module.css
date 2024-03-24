@@ -1,4 +1,7 @@
 .movie-media-section {
-  width: 65%;
+  width: var(--hero-content-section-width);
   margin: auto;
+  display: flex;
+  gap: 20px;
+  flex-flow: column nowrap;
 }

@@ -1,12 +1,14 @@
-const config = JSON.parse(localStorage.getItem('tmdbConfig')) || {
+import { STORAGE_CONFIG_KEY } from '../data/constants';
+
+const config = JSON.parse(localStorage.getItem(STORAGE_CONFIG_KEY)) || {
   images: {
     base_url: 'https://image.tmdb.org/t/p/',
     secure_base_url: 'https://image.tmdb.org/t/p/',
-    backdrop_sizes: ['w300', 'w780', 'w1280', 'original'],
-    logo_sizes: ['w45', 'w92', 'w154', 'w185', 'w300', 'w500', 'original'],
-    poster_sizes: ['w92', 'w154', 'w185', 'w342', 'w500', 'w780', 'original'],
-    profile_sizes: ['w45', 'w185', 'h632', 'original'],
-    still_sizes: ['w92', 'w185', 'w300', 'original'],
+    backdrop_sizes: [],
+    logo_sizes: [],
+    poster_sizes: [],
+    profile_sizes: [],
+    still_sizes: [],
   },
 };
 const { images } = config;
@@ -30,6 +32,9 @@ function getOrDefault(size, source, defaultVal) {
   if (size === 'default') {
     return defaultVal;
   }
+  if (source[size] === undefined) {
+    return 'original';
+  }
   return `/${source[size]}`;
 }
 
@@ -39,4 +44,8 @@ export function getFilePathOrNull(array, index) {
   } catch (e) {
     return null;
   }
+}
+
+export function getFilePathReverseOrNull(array, index) {
+  return getFilePathOrNull(array, array.length - index - 1);
 }

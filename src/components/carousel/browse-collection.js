@@ -3,7 +3,7 @@ import './carousel.css';
 import BrowseCard from '../browse-card/browse-card';
 import { memo, useEffect, useReducer } from 'react';
 import Carousel from './carousel';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { collectionActions } from '../../actions';
 
 function reducer(state, action) {
@@ -28,6 +28,7 @@ const setAll = (dispatch, title, content) => {
 const BrowseCollection = memo(({ type, baseId }) => {
   const [state, dispatch] = useReducer(reducer, { content: [], title: '' });
   const params = useParams();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     (async function () {
@@ -36,6 +37,8 @@ const BrowseCollection = memo(({ type, baseId }) => {
       setAll(dispatch, entity.title, content);
     })();
   }, [baseId, params.id, type]);
+
+  if (!state.content.length && pathname !== '/') return null;
 
   return (
     <Carousel title={state.title}>

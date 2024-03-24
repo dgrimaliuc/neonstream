@@ -8,6 +8,8 @@ import {
   NOW_PLAYING_MOVIES,
   AIRING_TODAY_SERIES,
   UPCOMING_MOVIES,
+  SIMILAR_MOVIES,
+  SIMILAR_SERIES,
 } from '../data/constants';
 import {
   airingTodaySeries,
@@ -16,6 +18,8 @@ import {
   popularSeries,
   recommendedMovies,
   recommendedSeries,
+  similarMovies,
+  similarSeries,
   topRatedMovies,
   topRatedSeries,
   upcomingMovies,
@@ -39,9 +43,17 @@ const collectionActions = {
     title: 'Recommended Movies',
     action: recommendedMovies,
   },
+  [SIMILAR_MOVIES]: {
+    title: 'Similar Movies',
+    action: similarMovies,
+  },
   [RECOMMENDED_SERIES]: {
     title: 'Recommended Series',
     action: recommendedSeries,
+  },
+  [SIMILAR_SERIES]: {
+    title: 'Similar Series',
+    action: similarSeries,
   },
 };
 

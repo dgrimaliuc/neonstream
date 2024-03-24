@@ -9,7 +9,7 @@ import SinglePromoCardContainer from './single-promo-card-container';
 export default function SinglePromoCardViolet({
   id,
   mediaType,
-  secondImageIndex = 1,
+  secondImageIndex = 0,
 }) {
   return (
     <SinglePromoCardContainer

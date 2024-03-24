@@ -5,14 +5,14 @@ import './index.css';
 import './buttons.css';
 import './text.css';
 import App from './App';
-import { TMDBContextProvider } from './store/context/configurationProvider';
+import { TMDBConfigProvider } from './store/context/configurationProvider';
 // import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <TMDBContextProvider>
+  <TMDBConfigProvider>
     <App />
-  </TMDBContextProvider>
+  </TMDBConfigProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,4 +1,4 @@
-import { browseContentActions } from '../';
+import { browseAllActions } from '../';
 
 export function fetchEvents() {
   return async (dispatch) => {
@@ -12,6 +12,6 @@ export function fetchEvents() {
       return await response.json();
     };
     const response = await fetchData();
-    dispatch(browseContentActions.addContent(response));
+    dispatch(browseAllActions.addContent(response));
   };
 }

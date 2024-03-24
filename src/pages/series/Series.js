@@ -3,49 +3,32 @@ import { BrowseCollection } from '../../components/carousel';
 
 import {
   SeasonsContainer,
-  HeroContentContainer,
+  HeroContent,
   ContentHeader,
-  BackgroundPicture,
 } from '../../components/content-page-components';
 import { getSeries } from '../../services/content';
-import { getYear } from '../../utils';
-import { RECOMMENDED_SERIES } from '../../data/constants';
+import { RECOMMENDED_SERIES, SIMILAR_SERIES } from '../../data/constants';
+import { composeProps, imageProps, videosProps } from '../../api';
 
 export async function loadTv({ params }) {
-  return getSeries(params.id);
+  return getSeries(params.id, composeProps(videosProps(), imageProps()));
 }
 
 export default function SeriesPage() {
   const data = useLoaderData();
 
-  const {
-    backdrop_path,
-    name,
-    poster_path,
-    overview,
-    genres,
-    first_air_date,
-    number_of_seasons,
-    number_of_episodes,
-    // adult,
-    seasons,
-  } = data;
+  const { number_of_seasons, number_of_episodes, seasons } = data;
 
   return (
     <>
-      <BackgroundPicture picture={backdrop_path} />
-      <ContentHeader title={name} tags={genres} />
-      <HeroContentContainer
-        picture={poster_path}
-        tags={genres}
-        title={name}
-        description={overview}
-        year={getYear(first_air_date)}
-        additional={`${number_of_seasons} Seasons - ${number_of_episodes} Episodes`}
+      <ContentHeader />
+      <HeroContent
+        additional={`${number_of_seasons} S - ${number_of_episodes} E`}
       />
       <SeasonsContainer seasonsTotal={number_of_seasons} seasons={seasons} />
       <section>
         <BrowseCollection type={RECOMMENDED_SERIES} />
+        <BrowseCollection type={SIMILAR_SERIES} />
       </section>
     </>
   );

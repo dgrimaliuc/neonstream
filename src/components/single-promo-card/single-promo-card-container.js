@@ -1,6 +1,6 @@
 import { memo } from 'react';
-import { useImageProps, useSingleContentLoader } from '../../hooks';
-import { getFilePathOrNull, getPoster } from '../../utils';
+import { useSingleContentLoader } from '../../hooks';
+import { getFilePathReverseOrNull, getPoster } from '../../utils';
 import { AnimatedContainer } from './animated-container';
 import './custom-border-neon.css';
 import SingleCardsImageWrapper from './single-cards-image-wrapper';
@@ -12,14 +12,12 @@ const SinglePromoCardContainer = memo(
   ({
     id,
     mediaType,
-    secondImageIndex = 1,
+    secondImageIndex,
     animatedTopClassName,
     animatedBottomClassName,
     imageClassName,
   }) => {
-    const extraParams = useImageProps();
-
-    const { data } = useSingleContentLoader(id, mediaType, extraParams);
+    const { data } = useSingleContentLoader(id, mediaType);
 
     if (!data) return null;
 
@@ -36,7 +34,7 @@ const SinglePromoCardContainer = memo(
           to={`/${mediaType}/${id}`}
           topImage={getPoster(data.poster_path)}
           bottomImage={getPoster(
-            getFilePathOrNull(data.images?.posters, secondImageIndex)
+            getFilePathReverseOrNull(data.images?.posters, secondImageIndex)
           )}
           className={imageClassName}
         />

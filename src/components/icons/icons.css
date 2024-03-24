@@ -1,0 +1,17 @@
+.fa-play-circle {
+  font-size: 60px;
+  color: white;
+  z-index: 1;
+}
+
+.fa-window-close {
+  font-size: 30px;
+  color: white;
+  z-index: 1;
+}
+
+.fa-close {
+  font-size: 25px;
+  color: white;
+  z-index: 1;
+}

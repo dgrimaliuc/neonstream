@@ -17,6 +17,7 @@
     text-align: left;
     hyphens: auto;
     user-select: text;
+    /* text-overflow: ellipsis; */
   }
 
   .hero-card-picture {

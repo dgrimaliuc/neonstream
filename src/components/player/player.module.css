@@ -8,7 +8,7 @@ iframe {
 .player-container {
   position: relative;
   width: 100%;
-  height: calc(100vh - 18rem);
+  height: var(--movie-player-height);
   background-color: #000;
   margin-bottom: 40px;
   border: none;

@@ -1,10 +1,25 @@
 import { configureStore } from '@reduxjs/toolkit';
-import browseContent from './contentSlice';
+import { browse, movie, trailer } from './slices';
+
+const debug = false;
+
 const store = configureStore({
   reducer: {
-    browseContent,
+    browse,
+    trailer,
+    movie,
   },
 });
 
-export { browseContentActions } from './contentSlice';
 export default store;
+
+store.subscribe(() => {
+  if (debug) {
+    console.log(store.getState());
+  }
+});
+
+export * from './slices';
+export * from './selectors';
+export * from './thunks';
+export * from './context';

@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { BROWSE_ALL, BROWSE_MOVIES, BROWSE_SERIES } from '../data/constants';
+import { BROWSE_ALL, BROWSE_MOVIES, BROWSE_SERIES } from '../../data/constants';
 
-const browseContentSlice = createSlice({
-  name: 'browseContent',
+const browse = createSlice({
+  name: 'browse',
   initialState: {
     [BROWSE_ALL]: {
       content: [],
@@ -34,5 +34,5 @@ const browseContentSlice = createSlice({
   },
 });
 
-export const browseContentActions = browseContentSlice.actions;
-export default browseContentSlice.reducer;
+export const browseAllActions = browse.actions;
+export default browse.reducer;

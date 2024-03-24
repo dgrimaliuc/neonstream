@@ -2,14 +2,14 @@ import { useCallback, useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useObserver } from './useObserver';
-import { browseContentActions } from '../store';
+import { browseAllActions } from '../store';
 import { browseActions } from '../actions';
 import { useThrottlingQuery } from './';
-const { incrementPage, setInitial, addContent } = browseContentActions;
+const { incrementPage, setInitial, addContent } = browseAllActions;
 
 export function useBrowseLoader(mode) {
   const dispatch = useDispatch();
-  const { page, content } = useSelector((state) => state.browseContent[mode]);
+  const { page, content } = useSelector((state) => state.browse[mode]);
 
   const observer = useObserver(
     { css: '.loader', observeOnMount: false },

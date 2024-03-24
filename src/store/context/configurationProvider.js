@@ -1,7 +1,8 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { mdb } from '../../services/content';
+import { STORAGE_CONFIG_KEY } from '../../data/constants';
 
-const TMDBContext = createContext({
+const TMDBConfig = createContext({
   images: {
     baseUrl: '',
     backdrop_sizes: [],
@@ -15,35 +16,39 @@ const TMDBContext = createContext({
   setConfig: () => {},
 });
 
-export default TMDBContext;
+export default TMDBConfig;
 
-export function TMDBContextProvider({ children }) {
-  const [tmdbConfig, setTmdbConfig] = useState(null);
+export function TMDBConfigProvider({ children }) {
+  const [tmdbConfig, setTmdbConfig] = useState({});
 
   function setConfig(config) {
-    localStorage.setItem('tmdbConfig', JSON.stringify(config));
+    localStorage.setItem(STORAGE_CONFIG_KEY, JSON.stringify(config));
     setTmdbConfig(config);
   }
 
   function getConfig() {
-    const config = localStorage.getItem('tmdbConfig');
+    let config = localStorage.getItem(STORAGE_CONFIG_KEY);
     return JSON.parse(config);
   }
 
   useEffect(() => {
-    const fetchConfigurations = async () => {
+    const fetch = async () => {
       let config = getConfig();
       if (!config) {
         config = await mdb.configuration();
         setConfig(config);
       }
+      window.tmdbConfig = config;
     };
-    fetchConfigurations();
+    fetch();
   }, []);
 
   return (
-    <TMDBContext.Provider value={(tmdbConfig, setConfig)}>
-      {children}
-    </TMDBContext.Provider>
+    <TMDBConfig.Provider value={tmdbConfig}>{children}</TMDBConfig.Provider>
   );
 }
+
+export const useTMDBConfig = () => {
+  const { tmdbConfig } = useContext(TMDBConfig);
+  return { tmdbConfig };
+};

@@ -3,7 +3,7 @@ import SinglePromoCardContainer from './single-promo-card-container';
 import './single-promo-card-neon.css';
 import './single-promo-card.css';
 
-const SinglePromoCardNeon = memo(({ id, mediaType, secondImageIndex }) => {
+const SinglePromoCardNeon = memo(({ id, mediaType, secondImageIndex = 0 }) => {
   return (
     <SinglePromoCardContainer
       id={id}

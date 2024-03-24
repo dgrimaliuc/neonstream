@@ -1,18 +1,18 @@
 import styles from './actions.module.css';
-import { Link } from 'react-router-dom';
 
 export default function ActionsContainer({
   addToList = true,
   wlMinimal = false,
+  onWatchClick,
 }) {
   return (
     <div className={styles.actions}>
       <div>
-        <button className={styles['watch-now-btn']}>
-          <Link to='/watch'>
-            <span className='fa-play'></span>
-            Watch Now
-          </Link>
+        <button className={styles['watch-now-btn']} onClick={onWatchClick}>
+          {/* <a href={to}> */}
+          <span className='fa-play'></span>
+          Watch Now
+          {/* </a> */}
         </button>
       </div>
       {wlMinimal ? (

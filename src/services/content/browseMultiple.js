@@ -2,6 +2,7 @@ import { mdb } from './index';
 
 const discoverProps = {
   with_original_language: 'en',
+  language: 'en-US',
   include_adult: false,
   timeout: 1000,
   page: 1,
@@ -37,9 +38,19 @@ export async function recommendedMovies(customProps) {
   return (await mdb.movieRecommendations(props)).results;
 }
 
+export async function similarMovies(customProps) {
+  const props = { ...discoverProps, ...customProps };
+  return (await mdb.movieSimilar({ ...discoverProps, ...props })).results;
+}
+
 export async function recommendedSeries(customProps) {
   const props = { ...discoverProps, id: 42009, ...customProps };
   return (await mdb.tvRecommendations(props)).results;
+}
+
+export async function similarSeries(customProps) {
+  const props = { ...discoverProps, ...customProps };
+  return (await mdb.tvSimilar({ ...discoverProps, ...props })).results;
 }
 
 export async function topRatedMovies(customProps) {

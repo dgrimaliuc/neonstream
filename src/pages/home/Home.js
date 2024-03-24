@@ -34,7 +34,7 @@ function Home() {
       <SinglePromoCardViolet
         id={792307}
         mediaType={MOVIE}
-        secondImageIndex={19}
+        secondImageIndex={6}
       />,
       <BrowseCollection type={POPULAR_SERIES} />,
       <BrowseCollection type={POPULAR_MOVIES} />,
@@ -47,7 +47,7 @@ function Home() {
       <SinglePromoCardViolet
         id={969492}
         mediaType={MOVIE}
-        secondImageIndex={5}
+        secondImageIndex={2}
       />,
 
       <BrowseCollection type={TOP_RATED_MOVIES} />,

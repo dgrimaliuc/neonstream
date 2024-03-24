@@ -2,13 +2,13 @@ import styles from './seasons.module.css';
 
 export default function Season({
   isSelected,
-  seasonNumber,
   seasonTitle,
   onClick,
+  className,
   disabled = false,
 }) {
-  const classes = `${styles.season} ${
-    isSelected ? styles.selected : ''
+  const classes = `${styles.season} ${isSelected ? styles.selected : ''} ${
+    className ? className : ''
   }`.trim();
 
   return (

@@ -1,0 +1,77 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.modal {
+  top: 40vh;
+  display: inline-block;
+  height: 300px;
+  border-radius: 14px;
+}
+
+.trailer-modal {
+  top: 15vh;
+  left: calc(50% - calc(var(--hero-content-section-width) / 2));
+  background-color: black;
+  height: var(--movie-player-height);
+  width: var(--hero-content-section-width);
+  border-top: 0.5px solid rgba(255, 255, 255, 0.277);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.277);
+}
+
+.trailer-modal,
+.modal {
+  position: fixed;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  animation: slide-down 300ms ease-out forwards;
+  z-index: 3;
+}
+
+.player-header {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 60px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px;
+  flex-direction: row;
+  background-color: black;
+  overflow: hidden;
+}
+
+.player-header h4 {
+  text-overflow: ellipsis;
+}
+
+.modal-close {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+}
+
+@media (min-width: 768px) {
+  .modal {
+    width: 40rem;
+    left: calc(50% - 20rem);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

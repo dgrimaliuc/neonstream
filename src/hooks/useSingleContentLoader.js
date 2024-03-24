@@ -2,14 +2,17 @@ import { useCallback } from 'react';
 import { contentDetailsActions } from '../actions';
 import { useQuery } from './useQuery';
 import { validateContentType } from '../utils';
+import { imageProps } from '../api';
 
-export function useSingleContentLoader(id, mediaType, extraParams) {
+const imageParams = imageProps();
+
+export function useSingleContentLoader(id, mediaType) {
   validateContentType(mediaType);
 
   const { loading, data, error } = useQuery(
     useCallback(
-      async () => await contentDetailsActions[mediaType](id, extraParams),
-      [id, mediaType, extraParams]
+      async () => await contentDetailsActions[mediaType](id, imageParams),
+      [id, mediaType]
     )
   );
 

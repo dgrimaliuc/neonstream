@@ -23,7 +23,7 @@ export default function Pagination({ total = 50 }) {
         {iterator((i) => (
           <Buble
             key={i}
-            title={i}
+            title={i + 1}
             isSelected={selected === i}
             onClick={select.bind(null, i)}
           />

@@ -1,5 +1,6 @@
 export * from './date';
 export * from './array';
+export * from './scroll';
 export * from './images';
 export * from './debounce';
 export * from './validation';

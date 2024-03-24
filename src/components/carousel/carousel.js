@@ -1,5 +1,5 @@
 import './carousel.css';
-import Controls from '../controls/controls';
+import { Controls } from '../controls';
 
 export default function Carousel({ children, title }) {
   return (

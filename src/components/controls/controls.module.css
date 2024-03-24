@@ -3,6 +3,7 @@
   user-select: none;
   position: static;
   margin-right: 12px;
+  white-space: nowrap;
 }
 
 .control {
