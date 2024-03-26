@@ -1,4 +1,6 @@
-YouTrack: [NW-](https://neonwave.youtrack.cloud/issue/NW-)
+YouTrack:
+
+- [NW-](https://neonwave.youtrack.cloud/issue/NW-)
 
 ### What has been done
 
