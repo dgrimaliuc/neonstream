@@ -28,9 +28,9 @@ import {
 function Home() {
   const { chunks, loadIndex, loadMore, isEnd } = useChunks(
     [
+      <BrowseCollection type={UPCOMING_MOVIES} />,
       <BrowseCollection type={TOP_RATED_SERIES} />,
       <BrowseCollection type={NOW_PLAYING_MOVIES} />,
-      <BrowseCollection type={UPCOMING_MOVIES} />,
       <SinglePromoCardViolet
         id={792307}
         mediaType={MOVIE}

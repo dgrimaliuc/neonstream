@@ -16,3 +16,4 @@ export * from './useCustomRef';
 export * from './useThrottlingQuery';
 export * from './useThrottling';
 export * from './useInitialScroll';
+export * from './usePlaceholder';

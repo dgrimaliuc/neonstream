@@ -1,10 +1,4 @@
 .single-card-image-neon {
-  position: relative;
-  width: 172px;
-  height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   box-shadow: 0px 0px 10px 0px rgb(38, 255, 136);
   z-index: 2;
 }

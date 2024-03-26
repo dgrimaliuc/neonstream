@@ -101,6 +101,16 @@
   gap: 8px;
 }
 
+.single-card-image-neon,
+.single-card-image-violet {
+  position: relative;
+  width: 172px;
+  min-height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .image-right {
   align-self: flex-end;
 }
