@@ -1,3 +1,4 @@
+import { Image } from '../lazy-image';
 import './custom-border-violet.css';
 import './single-promo-card-violet.css';
 import './single-promo-card.css';
@@ -12,19 +13,21 @@ export default function SingleCardsImageWrapper({
     <div className='single-card-img-wrapper'>
       <a href={to}>
         <picture>
-          <img
-            className={className}
+          <Image
             src={topImage}
-            alt=' The Big Bang Theory Poster'
+            placeholderWidth={220}
+            placeholderHeight={330}
+            className={className}
           />
         </picture>
       </a>
       <a className='image-right' href={to}>
         <picture>
-          <img
-            className={className}
+          <Image
             src={bottomImage}
-            alt=' The Big Bang Theory Poster'
+            placeholderWidth={220}
+            placeholderHeight={330}
+            className={className}
           />
         </picture>
       </a>
