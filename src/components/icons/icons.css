@@ -15,3 +15,9 @@
   color: white;
   z-index: 1;
 }
+
+.icon-star-small:before {
+  font-size: 1rem;
+  content: '\f005';
+  cursor: pointer;
+}

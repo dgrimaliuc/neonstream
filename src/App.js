@@ -1,20 +1,24 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import RootLayout from './pages/RootLayout';
+import { loadEpisode, loadTv, loadMovie } from './pages';
 
-import HomePage from './pages/home/Home';
-import SeriesPage, { loadTv } from './pages/series/Series';
-import History from './pages/history/History';
-import WatchEpisodePage, { loadEpisode } from './pages/watch/WatchEpisode';
-import WatchlistPage from './pages/watchlist/Watchlist';
-import CustomListsPage from './pages/custom-lists/CustomLists';
-import Authentification from './pages/auth/auth';
 import { Provider } from 'react-redux';
 import store from './store';
-import MoviePage, { loadMovie } from './pages/movie/Movie';
-import NotFound from './pages/error/NotFound';
-import BrowseAll from './pages/browse/BrowseAll';
-import BrowseMovies from './pages/browse/BrowseMovies';
-import BrowseSeries from './pages/browse/BrowseSeries';
+
+import {
+  Authentification,
+  BrowseSeries,
+  WatchEpisode,
+  BrowseMovies,
+  CustomLists,
+  RootLayout,
+  BrowseAll,
+  Watchlist,
+  NotFound,
+  History,
+  Series,
+  Movie,
+  Home,
+} from './pages';
 
 const router = createBrowserRouter([
   {
@@ -22,18 +26,18 @@ const router = createBrowserRouter([
     id: 'root',
     element: <RootLayout />,
     children: [
-      { index: true, element: <HomePage /> },
+      { index: true, element: <Home /> },
       {
         path: '/tv/:id/watch/:season/:episode',
-        element: <WatchEpisodePage />,
+        element: <WatchEpisode />,
         loader: loadEpisode,
       },
       {
         path: '/tv/:id',
-        element: <SeriesPage />,
+        element: <Series />,
         loader: loadTv,
       },
-      { path: '/movie/:id', element: <MoviePage />, loader: loadMovie },
+      { path: '/movie/:id', element: <Movie />, loader: loadMovie },
       {
         path: 'browse',
         children: [
@@ -45,8 +49,8 @@ const router = createBrowserRouter([
           { path: 'tv', element: <BrowseSeries /> },
         ],
       },
-      { path: 'watchlist', element: <WatchlistPage /> },
-      { path: 'custom-lists', element: <CustomListsPage /> },
+      { path: 'watchlist', element: <Watchlist /> },
+      { path: 'custom-lists', element: <CustomLists /> },
       { path: 'history', element: <History /> },
       { path: 'login', element: <Authentification /> },
       { path: 'register', element: <Authentification /> },

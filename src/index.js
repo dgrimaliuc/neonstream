@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './icons.css';
 import './index.css';
 import './buttons.css';
 import './text.css';

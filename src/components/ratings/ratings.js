@@ -1,7 +1,7 @@
 import { useLoaderData } from 'react-router-dom';
 import { useClasses } from '../../hooks';
 import rateStyles from './ratings.module.css';
-import { formatRatings } from '../../api';
+import AverageRatingInfo from './average-rating-info';
 
 export default function Ratings() {
   const { vote_average, vote_count } = useLoaderData();
@@ -20,10 +20,11 @@ export default function Ratings() {
         <span className={rateStyles['icon-star']} />
       </div>
       <div className={rateStyles['average-rating']}>
-        <button className={rateStyles['rating-text']}>
-          <span>Average Rating: </span>
-          <span>{formatRatings(vote_average, vote_count)}</span>
-        </button>
+        <AverageRatingInfo
+          className={rateStyles['rating-text']}
+          vote_average={vote_average}
+          vote_count={vote_count}
+        />
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import { getPoster, getYear } from '../../utils';
+import Image from '../lazy-image/lazy-image';
 import './browse-card.css';
 
 export default function BrowseCard({ title, poster, to, date }) {
@@ -13,7 +14,7 @@ export default function BrowseCard({ title, poster, to, date }) {
               <i className='fa-play' />
             </div>
             <picture>
-              <img
+              <Image
                 className='browse-card-poster'
                 src={getPoster(poster)}
                 alt={title}

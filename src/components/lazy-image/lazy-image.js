@@ -7,6 +7,7 @@ export default function Image({
   className,
   placeholderWidth,
   placeholderHeight,
+  alt = 'Placeholder',
 }) {
   const [error, setError] = useState(false);
   const handleError = () => setError(true);
@@ -22,7 +23,7 @@ export default function Image({
 
   return (
     <>
-      {error ? (
+      {error || !src ? (
         placeholder
       ) : (
         <LazyLoadImage
@@ -30,7 +31,7 @@ export default function Image({
           placeholder={placeholder}
           className={className}
           onError={handleError}
-          alt='Placeholder'
+          alt={alt}
         />
       )}
     </>

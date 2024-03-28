@@ -19,6 +19,11 @@
   background-color: var(--single-card-background);
 }
 
+.average-card-ratings {
+  color: #c1c1c1;
+  font-size: medium;
+}
+
 .single-card::after {
   position: absolute;
   content: '';

@@ -1,4 +1,4 @@
-import ActionsContainer from '../../actions/actionsContainer';
+import { ActionsContainer } from '../../actions';
 import Ratings from '../../ratings/ratings';
 import { Genres } from '../../genres';
 import styles from './content-header.module.css';

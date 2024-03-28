@@ -1,5 +1,5 @@
 import { getBackdrop } from '../../utils';
-import WatchProgressBar from '../watch-progress-bar/watch-progress-bar';
+import { WatchProgressBar } from '../watch-progress-bar';
 import './playable-thumbnail.css';
 
 export default function PlayableThumbnail({

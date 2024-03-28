@@ -13,7 +13,7 @@ export default function Browse({ mode }) {
   return (
     <div className='browse-wrapper'>
       <div className='browse-header'>
-        <h2 className='browse-title'>Browse Movies</h2>
+        <h2 className='browse-title'>Browse Content</h2>
         <div className='browse-actions'>
           <button className='sorting'>
             <i className='fa-align-left'></i>

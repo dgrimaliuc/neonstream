@@ -2,7 +2,7 @@ import styles from './movie.module.css';
 import { useLoaderData } from 'react-router-dom';
 import { BrowseCollection } from '../../components/carousel';
 
-import ContentHeader from '../../components/content-page-components/content-header/content-header';
+import { ContentHeader } from '../../components/content-page-components';
 import { HeroContent } from '../../components/content-page-components/hero-content-container';
 import { getMovie } from '../../services/content';
 import { getPlayTime, smoothScrollTo } from '../../utils';
