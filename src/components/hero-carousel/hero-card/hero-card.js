@@ -1,6 +1,6 @@
 import classes from './hero-card.module.css';
 
-import ActionsContainer from '../../actions/actionsContainer';
+import { ActionsContainer } from '../../actions';
 import { useClasses } from '../../../hooks';
 import { useEffect } from 'react';
 import { useSingleContentLoader } from '../../../hooks';

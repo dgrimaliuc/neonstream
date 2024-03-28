@@ -1,9 +1,10 @@
 import './single-card.css';
-import ActionsContainer from '../actions/actionsContainer';
+import { ActionsContainer } from '../actions';
 import { useSingleContentLoader } from '../../hooks';
 import { getBackdrop, getPoster, getYear } from '../../utils';
 import { Genres } from '../genres';
 import { memo } from 'react';
+import { AverageRatingInfo } from '../ratings';
 
 const SingleCard = memo(({ id, mediaType }) => {
   const { data } = useSingleContentLoader(id, mediaType);
@@ -19,7 +20,7 @@ const SingleCard = memo(({ id, mediaType }) => {
     last_air_date,
     vote_average,
     vote_count,
-  } = data;
+  } = data || {};
 
   return (
     <div className='single-card-wrapper'>
@@ -44,17 +45,15 @@ const SingleCard = memo(({ id, mediaType }) => {
               <div className='single-card-info-column'>
                 <a href={`${mediaType}/${id}`}>
                   <h2 className='single-card-title'>
-                    {data.title || data.name} (
+                    {data?.title || data?.name} (
                     {getYear(release_date || last_air_date)})
                   </h2>
                 </a>
-                <div>
-                  Ratings:{' '}
-                  <span>
-                    {parseFloat(vote_average).toFixed(1)}{' '}
-                    <span className='icon-star-small' /> ({vote_count})
-                  </span>
-                </div>
+                <AverageRatingInfo
+                  className='average-card-ratings'
+                  vote_average={vote_average}
+                  vote_count={vote_count}
+                />
                 <Genres genres={genres} />
               </div>
             </div>

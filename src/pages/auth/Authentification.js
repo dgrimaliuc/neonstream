@@ -1,8 +1,8 @@
 import './auth.css';
 
 import { NavLink, useLocation } from 'react-router-dom';
-import LoginFields from './components/login-fields';
-import RegisterField from './components/register-fields';
+import LoginFields from '../../components/auth/login-fields';
+import RegisterField from '../../components/auth/register-fields';
 
 export default function Authentification() {
   const location = useLocation();

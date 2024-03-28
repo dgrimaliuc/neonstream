@@ -1,6 +1,6 @@
 import './not-found.css';
 
-export default function ErrorPage() {
+export default function Error() {
   return (
     <div id='notfound'>
       <div className='notfound-bg'>
@@ -18,18 +18,18 @@ export default function ErrorPage() {
           The page you are looking for might have been removed had its name
           changed or is temporarily unavailable.
         </p>
-        <a href='#'>Homepage</a>
+        <a href='/'>Homepage</a>
         <div className='notfound-social'>
-          <a href='#'>
+          <a href='/'>
             <i className='fa fa-facebook'></i>
           </a>
-          <a href='#'>
+          <a href='/'>
             <i className='fa fa-twitter'></i>
           </a>
-          <a href='#'>
+          <a href='/'>
             <i className='fa fa-pinterest'></i>
           </a>
-          <a href='#'>
+          <a href='/'>
             <i className='fa fa-google-plus'></i>
           </a>
         </div>

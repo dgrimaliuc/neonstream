@@ -21,7 +21,7 @@ export default function NotFound() {
         <div className='denied__wrapper'>
           <h1>404</h1>
           <h3>
-            LOST IN <span>SPACE</span> 'Neon Wave'? Hmm, looks like that page
+            LOST IN <span>SPACE</span> 'Neon Stream'? Hmm, looks like that page
             doesn't exist.
           </h3>
           <svg

@@ -1,4 +1,4 @@
-import PlayableThumbnail from '../../../playable-thumbnail/playable-thumbnail';
+import { PlayableThumbnail } from '../../../playable-thumbnail';
 import styles from './briefing-episode-card.module.css';
 
 export default function EpisodeCard({

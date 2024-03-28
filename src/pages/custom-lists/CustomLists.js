@@ -1,8 +1,8 @@
 import './custom-lists.css';
 
-import CustomList from '../../components/custom-list/custom-list';
-import BookmarksHeader from '../../components/bookmarks-header/bookmarks-header';
-import BookmarksWrapper from '../../components/bookmarks-wrapper/bookmarks-wrapper';
+import { CustomList } from '../../components/custom-list';
+import { BookmarksHeader } from '../../components/bookmarks-header';
+import { BookmarksWrapper } from '../../components/bookmarks-wrapper';
 
 export default function CustomListsPage() {
   return (

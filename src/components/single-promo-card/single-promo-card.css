@@ -100,6 +100,9 @@
   min-width: 424px;
   gap: 8px;
 }
+/* .single-card-img-wrapper a {
+  background-color: #fff;
+} */
 
 .single-card-image-neon,
 .single-card-image-violet {
