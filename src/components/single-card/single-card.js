@@ -22,7 +22,6 @@ const SingleCard = memo(({ id, mediaType }) => {
     vote_count,
   } = data || {};
 
-  console.log('loading', loading);
   return (
     <div className='single-card-wrapper'>
       <div className='single-card'>
