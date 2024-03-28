@@ -7,9 +7,9 @@ import { memo } from 'react';
 import { AverageRatingInfo } from '../ratings';
 
 const SingleCard = memo(({ id, mediaType }) => {
-  const { data } = useSingleContentLoader(id, mediaType);
+  const { data, loading, error } = useSingleContentLoader(id, mediaType);
 
-  if (!data) return null;
+  if (error) return null;
 
   const {
     genres,
@@ -22,46 +22,49 @@ const SingleCard = memo(({ id, mediaType }) => {
     vote_count,
   } = data || {};
 
+  console.log('loading', loading);
   return (
     <div className='single-card-wrapper'>
       <div className='single-card'>
-        <div className='single-card-container'>
-          <img
-            className='blur_back single-card-image'
-            src={getBackdrop(backdrop_path)}
-            alt='Single card'
-          />
-          <div className='single-card-info-wrapper'>
-            <div className='single-card-header'>
-              <a href={`${mediaType}/${id}`}>
-                <picture>
-                  <img
-                    className='single-card-poster'
-                    src={getPoster(poster_path)}
-                    alt='Single card poster'
-                  />
-                </picture>
-              </a>
-              <div className='single-card-info-column'>
+        {!loading && (
+          <div className='single-card-container'>
+            <img
+              className='blur_back single-card-image'
+              src={getBackdrop(backdrop_path)}
+              alt='Single card'
+            />
+            <div className='single-card-info-wrapper'>
+              <div className='single-card-header'>
                 <a href={`${mediaType}/${id}`}>
-                  <h2 className='single-card-title'>
-                    {data?.title || data?.name} (
-                    {getYear(release_date || last_air_date)})
-                  </h2>
+                  <picture>
+                    <img
+                      className='single-card-poster'
+                      src={getPoster(poster_path)}
+                      alt='Single card poster'
+                    />
+                  </picture>
                 </a>
-                <AverageRatingInfo
-                  className='average-card-ratings'
-                  vote_average={vote_average}
-                  vote_count={vote_count}
-                />
-                <Genres genres={genres} />
+                <div className='single-card-info-column'>
+                  <a href={`${mediaType}/${id}`}>
+                    <h2 className='single-card-title'>
+                      {data?.title || data?.name} (
+                      {getYear(release_date || last_air_date)})
+                    </h2>
+                  </a>
+                  <AverageRatingInfo
+                    className='average-card-ratings'
+                    vote_average={vote_average}
+                    vote_count={vote_count}
+                  />
+                  <Genres genres={genres} />
+                </div>
               </div>
-            </div>
 
-            <div className='single-card-description'>{overview}</div>
-            <ActionsContainer addToList={false} wlMinimal />
+              <div className='single-card-description'>{overview}</div>
+              <ActionsContainer addToList={false} wlMinimal />
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
