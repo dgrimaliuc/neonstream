@@ -42,11 +42,7 @@ export default function VIDPlayer({ path }) {
             />
           </div>
           <div className={styles['player-container']}>
-            {error && (
-              <div className={styles['player-error']}>
-                {TRY_ANOTHER_SOURCE_MESSAGE}
-              </div>
-            )}
+            {error && <div className={styles['player-error']}>{error}</div>}
 
             {!error && !loading && (
               <Player controls url={stream?.stream || stream} />

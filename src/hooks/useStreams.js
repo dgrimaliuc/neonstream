@@ -2,7 +2,10 @@ import { useEffect, useState } from 'react';
 import { sources } from '../api/streams';
 import { useLoaderData } from 'react-router-dom';
 import { getStreamDuration } from '../api/streams/utils';
-import { TRY_ANOTHER_SOURCE_MESSAGE } from '../data/constants';
+import {
+  COME_LATER_MESSAGE,
+  TRY_ANOTHER_SOURCE_MESSAGE,
+} from '../data/constants';
 import { selectMainTrailer } from '../api';
 import { useCustomRef } from './useCustomRef';
 
@@ -38,11 +41,11 @@ export default function useStreams(content) {
   useEffect(() => {
     async function fetchStream() {
       setLoading(true);
+      setError(null);
       if (
         audioSources.rezka2 &&
         audioSources.rezka2.extract.voice?.length > 0
       ) {
-        setError(null);
         const sources = audioSources.rezka2.extract.voice;
         const voice = sources[selectedStream];
         const foundStream = await audioSources.rezka2.getStream(voice);
@@ -56,8 +59,11 @@ export default function useStreams(content) {
         }
       } else {
         const trailer = selectMainTrailer(data.videos);
-        if (trailer && !loadingRef)
+        if (trailer && !loadingRef) {
           setStream(`https://www.youtube.com/watch?v=${trailer?.key}?rel=0`);
+        } else if (!loadingRef) {
+          setError(COME_LATER_MESSAGE);
+        }
       }
       setLoading(false);
     }
