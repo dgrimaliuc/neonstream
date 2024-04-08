@@ -30,7 +30,7 @@
     "deploy": "npm run build && firebase deploy",
     "channel:create": "npm run build && firebase hosting:channel:create $1 --expires 7d",
     "channel:deploy": "npm run build && firebase hosting:channel:deploy $1 --expires 7d",
-    "channel:delete": "firebase hosting:channel:delete $1",
+    "channel:delete": "firebase hosting:channel:delete $1 --force",
     "echo": "echo $1",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

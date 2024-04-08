@@ -1,8 +1,8 @@
 import './watchlist.css';
 
-import EpisodeCard from '../../components/episode-card/episode-card';
-import BookmarksHeader from '../../components/bookmarks-header/bookmarks-header';
-import BookmarksWrapper from '../../components/bookmarks-wrapper/bookmarks-wrapper';
+import { EpisodeCard } from '../../components/episode-card';
+import { BookmarksHeader } from '../../components/bookmarks-header';
+import { BookmarksWrapper } from '../../components/bookmarks-wrapper';
 
 export default function WatchlistPage() {
   return (

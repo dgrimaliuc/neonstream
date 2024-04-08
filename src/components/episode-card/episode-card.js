@@ -1,6 +1,6 @@
 import classes from './episode-card.module.css';
 
-import PlayableThumbnail from '../playable-thumbnail/playable-thumbnail';
+import { PlayableThumbnail } from '../playable-thumbnail';
 import { getYear } from '../../utils';
 
 export default function EpisodeCard({

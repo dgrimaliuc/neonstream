@@ -1,10 +1,11 @@
-import ActionsContainer from '../actions/actionsContainer';
+import { ActionsContainer } from '../actions';
 import './single-promo-card.css';
 
 export default function SinglePromoCardWrapper({
+  to = '#',
   children,
-  title,
-  description,
+  title = '',
+  description = '',
 }) {
   return (
     <div className='single-promo-card-wrapper'>
@@ -12,7 +13,7 @@ export default function SinglePromoCardWrapper({
         <div className='single-promo-card'>
           <div className='background-images-container'>{children}</div>
           <div className='content-card-info'>
-            <a href='/'>
+            <a href={to}>
               <h2 className='single-show-card-title'>{title}</h2>
             </a>
             <div className='hero-card-description'>{description}</div>

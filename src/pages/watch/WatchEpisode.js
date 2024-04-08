@@ -8,7 +8,7 @@ export async function loadEpisode({ params }) {
   return await getEpisode(params.id, params.season, params.episode);
 }
 
-export default function WatchPage() {
+export default function WatchEpisode() {
   const { id, season, episode } = useParams();
   const { season_number, episode_number, name, overview } = useLoaderData();
   return (
@@ -24,7 +24,7 @@ export default function WatchPage() {
             </a>
             <span>
               <span>
-                4.9 <span className='icon-star-small'></span> (286.9K)
+                4.9 <span className='icon-star-small' /> (286.9K)
               </span>
             </span>
           </div>

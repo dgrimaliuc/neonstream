@@ -2,7 +2,7 @@ import './carousel.css';
 
 import { useEffect, useReducer } from 'react';
 import { popularSeries } from '../../services/content';
-import EpisodeCard from '../episode-card/episode-card';
+import { EpisodeCard } from '../episode-card';
 import Carousel from './carousel';
 
 function reducer(state, action) {

@@ -47,5 +47,9 @@ export function getFilePathOrNull(array, index) {
 }
 
 export function getFilePathReverseOrNull(array, index) {
-  return getFilePathOrNull(array, array.length - index - 1);
+  try {
+    return getFilePathOrNull(array, array.length - index - 1);
+  } catch (e) {
+    return null;
+  }
 }

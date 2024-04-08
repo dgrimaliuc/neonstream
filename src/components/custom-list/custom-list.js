@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import ContextMenu from '../context-menu/context-menu';
+import { ContextMenu } from '../context-menu';
 import './custom-list.css';
 
 export default function CustomList() {

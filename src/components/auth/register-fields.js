@@ -1,12 +1,24 @@
-import './auth-fields.css';
-import { Link } from 'react-router-dom';
-import { useFocused } from '../../../hooks';
+import { useFocused } from '../../hooks';
 
-export default function LoginFields() {
+export default function RegisterField() {
   const [isFocusedEmail, handleFocusEmail, handleBlurEmail] = useFocused();
   const [isFocusedPass, handleFocusPass, handleBlurPass] = useFocused();
+  const [isFocusedName, handleFocusName, handleBlurName] = useFocused();
+
   return (
     <>
+      <div className={`form-group ${isFocusedName ? 'focused' : ''}`}>
+        <label htmlFor='email' className='placeholder'>
+          Username
+        </label>
+        <input
+          type='text'
+          name='name'
+          id='name'
+          onFocus={handleFocusName}
+          onBlur={handleBlurName}
+        />
+      </div>
       <div className={`form-group ${isFocusedEmail ? 'focused' : ''}`}>
         <label htmlFor='email' className='placeholder'>
           Email
@@ -31,9 +43,6 @@ export default function LoginFields() {
           onBlur={handleBlurPass}
         />
       </div>
-      <span className='forgot-password'>
-        <Link to='/forgot-password'>FORGOT PASSWORD?</Link>
-      </span>
     </>
   );
 }
