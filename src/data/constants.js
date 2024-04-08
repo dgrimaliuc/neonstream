@@ -19,3 +19,5 @@ export const UPCOMING_MOVIES = 'upcoming_movies';
 
 export const STORAGE_CONFIG_KEY = 'tmdbConfig';
 export const ESCAPE = 'Escape';
+
+export const TRY_ANOTHER_SOURCE_MESSAGE = 'Please try another audio source.';

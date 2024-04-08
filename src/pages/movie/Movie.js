@@ -15,7 +15,7 @@ export async function loadMovie({ params }) {
 }
 
 export default function MoviePage() {
-  const { imdb_id, runtime } = useLoaderData();
+  const { runtime } = useLoaderData();
 
   return (
     <>
@@ -26,7 +26,7 @@ export default function MoviePage() {
       <HeroContent additional={getPlayTime(runtime)} />
       <section id='player-section' className={styles['movie-media-section']}>
         <h2>Watch</h2>
-        <VIDPlayer path={`movie/${imdb_id}`} />
+        <VIDPlayer />
       </section>
 
       <section>
