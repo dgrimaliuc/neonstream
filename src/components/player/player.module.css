@@ -1,12 +1,12 @@
-:root{
+:root {
   --translations-opacity: 1;
 }
 
-.player-header{
+.player-header {
   position: relative;
 }
 
-.player-wrapper{
+.player-wrapper {
   background-color: #000;
   height: 100%;
 }
@@ -15,7 +15,7 @@
   background-color: #f00;
 } */
 
-.player-error{
+.player-error {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,8 +39,8 @@ iframe {
   outline: none;
 }
 
-.player-container:hover{
-  --translations-opacity: 1;
+.player-wrapper:hover {
+  --translations-opascity: 1;
 }
 
 .translations {
@@ -49,28 +49,22 @@ iframe {
   z-index: 1;
   opacity: var(--translations-opacity);
   padding: 0px 10px 10px 10px;
-  /* visibility: var(--translations-viability); */
-  /* justify-content: center; */
-  /* align-items: flex-start; */
   flex-flow: row wrap;
   margin-top: 15px;
   overflow: hidden;
-  /* overflow-x: auto; */
-  /* scrollbar-width: none; */
   width: 100%;
-  /* height: 100px; */
   gap: 7px;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.5s ease;
 }
 
 .translation.selected {
-  background-color: rgba(108, 225, 145, 0.456);
+  background-color: #5d5d5d;
 }
 
 .translation {
   font-size: 14px;
   color: white;
-  background-color: rgba(112, 112, 112, 0.565);
+  background-color: #2d2d2d;
   /* flex: 1; */
   padding: 5px 10px;
   /* width: 100%; */

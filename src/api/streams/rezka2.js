@@ -1,6 +1,13 @@
 import { getYear } from '../../utils';
 import { createDoc, parseStrDoc, parseDoc } from '../../utils/docUtils';
-import { cleanTitle, containsTitle, parsePlaylist, req } from './utils';
+import {
+  cleanTitle,
+  containsTitle,
+  equalYears,
+  isPartOf,
+  parsePlaylist,
+  req,
+} from './utils';
 
 export class Rezka2 {
   extract = {};
@@ -54,13 +61,15 @@ export class Rezka2 {
       });
       var cards = items;
 
+      console.log(cards);
+
       if (cards.length) {
         if (orig) {
           var tmp = cards.filter((c) => {
             return (
-              c.year === query.search_year &&
+              equalYears(c.year, query.search_year) &&
               (containsTitle(c.orig_title, orig) ||
-                containsTitle(c.title, orig))
+                isPartOf(c.orig_title, orig))
             );
           });
 
@@ -68,14 +77,6 @@ export class Rezka2 {
             cards = tmp;
             is_sure = true;
           }
-        }
-      }
-
-      if (cards.length >= 1 && is_sure) {
-        if (query.search_year && cards[0].year) {
-          is_sure =
-            cards[0].year > query.search_year - 2 &&
-            cards[0].year < query.search_year + 2;
         }
       }
 
@@ -107,7 +108,7 @@ export class Rezka2 {
 
   async #query_search(query) {
     var url = this.#embed() + 'engine/ajax/search.php';
-    var queryData = 'q=' + encodeURIComponent(query.title);
+    var queryData = 'q=' + encodeURIComponent('+' + this.object.imdb_id);
     let response = await req(`${url}?${queryData}`);
 
     response = response.replace(/\n/g, '');

@@ -3,7 +3,6 @@ import Player from './player';
 import { useLoaderData } from 'react-router-dom';
 import useStreams from '../../hooks/useStreams';
 import Translations from './translations';
-import { TRY_ANOTHER_SOURCE_MESSAGE } from '../../data/constants';
 
 export default function VIDPlayer({ path }) {
   const url = `https://vidsrc.to/embed/${path}`;

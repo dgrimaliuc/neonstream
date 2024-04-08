@@ -21,13 +21,40 @@ export function cleanTitle(str) {
   return str.replace(/[\s.,:;’'`!?]+/g, ' ').trim();
 }
 
+export function removePunctuation(str) {
+  return str.replace(/[.,:;"’'`!?]+/g, '');
+}
+
+export function equalYears(year1, year2) {
+  if (!year1 || !year2) {
+    return false;
+  }
+
+  return year1 > year2 - 2 && year1 < year2 + 2;
+}
+
 export function containsTitle(actualTitle, expectedTitle) {
   if (!actualTitle || !expectedTitle) {
     return false;
   }
-  // Remove
+
   console.log(actualTitle, expectedTitle);
   return actualTitle.toLowerCase().includes(expectedTitle.toLowerCase());
+}
+
+export function isPartOf(actualTitle, expectedTitle, threshold = 50) {
+  if (!actualTitle || !expectedTitle) {
+    return false;
+  }
+  console.log(actualTitle, expectedTitle);
+  expectedTitle = removePunctuation(expectedTitle);
+  const validWords = removePunctuation(actualTitle)
+    .split(' ')
+    .filter((word) => expectedTitle.includes(word));
+  const totalExpectedWords = expectedTitle.split(' ').length;
+  const totalValidWords = validWords.length;
+  const percentage = (totalValidWords / totalExpectedWords) * 100;
+  return percentage >= threshold;
 }
 
 export function equalTitle(actualTitle, expectedTitle) {
@@ -36,6 +63,7 @@ export function equalTitle(actualTitle, expectedTitle) {
   }
   return actualTitle.toLowerCase() === expectedTitle.toLowerCase();
 }
+
 
 export function proxyStream(url, name) {
   if (url) {
