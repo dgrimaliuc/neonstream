@@ -38,7 +38,6 @@ export function containsTitle(actualTitle, expectedTitle) {
     return false;
   }
 
-  console.log(actualTitle, expectedTitle);
   return actualTitle.toLowerCase().includes(expectedTitle.toLowerCase());
 }
 
@@ -46,7 +45,7 @@ export function isPartOf(actualTitle, expectedTitle, threshold = 50) {
   if (!actualTitle || !expectedTitle) {
     return false;
   }
-  console.log(actualTitle, expectedTitle);
+
   expectedTitle = removePunctuation(expectedTitle);
   const validWords = removePunctuation(actualTitle)
     .split(' ')
@@ -63,7 +62,6 @@ export function equalTitle(actualTitle, expectedTitle) {
   }
   return actualTitle.toLowerCase() === expectedTitle.toLowerCase();
 }
-
 
 export function proxyStream(url, name) {
   if (url) {
