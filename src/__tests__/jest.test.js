@@ -1,6 +1,6 @@
 import { MovieDb } from 'tmdb-promise';
 import { makeCancelable } from '../utils';
-import { sources } from '../api/streams';
+import { sources } from '../api/stream';
 const apiKey = '13dcd6ddc1a270f0239c5503c49237b3';
 
 let api = new MovieDb({ apiKey });

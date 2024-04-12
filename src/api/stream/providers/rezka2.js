@@ -1,5 +1,5 @@
-import { getYear } from '../../utils';
-import { createDoc, parseStrDoc, parseDoc } from '../../utils/docUtils';
+import { getYear } from '../../../utils';
+import { createDoc, parseStrDoc, parseDoc } from '../../../utils/docUtils';
 import {
   cleanTitle,
   containsTitle,
@@ -7,7 +7,7 @@ import {
   isPartOf,
   parsePlaylist,
   req,
-} from './utils';
+} from '../utils';
 
 export class Rezka2 {
   extract = {};
@@ -61,7 +61,7 @@ export class Rezka2 {
       });
       var cards = items;
 
-      console.log(cards);
+      console.log('Results', cards);
 
       if (cards.length) {
         if (orig) {
@@ -103,6 +103,7 @@ export class Rezka2 {
     };
 
     await this.#query_search(query);
+    console.log('Extract', this.extract);
     return this.extract;
   }
 
@@ -470,12 +471,6 @@ export class Rezka2 {
           file: link,
         };
       });
-      // const tempItems = [];
-      // for (let item of items) {
-      //   const isValidStream = (await getStreamDuration(item.file)) > 600;
-      //   if (isValidStream) tempItems.push(item);
-      // }
-      // items = tempItems;
       items.sort((a, b) => {
         if (b.quality > a.quality) return 1;
         if (b.quality < a.quality) return -1;

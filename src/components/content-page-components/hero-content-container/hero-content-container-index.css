@@ -15,9 +15,16 @@
 /* small-mobile-viewport */
 @media screen and (min-width: 320px) {
   :root {
-    --movie-player-height: 350px;
+    --movie-player-height: 235px;
     --media-card-width: 300px;
     --media-card-height: 169px;
+  }
+}
+
+/* medium-mobile-viewport */
+@media screen and (min-width: 500px) {
+  :root {
+    --movie-player-height: 345px;
   }
 }
 
@@ -32,7 +39,7 @@
 /* tablet-viewport */
 @media screen and (min-width: 834px) {
   :root {
-    --movie-player-height: 500px;
+    --movie-player-height: 475px;
     --media-card-width: 355px;
     --media-card-height: 200px;
   }
@@ -41,7 +48,7 @@
 /* desktop-viewport */
 @media screen and (min-width: 1024px) {
   :root {
-    --movie-player-height: 600px;
+    --movie-player-height: 550px;
     --media-card-width: 433px;
     --media-card-height: 244px;
   }
@@ -51,7 +58,7 @@
 @media screen and (min-width: 1200px) {
   :root {
     --hero-content-section-width: 1150px;
-    --movie-player-height: calc(700px);
+    --movie-player-height: 600px;
     --media-card-width: 533px;
     --media-card-height: 300px;
   }

@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-import { useClasses } from '../../hooks';
-import styles from './player.module.css';
+import { useCallback, useEffect } from 'react';
+import { useClasses } from '../../../hooks';
+import styles from './translations.module.css';
 
 export default function Translation({ selected, index, label, onClick }) {
   const {
@@ -9,15 +9,18 @@ export default function Translation({ selected, index, label, onClick }) {
     setInitial,
   } = useClasses(styles['translation']);
 
+  const isSelected = useCallback(() => index === +selected, [index, selected]);
+
   useEffect(() => {
-    if (index === +selected) {
+    if (isSelected()) {
       addClass(styles.selected);
     } else {
       setInitial();
     }
-  }, [index, selected, addClass, setInitial]);
+  }, [index, selected, addClass, setInitial, isSelected]);
 
   function onClickHandler(e) {
+    if (isSelected()) return;
     onClick(e.target.attributes.getNamedItem('value').value);
   }
 

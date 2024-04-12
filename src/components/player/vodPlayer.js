@@ -2,9 +2,9 @@ import styles from './player.module.css';
 import Player from './player';
 import { useLoaderData } from 'react-router-dom';
 import useStreams from '../../hooks/useStreams';
-import Translations from './translations';
+import { Translations } from './translations';
 
-export default function VIDPlayer({ path }) {
+export default function VODPlayer({ path }) {
   const url = `https://vidsrc.to/embed/${path}`;
 
   const data = useLoaderData();
@@ -44,7 +44,9 @@ export default function VIDPlayer({ path }) {
             {error && <div className={styles['player-error']}>{error}</div>}
 
             {!error && !loading && (
-              <Player controls url={stream?.stream || stream} />
+              <Player controls url={stream?.stream || stream}>
+                <div>{<div>Custom button</div>}</div>
+              </Player>
             )}
           </div>
         </div>

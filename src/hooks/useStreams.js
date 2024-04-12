@@ -1,81 +1,53 @@
-import { useEffect, useState } from 'react';
-import { sources } from '../api/streams';
-import { useLoaderData } from 'react-router-dom';
-import { getStreamDuration } from '../api/streams/utils';
-import {
-  COME_LATER_MESSAGE,
-  TRY_ANOTHER_SOURCE_MESSAGE,
-} from '../data/constants';
-import { selectMainTrailer } from '../api';
-import { useCustomRef } from './useCustomRef';
+import { useEffect } from 'react';
+import { fetchStream, fetchTranslations } from '../api/stream/actions/rezka2';
+import { useStream } from './useStream';
 
 export default function useStreams(content) {
-  const [audioSources, setAudioSources] = useState({});
-  const [selectedStream, setSelectedStream] = useState(0);
-  const [error, setError] = useState(null);
-  const [stream, setStream] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [loadingRef, setLoadingRef] = useCustomRef(loading);
-  const data = useLoaderData();
+  const {
+    audioSources,
+    setAudioSources,
+    stream,
+    setStream,
+    selectedStream,
+    loading,
+    setLoading,
+    error,
+    setError,
+    setSelectedStream,
+    loadingRef,
+    setLoadingState,
+  } = useStream();
 
   useEffect(() => {
-    async function fetcher() {
-      setLoading(true);
-      setLoadingRef(true);
-      if (content) {
-        const src = await sources(content);
-        // rezka sources setup
-        if (src.rezka2) {
-          await src.rezka2.search();
-        }
-        setAudioSources(src);
-        setLoading(false);
-        setLoadingRef(false);
-      }
-    }
     if (!content.episode_number) {
-      fetcher();
+      fetchTranslations({
+        content,
+        setLoadingState,
+        setAudioSources,
+      });
     }
-  }, [content, setLoadingRef]);
+  }, [content, setAudioSources, setLoadingState]);
 
   useEffect(() => {
-    async function fetchStream() {
-      setLoading(true);
-      setError(null);
-      if (
-        audioSources.rezka2 &&
-        audioSources.rezka2.extract.voice?.length > 0
-      ) {
-        const sources = audioSources.rezka2.extract.voice;
-        const voice = sources[selectedStream];
-        const foundStream = await audioSources.rezka2.getStream(voice);
-        if (foundStream) {
-          const duration = await getStreamDuration(foundStream?.stream);
-          if (duration > 600) {
-            setStream(foundStream);
-          } else {
-            setError(TRY_ANOTHER_SOURCE_MESSAGE);
-          }
-        }
-      } else {
-        const trailer = selectMainTrailer(data.videos);
-        if (trailer && !loadingRef) {
-          setStream(`https://www.youtube.com/watch?v=${trailer?.key}?rel=0`);
-        } else if (!loadingRef) {
-          setError(COME_LATER_MESSAGE);
-        }
-      }
-      setLoading(false);
-    }
     if (!content.episode_number) {
-      fetchStream();
+      fetchStream({
+        content,
+        audioSources,
+        selectedStream,
+        loadingRef,
+        setLoading,
+        setError,
+        setStream,
+      });
     }
   }, [
-    audioSources.rezka2,
-    content.episode_number,
-    data.videos,
+    audioSources,
+    content,
     loadingRef,
     selectedStream,
+    setError,
+    setLoading,
+    setStream,
   ]);
 
   return {
