@@ -68,11 +68,11 @@ function Home() {
       <div className={classes['home-container']}>
         <HeroCarousel
           ids={[
-            { id: 1227816, type: MOVIE },
-            { id: 866398, type: MOVIE },
+            { id: 359410, type: MOVIE },
+            { id: 693134, type: MOVIE },
             { id: 60625, type: TV },
-            { id: 438631, type: MOVIE },
-            { id: 71446, type: TV },
+            { id: 940551, type: MOVIE },
+            { id: 60059, type: TV },
           ]}
         />
 
