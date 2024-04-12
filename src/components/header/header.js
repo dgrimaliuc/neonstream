@@ -5,7 +5,7 @@ import './logo.css';
 import './navigation.css';
 import './search-input.css';
 
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export default function Header() {
   return (
@@ -45,14 +45,16 @@ export default function Header() {
             <NavLink to='/browse/movies' role='button'>
               <span>Movies</span>
             </NavLink>
-            <NavLink to='watchlist' role='button'>
+            {/* Uncomment after log in feature implementation */}
+            {/* <NavLink to='watchlist' role='button'>
               <span>Watchlist</span>
-            </NavLink>
+            </NavLink> */}
           </div>
         </div>
         <div className='login flx-1 text'>
-          <Link to='login'>Login</Link>
-          <Link to='register'>Sign Up</Link>
+          {/* Uncomment when will be in progress */}
+          {/* <Link to='login'>Login</Link>
+          <Link to='register'>Sign Up</Link> */}
         </div>
       </header>
       <div className='header-spacer'></div>

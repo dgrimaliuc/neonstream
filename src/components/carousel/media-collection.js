@@ -26,7 +26,7 @@ export default function MediaCollection({ type }) {
           dispatch({ type: 'set_all', payload: { title, content } });
           break;
         default:
-          console.log(type + ' is not a valid type');
+          break;
       }
     };
     fetcher();

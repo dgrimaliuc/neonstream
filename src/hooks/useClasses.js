@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 export function useClasses(...initial) {
   const [classes, setClasses] = useState(initialClasses());
@@ -16,6 +16,7 @@ export function useClasses(...initial) {
   function initialClasses() {
     return initial.join(' ');
   }
+
   function removeClass(className) {
     setClasses(classes.replace(className, '').trim());
   }
@@ -25,4 +26,8 @@ export function useClasses(...initial) {
   }
 
   return { c: classes, addClass, setInitial, removeClass, setClasses };
+}
+
+export function useCombineClasses(...classes) {
+  return useMemo(() => classes.join(' '), [classes]);
 }

@@ -8,6 +8,7 @@ export default function Player({
   style,
   className,
   light,
+  config,
 }) {
   return (
     <ReactPlayer
@@ -20,7 +21,19 @@ export default function Player({
       playing={playing}
       playIcon={playIcon}
       style={style}
+      onError={(e) => {
+        console.error('Error playing', e);
+      }}
       config={{
+        ...config,
+        attributes: {
+          crossOrigin: 'true',
+        },
+        file: {
+          attributes: {
+            controlsList: 'nodownload',
+          },
+        },
         youtube: {
           playerVars: {
             showinfo: 0,

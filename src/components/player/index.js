@@ -1,2 +1,2 @@
 export { default as Player } from './player';
-export { default as VIDPlayer } from './vidPlayer';
+export { default as VODPlayer } from './vodPlayer';

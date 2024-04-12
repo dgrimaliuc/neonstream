@@ -1,7 +1,5 @@
 .description-wrapper {
-  width: 100%;
   max-width: 770px;
-  position: relative;
   color: rgba(232, 232, 232, 0.8);
   font-size: 16px;
   line-height: 25px;
@@ -10,37 +8,10 @@
   text-align: left;
   hyphens: auto;
   cursor: pointer;
-  overflow: hidden;
-  max-height: 90px;
-  transition: max-height 200ms cubic-bezier(0.4, 0, 0.2, 1);
-  padding: 0px 5px;
-}
-
-.description-title {
-  line-height: 2.5rem;
-  font-size: 1.25rem;
-}
-
-.description-wrapper.expanded .description-gradient {
-  mask-image: none;
-}
-
-.description-wrapper.expanded {
-  max-height: 190px;
-}
-
-.description-gradient {
-  cursor: pointer;
-  mask-image: linear-gradient(black -24%, transparent 90%);
+  /* max-height: 90px; */
 }
 
 .description-container {
-  will-change: max-height;
-  overflow: hidden;
   word-wrap: break-word;
-}
-
-.gradient-height {
-  position: relative;
-  padding-bottom: 24px;
+  text-overflow: ellipsis;
 }

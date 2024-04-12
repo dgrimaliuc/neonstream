@@ -19,3 +19,8 @@ export const UPCOMING_MOVIES = 'upcoming_movies';
 
 export const STORAGE_CONFIG_KEY = 'tmdbConfig';
 export const ESCAPE = 'Escape';
+
+export const TRY_ANOTHER_SOURCE_MESSAGE = 'Please try another audio source.';
+export const FAILED_TO_FETCH_MESSAGE = 'Failed to fetch stream.';
+export const COME_LATER_MESSAGE =
+  'Please come latter when the content will be available.';

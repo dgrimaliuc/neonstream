@@ -1,3 +1,3 @@
 export default function Close() {
-  return <i class={`fa-close`} />;
+  return <i className={`fa-close`} />;
 }

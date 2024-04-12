@@ -1,0 +1,56 @@
+:root {
+  --translations-opacity: 1;
+  --translations-background-color: #202020;
+  --translation-flex-basis: 30%;
+  --translation-max-width: 280px;
+}
+
+.translation-wrapper {
+  width: 90%;
+  margin: auto;
+}
+
+.translations {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  opacity: var(--translations-opacity);
+  margin-top: 15px;
+  width: 100%;
+  gap: 7px;
+  transition: opacity 0.5s ease;
+  padding-bottom: 15px;
+}
+
+.translation.selected {
+  background-color: #5d5d5d;
+}
+
+.translation {
+  text-overflow: ellipsis;
+  font-size: 14px;
+  color: rgb(227, 227, 227);
+  background-color: #2d2d2d;
+  flex-basis: var(--translation-flex-basis);
+  padding: 5px 10px;
+  max-width: var(--translation-max-width);
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.expand-button-background {
+  background-color: var(--translations-background-color);
+}
+
+.section-background {
+  background-color: var(--translations-background-color);
+  max-height: 8.4rem;
+}
+
+.section-title {
+  margin: auto;
+  width: fit-content;
+  line-height: 2.5rem;
+  font-size: 1.25rem;
+}

@@ -2,7 +2,7 @@ import './watch.css';
 import upNexImg from '../../assets/One Piece/episodes/one-peace-1-1.jpeg';
 import { getEpisode } from '../../services/content';
 import { useLoaderData, useParams } from 'react-router-dom';
-import { VIDPlayer } from '../../components/player';
+import { VODPlayer } from '../../components/player';
 
 export async function loadEpisode({ params }) {
   return await getEpisode(params.id, params.season, params.episode);
@@ -14,7 +14,7 @@ export default function WatchEpisode() {
   return (
     <>
       <div className='watch-wrapper'>
-        <VIDPlayer path={`tv/${id}/${season}/${episode}`} />
+        <VODPlayer path={`tv/${id}/${season}/${episode}`} />
       </div>
       <div className='watch-info-wrapper'>
         <div className='media-info-container'>
