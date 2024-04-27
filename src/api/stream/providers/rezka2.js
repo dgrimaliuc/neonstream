@@ -13,7 +13,7 @@ import {
 
 export class Rezka2 {
   #headers = {
-    Origin: window.location.origin,
+    // Origin: window.location.origin,
     "bypass-origin-check": "Ignore",
   };
   extract = {};
