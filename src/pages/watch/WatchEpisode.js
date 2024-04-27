@@ -3,6 +3,7 @@ import upNexImg from '../../assets/One Piece/episodes/one-peace-1-1.jpeg';
 import { getEpisode } from '../../services/content';
 import { useLoaderData, useParams } from 'react-router-dom';
 import { VODPlayer } from '../../components/player';
+import useSeries from '../../hooks/useSeries';
 
 export async function loadEpisode({ params }) {
   return await getEpisode(params.id, params.season, params.episode);
@@ -11,16 +12,20 @@ export async function loadEpisode({ params }) {
 export default function WatchEpisode() {
   const { id, season, episode } = useParams();
   const { season_number, episode_number, name, overview } = useLoaderData();
+
+  const { series } = useSeries();
+
   return (
     <>
       <div className='watch-wrapper'>
-        <VODPlayer path={`tv/${id}/${season}/${episode}`} />
+        {/*  path={`tv/${id}/${season}/${episode}`} */}
+        <VODPlayer />
       </div>
       <div className='watch-info-wrapper'>
         <div className='media-info-container'>
           <div className='media-info-header'>
             <a className='content-title-container' href={`/tv/${id}`}>
-              <div className='content-title'>Open Series</div>
+              <div className='content-title'>{series.name}</div>
             </a>
             <span>
               <span>

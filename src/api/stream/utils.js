@@ -1,20 +1,26 @@
 import { parse } from 'hls-parser';
 
 export async function req(url, options) {
+  console.log("req", url, options);
   const response = await fetch(url, options);
+
   if (!response.ok) {
-    throw new Error('Could not fetch data.');
+    throw new Error("Could not fetch data.");
   }
-  const contentType = response.headers.get('content-type');
-  const responseType = contentType.split(';')[0] || 'text';
+  const contentType = response.headers.get("content-type");
+  const responseType = contentType.split(";")[0] || "text";
 
   switch (options?.responseType || responseType) {
     default:
-    case 'text':
+    case "text":
       return await response.text();
-    case 'json':
+    case "json":
       return await response.json();
   }
+}
+
+export function json(body) {
+  return JSON.stringify(body);
 }
 
 export function cleanTitle(str) {

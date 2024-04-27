@@ -8,6 +8,13 @@ let api = new MovieDb({ apiKey });
 const SECONDS = 10000000;
 jest.setTimeout(10 * SECONDS);
 
+test('fetch1 test', async () => {
+  const re = await fetch(
+    'https://petstore-kafka.swagger.io/api/pets?location=Chisinau&status=%21adopted'
+  );
+  console.log(re);
+});
+
 test('rezka parser test', async () => {
   // const tv = await api.tvInfo({ id: 60625 });
   const movie = await api.movieInfo({ id: 359410 });

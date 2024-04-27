@@ -1,8 +1,8 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { loadEpisode, loadTv, loadMovie } from './pages';
-
+import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
-import store from './store';
+import { store, persistor } from './store';
 
 import {
   Authentification,
@@ -19,6 +19,7 @@ import {
   Movie,
   Home,
 } from './pages';
+import React from 'react';
 
 const router = createBrowserRouter([
   {
@@ -61,10 +62,12 @@ const router = createBrowserRouter([
 
 export default function App() {
   return (
-    <>
-      <Provider store={store}>
+    // <React.StrictMode>
+    <Provider store={store}>
+      <PersistGate persistor={persistor} loading={null}>
         <RouterProvider router={router} />
-      </Provider>
-    </>
+      </PersistGate>
+    </Provider>
+    // </React.StrictMode>
   );
 }

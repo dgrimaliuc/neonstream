@@ -29,3 +29,5 @@ yarn-debug.log*∑
 yarn-error.log*
 .vscode/
 .firebase/
+.backend/
+./cloud-workers/**

@@ -41,7 +41,7 @@ function Home() {
       <SinglePromoCardNeon id={1399} mediaType={TV} />,
 
       <BrowseCollection baseId={1029575} type={RECOMMENDED_MOVIES} />,
-      <SingleCard id={866398} mediaType={MOVIE} />,
+      <SingleCard id={1396} mediaType={TV} />,
 
       <BrowseCollection baseId={42009} type={RECOMMENDED_SERIES} />,
       <SinglePromoCardViolet
@@ -51,7 +51,7 @@ function Home() {
       />,
 
       <BrowseCollection type={TOP_RATED_MOVIES} />,
-      <SingleCard id={86831} mediaType={TV} />,
+      <SingleCard id={866398} mediaType={MOVIE} />,
       <BrowseCollection type={AIRING_TODAY_SERIES} />,
     ],
     3

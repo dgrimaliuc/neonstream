@@ -19,7 +19,7 @@ export default function SingleCardContainer({
     <div className='single-card-container'>
       <img
         className='blur_back single-card-image'
-        src={getBackdrop(backdrop_path)}
+        src={getBackdrop(backdrop_path, 2)}
         alt='Single card'
       />
       <div className='single-card-info-wrapper'>

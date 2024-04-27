@@ -9,6 +9,8 @@ import { getPlayTime, smoothScrollTo } from '../../utils';
 import { RECOMMENDED_MOVIES, SIMILAR_MOVIES } from '../../data/constants';
 import { composeProps, imageProps, videosProps } from '../../api';
 import { VODPlayer } from '../../components/player';
+import { useEffect } from 'react';
+import { json } from '../../api/stream';
 
 export async function loadMovie({ params }) {
   return getMovie(params.id, composeProps(videosProps(), imageProps()));
@@ -16,6 +18,21 @@ export async function loadMovie({ params }) {
 
 export default function MoviePage() {
   const { runtime } = useLoaderData();
+  // useEffect(() => {
+  //   const fetchMovie = async () => {
+  //     const re = await fetch('http://localhost:3100/', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: json({
+  //         url: 'https://hdrezka.ag/engine/ajax/search.php?q=%2Btt3359350',
+  //       }),
+  //     });
+  //     console.log(re.headers);
+  //   };
+  //   fetchMovie();
+  // }, []);
 
   return (
     <>
