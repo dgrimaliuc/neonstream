@@ -6,15 +6,13 @@ import { cleanTitle, containsTitle, equalYears, isPartOf, parsePlaylist, req } f
 export class Rezka2 {
   #headers = {
     // Origin: window.location.origin,
-    "bypass-origin-check": "Ignore",
+    // "bypass-origin-check": "Ignore",
   };
   extract = {};
   object = null;
   select_title = "";
   corsProxy = config.proxy.cors;
-  // corsProxy = "http://usecors.nodeapp.workers.dev/";
   proxyResource = config.proxy.cors;
-  // proxyResource = "http://usecors.nodeapp.workers.dev/";
   searchUrl = "https://hdrezka.ag/engine/ajax/search.php";
   choice = {
     season: 0,
@@ -28,9 +26,7 @@ export class Rezka2 {
     this.object = object;
   }
 
-  // #embed = this.host + '/';
   #streamUrl = "https://hdrezka.ag/ajax/get_cdn_series/?t=";
-  // #embedResource = this.proxyResource + this.host + '/';
 
   async #extractSearchItems(links, query) {
     if (links && links.length) {
