@@ -8,7 +8,7 @@ const config = {
   },
   prod: {
     proxy: {
-      cors: "http://usecors.nodeapp.workers.dev/",
+      cors: "https://usecors.nodeapp.workers.dev/",
     },
   },
 };

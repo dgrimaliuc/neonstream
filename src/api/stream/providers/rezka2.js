@@ -1,15 +1,7 @@
 import config from "../../../config";
 import { getYear } from "../../../utils";
 import { createDoc, parseStrDoc, parseDoc } from "../../../utils/docUtils";
-import {
-  cleanTitle,
-  containsTitle,
-  equalYears,
-  isPartOf,
-  json,
-  parsePlaylist,
-  req,
-} from "../utils";
+import { cleanTitle, containsTitle, equalYears, isPartOf, parsePlaylist, req } from "../utils";
 
 export class Rezka2 {
   #headers = {
