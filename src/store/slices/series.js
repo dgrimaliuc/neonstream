@@ -7,7 +7,7 @@ const seriesSlice = createSlice({
     translations: { id: 0 },
   },
   reducers: {
-    setInitial: (state) => {
+    setInitial: state => {
       state.data = {};
       state.translations = {};
     },
@@ -20,6 +20,9 @@ const seriesSlice = createSlice({
     setTranslations: (state, action) => {
       state.translations = action.payload;
       state.translations.id = state.data.id;
+    },
+    removeTranslations: state => {
+      state.translations = {};
     },
   },
 });

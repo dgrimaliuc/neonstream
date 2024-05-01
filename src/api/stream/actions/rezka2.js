@@ -1,10 +1,10 @@
-import { getStreamDuration, sources } from "..";
+import { getStreamDuration, sources } from '..';
 import {
   COME_LATER_MESSAGE,
   FAILED_TO_FETCH_MESSAGE,
   TRY_ANOTHER_SOURCE_MESSAGE,
-} from "../../../data/constants";
-import { selectMainTrailer } from "../../utils";
+} from '../../../data/constants';
+import { selectMainTrailer } from '../../utils';
 
 export async function fetchTranslations(props) {
   const { content, setLoadingState, setAudioSources } = props;
@@ -14,9 +14,7 @@ export async function fetchTranslations(props) {
   if (content) {
     const src = await sources(content);
     // rezka sources setup
-    if (src.rezka2) {
-      await src.rezka2.search();
-    }
+    await src.rezka2.search();
     setAudioSources(src);
     if (setLoadingState) {
       setLoadingState(false);
@@ -32,11 +30,11 @@ export async function fetchStream(props) {
   if (audioSources.rezka2 && audioSources.rezka2.extract.voice?.length > 0) {
     const sources = audioSources.rezka2.extract.voice;
     const voice = sources[selectedStream];
-    const foundStream = await audioSources.rezka2.getStream(voice, () => {
+    const foundStream = await audioSources.rezka2.getStream({ ...content, ...voice }, () => {
       setError(FAILED_TO_FETCH_MESSAGE);
     });
     if (foundStream) {
-      console.log("Stream", foundStream);
+      console.log('Stream', foundStream);
       const duration = await getStreamDuration(foundStream?.stream);
       if (duration > 600) {
         setStream(foundStream);
@@ -45,11 +43,13 @@ export async function fetchStream(props) {
       }
     }
   } else {
-    const trailer = selectMainTrailer(content.videos);
-    if (trailer && !loadingRef) {
-      setStream(`https://www.youtube.com/watch?v=${trailer?.key}?rel=0`);
-    } else if (!loadingRef) {
-      setError(COME_LATER_MESSAGE);
+    if (!content.episode_number) {
+      const trailer = selectMainTrailer(content?.videos);
+      if (trailer && !loadingRef) {
+        setStream(`https://www.youtube.com/watch?v=${trailer?.key}?rel=0`);
+      } else if (!loadingRef) {
+        setError(COME_LATER_MESSAGE);
+      }
     }
   }
   setLoading(false);

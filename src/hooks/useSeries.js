@@ -10,43 +10,37 @@ import { loadTv } from '../pages';
 
 export default function useSeries() {
   const dispatch = useDispatchAction(seriesActions);
-  const data = useSelector(seriesData);
+  const persistData = useSelector(seriesData);
   const translations = useSelector(seriesTranslations);
   const loaderData = useLoaderData();
   const params = useParams();
   const { pathname } = useLocation();
 
+  // Set Series selector data
   useEffect(() => {
     (async function () {
       // if we on tv or episode page
-      if (
-        pathname.match(/\/tv\/\d+(.watch.)?/g).length &&
-        +params.id !== data.id
-      ) {
-        // if current loader data is not equal to store data
-        if (
-          loaderData.id === data.id ||
-          (!data.id && !data.external_ids.imdb_id)
-        )
-          return;
-
-        let result =
-          +params.id === loaderData.id ? loaderData : await loadTv({ params });
-
+      if (pathname.match(/\/tv\/\d+(.watch.)?/g).length && +params.id !== persistData.id) {
+        let result = +params.id === loaderData.id ? loaderData : await loadTv({ params });
         dispatch.setData(result)();
       }
     })();
-  }, [data, dispatch, loaderData, params, pathname]);
+  }, [persistData, dispatch, loaderData, params, pathname]);
 
+  //Set Translations selector data
   useEffect(() => {
-    if (+params.id === data.id && !translations.id !== data.id) {
+    //If persistData contains valid series and translation is not actual
+    if (+params.id === persistData.id && translations.id !== +params.id) {
+      console.log('fetchTranslations');
       fetchTranslations({
-        content: data,
-        // setLoadingState: dispatch.setLoading,
-        setAudioSources: (t) => dispatch.setTranslations(t)(),
+        content: persistData,
+        //setLoadingState: dispatch.setLoading,
+        setAudioSources: t => dispatch.setTranslations(t)(),
       });
+    } else if (translations.id !== +params.id) {
+      dispatch.removeTranslations()();
     }
-  }, [data, dispatch, params.id, translations.id]);
+  }, [persistData, dispatch, params.id, translations.id]);
 
-  return { series: data };
+  return { series: persistData, translations: translations.rezka2 };
 }
