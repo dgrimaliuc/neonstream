@@ -10,7 +10,7 @@ import autoMergeLevel1 from 'redux-persist/es/stateReconciler/autoMergeLevel1';
 import persistReducer from 'redux-persist/es/persistReducer';
 import persistStore from 'redux-persist/es/persistStore';
 
-const debug = true;
+const debug = false;
 
 const persistConfig = {
   key: 'root',

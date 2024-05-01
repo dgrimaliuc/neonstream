@@ -13,6 +13,7 @@ export class Rezka2 {
   searchUrl = 'https://hdrezka.ag/engine/ajax/search.php';
 
   #orig = () => this.object.original_title || this.object.original_name;
+  #alt_title = () => this.object.title || this.object.name;
 
   constructor(object, extract) {
     this.object = object;
@@ -27,6 +28,7 @@ export class Rezka2 {
     if (links && links.length) {
       var is_sure = links.length === 1;
       let orig = this.#orig();
+      let alt_title = this.#alt_title();
       var items = links.map(function (l) {
         var link = parseStrDoc(l, 'a');
         var enty = parseStrDoc(l, '.enty');
@@ -57,11 +59,14 @@ export class Rezka2 {
       console.log('Results', cards);
 
       if (cards.length) {
-        if (orig) {
+        if (orig || alt_title) {
           var tmp = cards.filter(c => {
             return (
               equalYears(c.year, query.search_year) &&
-              (containsTitle(c.orig_title, orig) || isPartOf(c.orig_title, orig))
+              (containsTitle(c.orig_title, orig) ||
+                isPartOf(c.orig_title, orig) ||
+                containsTitle(c.orig_title, alt_title) ||
+                isPartOf(c.orig_title, alt_title))
             );
           });
 
