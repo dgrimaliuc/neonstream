@@ -22,10 +22,8 @@ test('should search for Zoolander', async () => {
   console.log(JSON.stringify(res, null, 2));
 });
 
-test('make cancelable test', (done) => {
-  const cancelablePromise = makeCancelable(
-    new Promise((resolve) => setTimeout(resolve, 200))
-  );
+test('make cancelable test', done => {
+  const cancelablePromise = makeCancelable(new Promise(resolve => setTimeout(resolve, 200)));
   const spy = jest.fn();
 
   cancelablePromise.then(spy);

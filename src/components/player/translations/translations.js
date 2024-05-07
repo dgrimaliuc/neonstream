@@ -2,12 +2,7 @@ import { ExpandContainer } from '../../expand';
 import styles from './translations.module.css';
 import Translation from './translation';
 
-export default function Translations({
-  sources,
-  onClick,
-  selected,
-  maxShown = 6,
-}) {
+export default function Translations({ sources, onClick, selected, maxShown = 6 }) {
   if (!sources || !sources.length) return null;
 
   return (

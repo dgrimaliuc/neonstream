@@ -3,24 +3,30 @@ import upNexImg from '../../assets/One Piece/episodes/one-peace-1-1.jpeg';
 import { getEpisode } from '../../services/content';
 import { useLoaderData, useParams } from 'react-router-dom';
 import { VODPlayer } from '../../components/player';
+import useSeries from '../../hooks/useSeries';
 
 export async function loadEpisode({ params }) {
-  return await getEpisode(params.id, params.season, params.episode);
+  const value = await getEpisode(params.id, params.season, params.episode);
+  return value;
 }
 
 export default function WatchEpisode() {
   const { id, season, episode } = useParams();
   const { season_number, episode_number, name, overview } = useLoaderData();
+
+  const { series } = useSeries();
+
   return (
     <>
       <div className='watch-wrapper'>
-        <VODPlayer path={`tv/${id}/${season}/${episode}`} />
+        {/*  path={`tv/${id}/${season}/${episode}`} */}
+        <VODPlayer />
       </div>
       <div className='watch-info-wrapper'>
         <div className='media-info-container'>
           <div className='media-info-header'>
             <a className='content-title-container' href={`/tv/${id}`}>
-              <div className='content-title'>Open Series</div>
+              <div className='content-title'>{series.name}</div>
             </a>
             <span>
               <span>
@@ -52,16 +58,10 @@ export default function WatchEpisode() {
         </div>
         <div className='up-next-episodes'>
           <div className='up-next-episode'>
-            <a
-              href={`/tv/${id}/watch/${season}/${episode + 1}`}
-              className='container-header'
-            >
+            <a href={`/tv/${id}/watch/${season}/${episode + 1}`} className='container-header'>
               <span className='up-next-header-text'>Next Episode</span>
             </a>
-            <a
-              href={`/tv/${id}/watch/${season}/${episode + 1}`}
-              className='up-next-episode-body'
-            >
+            <a href={`/tv/${id}/watch/${season}/${episode + 1}`} className='up-next-episode-body'>
               <div className='up-next-image-container'>
                 <img className='up-next-image' src={upNexImg} alt='' />
               </div>
@@ -75,16 +75,10 @@ export default function WatchEpisode() {
             </a>
           </div>
           <div className='up-next-episode'>
-            <a
-              href={`/tv/${id}/watch/${season}/${episode - 1}`}
-              className='container-header'
-            >
+            <a href={`/tv/${id}/watch/${season}/${episode - 1}`} className='container-header'>
               <span className='up-next-header-text'>Previous Episode</span>
             </a>
-            <a
-              href={`/tv/${id}/watch/${season}/${episode - 1}`}
-              className='up-next-episode-body'
-            >
+            <a href={`/tv/${id}/watch/${season}/${episode - 1}`} className='up-next-episode-body'>
               <div className='up-next-image-container'>
                 <img className='up-next-image' src={upNexImg} alt='' />
               </div>
