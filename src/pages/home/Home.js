@@ -37,7 +37,7 @@ function Home() {
       <SingleCard id={1396} mediaType={TV} />,
 
       <BrowseCollection baseId={42009} type={RECOMMENDED_SERIES} />,
-      <SinglePromoCardViolet id={969492} mediaType={MOVIE} secondImageIndex={5} />,
+      <SinglePromoCardViolet id={381289} mediaType={MOVIE} secondImageIndex={3} />,
 
       <BrowseCollection type={TOP_RATED_MOVIES} />,
       <SingleCard id={746036} mediaType={MOVIE} />,
@@ -59,14 +59,13 @@ function Home() {
           ids={[
             { id: 359410, type: MOVIE },
             { id: 66732, type: TV },
-            { id: 381289, type: MOVIE },
             { id: 76479, type: TV },
+            { id: 746036, type: MOVIE },
             { id: 1405, type: TV },
             { id: 1059264, type: MOVIE },
             { id: 60059, type: TV },
             { id: 1418, type: TV },
             { id: 1011985, type: MOVIE },
-            { id: 746036, type: MOVIE },
           ]}
         />
 
