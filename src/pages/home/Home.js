@@ -58,10 +58,11 @@ function Home() {
         <HeroCarousel
           ids={[
             { id: 359410, type: MOVIE },
+            { id: 66732, type: TV },
             { id: 381289, type: MOVIE },
+            { id: 76479, type: TV },
             { id: 1405, type: TV },
             { id: 1059264, type: MOVIE },
-            { id: 618588, type: MOVIE },
             { id: 60059, type: TV },
             { id: 1418, type: TV },
             { id: 1011985, type: MOVIE },
