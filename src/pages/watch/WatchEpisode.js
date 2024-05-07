@@ -19,7 +19,6 @@ export default function WatchEpisode() {
   return (
     <>
       <div className='watch-wrapper'>
-        {/*  path={`tv/${id}/${season}/${episode}`} */}
         <VODPlayer />
       </div>
       <div className='watch-info-wrapper'>

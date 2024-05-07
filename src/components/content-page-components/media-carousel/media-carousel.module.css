@@ -79,6 +79,7 @@
 }
 
 .media-card {
+  user-select: none;
   position: relative;
   width: var(--media-card-width);
   height: var(--media-card-height);

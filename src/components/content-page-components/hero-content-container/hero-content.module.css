@@ -56,6 +56,7 @@
 }
 
 .hero-poster {
+  user-select: none;
   max-height: 500px;
 }
 

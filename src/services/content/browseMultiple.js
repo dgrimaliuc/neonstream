@@ -3,9 +3,14 @@ import { mdb } from './index';
 const discoverProps = {
   with_original_language: 'en',
   language: 'en-US',
-  include_adult: false,
+  include_adult: true,
   timeout: 1000,
   page: 1,
+};
+
+const discoverSeriesProps = {
+  without_keywords:
+    '327970,3692,197715,3741,10767,271,15479,158718,167198,10610,194610,4325,242216,5333,13384,234957',
 };
 
 export async function getConfig() {
@@ -17,20 +22,18 @@ export async function browsePopularContent(customProps) {
   const props = { ...discoverProps, ...customProps };
   const res = await Promise.all([
     mdb.moviePopular(props),
-    mdb.tvPopular(props),
+    mdb.discoverTv({ props, ...discoverSeriesProps }),
   ]);
 
-  return res.flatMap((r) => r.results).sort(() => Math.random() - 0.5);
+  return res.flatMap(r => r.results).sort(() => Math.random() - 0.5);
 }
 
 export async function popularMovies(customProps) {
-  const props = { ...discoverProps, ...customProps };
-  return (await mdb.moviePopular(props)).results;
+  return (await mdb.moviePopular({ ...discoverProps, ...customProps })).results;
 }
 
 export async function popularSeries(customProps) {
-  const props = { ...discoverProps, ...customProps };
-  return (await mdb.tvPopular(props)).results;
+  return (await mdb.tvPopular({ ...discoverProps, ...customProps })).results;
 }
 
 export async function recommendedMovies(customProps) {
@@ -39,8 +42,7 @@ export async function recommendedMovies(customProps) {
 }
 
 export async function similarMovies(customProps) {
-  const props = { ...discoverProps, ...customProps };
-  return (await mdb.movieSimilar({ ...discoverProps, ...props })).results;
+  return (await mdb.movieSimilar({ ...discoverProps, ...customProps })).results;
 }
 
 export async function recommendedSeries(customProps) {
@@ -49,31 +51,30 @@ export async function recommendedSeries(customProps) {
 }
 
 export async function similarSeries(customProps) {
-  const props = { ...discoverProps, ...customProps };
-  return (await mdb.tvSimilar({ ...discoverProps, ...props })).results;
+  return (await mdb.tvSimilar({ ...discoverProps, ...customProps })).results;
 }
 
 export async function topRatedMovies(customProps) {
-  const props = { ...discoverProps, ...customProps };
-  return (await mdb.movieTopRated(props)).results;
+  return (await mdb.movieTopRated({ ...discoverProps, ...customProps })).results;
 }
 
 export async function topRatedSeries(customProps) {
-  const props = { ...discoverProps, ...customProps };
-  return (await mdb.tvTopRated(props)).results;
+  return (await mdb.tvTopRated({ ...discoverProps, ...customProps })).results;
 }
 
 export async function nowPlayingMovies(customProps) {
-  const props = { ...discoverProps, ...customProps };
-  return (await mdb.movieNowPlaying(props)).results;
+  return (await mdb.movieNowPlaying({ ...discoverProps, ...customProps })).results;
 }
 
 export async function airingTodaySeries(customProps) {
-  const props = { ...discoverProps, ...customProps };
-  return (await mdb.tvAiringToday(props)).results;
+  return (await mdb.tvAiringToday({ ...discoverProps, ...customProps })).results;
 }
 
 export async function upcomingMovies(customProps) {
-  const props = { ...discoverProps, ...customProps };
-  return (await mdb.upcomingMovies(props)).results;
+  return (await mdb.upcomingMovies({ ...discoverProps, ...customProps })).results;
+}
+
+export async function discoverSeries(customProps) {
+  return (await mdb.discoverTv({ ...discoverProps, ...discoverSeriesProps, ...customProps }))
+    .results;
 }
