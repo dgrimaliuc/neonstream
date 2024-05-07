@@ -4,7 +4,7 @@ import {
   FAILED_TO_FETCH_MESSAGE,
   TRY_ANOTHER_SOURCE_MESSAGE,
 } from '../../../data/constants';
-import { selectMainTrailer } from '../../utils';
+import { selectMainTrailer } from '../../';
 
 export async function fetchTranslations(props) {
   const { content, setLoadingState, setAudioSources } = props;

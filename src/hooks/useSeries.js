@@ -7,6 +7,7 @@ import { useParams, useLocation } from 'react-router-dom';
 import { useLoaderData } from 'react-router-dom';
 import { fetchTranslations } from '../api/stream/actions/rezka2';
 import { loadTv } from '../pages';
+import { isObjEmpty } from '../utils';
 
 export default function useSeries() {
   const dispatch = useDispatchAction(seriesActions);
@@ -15,11 +16,12 @@ export default function useSeries() {
   const loaderData = useLoaderData();
   const params = useParams();
   const { pathname } = useLocation();
+  const season_number = +params.season || 1;
 
-  // Set Series selector data
+  //Set Series selector data
   useEffect(() => {
     (async function () {
-      // if we on tv or episode page
+      //if we on tv or episode page
       if (pathname.match(/\/tv\/\d+(.watch.)?/g).length && +params.id !== persistData.id) {
         let result = +params.id === loaderData.id ? loaderData : await loadTv({ params });
         dispatch.setData(result)();
@@ -29,18 +31,38 @@ export default function useSeries() {
 
   //Set Translations selector data
   useEffect(() => {
-    //If persistData contains valid series and translation is not actual
-    if (+params.id === persistData.id && translations.id !== +params.id) {
-      console.log('fetchTranslations');
+    if (
+      +params.id === persistData.id &&
+      (translations.id !== +params.id ||
+        (season_number !== translations.season_number &&
+          !isObjEmpty(translations.rezka2.extract.seasons)))
+    ) {
+      // dispatch.removeTranslations()();
       fetchTranslations({
-        content: persistData,
+        // May return invalid season as season 0 can be "Specials" not the first season
+        content: { ...persistData, season_number },
         //setLoadingState: dispatch.setLoading,
-        setAudioSources: t => dispatch.setTranslations(t)(),
+        setAudioSources: translations =>
+          // May return invalid season as season 0 can be "Specials" not the first season
+          dispatch.setTranslations({ translations, season_number })(),
       });
-    } else if (translations.id !== +params.id) {
+    } else if (
+      translations.id &&
+      !isObjEmpty(translations.rezka2?.extract?.seasons) &&
+      (translations.id !== +params.id || season_number !== translations.season_number)
+    ) {
       dispatch.removeTranslations()();
     }
-  }, [persistData, dispatch, params.id, translations.id]);
+  }, [
+    dispatch,
+    params.id,
+    params.season,
+    persistData,
+    season_number,
+    translations.id,
+    translations.rezka2,
+    translations.season_number,
+  ]);
 
   return { series: persistData, translations: translations.rezka2 };
 }

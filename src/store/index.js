@@ -10,12 +10,13 @@ import autoMergeLevel1 from 'redux-persist/es/stateReconciler/autoMergeLevel1';
 import persistReducer from 'redux-persist/es/persistReducer';
 import persistStore from 'redux-persist/es/persistStore';
 
-const debug = false;
+const debug = true;
 
 const persistConfig = {
   key: 'root',
   storage,
   stateReconciler: autoMergeLevel1,
+  // blacklist: ['browse', 'series'],
   blacklist: ['browse'],
   whitelists: ['series'],
 };

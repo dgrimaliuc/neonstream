@@ -9,3 +9,8 @@ export function noop() {
 export function printLog(...message) {
   console.log(message.join(', '));
 }
+
+export function isObjEmpty(obj) {
+  return Object.keys(obj ?? {}).length === 0;
+}
+

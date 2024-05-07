@@ -8,6 +8,7 @@
 .translation-wrapper {
   width: 90%;
   margin: auto;
+  max-width: 980px;
 }
 
 .translations {

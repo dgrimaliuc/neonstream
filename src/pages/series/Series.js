@@ -8,11 +8,20 @@ import {
 } from '../../components/content-page-components';
 import { getSeries } from '../../services/content';
 import { RECOMMENDED_SERIES, SIMILAR_SERIES } from '../../data/constants';
-import { composeProps, externalIdsProps, imageProps, videosProps } from '../../api';
+import {
+  composeProps,
+  externalIdsProps,
+  imageProps,
+  translationsProps,
+  videosProps,
+} from '../../api';
 import useSeries from '../../hooks/useSeries';
 
 export async function loadTv({ params }) {
-  return getSeries(params.id, composeProps(videosProps(), imageProps(), externalIdsProps()));
+  return getSeries(
+    params.id,
+    composeProps(videosProps(), imageProps(), externalIdsProps(), translationsProps()),
+  );
 }
 
 export default function SeriesPage() {

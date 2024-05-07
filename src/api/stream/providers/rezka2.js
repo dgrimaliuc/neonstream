@@ -1,7 +1,16 @@
 import config from '../../../config';
-import { getYear } from '../../../utils';
+import { getYear, isObjEmpty } from '../../../utils';
 import { createDoc, parseStrDoc, parseDoc } from '../../../utils/docUtils';
-import { cleanTitle, containsTitle, equalYears, isPartOf, parsePlaylist, req } from '../utils';
+import { getTranslations } from '../../props';
+import {
+  cleanTitle,
+  containsTitle,
+  equalYears,
+  isInYearRange,
+  isPartOf,
+  parsePlaylist,
+  req,
+} from '../utils';
 
 export class Rezka2 {
   #headers = {};
@@ -13,6 +22,10 @@ export class Rezka2 {
   searchUrl = 'https://hdrezka.ag/engine/ajax/search.php';
 
   #orig = () => this.object.original_title || this.object.original_name;
+  #ru_title = () => {
+    const translations = getTranslations(this.object);
+    return translations.data.name || translations.title;
+  };
   #alt_title = () => this.object.title || this.object.name;
 
   constructor(object, extract) {
@@ -24,77 +37,143 @@ export class Rezka2 {
 
   #streamUrl = 'https://hdrezka.ag/ajax/get_cdn_series/?t=';
 
-  async #extractSearchItems(links, query) {
-    if (links && links.length) {
-      var is_sure = links.length === 1;
-      let orig = this.#orig();
-      let alt_title = this.#alt_title();
-      var items = links.map(function (l) {
-        var link = parseStrDoc(l, 'a');
-        var enty = parseStrDoc(l, '.enty');
-        var title = enty.textContent.trim() || '';
-        var alt_titl = link.textContent.trim() || '';
-        var orig_title = '';
-        var year;
-        var found = alt_titl.match(/\((.*,\s*)?\b(\d{4})(\s*-\s*[\d.]*)?\)/);
+  #parseLinks(links) {
+    return links.map(function (l) {
+      var link = parseStrDoc(l, 'a');
+      var enty = parseStrDoc(l, '.enty');
+      var title = enty.textContent.trim() || '';
+      var alt_titl = link.textContent.trim() || '';
+      var orig_title = '';
+      var year;
+      var found = alt_titl.match(/\((.*,\s*)?\b(\d{4})(\s*-\s*[\d.]*)?\)/);
+      var type = link.href.match(/(animation|films|series|cartoons)/g)[0];
 
-        if (found) {
-          if (found[1]) {
-            var found_alt = found[1].match(/^([^а-яА-ЯёЁ]+),/);
-            if (found_alt) orig_title = found_alt[1].trim();
-          }
-
-          year = parseInt(found[2]);
+      if (found) {
+        if (found[1]) {
+          var found_alt = found[1].match(/^([^а-яА-ЯёЁ]+),/);
+          if (found_alt) orig_title = found_alt[1].trim();
         }
 
-        return {
-          year,
-          title,
-          orig_title,
-          link: link.href || '',
-        };
-      });
+        year = parseInt(found[2]);
+      }
+
+      return {
+        year,
+        type,
+        title,
+        orig_title,
+        link: link.href || '',
+        film_id: link.href ? /\/(\d+)/g.exec(link.href)[1] : '',
+      };
+    });
+  }
+
+  combineItems(items1, items2) {
+    const commonArr = items1.concat(items2);
+    const films = commonArr.reduce((a, b) => {
+      a[b.film_id] = b;
+      return a;
+    }, {});
+    return Object.values(films);
+  }
+
+  #extractSearchItems = async (links, query, searchAll) => {
+    if (links && links.length) {
+      let orig = this.#orig();
+      let alt_title = this.#alt_title();
+      let ru_title = this.#ru_title();
+      var items = this.#parseLinks(links);
+
+      const tvSeasons = items
+        .map(c => {
+          return { ...c, season: `${c.title}${c.orig_title}`.match(/(TV|ТВ)-\d+/) };
+        })
+        .filter(it => it.season !== null);
+      const isMultiSeasonSeries = tvSeasons.length > 0;
+
+      if (isMultiSeasonSeries && searchAll) {
+        const maxYear = Math.max(...tvSeasons.map(c => c.year));
+        const lastDate = getYear(this.object.last_air_date || new Date().toISOString());
+        const yearsToSearch = Array.from(
+          { length: lastDate - maxYear },
+          (_, i) => i + maxYear + 1,
+        ).join(' ');
+        const { links } = await this.#base_search(`${query.title} ${yearsToSearch}`);
+        const extraItems = this.#parseLinks(links);
+        items = this.combineItems(items, extraItems);
+        console.log('TV', items);
+      }
       var cards = items;
 
       console.log('Results', cards);
 
-      if (cards.length) {
-        if (orig || alt_title) {
-          var tmp = cards.filter(c => {
-            return (
-              equalYears(c.year, query.search_year) &&
-              (containsTitle(c.orig_title, orig) ||
-                isPartOf(c.orig_title, orig) ||
-                containsTitle(c.orig_title, alt_title) ||
-                isPartOf(c.orig_title, alt_title))
-            );
+      if (cards.length && (orig || alt_title || ru_title)) {
+        cards = cards.filter(c => {
+          return (
+            this.validateYear(c.year, query) &&
+            this.validateType(c.type, query) &&
+            this.validateTitle(c, [ru_title, alt_title, orig])
+          );
+        });
+      }
+      if (cards.length === 1 || !isMultiSeasonSeries) {
+        return await this.getPage(cards[0].link);
+      } else if (cards.length >= 1) {
+        let season_number = this.object.season_number ?? 0;
+        if (this.object.number_of_episodes) {
+          this.extract.seasons = Object.groupBy(cards, c => {
+            const meta = /(TV|ТВ)-(\d+)/g.exec(`${c.orig_title} ${c.title}`);
+            return meta ? meta[2] : null;
           });
+          delete this.extract.seasons.null;
+        }
 
-          if (tmp.length) {
-            cards = tmp;
-            is_sure = true;
+        if (this.object.season_number !== 0 && isObjEmpty(this.extract.seasons)) {
+          return await this.getPage(cards[0].link);
+        } else {
+          if (this.extract.seasons && !this.object.season_number) {
+            season_number = 1;
           }
+          let season_card = this.extract.seasons[season_number];
+          if (!season_card) return; // Season not found
+          return await this.getPage(season_card[0].link);
         }
       }
-
-      if (cards.length >= 1 && is_sure) {
-        return await this.getPage(cards[0].link);
-      }
     }
+  };
+
+  validateYear(found, query) {
+    return this.object.number_of_episodes
+      ? isInYearRange(found, query.first_air_date, query.last_air_date)
+      : equalYears(found, query.search_year);
+  }
+
+  validateType(found, query) {
+    if (query.type === 'tv') {
+      query.type = 'series';
+    } else if (query.type === 'movie') {
+      query.type = 'films';
+    }
+
+    return found === query.type;
+  }
+  validateTitle(c, titles) {
+    return titles.some(title => {
+      return containsTitle(c.orig_title, title) || isPartOf(c.orig_title, title);
+    });
   }
 
   async search() {
-    var search_date =
-      this.object.search_date ||
-      (!this.object.clarification &&
-        (this.object.release_date || this.object.first_air_date || this.object.last_air_date)) ||
-      '0000';
+    var movie_search_date = this.object.search_date || this.object.release_date;
+    var search_year = this.object.media_type === 'tv' ? '' : ' ' + getYear(movie_search_date);
 
-    var search_year = getYear(search_date) || '';
-    this.select_title = this.#orig() + ' ' + search_year;
+    this.select_title = this.#ru_title() + search_year;
     const query = {
       title: cleanTitle(this.select_title),
+      type: this.object.media_sub_type || this.object.media_type,
       search_year,
+      first_air_date: this.object.first_air_date ? getYear(this.object.first_air_date) : null,
+      last_air_date: this.object.last_air_date ? getYear(this.object.last_air_date) : null,
     };
 
     await this.#query_search(query);
@@ -102,10 +181,8 @@ export class Rezka2 {
     return this.extract;
   }
 
-  async #query_search(query) {
-    const id = this.object.imdb_id || this.object.external_ids.imdb_id;
-
-    var queryData = `q=${encodeURIComponent('+' + id)}`;
+  async #base_search(q) {
+    var queryData = `q=${encodeURIComponent(q)}`;
 
     let response = await req(`${this.corsProxy}${this.searchUrl}?${queryData}`, {
       headers: this.#headers,
@@ -113,8 +190,15 @@ export class Rezka2 {
 
     response = response.replace(/\n/g, '');
     let links = response.match(/<li><a href=.*?<\/li>/g);
+    let searchAll = response.match(/<a class="b-search__live_all".*?<\/a>/);
+    return { links, searchAll };
+  }
 
-    await this.#extractSearchItems(links, query);
+  async #query_search(query) {
+    // const id = this.object.imdb_id || this.object.external_ids.imdb_id;
+    const { links, searchAll } = await this.#base_search(query.title);
+
+    await this.#extractSearchItems(links, query, searchAll);
   }
 
   async getPage(url) {
@@ -151,7 +235,7 @@ export class Rezka2 {
     }
 
     if (!devVoiceName) devVoiceName = 'Оригинал';
-    var defVoice, defSeason, defEpisode;
+    var defVoice;
 
     if (cdnSeries) {
       this.extract.is_series = true;
@@ -159,15 +243,6 @@ export class Rezka2 {
       defVoice = {
         name: devVoiceName,
         id: cdnSeries[2],
-      };
-      defSeason = {
-        name: 'Сезон ' + cdnSeries[3],
-        id: cdnSeries[3],
-      };
-      defEpisode = {
-        name: 'Серия ' + cdnSeries[4],
-        season_id: cdnSeries[3],
-        episode_id: cdnSeries[4],
       };
     } else if (cdnMovie) {
       this.extract.film_id = cdnMovie[1];
@@ -204,43 +279,6 @@ export class Rezka2 {
 
     if (!this.extract.voice.length && defVoice) {
       this.extract.voice.push(defVoice);
-    }
-
-    if (this.extract.is_series) {
-      var seasons = str.match(/(<ul id="simple-seasons-tabs".*?<\/ul>)/);
-
-      if (seasons) {
-        var _select = createDoc(seasons[1]);
-
-        parseDoc(_select, '.b-simple_season__item', true).forEach(el => {
-          this.extract.season.push({
-            name: el.textContent,
-            id: el.getAttribute('data-tab_id'),
-          });
-        });
-      }
-
-      if (!this.extract.season.length && defSeason) {
-        this.extract.season.push(defSeason);
-      }
-
-      var episodes = str.match(/(<div id="simple-episodes-tabs".*?<\/div>)/);
-
-      if (episodes) {
-        var _select2 = createDoc(episodes[1]);
-
-        parseDoc(_select2, '.b-simple_episode__item', true).forEach(el => {
-          this.extract.episode.push({
-            name: el.textContent,
-            season_id: el.getAttribute('data-season_id'),
-            episode_id: el.getAttribute('data-episode_id'),
-          });
-        });
-      }
-
-      if (!this.extract.episode.length && defEpisode) {
-        this.extract.episode.push(defEpisode);
-      }
     }
 
     var favs = str.match(/<input type="hidden" id="ctrl_favs" value="([^"]*)"/);

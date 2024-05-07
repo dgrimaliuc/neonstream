@@ -20,7 +20,7 @@
     "react-router-dom": "^6.21.2",
     "react-scripts": "5.0.1",
     "redux-persist": "^6.0.0",
-    "tmdb-promise": "^0.0.8",
+    "tmdb-promise": "0.0.10",
     "tsparticles-preset-stars": "^2.12.0",
     "web-vitals": "^2.1.4"
   },

@@ -1,20 +1,19 @@
 import { parse } from 'hls-parser';
 
 export async function req(url, options) {
-  console.log("req", url, options);
   const response = await fetch(url, options);
 
   if (!response.ok) {
-    throw new Error("Could not fetch data.");
+    throw new Error('Could not fetch data.');
   }
-  const contentType = response.headers.get("content-type");
-  const responseType = contentType.split(";")[0] || "text";
+  const contentType = response.headers.get('content-type');
+  const responseType = contentType.split(';')[0] || 'text';
 
   switch (options?.responseType || responseType) {
     default:
-    case "text":
+    case 'text':
       return await response.text();
-    case "json":
+    case 'json':
       return await response.json();
   }
 }
@@ -39,12 +38,20 @@ export function equalYears(year1, year2) {
   return year1 > year2 - 2 && year1 < year2 + 2;
 }
 
+export function isInYearRange(year, from, to) {
+  if (!year || !from || !to) {
+    return false;
+  }
+
+  return year >= from - 2 && year <= to + 2;
+}
+
 export function containsTitle(actualTitle, expectedTitle) {
   if (!actualTitle || !expectedTitle) {
     return false;
   }
 
-  return actualTitle.toLowerCase().includes(expectedTitle.toLowerCase());
+  return cleanTitle(actualTitle).toLowerCase().includes(cleanTitle(expectedTitle).toLowerCase());
 }
 
 export function isPartOf(actualTitle, expectedTitle, threshold = 50) {
@@ -55,7 +62,7 @@ export function isPartOf(actualTitle, expectedTitle, threshold = 50) {
   expectedTitle = removePunctuation(expectedTitle);
   const validWords = removePunctuation(actualTitle)
     .split(' ')
-    .filter((word) => expectedTitle.includes(word));
+    .filter(word => expectedTitle.includes(word));
   const totalExpectedWords = expectedTitle.split(' ').length;
   const totalValidWords = validWords.length;
   const percentage = (totalValidWords / totalExpectedWords) * 100;
@@ -66,13 +73,12 @@ export function equalTitle(actualTitle, expectedTitle) {
   if (!actualTitle || !expectedTitle) {
     return false;
   }
-  return actualTitle.toLowerCase() === expectedTitle.toLowerCase();
+  return cleanTitle(actualTitle).toLowerCase() === cleanTitle(expectedTitle).toLowerCase();
 }
 
 export function proxyStream(url, name) {
   if (url) {
-    if (name === 'rezka2')
-      return url.replace('//stream.voidboost.cc/', '//prx-ams.ukrtelcdn.net/');
+    if (name === 'rezka2') return url.replace('//stream.voidboost.cc/', '//prx-ams.ukrtelcdn.net/');
     return 'https://apn.watch/' + url;
   }
 
@@ -125,7 +131,7 @@ export function parsePlaylist(str) {
             }
           }
         });
-      pl = pl.filter((item) => item.links.length > 0);
+      pl = pl.filter(item => item.links.length > 0);
     }
   } catch (e) {}
 
@@ -143,11 +149,8 @@ export async function getStreamDuration(url) {
     if (!playlist.segments.length === 1) {
       return playlist.segments[0].duration;
     } else {
-      const partDuration =
-        playlist.targetDuration * playlist.segments.length - 1;
-      return (
-        partDuration + playlist.segments[playlist.segments.length - 1].duration
-      );
+      const partDuration = playlist.targetDuration * playlist.segments.length - 1;
+      return partDuration + playlist.segments[playlist.segments.length - 1].duration;
     }
   } catch (e) {
     return 0;
