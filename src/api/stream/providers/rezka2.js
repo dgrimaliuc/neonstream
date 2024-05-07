@@ -1,5 +1,5 @@
 import config from '../../../config';
-import { getYear, isObjEmpty } from '../../../utils';
+import { getYear } from '../../../utils';
 import { createDoc, parseStrDoc, parseDoc } from '../../../utils/docUtils';
 import { getTranslations } from '../../props';
 import {
