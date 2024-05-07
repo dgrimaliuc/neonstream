@@ -40,7 +40,7 @@ function Home() {
       <SinglePromoCardViolet id={969492} mediaType={MOVIE} secondImageIndex={5} />,
 
       <BrowseCollection type={TOP_RATED_MOVIES} />,
-      <SingleCard id={866398} mediaType={MOVIE} />,
+      <SingleCard id={746036} mediaType={MOVIE} />,
       <BrowseCollection type={AIRING_TODAY_SERIES} />,
     ],
     3,
@@ -58,10 +58,14 @@ function Home() {
         <HeroCarousel
           ids={[
             { id: 359410, type: MOVIE },
-            { id: 693134, type: MOVIE },
-            { id: 60625, type: TV },
-            { id: 940551, type: MOVIE },
+            { id: 381289, type: MOVIE },
+            { id: 1405, type: TV },
+            { id: 1059264, type: MOVIE },
+            { id: 618588, type: MOVIE },
             { id: 60059, type: TV },
+            { id: 1418, type: TV },
+            { id: 1011985, type: MOVIE },
+            { id: 746036, type: MOVIE },
           ]}
         />
 

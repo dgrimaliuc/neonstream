@@ -12,6 +12,7 @@ import {
   composeProps,
   externalIdsProps,
   imageProps,
+  keywordsProps,
   translationsProps,
   videosProps,
 } from '../../api';
@@ -20,7 +21,13 @@ import useSeries from '../../hooks/useSeries';
 export async function loadTv({ params }) {
   return getSeries(
     params.id,
-    composeProps(videosProps(), imageProps(), externalIdsProps(), translationsProps()),
+    composeProps(
+      videosProps(),
+      imageProps(),
+      externalIdsProps(),
+      translationsProps(),
+      keywordsProps(),
+    ),
   );
 }
 

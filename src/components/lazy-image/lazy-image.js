@@ -27,6 +27,7 @@ export default function Image({
         placeholder
       ) : (
         <LazyLoadImage
+          style={{ userSelect: 'none' }}
           src={src}
           placeholder={placeholder}
           className={className}
