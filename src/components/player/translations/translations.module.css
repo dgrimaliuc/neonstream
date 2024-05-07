@@ -9,6 +9,7 @@
   width: 90%;
   margin: auto;
   max-width: 980px;
+  min-height: 85px;
 }
 
 .translations {

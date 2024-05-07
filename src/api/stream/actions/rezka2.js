@@ -1,7 +1,7 @@
 import { getStreamDuration, sources } from '..';
 import {
-  COME_LATER_MESSAGE,
   FAILED_TO_FETCH_MESSAGE,
+  NOT_AVAILABLE,
   TRY_ANOTHER_SOURCE_MESSAGE,
 } from '../../../data/constants';
 import { selectMainTrailer } from '../../';
@@ -48,8 +48,10 @@ export async function fetchStream(props) {
       if (trailer && !loadingRef) {
         setStream(`https://www.youtube.com/watch?v=${trailer?.key}?rel=0`);
       } else if (!loadingRef) {
-        setError(COME_LATER_MESSAGE);
+        setError(NOT_AVAILABLE);
       }
+    } else {
+      setError(NOT_AVAILABLE);
     }
   }
   setLoading(false);

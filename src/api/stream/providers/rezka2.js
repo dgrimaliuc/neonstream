@@ -5,6 +5,7 @@ import { getTranslations } from '../../props';
 import {
   cleanTitle,
   containsTitle,
+  equalTitle,
   equalYears,
   isInYearRange,
   isPartOf,
@@ -15,6 +16,7 @@ import {
 export class Rezka2 {
   #headers = {};
   extract = {};
+  isMultiSeasonSeries = false;
   object = null;
   select_title = '';
   corsProxy = config.proxy.cors;
@@ -24,7 +26,8 @@ export class Rezka2 {
   #orig = () => this.object.original_title || this.object.original_name;
   #ru_title = () => {
     const translations = getTranslations(this.object);
-    return translations.data.name || translations.title;
+    if (!translations) return '';
+    return translations.data.name || translations.data.title;
   };
   #alt_title = () => this.object.title || this.object.name;
 
@@ -89,9 +92,9 @@ export class Rezka2 {
           return { ...c, season: `${c.title}${c.orig_title}`.match(/(TV|ТВ)-\d+/) };
         })
         .filter(it => it.season !== null);
-      const isMultiSeasonSeries = tvSeasons.length > 0;
+      this.isMultiSeasonSeries = tvSeasons.length > 0;
 
-      if (isMultiSeasonSeries && searchAll) {
+      if (this.isMultiSeasonSeries && searchAll) {
         const maxYear = Math.max(...tvSeasons.map(c => c.year));
         const lastDate = getYear(this.object.last_air_date || new Date().toISOString());
         const yearsToSearch = Array.from(
@@ -106,17 +109,25 @@ export class Rezka2 {
       var cards = items;
 
       console.log('Results', cards);
-
-      if (cards.length && (orig || alt_title || ru_title)) {
-        cards = cards.filter(c => {
-          return (
-            this.validateYear(c.year, query) &&
-            this.validateType(c.type, query) &&
-            this.validateTitle(c, [ru_title, alt_title, orig])
-          );
-        });
+      const titles = [ru_title, alt_title, orig].filter(t => t && t.length);
+      cards = cards.filter(c => {
+        return (
+          this.validateYear(c.year, query) &&
+          this.validateType(c.type, query) &&
+          this.validateTitle(c, titles)
+        );
+      });
+      if (cards.length === 0) {
+        return; // Not found any content
       }
-      if (cards.length === 1 || !isMultiSeasonSeries) {
+      if (cards.length > 1 && !this.isMultiSeasonSeries) {
+        let tmp = this.filterByTitle(cards, titles);
+        if (tmp.length) cards = tmp;
+        tmp = this.filterByType(cards, query);
+        if (tmp.length) cards = tmp;
+      }
+
+      if (cards.length === 1 || !this.isMultiSeasonSeries) {
         return await this.getPage(cards[0].link);
       } else if (cards.length >= 1) {
         let season_number = this.object.season_number ?? 0;
@@ -128,7 +139,7 @@ export class Rezka2 {
           delete this.extract.seasons.null;
         }
 
-        if (this.object.season_number !== 0 && isObjEmpty(this.extract.seasons)) {
+        if (this.object.season_number !== 0 && !this.isMultiSeasonSeries) {
           return await this.getPage(cards[0].link);
         } else {
           if (this.extract.seasons && !this.object.season_number) {
@@ -143,9 +154,9 @@ export class Rezka2 {
   };
 
   validateYear(found, query) {
-    return this.object.number_of_episodes
+    return this.object.media_type === 'tv' && this.isMultiSeasonSeries
       ? isInYearRange(found, query.first_air_date, query.last_air_date)
-      : equalYears(found, query.search_year);
+      : equalYears(found, query.search_year || query.first_air_date);
   }
 
   validateType(found, query) {
@@ -157,17 +168,48 @@ export class Rezka2 {
 
     return found === query.type;
   }
-  validateTitle(c, titles) {
+
+  filterByType(cards, query) {
+    if (query.type !== ' animation') return cards;
+    const movieTypeRegex = /film|movie|фильм/i;
+    const validate = (c, negate = false) => {
+      const res = movieTypeRegex.test(`${c.title}${c.orig_title}`.toLowerCase());
+      return negate ? !res : res;
+    };
+    if (this.object.media_type === 'tv') {
+      return cards.filter(c => validate(c, true));
+    } else {
+      return cards.filter(c => validate(c));
+    }
+  }
+  filterByTitle(cards, titles) {
+    return cards.filter(c => this.validateTitle(c, titles, true));
+  }
+  validateTitle(c, titles, equal = false) {
+    const cardTitles = [c.title, c.orig_title];
+    const validateContains = expectedTitle =>
+      cardTitles.some(
+        actual => containsTitle(actual, expectedTitle) || isPartOf(actual, expectedTitle),
+      );
+
+    const validateEquals = expectedTitle =>
+      cardTitles.some(actual => equalTitle(actual, expectedTitle));
+
+    const validation = equal ? validateEquals : validateContains;
+
     return titles.some(title => {
-      return containsTitle(c.orig_title, title) || isPartOf(c.orig_title, title);
+      return validation(title);
     });
   }
 
   async search() {
     var movie_search_date = this.object.search_date || this.object.release_date;
-    var search_year = this.object.media_type === 'tv' ? '' : ' ' + getYear(movie_search_date);
+    var search_year = this.object.media_type === 'tv' ? 0 : getYear(movie_search_date);
 
-    this.select_title = this.#ru_title() + search_year;
+    this.select_title = this.#ru_title() || this.#alt_title() || this.#orig();
+    if (this.object.media_type === 'movie') {
+      this.select_title += ' ' + search_year;
+    }
     const query = {
       title: cleanTitle(this.select_title),
       type: this.object.media_sub_type || this.object.media_type,
@@ -331,7 +373,7 @@ export class Rezka2 {
           element.subtitles = ob.parseSubtitles(json.subtitle);
           return element;
         } else error && error();
-      }
+      } else error && error();
     });
   }
 

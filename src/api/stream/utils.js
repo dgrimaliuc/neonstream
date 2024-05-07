@@ -35,7 +35,7 @@ export function equalYears(year1, year2) {
     return false;
   }
 
-  return year1 > year2 - 2 && year1 < year2 + 2;
+  return year1 >= year2 - 1 && year1 <= year2 + 1;
 }
 
 export function isInYearRange(year, from, to) {
