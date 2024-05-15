@@ -152,7 +152,7 @@
 }
 
 .saturn,
-.saturn-2,
+.moon,
 .hover {
   animation: hover 2s infinite ease-in-out alternate;
 }

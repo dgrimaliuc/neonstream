@@ -1,7 +1,3 @@
-:root {
-  --browse-page-width: 1400px;
-}
-
 .browse-wrapper {
   display: flex;
   flex-direction: column;
@@ -10,7 +6,7 @@
   /* max-width: 83%; */
   padding: 0px 40px 0px 40px;
   margin: auto;
-  width: var(--browse-page-width);
+  width: var(--grid-container-width);
   min-width: 440px;
   min-height: 65vh;
 }
@@ -20,17 +16,6 @@
   flex-flow: row nowrap;
   justify-content: space-between;
   padding-top: 60px;
-}
-
-.content-wrapper {
-  display: flex;
-  flex-flow: row wrap;
-  /* justify-content: space-between; */
-  justify-content: flex-start;
-  gap: 32px;
-  padding: 0px 0px 0px 0px;
-  margin: auto;
-  margin-top: 40px;
 }
 
 .browse-actions button {
@@ -57,48 +42,4 @@
   color: #fff;
   background-color: var(--hover-menu-item-color);
   /* border: 1px solid red; */
-}
-
-@media screen and (max-width: 1380px) {
-  :root {
-    --browse-page-width: 1010px;
-  }
-}
-
-@media screen and (max-width: 1100px) {
-  :root {
-    --browse-page-width: 820px;
-  }
-}
-
-@media screen and (max-width: 810px) {
-  :root {
-    --browse-page-width: 625px;
-  }
-}
-
-@media screen and (max-width: 680) {
-  :root {
-    --browse-page-width: 535px;
-  }
-
-  /* .content-wrapper{
-    justify-content: space-around;
-  } */
-
-  .browse-title {
-    font-size: 1.5rem;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  :root {
-    --browse-page-width: 435px;
-  }
-  .browse-wrapper span {
-    display: none;
-  }
-  .browse-title {
-    font-size: 1.5rem;
-  }
 }

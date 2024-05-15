@@ -8,6 +8,8 @@ export * from './usePagination';
 export * from './useObserver';
 export * from './useQuery';
 export * from './useBrowseLoader';
+export * from './useSearchLoader';
+export * from './useQueryParams';
 export * from './useSingleContentLoader';
 export * from './useTabs';
 export * from './useDebounce';

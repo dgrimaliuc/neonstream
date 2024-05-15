@@ -49,7 +49,7 @@ const BrowseCollection = memo(({ type, baseId }) => {
             title={card.name || card.title}
             poster={card.poster_path}
             date={card.release_date || card.first_air_date}
-            to={`/${card.media_type}/${card.id}`}
+            {...card}
           />
         );
       })}

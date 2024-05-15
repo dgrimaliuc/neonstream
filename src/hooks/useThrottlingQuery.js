@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { makeCancelable } from '../utils';
 import { useThrottling } from '.';
 
@@ -6,13 +6,14 @@ export function useThrottlingQuery(asyncFetch = async () => {}, timeout = 500) {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+  const promise = useRef(makeCancelable());
 
   const fetcher = useThrottling(
-    useCallback(async (promise, asyncFetch, isMounted) => {
+    useCallback(async (asyncFetch, isMounted) => {
       try {
         setLoading(true);
-        promise = makeCancelable(asyncFetch());
-        const result = await promise;
+        promise.current = makeCancelable(asyncFetch());
+        const result = await promise.current;
         if (isMounted) {
           setData(result);
         }
@@ -24,17 +25,16 @@ export function useThrottlingQuery(asyncFetch = async () => {}, timeout = 500) {
         setLoading(false);
       }
     }, []),
-    timeout
+    timeout,
   );
 
   useEffect(() => {
     let isMounted = true;
-    let promise = null;
-    fetcher(promise, asyncFetch, isMounted);
+    fetcher(asyncFetch, isMounted);
 
     return () => {
-      if (promise) {
-        promise.cancel();
+      if (promise.current) {
+        promise.current.cancel();
       }
       isMounted = false;
     };

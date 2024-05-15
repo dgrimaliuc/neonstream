@@ -1,10 +1,8 @@
 import './browse.css';
 
-import BrowseCard from '../../components/browse-card/browse-card';
-
-import { Spinner } from '../../components/spinner';
 import { useBrowseLoader } from '../../hooks/useBrowseLoader';
 import { useInitialScroll } from '../../hooks';
+import { GridContentWrapper } from '../../components/grid-content-wrapper';
 
 export default function Browse({ mode }) {
   const { content, page } = useBrowseLoader(mode);
@@ -25,19 +23,7 @@ export default function Browse({ mode }) {
           </button>
         </div>
       </div>
-      <div className='content-wrapper'>
-        {content.map((card, i) => (
-          <BrowseCard
-            key={i}
-            title={card.title || card.name}
-            poster={card.poster_path}
-            date={card.release_date || card.first_air_date}
-            to={`/${card.media_type}/${card.id}`}
-            {...card}
-          />
-        ))}
-        <Spinner display={page < 500} />
-      </div>
+      <GridContentWrapper content={content} display={page < 500} />
     </div>
   );
 }

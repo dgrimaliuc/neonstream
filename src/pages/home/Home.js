@@ -28,7 +28,7 @@ function Home() {
       <BrowseCollection type={UPCOMING_MOVIES} />,
       <BrowseCollection type={TOP_RATED_SERIES} />,
       <BrowseCollection type={NOW_PLAYING_MOVIES} />,
-      <SinglePromoCardViolet id={792307} mediaType={MOVIE} secondImageIndex={7} />,
+      <SinglePromoCardViolet id={792307} mediaType={MOVIE} secondImageIndex={2} />,
       <BrowseCollection type={POPULAR_SERIES} />,
       <BrowseCollection type={POPULAR_MOVIES} />,
       <SinglePromoCardNeon id={1399} mediaType={TV} />,
@@ -57,8 +57,8 @@ function Home() {
       <div className={classes['home-container']}>
         <HeroCarousel
           ids={[
-            { id: 359410, type: MOVIE },
             { id: 66732, type: TV },
+            { id: 359410, type: MOVIE },
             { id: 76479, type: TV },
             { id: 746036, type: MOVIE },
             { id: 1405, type: TV },

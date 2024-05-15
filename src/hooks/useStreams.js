@@ -63,10 +63,12 @@ export default function useStreams(content) {
       selectedStream,
       loadingRef,
       setLoading,
+      setLoadingState,
       setError,
       setStream,
     });
-  }, [audioSources, content, loadingRef, selectedStream, setError, setLoading, setStream]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [audioSources, content, selectedStream, setError, setLoading, setLoadingState, setStream]);
 
   return {
     audioSources,

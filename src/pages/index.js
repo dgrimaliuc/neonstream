@@ -9,3 +9,4 @@ export * from './movie';
 export * from './series';
 export * from './custom-lists';
 export * from './watch';
+export * from './search';

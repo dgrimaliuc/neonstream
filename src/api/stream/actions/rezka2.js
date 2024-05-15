@@ -23,9 +23,17 @@ export async function fetchTranslations(props) {
 }
 
 export async function fetchStream(props) {
-  const { content, audioSources, selectedStream, loadingRef, setLoading, setError, setStream } =
-    props;
-  setLoading(true);
+  const {
+    content,
+    audioSources,
+    setLoadingState,
+    selectedStream,
+    loadingRef,
+    setLoading,
+    setError,
+    setStream,
+  } = props;
+  setLoadingState(true);
   setError(null);
   if (audioSources.rezka2 && audioSources.rezka2.extract.voice?.length > 0) {
     const sources = audioSources.rezka2.extract.voice;
@@ -33,6 +41,7 @@ export async function fetchStream(props) {
     const foundStream = await audioSources.rezka2.getStream({ ...content, ...voice }, () => {
       setError(FAILED_TO_FETCH_MESSAGE);
     });
+    setLoadingState(false);
     if (foundStream) {
       console.log('Stream', foundStream);
       const duration = await getStreamDuration(foundStream?.stream);
@@ -43,6 +52,7 @@ export async function fetchStream(props) {
       }
     }
   } else {
+    setLoadingState(false);
     if (!content.episode_number) {
       const trailer = selectMainTrailer(content?.videos);
       if (trailer && !loadingRef) {
@@ -50,7 +60,7 @@ export async function fetchStream(props) {
       } else if (!loadingRef) {
         setError(NOT_AVAILABLE);
       }
-    } else {
+    } else if (!loadingRef) {
       setError(NOT_AVAILABLE);
     }
   }

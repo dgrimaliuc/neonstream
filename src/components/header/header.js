@@ -6,6 +6,7 @@ import './navigation.css';
 import './search-input.css';
 
 import { NavLink } from 'react-router-dom';
+import SearchInput from './search-input';
 
 export default function Header() {
   return (
@@ -13,25 +14,14 @@ export default function Header() {
       <header>
         <a className='logo flex-item neonText' href='/'>
           <div>
-            <img src='/./logo.svg' alt='Saturn' />
+            <img className='saturn' src='/./logo.svg' alt='Saturn' />
           </div>
           <div className='text-logo' role='button'>
             Neon
           </div>
         </a>
         <div className='row-wrapper flx-2'>
-          <div className='search'>
-            <div id='cover'>
-              <form method='get' action=''>
-                <div className='tb'>
-                  <div className='td'>
-                    <input type='text' placeholder='Search...' required />
-                  </div>
-                  <div className='search-action'></div>
-                </div>
-              </form>
-            </div>
-          </div>
+          <SearchInput />
           <div className='navigation text'>
             <NavLink to='/' role='button'>
               <span>Home</span>

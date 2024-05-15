@@ -57,10 +57,16 @@ export default function WatchEpisode() {
         </div>
         <div className='up-next-episodes'>
           <div className='up-next-episode'>
-            <a href={`/tv/${id}/watch/${season}/${episode + 1}`} className='container-header'>
+            <a
+              href={`/tv/${id}/watch/${season}/${parseInt(episode) + 1}`}
+              className='container-header'
+            >
               <span className='up-next-header-text'>Next Episode</span>
             </a>
-            <a href={`/tv/${id}/watch/${season}/${episode + 1}`} className='up-next-episode-body'>
+            <a
+              href={`/tv/${id}/watch/${season}/${parseInt(episode) + 1}`}
+              className='up-next-episode-body'
+            >
               <div className='up-next-image-container'>
                 <img className='up-next-image' src={upNexImg} alt='' />
               </div>
@@ -74,10 +80,16 @@ export default function WatchEpisode() {
             </a>
           </div>
           <div className='up-next-episode'>
-            <a href={`/tv/${id}/watch/${season}/${episode - 1}`} className='container-header'>
+            <a
+              href={`/tv/${id}/watch/${season}/${parseInt(episode) - 1}`}
+              className='container-header'
+            >
               <span className='up-next-header-text'>Previous Episode</span>
             </a>
-            <a href={`/tv/${id}/watch/${season}/${episode - 1}`} className='up-next-episode-body'>
+            <a
+              href={`/tv/${id}/watch/${season}/${parseInt(episode) - 1}`}
+              className='up-next-episode-body'
+            >
               <div className='up-next-image-container'>
                 <img className='up-next-image' src={upNexImg} alt='' />
               </div>

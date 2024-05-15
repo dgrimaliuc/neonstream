@@ -3,21 +3,20 @@ import {
   configureStore,
   combineReducers,
 } from '@reduxjs/toolkit';
-import { browse, trailer, series } from './slices';
+import { browse, trailer, series, search } from './slices';
 import storage from 'redux-persist/lib/storage';
 // The autoMergeLevel1 is the default stateReconciler (https://github.com/rt2zz/redux-persist?tab=readme-ov-file#state-reconciler)
 import autoMergeLevel1 from 'redux-persist/es/stateReconciler/autoMergeLevel1';
 import persistReducer from 'redux-persist/es/persistReducer';
 import persistStore from 'redux-persist/es/persistStore';
 
-const debug = true;
+const debug = false;
 
 const persistConfig = {
   key: 'root',
   storage,
   stateReconciler: autoMergeLevel1,
-  // blacklist: ['browse', 'series'],
-  blacklist: ['browse'],
+  blacklist: ['browse', 'search'],
   whitelists: ['series'],
 };
 
@@ -25,6 +24,7 @@ const rootReducer = combineReducers({
   browse,
   trailer,
   series,
+  search,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

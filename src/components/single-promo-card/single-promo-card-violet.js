@@ -3,8 +3,6 @@ import './single-promo-card-violet.css';
 import './single-promo-card.css';
 
 import SinglePromoCardContainer from './single-promo-card-container';
-// import { useImagesLoader, useSingleContentLoader } from '../../hooks';
-// import { useMemo } from 'react';
 
 export default function SinglePromoCardViolet({
   id,

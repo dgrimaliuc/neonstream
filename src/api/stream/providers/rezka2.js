@@ -254,7 +254,7 @@ export class Rezka2 {
    * Get film info
    * @param {String} str
    */
-  extractData(str) {
+  extractData = str => {
     this.extract.voice = [];
     this.extract.season = [];
     this.extract.episode = [];
@@ -302,7 +302,7 @@ export class Rezka2 {
     if (voices) {
       var select = createDoc(voices[1]);
       let extract = this.extract;
-      parseDoc(select, '.b-translator__item', true).forEach(function (el) {
+      parseDoc(select, '.b-translator__item:not(.b-prem_translator)', true).forEach(function (el) {
         var title = (el.title || el.textContent || '').trim();
         parseDoc(el, 'img', true).forEach(innerEl => {
           var lang = (innerEl.title || innerEl.alt || '').trim();
@@ -327,7 +327,7 @@ export class Rezka2 {
     if (favs) this.extract.favs = favs[1];
     var blocked = str.match(/class="b-player__restricted__block_message"/);
     if (blocked) this.extract.blocked = true;
-  }
+  };
 
   async getStream(element, error) {
     var url = this.#streamUrl + Date.now();
@@ -368,10 +368,11 @@ export class Rezka2 {
         }
 
         if (file) {
-          element.stream = file;
-          element.qualitys = quality;
-          element.subtitles = ob.parseSubtitles(json.subtitle);
-          return element;
+          const stream = {};
+          stream.stream = file;
+          stream.qualitys = quality;
+          stream.subtitles = ob.parseSubtitles(json.subtitle);
+          return stream;
         } else error && error();
       } else error && error();
     });
