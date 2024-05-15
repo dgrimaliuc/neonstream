@@ -80,6 +80,17 @@ export class Rezka2 {
     return Object.values(films);
   }
 
+  #groupBy(array, getKey) {
+    return array.reduce((acc, obj) => {
+      const key = getKey(obj);
+      if (!acc[key]) {
+        acc[key] = [];
+      }
+      acc[key].push(obj);
+      return acc;
+    }, {});
+  }
+
   #extractSearchItems = async (links, query, searchAll) => {
     if (links && links.length) {
       let orig = this.#orig();
@@ -132,7 +143,7 @@ export class Rezka2 {
       } else if (cards.length >= 1) {
         let season_number = this.object.season_number ?? 0;
         if (this.object.number_of_episodes) {
-          this.extract.seasons = Object.groupBy(cards, c => {
+          this.extract.seasons = this.#groupBy(cards, c => {
             const meta = /(TV|ТВ)-(\d+)/g.exec(`${c.orig_title} ${c.title}`);
             return meta ? meta[2] : null;
           });
