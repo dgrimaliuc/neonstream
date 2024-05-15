@@ -5,6 +5,10 @@
   gap: 10px;
   min-width: 275px;
   text-align: center;
+  .saturn {
+    width: 55px;
+    height: 55px;
+  }
 }
 
 .neonText {

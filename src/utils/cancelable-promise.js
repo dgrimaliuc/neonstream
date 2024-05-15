@@ -1,14 +1,14 @@
-function makeCancelable(promise) {
+function makeCancelable(promise = new Promise(() => {})) {
   let hasCanceled = false;
 
   const cancelablePromise = new Promise((resolve, reject) => {
     promise
-      .then((result) => {
+      .then(result => {
         if (!hasCanceled) {
           resolve(result);
         }
       })
-      .catch((e) => {
+      .catch(e => {
         if (!hasCanceled) {
           reject(e);
         }

@@ -1,3 +1,4 @@
+import { useNavigateToContent } from '../../hooks';
 import { getBackdrop, getPoster, getYear } from '../../utils';
 import { ActionsContainer } from '../actions';
 import { Genres } from '../genres';
@@ -15,6 +16,8 @@ export default function SingleCardContainer({
   genres,
   overview,
 }) {
+  const to = useNavigateToContent(mediaType, id);
+
   return (
     <div className='single-card-container'>
       <img
@@ -49,7 +52,7 @@ export default function SingleCardContainer({
         </div>
 
         <div className='single-card-description'>{overview}</div>
-        <ActionsContainer addToList={false} wlMinimal />
+        <ActionsContainer to={to} addToList={false} wlMinimal />
       </div>
     </div>
   );

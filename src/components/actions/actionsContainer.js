@@ -1,18 +1,19 @@
+import { useNavigate } from 'react-router-dom';
 import styles from './actions.module.css';
 
-export default function ActionsContainer({
-  addToList = true,
-  wlMinimal = false,
-  onWatchClick,
-}) {
+export default function ActionsContainer({ to, onWatchClick, addToList = true, wlMinimal = false }) {
+  const navigate = useNavigate();
+
+  const onWatchClickDefault = () => {
+    navigate(to);
+  };
+
   return (
     <div className={styles.actions}>
       <div>
-        <button className={styles['watch-now-btn']} onClick={onWatchClick}>
-          {/* <a href={to}> */}
+        <button className={styles['watch-now-btn']} onClick={onWatchClick ?? onWatchClickDefault}>
           <span className='fa-play'></span>
           Watch Now
-          {/* </a> */}
         </button>
       </div>
       {wlMinimal ? (

@@ -9,17 +9,17 @@ const { incrementPage, setInitial, addContent } = browseAllActions;
 
 export function useBrowseLoader(mode) {
   const dispatch = useDispatch();
-  const { page, content } = useSelector((state) => state.browse[mode]);
-
-  const observer = useObserver(
-    { css: '.loader', observeOnMount: false },
-    () => {
-      dispatch(incrementPage({ mode }));
-    }
-  );
+  const { page, content } = useSelector(state => state.browse[mode]);
 
   const { loading, data, error } = useThrottlingQuery(
-    useCallback(async () => await browseActions[mode]({ page }), [mode, page])
+    useCallback(async () => await browseActions[mode]({ page }), [mode, page]),
+  );
+
+  const observer = useObserver(
+    { css: '.loader', observeOnMount: false, disconnectOnObserve: true },
+    () => {
+      dispatch(incrementPage({ mode }));
+    },
   );
 
   useEffect(() => {

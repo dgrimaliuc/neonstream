@@ -1,4 +1,4 @@
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useParams } from 'react-router-dom';
 import { BrowseCollection } from '../../components/carousel';
 
 import {
@@ -17,6 +17,7 @@ import {
   videosProps,
 } from '../../api';
 import useSeries from '../../hooks/useSeries';
+import { useInitialScroll } from '../../hooks';
 
 export async function loadTv({ params }) {
   return getSeries(
@@ -33,12 +34,14 @@ export async function loadTv({ params }) {
 
 export default function SeriesPage() {
   const data = useLoaderData();
+  const { id } = useParams();
   const { number_of_seasons, number_of_episodes, seasons } = data;
   useSeries();
+  useInitialScroll({ timeout: 50 });
 
   return (
     <>
-      <ContentHeader />
+      <ContentHeader to={`/tv/${id}/watch/1/1`} />
       <HeroContent additional={`${number_of_seasons} S - ${number_of_episodes} E`} />
       {seasons.length > 0 && (
         <SeasonsContainer seasonsTotal={number_of_seasons} seasons={seasons} />

@@ -9,6 +9,7 @@ import { getPlayTime, smoothScrollTo } from "../../utils";
 import { RECOMMENDED_MOVIES, SIMILAR_MOVIES } from "../../data/constants";
 import { composeProps, imageProps, translationsProps, videosProps } from '../../api';
 import { VODPlayer } from "../../components/player";
+import { useInitialScroll } from '../../hooks';
 
 export async function loadMovie({ params }) {
   return getMovie(params.id, composeProps(videosProps(), imageProps(), translationsProps()));
@@ -16,15 +17,13 @@ export async function loadMovie({ params }) {
 
 export default function MoviePage() {
   const { runtime } = useLoaderData();
+  useInitialScroll({ timeout: 50 });
 
   return (
     <>
-      <ContentHeader
-        to="#player-section"
-        onWatchClick={smoothScrollTo.bind(null, { id: "player-section" })}
-      />
+      <ContentHeader onWatchClick={smoothScrollTo.bind(null, { id: 'player-section' })} />
       <HeroContent additional={getPlayTime(runtime)} />
-      <section id="player-section" className={styles["movie-media-section"]}>
+      <section id='player-section' className={styles['movie-media-section']}>
         <h2>Watch</h2>
         <VODPlayer />
       </section>

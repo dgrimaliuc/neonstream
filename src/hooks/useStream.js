@@ -10,11 +10,11 @@ export function useStream() {
   const [loadingRef, setLoadingRef] = useCustomRef(loading);
 
   const setLoadingState = useCallback(
-    (isLoading) => {
+    isLoading => {
       setLoading(isLoading);
       setLoadingRef(isLoading);
     },
-    [setLoading, setLoadingRef]
+    [setLoading, setLoadingRef],
   );
 
   return {

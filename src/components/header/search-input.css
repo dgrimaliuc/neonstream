@@ -11,7 +11,8 @@
   display: table-cell;
   vertical-align: middle;
 }
-x .search > input {
+
+.search > input {
   width: 100%;
 }
 
@@ -48,14 +49,6 @@ input[type='text']::placeholder {
   color: #a6b9aff5;
 }
 
-/* .search-button {
-  position: relative;
-  display: block;
-  width: 20px;
-  height: 32px;
-  cursor: pointer;
-} */
-
 input {
-  color: #ddefe1;
+  color: #ffffff;
 }
