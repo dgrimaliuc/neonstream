@@ -1,5 +1,5 @@
 import { memo, useCallback } from 'react';
-import { useSingleContentLoader } from '../../hooks';
+import { useNavigateToContent, useSingleContentLoader } from '../../hooks';
 import { getFilePathReverseOrNull, getPoster } from '../../utils';
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import { AnimatedContainer } from './animated-container';
@@ -20,27 +20,22 @@ const SinglePromoCardContainer = memo(
     imageClassName,
   }) => {
     const { data, loading, error } = useSingleContentLoader(id, mediaType);
+    const to = useNavigateToContent(mediaType, id);
 
     const { img: top } = useRendingImage(
-      useCallback(
-        (setImage) => data && setImage(getPoster(data.poster_path)),
-        [data]
-      )
+      useCallback(setImage => data && setImage(getPoster(data.poster_path)), [data]),
     );
 
     const { img: bottom } = useRendingImage(
       useCallback(
-        (setImage) => {
+        setImage => {
           if (data) {
-            const filePath = getFilePathReverseOrNull(
-              data.images.posters,
-              secondImageIndex
-            );
+            const filePath = getFilePathReverseOrNull(data.images.posters, secondImageIndex);
             setImage(getPoster(filePath));
           }
         },
-        [data, secondImageIndex]
-      )
+        [data, secondImageIndex],
+      ),
     );
 
     // While the data is loading, we don't want to render the component, so set placeholder
@@ -52,6 +47,7 @@ const SinglePromoCardContainer = memo(
           {!loading && (
             <SinglePromoCardWrapper
               to={`/${mediaType}/${id}`}
+              toWatch={to}
               title={data?.title || data?.name}
               description={data?.overview}
             >
@@ -71,7 +67,7 @@ const SinglePromoCardContainer = memo(
         </LazyLoadComponent>
       </>
     );
-  }
+  },
 );
 
 export default SinglePromoCardContainer;

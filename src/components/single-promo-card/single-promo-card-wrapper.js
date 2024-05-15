@@ -2,7 +2,8 @@ import { ActionsContainer } from '../actions';
 import './single-promo-card.css';
 
 export default function SinglePromoCardWrapper({
-  to = '#',
+  to = '/',
+  toWatch,
   children,
   title = '',
   description = '',
@@ -18,7 +19,7 @@ export default function SinglePromoCardWrapper({
             </a>
             <div className='hero-card-description'>{description}</div>
 
-            <ActionsContainer addToList={false} wlMinimal />
+            <ActionsContainer to = {toWatch} addToList={false} wlMinimal />
           </div>
         </div>
       </div>

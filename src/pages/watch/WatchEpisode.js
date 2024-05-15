@@ -4,6 +4,7 @@ import { getEpisode } from '../../services/content';
 import { useLoaderData, useParams } from 'react-router-dom';
 import { VODPlayer } from '../../components/player';
 import useSeries from '../../hooks/useSeries';
+import { useInitialScroll } from '../../hooks';
 
 export async function loadEpisode({ params }) {
   const value = await getEpisode(params.id, params.season, params.episode);
@@ -15,6 +16,7 @@ export default function WatchEpisode() {
   const { season_number, episode_number, name, overview } = useLoaderData();
 
   const { series } = useSeries();
+  useInitialScroll({ timeout: 50 });
 
   return (
     <>
