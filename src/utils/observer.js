@@ -1,5 +1,5 @@
 export class Observer {
-  constructor(findElement, onObserve, disconnectOnObserve = false) {
+  constructor(findElement, onObserve, disconnectOnObserve = false, threshold = 0.5) {
     this.findElement = findElement;
     this.onObserve = onObserve;
     this.observer = new IntersectionObserver(
@@ -13,7 +13,7 @@ export class Observer {
           }
         });
       },
-      { threshold: 0.5 },
+      { threshold },
     );
   }
 

@@ -1,12 +1,15 @@
+import { forwardRef } from 'react';
 import './spinner.css';
 
-export default function Spinner({ display }) {
+const Spinner = forwardRef(({ display }, ref) => {
   if (!display) return null;
   return (
-    <div className='spinner-wrapper'>
+    <div ref={ref} className='spinner-wrapper'>
       <span>
         <div className='loader' />
       </span>
     </div>
   );
-}
+});
+
+export default Spinner;

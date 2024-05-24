@@ -4,7 +4,7 @@ import { Observer } from '../utils/observer';
 import { useThrottling } from './useThrottling';
 
 export function useObserver(
-  { css, observeOnMount = true, disconnectOnObserve = false },
+  { css, ref, observeOnMount = true, disconnectOnObserve = false },
   onObserve,
 ) {
   const throttledOnObserve = useThrottling(
@@ -12,9 +12,10 @@ export function useObserver(
     800,
   );
 
+  const findElement = css ? () => document.querySelector(css) : () => ref.current;
   const observer = useMemo(() => {
-    return new Observer(() => document.querySelector(css), throttledOnObserve, disconnectOnObserve);
-  }, [css]);
+    return new Observer(findElement, throttledOnObserve, disconnectOnObserve);
+  }, [ref]);
 
   useEffect(() => {
     if (observeOnMount) {

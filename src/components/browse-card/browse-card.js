@@ -1,23 +1,33 @@
+import styles from './browse-card.module.css';
+
 import { getPoster, getYear } from '../../utils';
 import Image from '../lazy-image/lazy-image';
-import './browse-card.css';
 
-export default function BrowseCard({ title, poster, date, media_type, id, skipMode = true }) {
+const BrowseCard = ({ title, poster, date, media_type, id, skipMode = true }) => {
   if (skipMode && (!poster || media_type === 'person')) return;
 
   return (
     <div>
-      <div className='browse-card'>
-        <a href={`/${media_type}/${id}`} className='browse-card-body text-decoration-off'>
-          <div className='browse-card-poster'>
-            <div className='browse-card-hover'>
+      <div className={styles['browse-card']}>
+        <a
+          href={`/${media_type}/${id}`}
+          className={`${styles['browse-card-body']} ${styles['text-decoration-off']}`}
+        >
+          <div className={styles['browse-card-poster']}>
+            <div className={styles['browse-card-hover']}>
               <i className='fa-play' />
             </div>
             <picture>
-              <Image className='browse-card-poster' src={getPoster(poster)} alt={title} />
+              <Image
+                className={styles['browse-card-poster']}
+                src={getPoster(poster)}
+                alt={title}
+                placeholderWidth={2}
+                placeholderHeight={3}
+              />
             </picture>
           </div>
-          <div className='browse-card-info'>
+          <div className={styles['browse-card-info']}>
             <p>
               <span>{title}</span> ({getYear(date)})
             </p>
@@ -26,4 +36,6 @@ export default function BrowseCard({ title, poster, date, media_type, id, skipMo
       </div>
     </div>
   );
-}
+};
+
+export default BrowseCard;
