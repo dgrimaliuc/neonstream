@@ -15,26 +15,24 @@ const mediaArray = [
   { title: IMAGES, component: <BackdropCollection />, index: 1 },
 ];
 // Helpers
-const shouldCombineMedia = (videos) =>
+const shouldCombineMedia = videos =>
   !isVideosEmpty(videos) &&
   // TODO replace  with jsonpath
   filterByTypes(videos, TRAILER, TEASER, CLIP).length < 3;
 
-const getMediaObject = (data) => {
+const getMediaObject = data => {
   return {
     [VIDEOS]: { isValid: isVideosEmpty, path: data.videos },
     [IMAGES]: { isValid: isImagesEmpty, path: data.images },
   };
 };
 
-const isVideosEmpty = (videos) =>
+const isVideosEmpty = videos =>
   !videos || filterByTypes(videos, TRAILER, TEASER, CLIP).length === 0; // TODO replace  with jsonpath
-const isImagesEmpty = (images) => !images || images.backdrops.length === 0;
-const isMediaBothEmpty = (data) =>
-  isVideosEmpty(data.videos) && isImagesEmpty(data.images);
+const isImagesEmpty = images => !images || images.backdrops.length === 0;
+const isMediaBothEmpty = data => isVideosEmpty(data.videos) && isImagesEmpty(data.images);
 
-const isOnlyImagesAvailable = (data) =>
-  !isImagesEmpty(data.images) && isVideosEmpty(data.videos);
+const isOnlyImagesAvailable = data => !isImagesEmpty(data.images) && isVideosEmpty(data.videos);
 
 const isMediaEmpty = (title, data) => {
   const map = getMediaObject(data);
@@ -49,7 +47,7 @@ export default function MediaCarousel() {
     null,
     null,
     0,
-    mediaArray.find((media) => !isMediaEmpty(media.title, data))?.index || 0
+    mediaArray.find(media => !isMediaEmpty(media.title, data))?.index || 0,
   );
 
   if (!data || isMediaBothEmpty(data)) {
@@ -60,10 +58,8 @@ export default function MediaCarousel() {
     <>
       <div className={classes['media-collection-wrapper']}>
         <div className={classes['carousel-header']}>
-          {/* <div className={classes['header-container']}> */}
           <h3 className={classes['carousel-title']}>Media</h3>
 
-          {/* </div> */}
           <MediaTabsWrapper
             mediaArray={mediaArray}
             isOnlyImagesAvailable={isOnlyImagesAvailable}

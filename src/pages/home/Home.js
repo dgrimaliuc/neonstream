@@ -21,6 +21,7 @@ import {
   TV,
   UPCOMING_MOVIES,
 } from '../../data/constants';
+import { useRef } from 'react';
 
 function Home() {
   const { chunks, loadIndex, loadMore, isEnd } = useChunks(
@@ -28,7 +29,7 @@ function Home() {
       <BrowseCollection type={UPCOMING_MOVIES} />,
       <BrowseCollection type={TOP_RATED_SERIES} />,
       <BrowseCollection type={NOW_PLAYING_MOVIES} />,
-      <SinglePromoCardViolet id={792307} mediaType={MOVIE} secondImageIndex={2} />,
+      <SinglePromoCardViolet id={792307} mediaType={MOVIE} secondImageIndex={0} />,
       <BrowseCollection type={POPULAR_SERIES} />,
       <BrowseCollection type={POPULAR_MOVIES} />,
       <SinglePromoCardNeon id={1399} mediaType={TV} />,
@@ -48,33 +49,33 @@ function Home() {
 
   useInitialScroll({ timeout: 50 });
 
-  useObserver({ css: '.loader' }, () => {
+  const spinnerRef = useRef(null);
+
+  useObserver({ ref: spinnerRef }, () => {
     sleep(1000).then(() => loadMore());
   });
 
   return (
-    <>
-      <div className={classes['home-container']}>
-        <HeroCarousel
-          ids={[
-            { id: 66732, type: TV },
-            { id: 359410, type: MOVIE },
-            { id: 76479, type: TV },
-            { id: 746036, type: MOVIE },
-            { id: 1405, type: TV },
-            { id: 1059264, type: MOVIE },
-            { id: 60059, type: TV },
-            { id: 1418, type: TV },
-            { id: 1011985, type: MOVIE },
-          ]}
-        />
+    <div className={classes['home-container']}>
+      <HeroCarousel
+        ids={[
+          { id: 66732, type: TV },
+          { id: 359410, type: MOVIE },
+          { id: 76479, type: TV },
+          { id: 746036, type: MOVIE },
+          { id: 1405, type: TV },
+          { id: 1059264, type: MOVIE },
+          { id: 60059, type: TV },
+          { id: 1418, type: TV },
+          { id: 1011985, type: MOVIE },
+        ]}
+      />
 
-        <section className={classes['collections-container']}>
-          {renderArray(chunks, loadIndex)}
-          <Spinner display={!isEnd} />
-        </section>
-      </div>
-    </>
+      <section className={classes['collections-container']}>
+        {renderArray(chunks, loadIndex)}
+        <Spinner display={!isEnd} ref={spinnerRef} />
+      </section>
+    </div>
   );
 }
 

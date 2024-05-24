@@ -1,11 +1,9 @@
 .carousel-wrapper {
   position: relative;
   overflow: hidden;
-  /* background-color: black; */
-  /* width: 90%; */
   height: 360px;
   padding: 0px 5px 0px 5px;
-  margin-left: 60px;
+  margin: 0 40px 0 60px;
 }
 
 .carousel-title {
@@ -29,9 +27,10 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
 }
 
-.cards-section {
+.scrolling-section {
   display: flex;
   flex-flow: row nowrap;
   overflow: auto;
@@ -42,11 +41,11 @@
   scroll-behavior: smooth;
 }
 
-.cards-section::-webkit-scrollbar {
+.scrolling-section::-webkit-scrollbar {
   display: none;
 }
 
-.cards-section .episode-card {
+.scrolling-section .episode-card {
   min-width: 300px;
   /* padding: 0px 0px 0px 0px; */
   background-color: var(--card-background-color);

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { ImagePlaceholder } from '../image-placeholder';
 
@@ -12,13 +12,16 @@ export default function Image({
   const [error, setError] = useState(false);
   const handleError = () => setError(true);
 
-  const placeholder = (
-    <ImagePlaceholder
-      width={placeholderWidth}
-      height={placeholderHeight}
-      shape='image'
-      className={className}
-    />
+  const placeholder = useMemo(
+    () => (
+      <ImagePlaceholder
+        width={placeholderWidth}
+        height={placeholderHeight}
+        shape='image'
+        className={className}
+      />
+    ),
+    [className, placeholderHeight, placeholderWidth],
   );
 
   return (
