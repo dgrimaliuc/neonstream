@@ -1,21 +1,20 @@
+import { useCarouselControls } from '../../hooks';
 import { Controls } from '../controls';
 
-export default function CarouselHeader({
-  title,
-  scrollToLeft,
-  scrollToRight,
-  display,
-  visibilityMap,
-}) {
+export default function CarouselHeader({ display, title, scrollRef, visibilityMap }) {
+  const { scrollToLeft, scrollToRight } = useCarouselControls(scrollRef, visibilityMap);
+
   return (
     <div className='carousel-header'>
-      <h2 className='carousel-title'>{title}</h2>
       {display && (
-        <Controls
-          onLeftClick={scrollToLeft}
-          onRightClick={scrollToRight}
-          visibilityMap={visibilityMap}
-        />
+        <>
+          <h2 className='carousel-title'>{title}</h2>
+          <Controls
+            onLeftClick={scrollToLeft}
+            onRightClick={scrollToRight}
+            visibilityMap={visibilityMap}
+          />
+        </>
       )}
     </div>
   );

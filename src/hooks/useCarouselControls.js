@@ -1,9 +1,11 @@
-export function useCarouselControls(containerRef, refVisibilityMap) {
+import { useMemo } from 'react';
+
+export function useCarouselControls(containerRef, visibilityMap) {
   const container = containerRef.current;
 
+  const firstVisible = useMemo(() => [...visibilityMap].find(entry => entry[1]), [visibilityMap]);
+
   function scrollToRight() {
-    const visibleElements = [...refVisibilityMap.current].filter(entry => entry[1]);
-    const firstVisible = visibleElements[0];
     if (container && firstVisible.length > 0) {
       const element = firstVisible[0];
       const containerWidth = container.offsetWidth;
@@ -18,8 +20,6 @@ export function useCarouselControls(containerRef, refVisibilityMap) {
   }
 
   function scrollToLeft() {
-    const visibleElements = [...refVisibilityMap.current].filter(entry => entry[1]);
-    const firstVisible = visibleElements[0];
     if (container && firstVisible.length > 0) {
       const element = firstVisible[0];
       const elementOffsetLeft = element.offsetLeft;

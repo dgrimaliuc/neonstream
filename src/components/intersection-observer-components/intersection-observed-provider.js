@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
-export default function IntersectionObservedProvider({ root, refVisibilityMap, children }) {
+export default function IntersectionObservedProvider({ root, children }) {
   const [observer, setObserver] = useState(null);
   const [visibilityMap, setVisibilityMap] = useState(new Map());
 
@@ -10,7 +10,7 @@ export default function IntersectionObservedProvider({ root, refVisibilityMap, c
         setVisibilityMap(prevMap => new Map(prevMap).set(el, true));
         observer.observe(el);
       }
-    }, //s
+    },
     [observer],
   );
   const unobserve = useCallback(
@@ -28,12 +28,6 @@ export default function IntersectionObservedProvider({ root, refVisibilityMap, c
     },
     [observer],
   );
-
-  useEffect(() => {
-    if (refVisibilityMap) {
-      refVisibilityMap.current = visibilityMap;
-    }
-  }, [visibilityMap, refVisibilityMap]);
 
   const callback = useCallback(
     entries =>

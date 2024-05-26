@@ -46,25 +46,21 @@ const BrowseCollection = ({ type, baseId }) => {
   }, [data]);
 
   return (
-    <>
-      {
-        <Carousel
-          isLoading={loading}
-          display={state.content.length > 0 && pathname !== '/'}
-          title={state.title}
-        >
-          {state.content.map((card, i) => (
-            <BrowseCard
-              key={i}
-              title={card.name || card.title}
-              poster={card.poster_path}
-              date={card.release_date || card.first_air_date}
-              {...card}
-            />
-          ))}
-        </Carousel>
-      }
-    </>
+    <Carousel
+      isLoading={loading}
+      display={state.content.length > 0 && pathname !== '/'}
+      title={state.title}
+    >
+      {state.content.map((card, i) => (
+        <BrowseCard
+          key={i}
+          title={card.name || card.title}
+          poster={card.poster_path}
+          date={card.release_date || card.first_air_date}
+          {...card}
+        />
+      ))}
+    </Carousel>
   );
 };
 

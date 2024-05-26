@@ -2,15 +2,20 @@ import { useMemo } from 'react';
 import styles from './controls.module.css';
 
 export default function Controls({ onLeftClick, onRightClick, visibilityMap }) {
-  const isLeftActive = useMemo(() => {
-    if (!visibilityMap || visibilityMap.size === 0) return false;
-    return !visibilityMap.get([...visibilityMap.keys()][0]);
+  const isMapInvalid = useMemo(() => {
+    if (!visibilityMap || visibilityMap.size === 0) return true;
   }, [visibilityMap]);
 
+  const isLeftActive = useMemo(() => {
+    if (isMapInvalid) return false;
+    return !visibilityMap.get([...visibilityMap.keys()][0]);
+  }, [isMapInvalid, visibilityMap]);
+
   const isRightActive = useMemo(() => {
-    if (!visibilityMap || visibilityMap.size === 0) return false;
+    if (isMapInvalid) return false;
     return !visibilityMap.get([...visibilityMap.keys()][visibilityMap.size - 1]);
-  }, [visibilityMap]);
+  }, [isMapInvalid, visibilityMap]);
+
   return (
     <div className={styles.controls}>
       <span className={styles.arrow_left} active={`${isLeftActive}`} onClick={onLeftClick}>

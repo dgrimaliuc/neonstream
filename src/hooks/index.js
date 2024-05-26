@@ -6,6 +6,7 @@ export * from './useMediaQuery';
 export * from './useLocalStorage';
 export * from './usePagination';
 export * from './useCarouselControls';
+export * from './useChildrenSize';
 export * from './useBoundingView';
 export * from './useObserver';
 export * from './useQuery';
