@@ -1,15 +1,16 @@
 import { useRef } from 'react';
 import IntersectionObservedProvider from '../intersection-observer-components/intersection-observed-provider';
 
-export default function CarouselContainer({ children }) {
+const CarouselContainer = ({ children }) => {
   const scrollRef = useRef(null);
-  const refVisibilityMap = useRef(null);
 
   return (
-    <IntersectionObservedProvider refVisibilityMap={refVisibilityMap} root={scrollRef.current}>
+    <IntersectionObservedProvider root={scrollRef}>
       {(observe, unobserve, visibilityMap) =>
         children(observe, unobserve, visibilityMap, scrollRef)
       }
     </IntersectionObservedProvider>
   );
-}
+};
+
+export default CarouselContainer;

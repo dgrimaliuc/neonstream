@@ -1,14 +1,14 @@
-import styles from "./movie.module.css";
-import { useLoaderData } from "react-router-dom";
-import { BrowseCollection } from "../../components/carousel";
+import styles from './movie.module.css';
+import { useLoaderData } from 'react-router-dom';
+import { BrowseCollection } from '../../components/carousel';
 
-import { ContentHeader } from "../../components/content-page-components";
-import { HeroContent } from "../../components/content-page-components/hero-content-container";
-import { getMovie } from "../../services/content";
-import { getPlayTime, smoothScrollTo } from "../../utils";
-import { RECOMMENDED_MOVIES, SIMILAR_MOVIES } from "../../data/constants";
+import { ContentHeader } from '../../components/content-page-components';
+import { HeroContent } from '../../components/content-page-components/hero-content-container';
+import { getMovie } from '../../services/content';
+import { getPlayTime, smoothScrollTo } from '../../utils';
+import { RECOMMENDED_MOVIES, SIMILAR_MOVIES } from '../../data/constants';
 import { composeProps, imageProps, translationsProps, videosProps } from '../../api';
-import { VODPlayer } from "../../components/player";
+import { VODPlayer } from '../../components/player';
 import { useInitialScroll } from '../../hooks';
 
 export async function loadMovie({ params }) {

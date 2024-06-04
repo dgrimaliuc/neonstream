@@ -1,6 +1,5 @@
 import './carousel.css';
 
-import { useChildrenSize } from '../../hooks';
 import { Children, useEffect, useState } from 'react';
 import IntersectionObservedItem from '../intersection-observer-components/intersection-observed-item';
 import Scroll from './scroll';
@@ -10,21 +9,22 @@ import { useLocation } from 'react-router-dom';
 
 const Carousel = ({ isLoading, children, title }) => {
   const { pathname } = useLocation();
-  const { isEmpty } = useChildrenSize(isLoading, children);
 
   const [styles, setStyles] = useState({});
 
   useEffect(() => {
-    console.log(pathname);
-
     if (pathname.match(/\/(tv|movie)\/\d+/g)) {
       setStyles({ height: '100%' });
     }
   }, [pathname]);
 
+  if (!isLoading && children.length === 0) {
+    return null;
+  }
+
   return (
     <>
-      {!isEmpty && (
+      {
         <CarouselContainer>
           {(observe, unobserve, visibilityMap, scrollRef) => (
             <div className='carousel-wrapper' style={styles}>
@@ -49,7 +49,7 @@ const Carousel = ({ isLoading, children, title }) => {
             </div>
           )}
         </CarouselContainer>
-      )}
+      }
     </>
   );
 };

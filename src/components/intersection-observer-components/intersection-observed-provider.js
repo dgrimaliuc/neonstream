@@ -13,6 +13,7 @@ export default function IntersectionObservedProvider({ root, children }) {
     },
     [observer],
   );
+
   const unobserve = useCallback(
     el => {
       if (observer) {
@@ -35,7 +36,6 @@ export default function IntersectionObservedProvider({ root, children }) {
         const map = new Map(prevMap);
 
         entries.forEach(({ target, isIntersecting }) => map.set(target, isIntersecting));
-
         return map;
       }),
     [],
@@ -44,9 +44,9 @@ export default function IntersectionObservedProvider({ root, children }) {
   useEffect(() => {
     let newObserver;
 
-    if (root) {
+    if (root.current) {
       newObserver = new IntersectionObserver(callback, {
-        root,
+        root: root.current,
         rootMargin: '0px -1px',
         threshold: 0.5,
       });

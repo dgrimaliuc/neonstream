@@ -8,7 +8,9 @@ export default function IntersectionObservedItem({ children, observe, unobserve,
     if (current) {
       observe(current);
     }
-    return () => unobserve(current);
+    return () => {
+      unobserve(current);
+    };
   }, [observe, unobserve]);
 
   const isVisible =
