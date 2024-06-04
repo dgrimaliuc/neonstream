@@ -9,7 +9,6 @@
 .carousel-title {
   text-transform: uppercase;
   white-space: nowrap;
-  /* overflow: hidden; */
   text-overflow: ellipsis;
   color: white;
   opacity: 0.8;
@@ -47,6 +46,5 @@
 
 .scrolling-section .episode-card {
   min-width: 300px;
-  /* padding: 0px 0px 0px 0px; */
   background-color: var(--card-background-color);
 }

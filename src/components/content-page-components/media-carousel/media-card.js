@@ -1,9 +1,12 @@
+import { forwardRef } from 'react';
 import classes from './media-carousel.module.css';
 
-export default function MediaCard({ children }) {
+const MediaCard = forwardRef(({ children }, ref) => {
   return (
-    <div>
+    <div ref={ref}>
       <div className={classes['media-card']}>{children}</div>
     </div>
   );
-}
+});
+
+export default MediaCard;

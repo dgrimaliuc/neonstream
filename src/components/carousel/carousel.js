@@ -1,60 +1,57 @@
 import './carousel.css';
 
-import { useCarouselControls } from '../../hooks';
-import { Children, useEffect, useMemo, useRef, useState } from 'react';
-import IntersectionObservedProvider from '../intersection-observer-components/intersection-observed-provider';
+import { Children, useEffect, useState } from 'react';
 import IntersectionObservedItem from '../intersection-observer-components/intersection-observed-item';
 import Scroll from './scroll';
 import CarouselHeader from './carousel-header';
+import { CarouselContainer } from '../carousel-container';
+import { useLocation } from 'react-router-dom';
 
 const Carousel = ({ isLoading, children, title }) => {
-  const scrollRef = useRef(null);
-  const refVisibilityMap = useRef(null);
-  const { scrollToLeft, scrollToRight } = useCarouselControls(scrollRef, refVisibilityMap);
-  const [isEmpty, setIsEmpty] = useState(false);
+  const { pathname } = useLocation();
 
-  const content = useMemo(
-    () => (
-      <IntersectionObservedProvider refVisibilityMap={refVisibilityMap} root={scrollRef.current}>
-        {(observe, unobserve, visibilityMap) => (
-          <div className='carousel-wrapper'>
-            <CarouselHeader
-              title={title}
-              scrollToLeft={scrollToLeft}
-              scrollToRight={scrollToRight}
-              display={children.length > 0}
-              visibilityMap={visibilityMap}
-            />
-            <Scroll ref={scrollRef}>
-              {Children.map(children, (child, i) => (
-                <IntersectionObservedItem
-                  key={i}
-                  observe={observe}
-                  unobserve={unobserve}
-                  visibilityMap={visibilityMap}
-                >
-                  {ref => <div ref={ref}>{child}</div>}
-                </IntersectionObservedItem>
-              ))}
-            </Scroll>
-          </div>
-        )}
-      </IntersectionObservedProvider>
-    ),
-    [children, scrollToLeft, scrollToRight, title],
-  );
+  const [styles, setStyles] = useState({});
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (!isLoading && children.length === 0) {
-        setIsEmpty(true);
+    if (pathname.match(/\/(tv|movie)\/\d+/g)) {
+      setStyles({ height: '100%' });
+    }
+  }, [pathname]);
+
+  if (!isLoading && children.length === 0) {
+    return null;
+  }
+
+  return (
+    <>
+      {
+        <CarouselContainer>
+          {(observe, unobserve, visibilityMap, scrollRef) => (
+            <div className='carousel-wrapper' style={styles}>
+              <CarouselHeader
+                display={children.length > 0}
+                title={title}
+                visibilityMap={visibilityMap}
+                scrollRef={scrollRef}
+              />
+              <Scroll ref={scrollRef}>
+                {Children.map(children, (child, i) => (
+                  <IntersectionObservedItem
+                    key={i}
+                    observe={observe}
+                    unobserve={unobserve}
+                    visibilityMap={visibilityMap}
+                  >
+                    {ref => <div ref={ref}>{child}</div>}
+                  </IntersectionObservedItem>
+                ))}
+              </Scroll>
+            </div>
+          )}
+        </CarouselContainer>
       }
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, [children, isLoading]);
-
-  return <>{isEmpty ? null : content}</>;
+    </>
+  );
 };
 
 export default Carousel;

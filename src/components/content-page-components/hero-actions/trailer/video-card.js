@@ -1,10 +1,11 @@
 import classes from './trailer.module.css';
 import { CirclePlay } from '../../../icons';
 import { Player } from '../../../player';
+import { forwardRef } from 'react';
 
-export default function VideoCard({ video, onClick }) {
+const VideoCard = forwardRef(({ video, onClick }, ref) => {
   return (
-    <div className={classes['trailer-card-wrapper']} onClick={onClick}>
+    <div ref={ref} className={classes['trailer-card-wrapper']} onClick={onClick}>
       <Player
         className={classes['non-interactive-card']}
         url={`https://www.youtube.com/watch?v=${video.key}`}
@@ -15,4 +16,6 @@ export default function VideoCard({ video, onClick }) {
       />
     </div>
   );
-}
+});
+
+export default VideoCard;
