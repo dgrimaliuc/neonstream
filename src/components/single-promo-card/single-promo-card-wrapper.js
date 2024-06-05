@@ -7,6 +7,7 @@ export default function SinglePromoCardWrapper({
   children,
   title = '',
   description = '',
+  data,
 }) {
   return (
     <div className='single-promo-card-wrapper'>
@@ -19,7 +20,7 @@ export default function SinglePromoCardWrapper({
             </a>
             <div className='hero-card-description'>{description}</div>
 
-            <ActionsContainer to = {toWatch} addToList={false} wlMinimal />
+            <ActionsContainer to={toWatch} addToList={false} data={data} />
           </div>
         </div>
       </div>

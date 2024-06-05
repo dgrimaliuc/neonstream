@@ -36,9 +36,9 @@ export default function Header() {
               <span>Movies</span>
             </NavLink>
             {/* Uncomment after log in feature implementation */}
-            {/* <NavLink to='watchlist' role='button'>
+            <NavLink to='watchlist' role='button'>
               <span>Watchlist</span>
-            </NavLink> */}
+            </NavLink>
           </div>
         </div>
         <div className='login flx-1 text'>

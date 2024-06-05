@@ -15,6 +15,7 @@ export default function SingleCardContainer({
   vote_count,
   genres,
   overview,
+  data,
 }) {
   const to = useNavigateToContent(mediaType, id);
 
@@ -52,7 +53,7 @@ export default function SingleCardContainer({
         </div>
 
         <div className='single-card-description'>{overview}</div>
-        <ActionsContainer to={to} addToList={false} wlMinimal />
+        <ActionsContainer to={to} addToList={false} data={data} />
       </div>
     </div>
   );

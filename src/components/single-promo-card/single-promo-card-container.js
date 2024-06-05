@@ -46,10 +46,13 @@ const SinglePromoCardContainer = memo(
         <LazyLoadComponent>
           {!loading && (
             <SinglePromoCardWrapper
+              id={id}
+              mediaType={mediaType}
               to={`/${mediaType}/${id}`}
               toWatch={to}
               title={data?.title || data?.name}
               description={data?.overview}
+              data={data}
             >
               <AnimatedContainer
                 topClassName={animatedTopClassName}

@@ -1,18 +1,15 @@
 import './custom-lists.css';
 
-import { CustomList } from '../../components/custom-list';
-import { BookmarksHeader } from '../../components/bookmarks-header';
+import { BookmarksTabs } from '../../components/bookmarks-tabs';
 import { BookmarksWrapper } from '../../components/bookmarks-wrapper';
+import { BookmarksEmptyContainer } from '../../components/bookmarks-empty-container';
 
 export default function CustomListsPage() {
   return (
     <BookmarksWrapper>
-      <BookmarksHeader />
-      <div className='custom-lists-box'>
-        {Array.from({ length: 15 }).map((_, i) => (
-          <CustomList key={i} />
-        ))}
-      </div>
+      <BookmarksTabs />
+      <div className='custom-lists-box'>{/* <CustomList/> */}</div>
+      <BookmarksEmptyContainer />
     </BookmarksWrapper>
   );
 }

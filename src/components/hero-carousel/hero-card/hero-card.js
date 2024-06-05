@@ -46,7 +46,7 @@ export default function HeroCard({ active, id, mediaType }) {
           <div className={classes.description}>
             <p>{data.overview}</p>
           </div>
-          <ActionsContainer to={to} addToList={false} />
+          <ActionsContainer to={to} addToList={false} data={data} />
         </div>
       </div>
     </div>
