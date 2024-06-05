@@ -71,21 +71,15 @@
   font-size: 18px;
   font-weight: 700;
   color: white;
-  /* margin-bottom: 8px; */
   display: inline-block;
   width: 100%;
-  /* display: inline-block; */
-  /* margin-right: 5px; */
 }
 
 .episode-title {
   color: rgba(220, 220, 220, 0.891);
   font-size: 15px;
-  /* padding: 5px 10px 5px 5px; */
   line-height: 18px;
   display: inline-block;
-
   max-height: 85px;
   overflow: hidden;
-  /* margin-left: 10px; */
 }

@@ -52,6 +52,7 @@ const SinglePromoCardContainer = memo(
               toWatch={to}
               title={data?.title || data?.name}
               description={data?.overview}
+              data={data}
             >
               <AnimatedContainer
                 topClassName={animatedTopClassName}

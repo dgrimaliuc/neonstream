@@ -20,6 +20,7 @@ const SingleCard = memo(({ id, mediaType }) => {
             title={data?.title || data?.name}
             year={release_date || last_air_date}
             mediaType={mediaType}
+            data={data}
           />
         )}
       </div>

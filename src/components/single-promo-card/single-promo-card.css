@@ -8,14 +8,12 @@
   height: 450px;
   display: block;
   background-color: var(--single-card-background);
-  /* background-color: #24c084; */
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;
 }
 
-/* .single-card-wrapper::after, */
 .single-promo-card-wrapper::after {
   position: absolute;
   content: '';
@@ -26,11 +24,7 @@
   right: 0;
   top: 0;
   z-index: 0;
-  background: linear-gradient(
-      to bottom,
-      #0000 min(40vh, 50%),
-      var(--main-background-color) 100%
-    ),
+  background: linear-gradient(to bottom, #0000 min(40vh, 50%), var(--main-background-color) 100%),
     linear-gradient(to var(--cr-end-direction), #000c 0, #0009 30%, #0000 70%);
 }
 
@@ -42,9 +36,7 @@
 .single-promo-card-container {
   position: relative;
   padding: 0px 7px 0px 7px;
-  /* border: solid red; */
   width: 900px;
-  /* max-width: 800px; */
   height: 100%;
   display: flex;
   flex-flow: column nowrap;
@@ -53,7 +45,6 @@
 }
 
 .single-promo-card {
-  /* border: solid blue; */
   position: relative;
   width: 100%;
   height: 350px;
@@ -69,7 +60,6 @@
   height: 100%;
   width: 430px;
   z-index: 0;
-  /* max-width: ; */
 }
 
 .space-box {
@@ -100,9 +90,6 @@
   min-width: 424px;
   gap: 8px;
 }
-/* .single-card-img-wrapper a {
-  background-color: #fff;
-} */
 
 .single-card-image-neon,
 .single-card-image-violet {

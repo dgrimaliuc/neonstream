@@ -7,8 +7,7 @@ export default function ActionsContainer({
   onWatchClick,
   addToList = true,
   wlMinimal = false,
-  media,
-  id,
+  data,
 }) {
   const navigate = useNavigate();
   const onWatchClickDefault = () => {
@@ -23,7 +22,7 @@ export default function ActionsContainer({
           Watch Now
         </button>
       </div>
-      {<WatchlistButton wlMinimal={wlMinimal} media={media} id={id} />}
+      {<WatchlistButton wlMinimal={wlMinimal} data={data} />}
       {addToList && (
         <button className={styles['default-button']}>
           <span className='fa-bars'></span>

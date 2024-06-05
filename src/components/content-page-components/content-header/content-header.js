@@ -6,7 +6,8 @@ import { useLoaderData } from 'react-router-dom';
 import BackgroundPicture from '../background-picture/background-picture';
 
 export default function ContentHeader({ to, onWatchClick }) {
-  const { title, name, genres, id, media_type } = useLoaderData();
+  const data = useLoaderData();
+  const { title, name, genres } = data;
   return (
     <>
       <BackgroundPicture />
@@ -14,7 +15,7 @@ export default function ContentHeader({ to, onWatchClick }) {
         <span className='green-text'>WATCH</span>
         <h1 className={styles.title}>{title || name}</h1>
         <Genres genres={genres} />
-        <ActionsContainer to={to} onWatchClick={onWatchClick} id={id} media={media_type} />
+        <ActionsContainer to={to} onWatchClick={onWatchClick} data={data} />
         <Ratings />
       </div>
     </>

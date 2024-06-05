@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+  width: 100%;
+  min-height: 550px;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #c2c2c2;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #c2c2c2;
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.icon {
+  font-size: 3rem;
+  color: #c2c2c2;
+  margin-bottom: 20px;
+  height: 300px;
+}

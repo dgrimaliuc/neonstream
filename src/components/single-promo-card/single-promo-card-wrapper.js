@@ -7,8 +7,7 @@ export default function SinglePromoCardWrapper({
   children,
   title = '',
   description = '',
-  mediaType,
-  id,
+  data,
 }) {
   return (
     <div className='single-promo-card-wrapper'>
@@ -21,7 +20,7 @@ export default function SinglePromoCardWrapper({
             </a>
             <div className='hero-card-description'>{description}</div>
 
-            <ActionsContainer to={toWatch} addToList={false} media={mediaType} id={id} />
+            <ActionsContainer to={toWatch} addToList={false} data={data} />
           </div>
         </div>
       </div>

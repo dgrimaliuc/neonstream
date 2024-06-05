@@ -1,16 +1,21 @@
 import styles from './actions.module.css';
 import { useWatchlist } from '../../hooks';
 import { useClasses } from '../../hooks';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 const wlStates = {
-  true: 'Remove from Watchlist',
-  false: 'Add to Watchlist',
+  true: { text: 'Remove from Watchlist', dataT: 'in-watchlist' },
+  false: {
+    text: 'Add to Watchlist',
+    dataT: 'not-in-watchlist',
+  },
 };
 
-export default function WatchlistButton({ wlMinimal, media, id }) {
-  const { add, remove, isInWatchlist } = useWatchlist({ media, id });
-  const [buttonText, setButtonText] = useState(wlStates[isInWatchlist]);
+export default function WatchlistButton({ wlMinimal, data }) {
+  const { media_type, id } = data || {};
+  const { add, remove, isInWatchlist } = useWatchlist({ media: media_type, id });
+  const { text, dataT } = useMemo(() => wlStates[isInWatchlist], [isInWatchlist]);
+  const [buttonText, setButtonText] = useState(text);
 
   const wlRef = useRef(null);
 
@@ -21,13 +26,13 @@ export default function WatchlistButton({ wlMinimal, media, id }) {
   } = useClasses(styles['watchlist-button'], styles['default-button']);
 
   const wlClickHandler = useCallback(() => {
-    if (!media || !id) return;
+    if (!media_type || !id) return;
     if (isInWatchlist) {
       remove();
     } else {
-      add();
+      add(data);
     }
-  }, [media, id, isInWatchlist, remove, add]);
+  }, [media_type, id, isInWatchlist, remove, add, data]);
 
   useEffect(() => {
     if (isInWatchlist) {
@@ -41,11 +46,11 @@ export default function WatchlistButton({ wlMinimal, media, id }) {
     if (isInWatchlist) {
       addClass(styles.active);
     }
-    setButtonText(wlStates[isInWatchlist]);
-  }, [addClass, isInWatchlist]);
+    setButtonText(text);
+  }, [addClass, isInWatchlist, text]);
 
   return (
-    <button ref={wlRef} className={wlClasses} onClick={wlClickHandler}>
+    <button ref={wlRef} className={wlClasses} onClick={wlClickHandler} data-t={dataT}>
       {wlMinimal ? (
         <div>
           <span className='fa-bookmark'></span>

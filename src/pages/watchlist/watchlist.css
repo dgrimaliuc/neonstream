@@ -1,5 +1,35 @@
 .watchlist-content-box {
   display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
   gap: 20px;
   flex-flow: row wrap;
+  min-height: 500px;
+  padding-bottom: 25px;
+}
+
+.watchlist-header {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 26px;
+  color: white;
+}
+
+.clear-history {
+  color: #a0a0a0;
+  cursor: pointer;
+}
+
+.clear-history span {
+  text-transform: uppercase;
+  line-height: 1.125rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.clear-history:hover {
+  color: white;
 }

@@ -1,17 +1,17 @@
-.watchlist-header {
+.bookmarks-header {
   width: 100%;
   padding-bottom: 26px;
 }
 
-.watchlist-header h2 {
+.bookmarks-header h2 {
   text-align: center;
 }
 
-.watchlist-header h2 span {
+.bookmarks-header h2 span {
   margin-right: 15px;
 }
 
-.watchlist-tabs {
+.bookmarks-tabs {
   position: relative;
   display: flex;
   flex-flow: row nowrap;
@@ -20,7 +20,7 @@
   text-transform: uppercase;
 }
 
-.watchlist-tabs::after {
+.bookmarks-tabs::after {
   position: absolute;
   left: 0;
   bottom: 0;
@@ -32,7 +32,7 @@
   /* clear: both; */
 }
 
-.watchlist-tab {
+.bookmarks-tab {
   position: relative;
   padding: 20px 40px;
   display: flex;
@@ -43,11 +43,11 @@
   font-weight: 500;
 }
 
-.wl-tab-active {
+.tab-active {
   color: #fff;
 }
 
-.wl-tab-active::after {
+.tab-active::after {
   position: absolute;
   left: 0;
   bottom: 0;
@@ -58,7 +58,7 @@
   background-color: var(--green-color);
 }
 
-.watchlist-tab:hover {
+.bookmarks-tab:hover {
   color: #fff;
   background-color: var(--hover-menu-item-color);
 }

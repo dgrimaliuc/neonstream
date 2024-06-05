@@ -1,17 +1,17 @@
 import './history.css';
 
 import { EpisodeCard } from '../../components/episode-card';
-import { BookmarksHeader } from '../../components/bookmarks-header';
+import { BookmarksTabs } from '../../components/bookmarks-tabs';
 import { BookmarksWrapper } from '../../components/bookmarks-wrapper';
+import { BookmarksEmptyContainer } from '../../components/bookmarks-empty-container';
 
-export default function WatchlistPage() {
+export default function HistoryPage() {
   return (
     <BookmarksWrapper>
-      <BookmarksHeader />
+      <BookmarksTabs />
       <div className='history-content-box'>
-        {Array.from({ length: 15 }).map((_, i) => (
-          <EpisodeCard key={i} showProgress={true} showIcon={true} />
-        ))}
+        {/* <EpisodeCard showProgress={true} showIcon={true} /> */}
+        <BookmarksEmptyContainer />
       </div>
     </BookmarksWrapper>
   );
