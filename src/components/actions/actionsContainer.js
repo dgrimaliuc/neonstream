@@ -1,9 +1,16 @@
-import { useNavigate } from 'react-router-dom';
 import styles from './actions.module.css';
+import { useNavigate } from 'react-router-dom';
+import WatchlistButton from './watchlist-button';
 
-export default function ActionsContainer({ to, onWatchClick, addToList = true, wlMinimal = false }) {
+export default function ActionsContainer({
+  to,
+  onWatchClick,
+  addToList = true,
+  wlMinimal = false,
+  media,
+  id,
+}) {
   const navigate = useNavigate();
-
   const onWatchClickDefault = () => {
     navigate(to);
   };
@@ -16,16 +23,7 @@ export default function ActionsContainer({ to, onWatchClick, addToList = true, w
           Watch Now
         </button>
       </div>
-      {wlMinimal ? (
-        <button className='wl-button'>
-          <span className='fa-bookmark'></span>
-        </button>
-      ) : (
-        <button className={styles['default-button']}>
-          <span className='fa-plus'></span>
-          Add to Watchlist
-        </button>
-      )}
+      {<WatchlistButton wlMinimal={wlMinimal} media={media} id={id} />}
       {addToList && (
         <button className={styles['default-button']}>
           <span className='fa-bars'></span>

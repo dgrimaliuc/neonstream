@@ -29,18 +29,41 @@
   border: none;
   color: #fff;
   cursor: pointer;
-  line-height: 1;
   outline: none;
   font-size: 1rem;
   font-family: ProximaNova-Bold, Arial, sans-serif;
-  padding: 12px 32px;
   min-width: 240px;
   border-radius: 5px;
   height: 48px;
   position: relative;
 }
 
+.default-button,
+.watch-now-btn,
+.wl_container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+.watchlist-button {
+  transition: color 0.2s;
+}
+
+.watchlist-button.active {
+  background: #31373b;
+  border: 1px solid var(--green-color);
+  color: var(--green-color);
+}
+
+.watchlist-button.active [class*='fa-bookmark'] {
+  color: var(--green-color);
+}
+
 .watch-now-btn span,
 .default-button span {
   margin-right: 5px;
+  font-size: 1.7rem;
+  flex-grow: 0;
+  margin: 0;
 }

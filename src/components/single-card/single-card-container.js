@@ -52,7 +52,7 @@ export default function SingleCardContainer({
         </div>
 
         <div className='single-card-description'>{overview}</div>
-        <ActionsContainer to={to} addToList={false} wlMinimal />
+        <ActionsContainer to={to} addToList={false} media={mediaType} id={id} />
       </div>
     </div>
   );

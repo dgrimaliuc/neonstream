@@ -16,6 +16,7 @@ export * from './useSearchLoader';
 export * from './useQueryParams';
 export * from './useNavigateToContent';
 export * from './useSingleContentLoader';
+export * from './useWatchlist';
 export * from './useTabs';
 export * from './useDebounce';
 export * from './useDebounceQuery';
