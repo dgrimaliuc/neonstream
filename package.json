@@ -26,7 +26,6 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "cors:start": "cd ./cloud-workers && npm run cors:start",
     "reauth": "firebase login --reauth",
     "deploy": "npm run build && firebase deploy",
     "channel:create": "npm run build && firebase hosting:channel:create $1 --expires 7d",

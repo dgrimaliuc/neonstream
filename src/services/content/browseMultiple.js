@@ -1,4 +1,6 @@
-import { mdb } from './index';
+import { MOVIE, TV } from '../../data/constants';
+import { validateContentType } from '../../utils';
+import { getMovie, getSeries, mdb } from './index';
 
 const discoverProps = {
   with_original_language: 'en',
@@ -77,4 +79,22 @@ export async function upcomingMovies(customProps) {
 export async function discoverSeries(customProps) {
   return (await mdb.discoverTv({ ...discoverProps, ...discoverSeriesProps, ...customProps }))
     .results;
+}
+
+export async function discoverMultiple(items, extraProps) {
+  const result = await Promise.allSettled(
+    items.map(async item => {
+      validateContentType(item.mediaType);
+      if (item.mediaType === MOVIE) {
+        return await getMovie(item.id, extraProps);
+      } else if (item.mediaType === TV) {
+        return await getSeries(item.id, extraProps);
+      } else {
+        console.error('Invalid media type');
+        return null;
+      }
+    }),
+  );
+
+  return result.filter(r => r.status === 'fulfilled').map(r => r.value);
 }

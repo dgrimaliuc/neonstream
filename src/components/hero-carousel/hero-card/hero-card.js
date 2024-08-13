@@ -3,11 +3,9 @@ import classes from './hero-card.module.css';
 import { ActionsContainer } from '../../actions';
 import { useClasses, useNavigateToContent } from '../../../hooks';
 import { useEffect } from 'react';
-import { useSingleContentLoader } from '../../../hooks';
 import { getBackdrop } from '../../../utils';
 
-export default function HeroCard({ active, id, mediaType }) {
-  const { data } = useSingleContentLoader(id, mediaType);
+export default function HeroCard({ data, active, id, mediaType }) {
   const to = useNavigateToContent(mediaType, id);
   const {
     c: heroContainerClasses,

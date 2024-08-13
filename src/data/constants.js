@@ -3,6 +3,7 @@ export const BROWSE_SERIES = 'browse_series';
 export const BROWSE_ALL = 'browse_all';
 export const SEARCH_ALL = 'search_all';
 export const MOVIE = 'movie';
+export const MULTIPLE = 'multiple';
 export const TV = 'tv';
 
 export const POPULAR_SERIES = 'popular_series';
@@ -25,5 +26,4 @@ export const TRY_ANOTHER_SOURCE_MESSAGE = 'Please try another audio source or re
 export const FAILED_TO_FETCH_MESSAGE = 'Failed to fetch stream.';
 
 export const NOT_AVAILABLE = "Sorry, this content isn't available.";
-export const COME_LATER_MESSAGE =
-  'Please come latter when the content will be available.';
+export const COME_LATER_MESSAGE = 'Please come latter when the content will be available.';

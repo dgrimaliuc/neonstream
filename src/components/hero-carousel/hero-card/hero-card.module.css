@@ -70,10 +70,6 @@
   right: 0;
   top: 0;
   z-index: 100;
-  background: linear-gradient(
-      to bottom,
-      #0000 min(40vh, 50%),
-      var(--main-background-color) 100%
-    ),
+  background: linear-gradient(to bottom, #0000 min(40vh, 50%), var(--main-background-color) 100%),
     linear-gradient(to var(--cr-end-direction), #000c 0, #0009 30%, #0000 70%);
 }

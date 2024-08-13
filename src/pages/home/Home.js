@@ -55,16 +55,14 @@ function Home() {
   return (
     <div className={classes['home-container']}>
       <HeroCarousel
-        ids={[
-          { id: 66732, type: TV },
-          { id: 359410, type: MOVIE },
-          { id: 76479, type: TV },
-          { id: 746036, type: MOVIE },
-          { id: 1405, type: TV },
-          { id: 1059264, type: MOVIE },
-          { id: 60059, type: TV },
-          { id: 1418, type: TV },
-          { id: 1011985, type: MOVIE },
+        objects={[
+          { id: 365177, mediaType: MOVIE },
+          { id: 76479, mediaType: TV },
+          { id: 746036, mediaType: MOVIE },
+          { id: 1405, mediaType: TV },
+          { id: 359410, mediaType: MOVIE },
+          { id: 60059, mediaType: TV },
+          { id: 1418, mediaType: TV },
         ]}
       />
 
