@@ -29,7 +29,7 @@ const HeroCarousel = memo(({ objects = [] }) => {
   return (
     <div>
       <div className='hero-carousel-wrapper'>
-        <HeroCardArrow direction='left' onClick={prevPage} />
+        {data?.length > 0 && <HeroCardArrow direction='left' onClick={prevPage} />}
 
         <HeroCardsWrapper>
           {data?.map((ob, i) => (
@@ -44,7 +44,7 @@ const HeroCarousel = memo(({ objects = [] }) => {
           <HeroCarouselPagination total={data?.length} selected={selected} onClick={select} />
         </HeroCardsWrapper>
 
-        <HeroCardArrow direction='right' onClick={nextPage} />
+        {data?.length > 0 && <HeroCardArrow direction='right' onClick={nextPage} />}
       </div>
     </div>
   );
