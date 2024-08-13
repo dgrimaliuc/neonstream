@@ -21,7 +21,7 @@ import {
   TV,
   UPCOMING_MOVIES,
 } from '../../data/constants';
-import { useRef } from 'react';
+import { useMemo, useRef } from 'react';
 
 function Home() {
   const { chunks, loadIndex, loadMore, isEnd } = useChunks(
@@ -48,23 +48,26 @@ function Home() {
 
   const spinnerRef = useRef(null);
 
+  const objects = useMemo(
+    () => [
+      { id: 365177, mediaType: MOVIE },
+      { id: 76479, mediaType: TV },
+      { id: 746036, mediaType: MOVIE },
+      { id: 1405, mediaType: TV },
+      { id: 359410, mediaType: MOVIE },
+      { id: 60059, mediaType: TV },
+      { id: 1418, mediaType: TV },
+    ],
+    [],
+  );
+
   useObserver({ ref: spinnerRef }, () => {
     sleep(1000).then(() => loadMore());
   });
 
   return (
     <div className={classes['home-container']}>
-      <HeroCarousel
-        objects={[
-          { id: 365177, mediaType: MOVIE },
-          { id: 76479, mediaType: TV },
-          { id: 746036, mediaType: MOVIE },
-          { id: 1405, mediaType: TV },
-          { id: 359410, mediaType: MOVIE },
-          { id: 60059, mediaType: TV },
-          { id: 1418, mediaType: TV },
-        ]}
-      />
+      <HeroCarousel objects={objects} />
 
       <section className={classes['collections-container']}>
         {renderArray(chunks, loadIndex)}

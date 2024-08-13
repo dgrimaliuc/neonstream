@@ -4,16 +4,15 @@ import HeroCard from './hero-card/hero-card';
 import HeroCarouselPagination from './pagination/hero-carousel-pagination-container';
 import HeroCardsWrapper from './hero-cards-wrapper';
 import { useTabs } from '../../hooks';
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { useMultipleContentLoader } from '../../hooks/useMultipleContentLoader';
 import HeroCarouselPlaceholder from './placeholders/hero-carousel-placeholder';
 
-export default function HeroCarousel({ objects = [] }) {
+const HeroCarousel = memo(({ objects = [] }) => {
   const { loading, data } = useMultipleContentLoader(objects);
   const { selected, select, prevPage, nextPage } = useTabs(data?.length);
 
   useEffect(() => {
-    console.log('HeroCarousel mounted');
     const timeout = setTimeout(() => {
       nextPage();
     }, 10000);
@@ -49,4 +48,6 @@ export default function HeroCarousel({ objects = [] }) {
       </div>
     </div>
   );
-}
+});
+
+export default HeroCarousel;

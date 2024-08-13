@@ -8,7 +8,7 @@ const imageParams = imageProps();
 
 export function useMultipleContentLoader(objects) {
   const { loading, data, error } = useQuery(
-    useCallback(async () => await contentDetailsActions[MULTIPLE](objects, imageParams), []),
+    useCallback(async () => await contentDetailsActions[MULTIPLE](objects, imageParams), [objects]),
   );
 
   return { loading, data, error };
