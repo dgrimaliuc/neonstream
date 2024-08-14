@@ -4,6 +4,7 @@ import { ActionsContainer } from '../../actions';
 import { useClasses, useNavigateToContent } from '../../../hooks';
 import { useEffect } from 'react';
 import { getBackdrop } from '../../../utils';
+import { Image } from '../../lazy-image';
 
 export default function HeroCard({ data, active, id, mediaType }) {
   const to = useNavigateToContent(mediaType, id);
@@ -30,7 +31,7 @@ export default function HeroCard({ data, active, id, mediaType }) {
       <div className={heroContainerClasses}>
         <div className={classes['hero-card-poster']}>
           <picture className={classes['hero-card-background']}>
-            <img
+            <Image
               className={classes['hero-card-picture']}
               src={getBackdrop(data.backdrop_path, 3)}
               alt='Hero carousel item'

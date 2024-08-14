@@ -1,7 +1,6 @@
 import { memo, useCallback } from 'react';
 import { useNavigateToContent, useSingleContentLoader } from '../../hooks';
 import { getFilePathReverseOrNull, getPoster } from '../../utils';
-import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import { AnimatedContainer } from './animated-container';
 import './custom-border-neon.css';
 import SingleCardsImageWrapper from './single-cards-image-wrapper';
@@ -43,31 +42,29 @@ const SinglePromoCardContainer = memo(
 
     return (
       <>
-        <LazyLoadComponent>
-          {!loading && (
-            <SinglePromoCardWrapper
-              id={id}
-              mediaType={mediaType}
-              to={`/${mediaType}/${id}`}
-              toWatch={to}
-              title={data?.title || data?.name}
-              description={data?.overview}
-              data={data}
-            >
-              <AnimatedContainer
-                topClassName={animatedTopClassName}
-                bottomClassName={animatedBottomClassName}
-              />
+        {!loading && (
+          <SinglePromoCardWrapper
+            id={id}
+            mediaType={mediaType}
+            to={`/${mediaType}/${id}`}
+            toWatch={to}
+            title={data?.title || data?.name}
+            description={data?.overview}
+            data={data}
+          >
+            <AnimatedContainer
+              topClassName={animatedTopClassName}
+              bottomClassName={animatedBottomClassName}
+            />
 
-              <SingleCardsImageWrapper
-                to={`/${mediaType}/${id}`}
-                topImage={top}
-                bottomImage={bottom}
-                className={imageClassName}
-              />
-            </SinglePromoCardWrapper>
-          )}
-        </LazyLoadComponent>
+            <SingleCardsImageWrapper
+              to={`/${mediaType}/${id}`}
+              topImage={top}
+              bottomImage={bottom}
+              className={imageClassName}
+            />
+          </SinglePromoCardWrapper>
+        )}
       </>
     );
   },

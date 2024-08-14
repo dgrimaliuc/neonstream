@@ -1,7 +1,7 @@
 import styles from './browse-card.module.css';
 
 import { getPoster, getYear } from '../../utils';
-import Image from '../lazy-image/lazy-image';
+import { Image } from '../lazy-image';
 
 const BrowseCard = ({ title, poster, date, media_type, id, skipMode = true }) => {
   if (skipMode && (!poster || media_type === 'person')) return;
