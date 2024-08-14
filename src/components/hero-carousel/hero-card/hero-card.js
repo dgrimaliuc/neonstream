@@ -43,7 +43,7 @@ export default function HeroCard({ data, active, id, mediaType }) {
             {data.title || data.name || 'Undefined'}
           </a>
           <div className={classes.description}>
-            <p>{data.overview}</p>
+            <p className={classes['multiline-ellipsis']}>{data.overview}</p>
           </div>
           <ActionsContainer to={to} addToList={false} data={data} />
         </div>
