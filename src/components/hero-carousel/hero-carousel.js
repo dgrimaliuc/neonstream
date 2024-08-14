@@ -1,5 +1,4 @@
 import './hero-carousel.css';
-import HeroCardArrow from './components/arrows/arrow';
 import HeroCard from './hero-card/hero-card';
 import HeroCarouselPagination from './pagination/hero-carousel-pagination-container';
 import HeroCardsWrapper from './hero-cards-wrapper';
