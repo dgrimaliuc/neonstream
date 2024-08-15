@@ -8,44 +8,18 @@ export default function Footer() {
           <h4>Navigation</h4>
           <ul>
             <li className='erc-footer-section-item'>
-              <a tabIndex='0' className='as' href='/videos/popular'>
-                <span>Browse Popular</span>
+              <a tabIndex='0' className='as' href='/browse'>
+                <span>Browse All</span>
               </a>
             </li>
             <li className='erc-footer-section-item'>
-              <a
-                tabIndex='0'
-                className='as'
-                href='/simulcasts/seasons/winter-2024'
-              >
-                <span>Browse Simulcasts</span>
+              <a tabIndex='0' className='as' href='/browse/tv'>
+                <span>Browse TV</span>
               </a>
             </li>
             <li className='erc-footer-section-item'>
-              <a
-                tabIndex='0'
-                href='https://www.crunchyroll.com/simulcastcalendar'
-                className='as'
-              >
-                <span>Release Calendar</span>
-              </a>
-            </li>
-            <li className='erc-footer-section-item'>
-              <a
-                tabIndex='0'
-                href='https://www.crunchyroll.com/news'
-                className='as'
-              >
-                <span>News</span>
-              </a>
-            </li>
-            <li className='erc-footer-section-item'>
-              <a
-                tabIndex='0'
-                href='https://www.crunchyroll.com/games/index.html'
-                className='as'
-              >
-                <span>Games</span>
+              <a tabIndex='0' href='/browse/movies' className='as'>
+                <span>Browse Movies</span>
               </a>
             </li>
           </ul>
@@ -55,11 +29,7 @@ export default function Footer() {
           <h4>Connect With Us</h4>
           <ul className='list'>
             <li className='erc-footer-section-item'>
-              <a
-                tabIndex='0'
-                href='https://www.youtube.com/user/crunchyroll/'
-                className='as'
-              >
+              <a tabIndex='0' href='https://www.youtube.com' className='as'>
                 <span>
                   <svg
                     className='left-icon'
@@ -78,11 +48,7 @@ export default function Footer() {
               </a>
             </li>
             <li className='erc-footer-section-item'>
-              <a
-                tabIndex='0'
-                href='https://www.facebook.com/Crunchyroll/'
-                className='as'
-              >
+              <a tabIndex='0' href='https://www.facebook.com' className='as'>
                 <span>
                   <svg
                     className='left-icon'
@@ -101,11 +67,7 @@ export default function Footer() {
               </a>
             </li>
             <li className='erc-footer-section-item'>
-              <a
-                tabIndex='0'
-                href='https://twitter.com/crunchyroll'
-                className='as'
-              >
+              <a tabIndex='0' href='https://twitter.com' className='as'>
                 <span>
                   <svg
                     className='left-icon'
@@ -124,11 +86,7 @@ export default function Footer() {
               </a>
             </li>
             <li className='erc-footer-section-item'>
-              <a
-                tabIndex='0'
-                href='https://www.instagram.com/crunchyroll/'
-                className='as'
-              >
+              <a tabIndex='0' href='https://www.instagram.com' className='as'>
                 <span>
                   <svg
                     className='left-icon'
@@ -148,113 +106,32 @@ export default function Footer() {
                 </span>
               </a>
             </li>
-            <li className='erc-footer-section-item'>
-              <a
-                tabIndex='0'
-                href='https://www.tiktok.com/@crunchyroll'
-                className='as'
-              >
-                <span>
-                  <svg
-                    className='left-icon'
-                    xmlns='http://www.w3.org/2000/svg'
-                    viewBox='0 0 16 16'
-                    data-t='tiktok-svg'
-                    aria-labelledby='tiktok-svg'
-                    aria-hidden='true'
-                    role='img'
-                  >
-                    <title id='tiktok-svg'>TikTok</title>
-                    <path d='M14.095 0H1.905C.855 0 0 .854 0 1.905v12.19C0 15.145.854 16 1.905 16h12.19c1.05 0 1.905-.854 1.905-1.905V1.905C16 .855 15.146 0 14.095 0m-1.521 6.98a2.854 2.854 0 0 1-2.651-1.277v4.395A3.248 3.248 0 1 1 6.674 6.85c.068 0 .134.006.201.01v1.6c-.067-.007-.132-.02-.2-.02a1.658 1.658 0 0 0 0 3.316c.915 0 1.724-.721 1.724-1.637l.016-7.465h1.531a2.853 2.853 0 0 0 2.63 2.547v1.78'></path>
-                  </svg>
-                  TikTok
-                </span>
-              </a>
-            </li>
-            <li className='erc-footer-section-item'>
-              <a tabIndex='0' href='https://vk.com/crunchyroll' className='as'>
-                <span>
-                  <svg
-                    className='left-icon'
-                    xmlns='http://www.w3.org/2000/svg'
-                    viewBox='0 0 16 16'
-                    data-t='vkontakte-svg'
-                    aria-labelledby='vkontakte-svg'
-                    aria-hidden='true'
-                    role='img'
-                  >
-                    <title id='vkontakte-svg'>VKontakte</title>
-                    <path d='M15.623 3.694c.12-.392 0-.676-.525-.676h-1.745c-.44 0-.644.249-.763.516 0 0-.898 2.277-2.152 3.754-.406.427-.593.57-.813.57-.119 0-.271-.143-.271-.534V3.676c0-.462-.136-.676-.509-.676H6.1a.43.43 0 00-.44.427c0 .445.627.552.694 1.797V7.93c0 .587-.101.694-.322.694-.593 0-2.033-2.296-2.897-4.911-.17-.516-.339-.712-.78-.712H.593C.085 3 0 3.25 0 3.516c0 .48.593 2.9 2.762 6.103 1.44 2.189 3.49 3.363 5.338 3.363 1.118 0 1.254-.267 1.254-.712v-1.654c0-.534.101-.623.457-.623.254 0 .712.142 1.746 1.192 1.186 1.246 1.39 1.815 2.05 1.815h1.745c.509 0 .746-.267.61-.783-.152-.516-.728-1.263-1.474-2.153-.407-.498-1.017-1.05-1.203-1.317-.254-.356-.186-.498 0-.818-.017 0 2.118-3.167 2.338-4.235'></path>
-                  </svg>
-                  VKontakte
-                </span>
-              </a>
-            </li>
-            <li className='erc-footer-section-item'>
-              <a tabIndex='0' href='https://ok.ru/crunchyroll' className='as'>
-                <span>
-                  <svg
-                    className='left-icon'
-                    xmlns='http://www.w3.org/2000/svg'
-                    viewBox='0 0 16 16'
-                    data-t='odnoklassniki-svg'
-                    aria-labelledby='odnoklassniki-svg'
-                    aria-hidden='true'
-                    role='img'
-                  >
-                    <title id='odnoklassniki-svg'>Odnoklassniki</title>
-                    <path d='M10.004 11.627a7.73 7.73 0 002.398-.994 1.21 1.21 0 10-1.29-2.05 5.241 5.241 0 01-5.56 0 1.21 1.21 0 00-1.289 2.05 7.7 7.7 0 002.397.994l-2.306 2.308A1.208 1.208 0 005.208 16c.31 0 .62-.119.857-.354l2.268-2.269 2.27 2.269a1.21 1.21 0 001.71-1.71l-2.309-2.309m-1.67-9.206c.943 0 1.71.767 1.71 1.71a1.712 1.712 0 01-3.421 0c0-.944.769-1.71 1.71-1.71zm0 5.837a4.134 4.134 0 004.129-4.127C12.463 1.852 10.61 0 8.332 0S4.204 1.852 4.204 4.13a4.133 4.133 0 004.13 4.128z'></path>
-                  </svg>
-                  Odnoklassniki
-                </span>
-              </a>
-            </li>
           </ul>
         </div>
         <div className='flx-1'>
           <h4>Account</h4>
           <ul className='list'>
             <li className='erc-footer-section-item'>
-              <a
-                tabIndex='0'
-                data-t='watchlist-link'
-                className='as'
-                href='/watchlist'
-              >
+              <a tabIndex='0' data-t='watchlist-link' className='as' href='/watchlist'>
                 <span>Watchlist</span>
               </a>
             </li>
             <li className='erc-footer-section-item'>
-              <a
-                tabIndex='0'
-                data-t='crunchylists-link'
-                className='as'
-                href='/crunchylists'
-              >
-                <span>Crunchylists</span>
+              <a tabIndex='0' data-t='crunchylists-link' className='as' href='/custom-lists'>
+                <span>Custom Lists</span>
               </a>
             </li>
             <li className='erc-footer-section-item'>
-              <a
-                tabIndex='0'
-                data-t='history-link'
-                className='as'
-                href='/history'
-              >
+              <a tabIndex='0' data-t='history-link' className='as' href='/history'>
                 <span>History</span>
               </a>
             </li>
-            <li className='erc-footer-section-item'>
-              <a
-                tabIndex='0'
-                data-t='account-link'
-                className='as'
-                href='/account/preferences'
-              >
+            {/* <li className='erc-footer-section-item'>
+              <a tabIndex='0' data-t='account-link' className='as' href='/account/preferences'>
                 <span>My Account</span>
               </a>
-            </li>
-            <li className='erc-footer-section-item'>
+            </li> */}
+            {/* <li className='erc-footer-section-item'>
               <a
                 tabIndex='0'
                 href='https://www.crunchyroll.com/logout'
@@ -263,7 +140,7 @@ export default function Footer() {
               >
                 <span>Log Out</span>
               </a>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

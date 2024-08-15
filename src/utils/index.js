@@ -1,4 +1,5 @@
 export * from './date';
+export * from './async';
 export * from './array';
 export * from './scroll';
 export * from './images';

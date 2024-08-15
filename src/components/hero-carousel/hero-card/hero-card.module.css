@@ -5,19 +5,39 @@
     user-select: text;
   }
 
+  .title.placeholder {
+    height: 61.5px;
+    width: 395px;
+    background: var(--placeholder-background-color-l1);
+  }
+
   .description {
     width: 100%;
     max-width: 485px;
-    height: 150px;
     margin: 15px 0px 0px 0px;
-    color: rgba(255, 255, 255, 0.8);
-    overflow: hidden;
+    color: rgba(255, 255, 255, 0.91);
     font-size: 16px;
     line-height: 25px;
     text-align: left;
     hyphens: auto;
     user-select: text;
-    /* text-overflow: ellipsis; */
+  }
+
+  .description.placeholder {
+    height: 150px;
+    width: 485px;
+    background: var(--placeholder-background-color-l1);
+    margin: 39.3px 0 0;
+  }
+
+  .multiline-ellipsis {
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 150px;
   }
 
   .hero-card-picture {
@@ -70,10 +90,6 @@
   right: 0;
   top: 0;
   z-index: 100;
-  background: linear-gradient(
-      to bottom,
-      #0000 min(40vh, 50%),
-      var(--main-background-color) 100%
-    ),
+  background: linear-gradient(to bottom, #0000 min(40vh, 50%), var(--main-background-color) 100%),
     linear-gradient(to var(--cr-end-direction), #000c 0, #0009 30%, #0000 70%);
 }

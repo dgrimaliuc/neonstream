@@ -1,13 +1,16 @@
 import './hero-carousel.css';
-import HeroCardArrow from './components/arrows/arrow';
 import HeroCard from './hero-card/hero-card';
 import HeroCarouselPagination from './pagination/hero-carousel-pagination-container';
 import HeroCardsWrapper from './hero-cards-wrapper';
 import { useTabs } from '../../hooks';
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
+import { useMultipleContentLoader } from '../../hooks/useMultipleContentLoader';
+import HeroCarouselPlaceholder from './placeholders/hero-carousel-placeholder';
+import HeroArrowsWrapper from './components/hero-arrows-wrapper';
 
-export default function HeroCarousel({ ids = [] }) {
-  const { selected, select, prevPage, nextPage } = useTabs(ids.length);
+const HeroCarousel = memo(({ objects = [] }) => {
+  const { loading, data } = useMultipleContentLoader(objects);
+  const { selected, select, prevPage, nextPage } = useTabs(data?.length);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -19,27 +22,30 @@ export default function HeroCarousel({ ids = [] }) {
     };
   }, [nextPage]);
 
+  if (loading) {
+    return <HeroCarouselPlaceholder />;
+  }
+
   return (
-    <div className='hero-carousel-wrapper'>
-      <HeroCardArrow direction='left' onClick={prevPage} />
-
-      <HeroCardsWrapper>
-        {ids.map((ob, i) => (
-          <HeroCard
-            key={i}
-            active={i === selected}
-            id={ob.id}
-            mediaType={ob.type}
-          />
-        ))}
-        <HeroCarouselPagination
-          total={ids.length}
-          selected={selected}
-          onClick={select}
-        />
-      </HeroCardsWrapper>
-
-      <HeroCardArrow direction='right' onClick={nextPage} />
+    <div>
+      <div className='hero-carousel-wrapper'>
+        <HeroArrowsWrapper data={data} onPrevClick={prevPage} onNextClick={nextPage}>
+          <HeroCardsWrapper>
+            {data?.map((ob, i) => (
+              <HeroCard
+                key={i}
+                active={i === selected}
+                id={ob.id}
+                mediaType={ob.media_type}
+                data={ob}
+              />
+            ))}
+            <HeroCarouselPagination total={data?.length} selected={selected} onClick={select} />
+          </HeroCardsWrapper>
+        </HeroArrowsWrapper>
+      </div>
     </div>
   );
-}
+});
+
+export default HeroCarousel;

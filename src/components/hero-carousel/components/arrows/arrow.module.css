@@ -14,20 +14,19 @@
   height: 40px;
   pointer-events: all;
   cursor: pointer;
+  user-select: none;
 }
 
 .arrow-left {
   width: 34px;
   height: 25px;
   transform: rotate(180deg);
-  cursor: pointer;
 }
 
 .arrow-right {
   position: relative;
   width: 34px;
   height: 25px;
-  cursor: pointer;
 }
 
 .arrow:hover {
@@ -37,4 +36,13 @@
 .button-spacer {
   /* display: inline-block; */
   margin-right: 5px !important;
+}
+
+.arrow.placeholder:hover {
+  opacity: 0.2;
+}
+
+.arrow.placeholder {
+  cursor: auto;
+  opacity: 0.2;
 }

@@ -1,0 +1,8 @@
+.placeholder {
+  background: var(--placeholder-background-color-l1);
+}
+
+[class*='watch-now-btn'].placeholder,
+[class*='default-button'].placeholder {
+  cursor: auto;
+}
