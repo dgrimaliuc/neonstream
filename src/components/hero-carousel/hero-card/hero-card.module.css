@@ -5,10 +5,15 @@
     user-select: text;
   }
 
+  .title.placeholder {
+    height: 61.5px;
+    width: 395px;
+    background: var(--placeholder-background-color-l1);
+  }
+
   .description {
     width: 100%;
     max-width: 485px;
-    /* height: 150px; */
     margin: 15px 0px 0px 0px;
     color: rgba(255, 255, 255, 0.91);
     font-size: 16px;
@@ -16,6 +21,13 @@
     text-align: left;
     hyphens: auto;
     user-select: text;
+  }
+
+  .description.placeholder {
+    height: 150px;
+    width: 485px;
+    background: var(--placeholder-background-color-l1);
+    margin: 39.3px 0 0;
   }
 
   .multiline-ellipsis {

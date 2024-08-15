@@ -18,6 +18,7 @@
   --tablet-viewport: 834px;
   --desktop-viewport: 1024px;
   --large-desktop-viewport: 1200px;
+  --placeholder-background-color-l1: #32323563;
 }
 
 a {

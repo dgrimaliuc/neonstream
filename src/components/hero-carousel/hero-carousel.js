@@ -22,7 +22,7 @@ const HeroCarousel = memo(({ objects = [] }) => {
     };
   }, [nextPage]);
 
-  if (loading && data?.length === 0) {
+  if (loading) {
     return <HeroCarouselPlaceholder />;
   }
 

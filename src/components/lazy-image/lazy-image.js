@@ -37,16 +37,13 @@ export default function Image({
   }
 
   return (
-    <>
-      {isLoading && <div style={{ width: placeholderWidth, height: placeholderHeight }}></div>}
-      <img
-        style={{ userSelect: 'none', display: isLoading ? 'none' : 'block' }}
-        src={src}
-        className={className}
-        onError={handleError}
-        onLoad={handleLoad}
-        alt={alt}
-      />
-    </>
+    <img
+      style={{ userSelect: 'none', display: isLoading ? 'none' : 'block' }}
+      src={src}
+      className={className}
+      onError={handleError}
+      onLoad={handleLoad}
+      alt={alt}
+    />
   );
 }
