@@ -29,6 +29,12 @@
   width: 40px;
 }
 
+.arrow_left.placeholder,
+.arrow_right.placeholder {
+  cursor: auto;
+  opacity: 0.2;
+}
+
 .control-left {
   width: 34px;
   height: 25px;
