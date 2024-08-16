@@ -20,6 +20,13 @@
   padding-top: 3px;
 }
 
+.carousel-title.placeholder-a2Z {
+  opacity: 1;
+  width: 300px;
+  height: 23.69px;
+  background: var(--placeholder-background-color-l1);
+}
+
 .carousel-header {
   height: 42px;
   display: flex;

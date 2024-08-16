@@ -22,6 +22,10 @@
   scroll-snap-align: start;
 }
 
+.browse-card.placeholder {
+  background-color: transparent;
+}
+
 .browse-card-poster {
   position: relative;
   z-index: 1;
@@ -30,10 +34,15 @@
   width: 160px;
   margin-bottom: 9px;
   height: 240px;
-
   transition-duration: 350ms;
   transition-property: opacity;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.browse-card-poster.placeholder {
+  width: 160px;
+  height: 240px;
+  background-color: var(--placeholder-background-color-l1);
 }
 
 .browse-card p {
@@ -62,10 +71,6 @@ div[inert] .browse-card {
   opacity: 0.3;
 }
 
-/* .not_visible .browse-card {
-  opacity: 0.3;
-} */
-
 .browse-card-hover {
   content: '';
   opacity: 0;
@@ -90,4 +95,12 @@ div[inert] .browse-card {
 
 .browse-card-info {
   width: 100%;
+  min-height: 100px;
+
+  .placeholder_title {
+    width: 87%;
+    height: 14px;
+    background-color: var(--placeholder-background-color-l1);
+    margin-left: 1px;
+  }
 }

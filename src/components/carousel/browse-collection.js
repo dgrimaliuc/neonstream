@@ -6,6 +6,7 @@ import Carousel from './carousel';
 import { useLocation, useParams } from 'react-router-dom';
 import { collectionActions } from '../../actions';
 import { useQuery } from '../../hooks';
+import PlaceholderBrowseCollection from './placeholders/placeholder-browse-collection';
 
 function reducer(state, action) {
   switch (action.type) {
@@ -45,12 +46,12 @@ const BrowseCollection = ({ type, baseId }) => {
     }
   }, [data]);
 
+  if (loading) {
+    return <PlaceholderBrowseCollection />;
+  }
+
   return (
-    <Carousel
-      isLoading={loading}
-      display={state.content.length > 0 && pathname !== '/'}
-      title={state.title}
-    >
+    <Carousel display={state.content.length > 0 && pathname !== '/'} title={state.title}>
       {state.content.map((card, i) => (
         <BrowseCard
           key={i}

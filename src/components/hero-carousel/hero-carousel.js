@@ -5,7 +5,7 @@ import HeroCardsWrapper from './hero-cards-wrapper';
 import { useTabs } from '../../hooks';
 import { memo, useEffect } from 'react';
 import { useMultipleContentLoader } from '../../hooks/useMultipleContentLoader';
-import HeroCarouselPlaceholder from './placeholders/hero-carousel-placeholder';
+import HeroCarouselPlaceholder from './placeholders/placeholder-hero-carousel';
 import HeroArrowsWrapper from './components/hero-arrows-wrapper';
 
 const HeroCarousel = memo(({ objects = [] }) => {

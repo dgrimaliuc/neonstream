@@ -7,7 +7,7 @@ import CarouselHeader from './carousel-header';
 import { CarouselContainer } from '../carousel-container';
 import { useLocation } from 'react-router-dom';
 
-const Carousel = ({ isLoading, children, title }) => {
+const Carousel = ({ children, title }) => {
   const { pathname } = useLocation();
 
   const [styles, setStyles] = useState({});
@@ -18,39 +18,35 @@ const Carousel = ({ isLoading, children, title }) => {
     }
   }, [pathname]);
 
-  if (!isLoading && children.length === 0) {
+  if (children.length === 0) {
     return null;
   }
 
   return (
-    <>
-      {
-        <CarouselContainer>
-          {(observe, unobserve, visibilityMap, scrollRef) => (
-            <div className='carousel-wrapper' style={styles}>
-              <CarouselHeader
-                display={children.length > 0}
-                title={title}
+    <CarouselContainer>
+      {(observe, unobserve, visibilityMap, scrollRef) => (
+        <div className='carousel-wrapper' style={styles}>
+          <CarouselHeader
+            display={children.length > 0}
+            title={title}
+            visibilityMap={visibilityMap}
+            scrollRef={scrollRef}
+          />
+          <Scroll ref={scrollRef}>
+            {Children.map(children, (child, i) => (
+              <IntersectionObservedItem
+                key={i}
+                observe={observe}
+                unobserve={unobserve}
                 visibilityMap={visibilityMap}
-                scrollRef={scrollRef}
-              />
-              <Scroll ref={scrollRef}>
-                {Children.map(children, (child, i) => (
-                  <IntersectionObservedItem
-                    key={i}
-                    observe={observe}
-                    unobserve={unobserve}
-                    visibilityMap={visibilityMap}
-                  >
-                    {ref => <div ref={ref}>{child}</div>}
-                  </IntersectionObservedItem>
-                ))}
-              </Scroll>
-            </div>
-          )}
-        </CarouselContainer>
-      }
-    </>
+              >
+                {ref => <div ref={ref}>{child}</div>}
+              </IntersectionObservedItem>
+            ))}
+          </Scroll>
+        </div>
+      )}
+    </CarouselContainer>
   );
 };
 
