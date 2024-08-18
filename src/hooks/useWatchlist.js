@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { useLocalStorage } from '@uidotdev/usehooks';
 
 import { watchlistActions, watchlistContent } from '../store';
 import { useDispatchAction } from './useDispatchAction';
