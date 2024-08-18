@@ -5,7 +5,6 @@ import { ActionsContainer } from '../actions';
 import { Genres } from '../genres';
 import { Image } from '../lazy-image';
 import { AverageRatingInfo } from '../ratings';
-import { useRendingImage } from '../../hooks/useRendingImage';
 
 const SingleCardContainer = memo(
   ({
