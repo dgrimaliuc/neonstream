@@ -1,6 +1,6 @@
 import './carousel.css';
 
-import { Children, useEffect, useState } from 'react';
+import { Children } from 'react';
 import IntersectionObservedItem from '../intersection-observer-components/intersection-observed-item';
 import Scroll from './scroll';
 import CarouselHeader from './carousel-header';

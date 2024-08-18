@@ -3,7 +3,7 @@ import './carousel.css';
 import BrowseCard from '../browse-card/browse-card';
 import { useCallback, useEffect, useReducer } from 'react';
 import Carousel from './carousel';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { collectionActions } from '../../actions';
 import { useQuery } from '../../hooks';
 import PlaceholderBrowseCollection from './placeholders/placeholder-browse-collection';

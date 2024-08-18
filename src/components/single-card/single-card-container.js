@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react';
+import { memo } from 'react';
 import { useNavigateToContent } from '../../hooks';
 import { getBackdrop, getPoster, getYear } from '../../utils';
 import { ActionsContainer } from '../actions';
