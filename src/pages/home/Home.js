@@ -29,7 +29,7 @@ function Home() {
       <BrowseCollection type={UPCOMING_MOVIES} />,
       <BrowseCollection type={TOP_RATED_SERIES} />,
       <BrowseCollection type={NOW_PLAYING_MOVIES} />,
-      <SinglePromoCardViolet id={792307} mediaType={MOVIE} secondImageIndex={0} />,
+      <SinglePromoCardViolet id={792307} mediaType={MOVIE} secondImageIndex={4} />,
       <BrowseCollection type={POPULAR_SERIES} />,
       <BrowseCollection type={POPULAR_MOVIES} />,
       <SinglePromoCardNeon id={1399} mediaType={TV} />,
@@ -44,7 +44,7 @@ function Home() {
     3,
   );
 
-  useInitialScroll({ timeout: 50 });
+  useInitialScroll({ timeout: 100 });
 
   const spinnerRef = useRef(null);
 
@@ -53,10 +53,9 @@ function Home() {
       { id: 365177, mediaType: MOVIE },
       { id: 76479, mediaType: TV },
       { id: 746036, mediaType: MOVIE },
-      { id: 1405, mediaType: TV },
+      { id: 219532, mediaType: TV },
       { id: 359410, mediaType: MOVIE },
       { id: 60059, mediaType: TV },
-      { id: 1418, mediaType: TV },
     ],
     [],
   );

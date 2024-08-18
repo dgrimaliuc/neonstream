@@ -105,12 +105,32 @@
   align-self: flex-end;
 }
 
+.image-left.placeholder,
+.image-right.placeholder {
+  width: 172px;
+  height: 258px;
+  background: var(--placeholder-background-color-no-transparency);
+}
+
+.content-card-info.placeholder {
+  width: 434px;
+}
 .content-card-info {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   padding: 50px 00px;
   min-width: 400px;
+}
+
+.single-show-card-title.placeholder {
+  height: 46px;
+  background-color: var(--placeholder-background-color-l1);
+}
+
+.single-show-card-description.placeholder {
+  height: 132px;
+  background-color: var(--placeholder-background-color-l1);
 }
 
 .single-show-card-title {

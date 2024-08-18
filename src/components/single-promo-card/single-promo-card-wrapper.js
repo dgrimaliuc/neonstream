@@ -18,7 +18,7 @@ export default function SinglePromoCardWrapper({
             <a href={to}>
               <h2 className='single-show-card-title'>{title}</h2>
             </a>
-            <div className='hero-card-description'>{description}</div>
+            <div className='single-show-card-description'>{description}</div>
 
             <ActionsContainer to={toWatch} addToList={false} data={data} />
           </div>

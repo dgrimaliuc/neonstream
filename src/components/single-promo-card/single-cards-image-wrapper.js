@@ -3,12 +3,7 @@ import './custom-border-violet.css';
 import './single-promo-card-violet.css';
 import './single-promo-card.css';
 
-export default function SingleCardsImageWrapper({
-  topImage,
-  bottomImage,
-  className,
-  to,
-}) {
+export default function SingleCardsImageWrapper({ topImage, bottomImage, className, to }) {
   return (
     <div className='single-card-img-wrapper'>
       <a href={to}>
@@ -18,6 +13,7 @@ export default function SingleCardsImageWrapper({
             placeholderWidth={220}
             placeholderHeight={330}
             className={className}
+            showPlaceholderOnLoading
           />
         </picture>
       </a>
@@ -28,6 +24,7 @@ export default function SingleCardsImageWrapper({
             placeholderWidth={220}
             placeholderHeight={330}
             className={className}
+            showPlaceholderOnLoading
           />
         </picture>
       </a>

@@ -1,13 +1,15 @@
+import './custom-border-neon.css';
+import './single-promo-card-neon.css';
+import './single-promo-card.css';
+
 import { memo, useCallback } from 'react';
 import { useNavigateToContent, useSingleContentLoader } from '../../hooks';
 import { getFilePathReverseOrNull, getPoster } from '../../utils';
 import { AnimatedContainer } from './animated-container';
-import './custom-border-neon.css';
 import SingleCardsImageWrapper from './single-cards-image-wrapper';
-import './single-promo-card-neon.css';
 import SinglePromoCardWrapper from './single-promo-card-wrapper';
-import './single-promo-card.css';
 import { useRendingImage } from '../../hooks/useRendingImage';
+import PlaceholderSinglePromoCard from './placeholder-single-promo-card';
 
 const SinglePromoCardContainer = memo(
   ({
@@ -37,35 +39,38 @@ const SinglePromoCardContainer = memo(
       ),
     );
 
-    // While the data is loading, we don't want to render the component, so set placeholder
+    if (loading) {
+      return (
+        <PlaceholderSinglePromoCard
+          topClassName={animatedTopClassName}
+          bottomClassName={animatedBottomClassName}
+        />
+      );
+    }
     if (error) return null;
 
     return (
-      <>
-        {!loading && (
-          <SinglePromoCardWrapper
-            id={id}
-            mediaType={mediaType}
-            to={`/${mediaType}/${id}`}
-            toWatch={to}
-            title={data?.title || data?.name}
-            description={data?.overview}
-            data={data}
-          >
-            <AnimatedContainer
-              topClassName={animatedTopClassName}
-              bottomClassName={animatedBottomClassName}
-            />
+      <SinglePromoCardWrapper
+        id={id}
+        mediaType={mediaType}
+        to={`/${mediaType}/${id}`}
+        toWatch={to}
+        title={data?.title || data?.name}
+        description={data?.overview}
+        data={data}
+      >
+        <AnimatedContainer
+          topClassName={animatedTopClassName}
+          bottomClassName={animatedBottomClassName}
+        />
 
-            <SingleCardsImageWrapper
-              to={`/${mediaType}/${id}`}
-              topImage={top}
-              bottomImage={bottom}
-              className={imageClassName}
-            />
-          </SinglePromoCardWrapper>
-        )}
-      </>
+        <SingleCardsImageWrapper
+          to={`/${mediaType}/${id}`}
+          topImage={top}
+          bottomImage={bottom}
+          className={imageClassName}
+        />
+      </SinglePromoCardWrapper>
     );
   },
 );

@@ -3,7 +3,7 @@ import './carousel.css';
 import BrowseCard from '../browse-card/browse-card';
 import { useCallback, useEffect, useReducer } from 'react';
 import Carousel from './carousel';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { collectionActions } from '../../actions';
 import { useQuery } from '../../hooks';
 import PlaceholderBrowseCollection from './placeholders/placeholder-browse-collection';
@@ -30,7 +30,6 @@ const setAll = (dispatch, title, content) => {
 const BrowseCollection = ({ type, baseId }) => {
   const [state, dispatch] = useReducer(reducer, { content: [], title: '' });
   const params = useParams();
-  const { pathname } = useLocation();
 
   const { loading, data } = useQuery(
     useCallback(async () => {
@@ -51,7 +50,7 @@ const BrowseCollection = ({ type, baseId }) => {
   }
 
   return (
-    <Carousel display={state.content.length > 0 && pathname !== '/'} title={state.title}>
+    <Carousel title={state.title}>
       {state.content.map((card, i) => (
         <BrowseCard
           key={i}

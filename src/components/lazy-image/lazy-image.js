@@ -6,6 +6,7 @@ export default function Image({
   className,
   placeholderWidth,
   placeholderHeight,
+  showPlaceholderOnLoading = false,
   alt = 'Placeholder',
 }) {
   const [hasError, setHasError] = useState(false);
@@ -37,13 +38,16 @@ export default function Image({
   }
 
   return (
-    <img
-      style={{ userSelect: 'none', display: isLoading ? 'none' : 'block' }}
-      src={src}
-      className={className}
-      onError={handleError}
-      onLoad={handleLoad}
-      alt={alt}
-    />
+    <>
+      {showPlaceholderOnLoading && isLoading && placeholder}
+      <img
+        style={{ userSelect: 'none', display: isLoading ? 'none' : 'block' }}
+        src={src}
+        className={className}
+        onError={handleError}
+        onLoad={handleLoad}
+        alt={alt}
+      />
+    </>
   );
 }
