@@ -6,7 +6,7 @@ import Scroll from './scroll';
 import CarouselHeader from './carousel-header';
 import { CarouselContainer } from '../carousel-container';
 
-const Carousel = ({ children, title }) => {
+const Carousel = ({ children, title, navigateTo }) => {
   if (children.length === 0) {
     return null;
   }
@@ -16,10 +16,10 @@ const Carousel = ({ children, title }) => {
       {(observe, unobserve, visibilityMap, scrollRef) => (
         <div className='carousel-wrapper'>
           <CarouselHeader
-            display={children.length > 0}
             title={title}
             visibilityMap={visibilityMap}
             scrollRef={scrollRef}
+            navigateTo={navigateTo}
           />
           <Scroll ref={scrollRef}>
             {Children.map(children, (child, i) => (

@@ -6,6 +6,7 @@ export const MOVIE = 'movie';
 export const MULTIPLE = 'multiple';
 export const TV = 'tv';
 
+export const WATCHLIST = 'watchlist';
 export const POPULAR_SERIES = 'popular_series';
 export const POPULAR_MOVIES = 'popular_movies';
 export const RECOMMENDED_MOVIES = 'recommended_movies';

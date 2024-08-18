@@ -3,11 +3,7 @@ import { useClasses } from '../../../hooks';
 import styles from './hero-carousel-pagination.module.css';
 
 export default function HeroCarouselTab({ active, onClick, index }) {
-  const {
-    c: tabClass,
-    addClass,
-    setInitial,
-  } = useClasses(styles['hero-carousel__page']);
+  const { c: tabClass, addClass, setInitial } = useClasses(styles['hero-carousel__page']);
 
   useEffect(() => {
     if (active) {
@@ -18,7 +14,7 @@ export default function HeroCarouselTab({ active, onClick, index }) {
   }, [active, addClass, setInitial]);
 
   return (
-    <button className={tabClass} onClick={onClick.bind(null, index)}>
+    <button id={`'hero-tab-'` + index} className={tabClass} onClick={onClick.bind(null, index)}>
       <div className={styles['hero-carousel__page-pill']}>
         <span className={styles['hero-carousel__page-loader']} />
       </div>

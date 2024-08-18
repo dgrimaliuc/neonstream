@@ -26,8 +26,12 @@ import {
 } from '../services/content';
 
 const collectionActions = {
-  [POPULAR_SERIES]: { title: 'Popular Series', action: popularSeries },
-  [POPULAR_MOVIES]: { title: 'Popular Movies', action: popularMovies },
+  [POPULAR_SERIES]: { title: 'Popular Series', action: popularSeries, navigateTo: '/browse/tv' },
+  [POPULAR_MOVIES]: {
+    title: 'Popular Movies',
+    action: popularMovies,
+    navigateTo: '/browse/movies',
+  },
   [TOP_RATED_MOVIES]: { title: 'Top Rated Movies', action: topRatedMovies },
   [TOP_RATED_SERIES]: { title: 'Top Rated Series', action: topRatedSeries },
   [UPCOMING_MOVIES]: { title: 'Upcoming Movies', action: upcomingMovies },

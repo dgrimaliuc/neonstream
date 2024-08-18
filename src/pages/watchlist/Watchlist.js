@@ -9,21 +9,15 @@ import { BookmarksEmptyContainer } from '../../components/bookmarks-empty-contai
 
 export default function WatchlistPage() {
   const { watchlist, clear } = useWatchlist({});
-  const cards = useMemo(
-    () =>
-      Object.entries(watchlist)
-        .reverse()
-        .map(item => item[1]),
-    [watchlist],
-  );
+  const cards = useMemo(() => Object.values(watchlist), [watchlist]);
 
   return (
     <BookmarksWrapper>
       <BookmarksTabs />
       <div className='watchlist-header'>
         <h4>Recent activity</h4>
-        <button className='clear-history' onClick={clear.bind(null)}>
-          <span>Clear History</span>
+        <button className='clear-history' onClick={clear}>
+          <span>Clear all</span>
         </button>
       </div>
       {cards && cards.length > 0 ? (

@@ -17,12 +17,13 @@ function reducer(state, action) {
   }
 }
 
-const setAll = (dispatch, title, content) => {
+const setAll = (dispatch, title, content, navigateTo) => {
   dispatch({
     type: 'set_all',
     payload: {
       title: title,
       content: content,
+      navigateTo: navigateTo,
     },
   });
 };
@@ -35,13 +36,13 @@ const BrowseCollection = ({ type, baseId }) => {
     useCallback(async () => {
       const entity = collectionActions[type];
       const content = await entity.action({ id: baseId || params.id });
-      return [entity.title, content];
+      return [entity.title, content, entity.navigateTo];
     }, [baseId, params.id, type]),
   );
 
   useEffect(() => {
     if (data) {
-      setAll(dispatch, data[0], data[1]);
+      setAll(dispatch, data[0], data[1], data[2]);
     }
   }, [data]);
 
@@ -50,7 +51,7 @@ const BrowseCollection = ({ type, baseId }) => {
   }
 
   return (
-    <Carousel title={state.title}>
+    <Carousel title={state.title} navigateTo={state.navigateTo}>
       {state.content.map((card, i) => (
         <BrowseCard
           key={i}
