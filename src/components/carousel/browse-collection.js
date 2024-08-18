@@ -30,7 +30,6 @@ const setAll = (dispatch, title, content) => {
 const BrowseCollection = ({ type, baseId }) => {
   const [state, dispatch] = useReducer(reducer, { content: [], title: '' });
   const params = useParams();
-  const { pathname } = useLocation();
 
   const { loading, data } = useQuery(
     useCallback(async () => {
@@ -51,7 +50,7 @@ const BrowseCollection = ({ type, baseId }) => {
   }
 
   return (
-    <Carousel display={state.content.length > 0 && pathname !== '/'} title={state.title}>
+    <Carousel title={state.title}>
       {state.content.map((card, i) => (
         <BrowseCard
           key={i}

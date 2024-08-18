@@ -24,6 +24,12 @@
   font-size: medium;
 }
 
+.average-card-ratings.placeholder {
+  background: var(--placeholder-background-color-l1);
+  width: 210px;
+  height: 19px;
+}
+
 .single-card::after {
   position: absolute;
   content: '';
@@ -55,6 +61,12 @@
   height: 100%;
   right: 0;
   z-index: 0;
+}
+
+.single-card-image.placeholder {
+  background: var(--placeholder-background-color-l1);
+  height: 450px;
+  width: 500px;
 }
 
 .single-card-info-column {
@@ -96,15 +108,32 @@
 }
 
 .single-card-poster {
-  height: 250px;
+  height: 255px;
+  position: relative;
+  width: 165px;
+  min-height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.single-card-poster.placeholder {
+  background: var(--placeholder-background-color-l1);
+  height: 255px;
+  width: 165px;
 }
 
 .single-card-tag {
   font-size: 14px;
 }
 
+.single-card-title.placeholder {
+  background: var(--placeholder-background-color-l1);
+  width: 276.34px;
+  height: 89.78px;
+}
+
 .single-card-description {
-  /* padding: 0px 0px 0px 0px; */
   line-height: 20px;
   color: rgba(255, 255, 255, 0.8);
   text-align: left;
@@ -112,6 +141,14 @@
   height: 105px;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-top: 5px;
+}
+
+.single-card-description.placeholder {
+  background: var(--placeholder-background-color-l1);
+  width: 100%;
+  height: 105px;
+  margin-top: 10px;
 }
 
 .single-card-actions {

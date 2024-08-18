@@ -18,7 +18,10 @@
   --tablet-viewport: 834px;
   --desktop-viewport: 1024px;
   --large-desktop-viewport: 1200px;
+
+  /* Placeholder Colors */
   --placeholder-background-color-l1: #32323563;
+  --placeholder-background-color-no-transparency: #1d1f22;
 }
 
 a {

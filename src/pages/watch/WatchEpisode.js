@@ -5,6 +5,7 @@ import { useLoaderData, useParams } from 'react-router-dom';
 import { VODPlayer } from '../../components/player';
 import useSeries from '../../hooks/useSeries';
 import { useInitialScroll } from '../../hooks';
+import { Image } from '../../components/lazy-image';
 
 export async function loadEpisode({ params }) {
   const value = await getEpisode(params.id, params.season, params.episode);
@@ -70,7 +71,7 @@ export default function WatchEpisode() {
               className='up-next-episode-body'
             >
               <div className='up-next-image-container'>
-                <img className='up-next-image' src={upNexImg} alt='' />
+                <Image className='up-next-image' src={upNexImg} alt='' />
               </div>
               <div className='up-next-info'>
                 <div className='up-next-info-box'>
@@ -93,7 +94,7 @@ export default function WatchEpisode() {
               className='up-next-episode-body'
             >
               <div className='up-next-image-container'>
-                <img className='up-next-image' src={upNexImg} alt='' />
+                <Image className='up-next-image' src={upNexImg} alt='' />
               </div>
               <div className='up-next-info'>
                 <div className='up-next-info-box'>

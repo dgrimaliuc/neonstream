@@ -21,3 +21,9 @@
   user-select: text;
   cursor: pointer;
 }
+
+.tag.placeholder {
+  background: var(--placeholder-background-color-l1);
+  width: 60px;
+  height: 30px;
+}

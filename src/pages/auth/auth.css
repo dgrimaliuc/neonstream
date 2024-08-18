@@ -125,8 +125,8 @@
   display: flex;
   flex-direction: column;
 }
-
-.placeholder {
+/* 
+.placeholder-qwe123 {
   position: absolute;
   top: 10px;
   left: 10px;
@@ -136,12 +136,12 @@
   transition: top 0.3s, left 0.3s, font-size 0.3s;
 }
 
-.focused .placeholder {
+.focused .placeholder-qwe123 {
   top: -10px;
   left: 1px;
   font-size: 14px;
   color: rgb(95, 95, 95);
-}
+} */
 
 .auth-form input {
   width: 100%;

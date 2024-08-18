@@ -1,1 +1,1 @@
-export { default as ActionsPlaceholder } from './actions-placeholder';
+export { default as ActionsPlaceholder } from './placeholder-actions';
