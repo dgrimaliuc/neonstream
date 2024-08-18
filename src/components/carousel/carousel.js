@@ -16,7 +16,6 @@ const Carousel = ({ children, title, navigateTo }) => {
       {(observe, unobserve, visibilityMap, scrollRef) => (
         <div className='carousel-wrapper'>
           <CarouselHeader
-            display={children.length > 0}
             title={title}
             visibilityMap={visibilityMap}
             scrollRef={scrollRef}
