@@ -1,31 +1,27 @@
 import { useMemo } from 'react';
 import { useLocalStorage } from '@uidotdev/usehooks';
 
-export function useWatchlist(props) {
-  const { media, id } = props || { media: null, id: null };
-  const [watchlist, setWatchlist] = useLocalStorage('watchlist', {});
+import { watchlistActions, watchlistContent } from '../store';
+import { useDispatchAction } from './useDispatchAction';
+import { useSelector } from 'react-redux';
 
+export function useWatchlist(props) {
+  const dispatch = useDispatchAction(watchlistActions);
+
+  const { media, id } = props || { media: null, id: null };
+  const watchlist = useSelector(watchlistContent);
   const isInWatchlist = useMemo(() => !!watchlist[[`${media}-${id}`]], [watchlist, media, id]);
 
   const add = data => {
-    setWatchlist(prev => ({
-      ...prev,
-      [`${media}-${id}`]: {
-        title: data.title || data.name,
-        poster: data.poster_path,
-        date: data.release_date || data.first_air_date,
-        media_type: media,
-        id,
-      },
-    }));
+    dispatch.add({ data, media, id })();
   };
 
   const remove = () => {
-    setWatchlist(prev => ({ ...prev, [`${media}-${id}`]: undefined }));
+    dispatch.remove({ media, id })();
   };
 
   const clear = () => {
-    setWatchlist({});
+    dispatch.clear()();
   };
 
   return { add, remove, clear, isInWatchlist, watchlist };

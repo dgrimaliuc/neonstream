@@ -3,7 +3,7 @@ import classes from './home.module.css';
 import HeroCarousel from '../../components/hero-carousel/hero-carousel';
 import { SinglePromoCardNeon, SinglePromoCardViolet } from '../../components/single-promo-card';
 import { SingleCard } from '../../components/single-card';
-import { BrowseCollection } from '../../components/carousel';
+import { BrowseCollection, WatchlistCollection } from '../../components/carousel';
 import { useObserver, useChunks, useInitialScroll } from '../../hooks';
 import { renderArray, sleep } from '../../utils';
 import { Spinner } from '../../components/spinner';
@@ -26,6 +26,7 @@ import { useMemo, useRef } from 'react';
 function Home() {
   const { chunks, loadIndex, loadMore, isEnd } = useChunks(
     [
+      <WatchlistCollection />,
       <BrowseCollection type={UPCOMING_MOVIES} />,
       <BrowseCollection type={TOP_RATED_SERIES} />,
       <BrowseCollection type={NOW_PLAYING_MOVIES} />,
