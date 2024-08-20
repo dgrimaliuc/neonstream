@@ -14,6 +14,7 @@ import TrailerModal from '../../modal/trailer-modal';
 import { useSelector } from 'react-redux';
 import { selectedTrailer, trailerActions } from '../../../store';
 import { useDispatchAction } from '../../../hooks/useDispatchAction';
+import { useEffect } from 'react';
 
 export default function HeroContent({ additional, to }) {
   const dispatch = useDispatchAction(trailerActions);
@@ -30,23 +31,25 @@ export default function HeroContent({ additional, to }) {
     first_air_date,
     release_date,
   } = useLoaderData();
+
+  useEffect(() => {
+    return () => {
+      dispatch.unselectTrailer()();
+    };
+  });
+
   return (
     <>
-      <TrailerModal
-        onOutsideClick={dispatch.unselectTrailer()}
-        trailer={trailer}
-      />
+      <TrailerModal onOutsideClick={dispatch.unselectTrailer()} trailer={trailer} />
       <div className={heroStyles['hero-content-section']}>
         <div className={heroStyles['hero-content-wrapper']}>
           <HeroPoster picture={poster_path} />
           <div className={heroStyles['hero-content']}>
             <div className={heroStyles['hero-content-header']}>
-              <h2 className={heroStyles['hero-title']}>{`${
-                title || name
-              } (${getYear(release_date || first_air_date)})`}</h2>
-              <span className={heroStyles['additional-info']}>
-                {additional}
-              </span>
+              <h2 className={heroStyles['hero-title']}>{`${title || name} (${getYear(
+                release_date || first_air_date,
+              )})`}</h2>
+              <span className={heroStyles['additional-info']}>{additional}</span>
             </div>
 
             <HeroActions trailer={selectMainTrailer(videos)} />

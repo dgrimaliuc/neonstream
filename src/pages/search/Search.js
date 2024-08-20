@@ -20,7 +20,7 @@ export default function Search() {
     if (query?.q) {
       setIsInitial(false);
     }
-  }, [query?.q]);
+  }, [query]);
 
   return (
     <div className={styles['search-wrapper']}>
