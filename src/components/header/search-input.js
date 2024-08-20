@@ -1,16 +1,33 @@
-import { useEffect, useRef } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
 export default function SearchInput() {
   const navigate = useNavigate();
   const location = useLocation();
-  const ref = useRef();
+  const [value, setValue] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const handleInputChange = event => {
-    const value = event.target.value;
-    const url = value === '' ? '/search' : `/search?q=${value}`;
-    navigate(url);
-  };
+  const removeParam = useCallback(
+    key => {
+      searchParams.delete(key);
+      setSearchParams(searchParams);
+    },
+    [searchParams, setSearchParams],
+  );
+
+  const handleInputChange = useCallback(
+    event => {
+      const value = event.target.value;
+
+      setValue(value);
+      if (value === '') {
+        removeParam('q');
+      } else {
+        setSearchParams({ q: value });
+      }
+    },
+    [removeParam, setSearchParams],
+  );
 
   const handleClick = () => {
     if (location.pathname !== '/search') {
@@ -19,23 +36,24 @@ export default function SearchInput() {
   };
 
   useEffect(() => {
-    const inputRef = ref.current;
-    const params = new URLSearchParams(location.search);
-    inputRef.value = params.get('q') || '';
+    setValue(searchParams.get('q') || '');
+    if (searchParams.get('q') === '') {
+      removeParam('q');
+    }
     return () => {
-      inputRef.value = '';
+      setValue('');
     };
-  }, [location]);
+  }, [location, removeParam, searchParams, setSearchParams]);
 
   return (
     <div className='search'>
       <div id='cover'>
         <input
+          value={value}
           type='text'
           placeholder='Search...'
           onClick={handleClick}
           onChange={handleInputChange}
-          ref={ref}
         />
       </div>
     </div>
