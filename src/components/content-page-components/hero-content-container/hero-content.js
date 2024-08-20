@@ -36,7 +36,7 @@ export default function HeroContent({ additional, to }) {
     return () => {
       dispatch.unselectTrailer()();
     };
-  });
+  }, [dispatch]);
 
   return (
     <>
