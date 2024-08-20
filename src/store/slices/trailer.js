@@ -9,7 +9,7 @@ const trailerSlice = createSlice({
     selectTrailer: (state, action) => {
       state.selectedTrailer = action.payload;
     },
-    unselectTrailer: (state) => {
+    unselectTrailer: state => {
       state.selectedTrailer = null;
     },
   },
