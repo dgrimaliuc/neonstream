@@ -8,8 +8,7 @@
   flex-direction: column;
   align-items: flex-start;
   width: 313px;
-  height: 252px;
-  /* gap: 20px; */
+  height: 264.5px;
   overflow: hidden;
   background-color: var(--episode-card-background-color);
   border-radius: 5px;
@@ -19,32 +18,18 @@
   max-height: 176px;
 }
 
-.episodethumbnail {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
 .poster {
   position: absolute;
   z-index: -1;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* filter: blur(5px); */
-  /* overflow: hidden; */
 }
 
 .episode:hover {
   background-color: rgba(89, 86, 86, 0.248);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
-
-/* .episode picture {
-    display: inline-block;
-    width: fit-content;
-    cursor: pointer;
-  } */
 
 .thumbnail-container {
   position: relative;
@@ -79,7 +64,8 @@
   color: rgba(220, 220, 220, 0.891);
   font-size: 15px;
   line-height: 18px;
-  display: inline-block;
-  max-height: 85px;
   overflow: hidden;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  height: 60px;
 }

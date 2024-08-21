@@ -7,6 +7,7 @@ export default function Image({
   placeholderWidth,
   placeholderHeight,
   showPlaceholderOnLoading = false,
+  shape = 'image',
   alt = 'Placeholder',
 }) {
   const [hasError, setHasError] = useState(false);
@@ -17,11 +18,11 @@ export default function Image({
       <ImagePlaceholder
         width={placeholderWidth}
         height={placeholderHeight}
-        shape='image'
+        shape={shape}
         className={className}
       />
     ),
-    [className, placeholderHeight, placeholderWidth],
+    [className, placeholderHeight, placeholderWidth, shape],
   );
 
   const handleError = () => {

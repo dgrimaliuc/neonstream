@@ -10,23 +10,20 @@ import ErrorEpisodesContainer from '../episodes-section-states/error-episodes-co
 import { makeFlatChunks } from '../../../../utils';
 import EpisodeLoadButton from './episode-load-button';
 
-export default function EpisodesContainer({
-  seasonMetadata,
-  maxUserActions = 2,
-}) {
+export default function EpisodesContainer({ seasonMetadata, maxUserActions = 2 }) {
   const { id: seriesId } = useParams();
   const { season_number } = seasonMetadata;
 
   const { loading, data, error } = useDebounceQuery(
     useCallback(
       async () => await getSeasonDetails({ id: seriesId, season_number }),
-      [season_number, seriesId]
-    )
+      [season_number, seriesId],
+    ),
   );
 
   const { chunks, loadIndex, loadMore, isEnd, setLoadIndex } = useChunks(
     data ? data.episodes : [],
-    30
+    30,
   );
 
   useEffect(() => {
@@ -42,19 +39,12 @@ export default function EpisodesContainer({
   return (
     <div className={styles['episodes-wrapper']}>
       <div className={styles['episodes-container']}>
-        {data &&
-          makeFlatChunks(chunks, loadIndex).map((ep, i) => (
-            <EpisodeCard key={i} {...ep} />
-          ))}
+        {data && makeFlatChunks(chunks, loadIndex).map((ep, i) => <EpisodeCard key={i} {...ep} />)}
       </div>
       <EpisodeLoadButton
         maxUserActions={maxUserActions}
         loadIndex={loadIndex}
-        onClick={
-          loadIndex > maxUserActions
-            ? setLoadIndex.bind(null, chunks.length)
-            : loadMore
-        }
+        onClick={loadIndex > maxUserActions ? setLoadIndex.bind(null, chunks.length) : loadMore}
         isEnd={isEnd}
       />
     </div>
