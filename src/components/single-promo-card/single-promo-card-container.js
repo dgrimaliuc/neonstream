@@ -21,7 +21,7 @@ const SinglePromoCardContainer = memo(
     imageClassName,
   }) => {
     const { data, loading, error } = useSingleContentLoader(id, mediaType);
-    const to = useNavigateToContent(mediaType, id);
+    const navigate = useNavigateToContent(mediaType, id);
 
     const { img: top } = useRendingImage(
       useCallback(setImage => data && setImage(getPoster(data.poster_path)), [data]),
@@ -54,7 +54,7 @@ const SinglePromoCardContainer = memo(
         id={id}
         mediaType={mediaType}
         to={`/${mediaType}/${id}`}
-        toWatch={to}
+        onWatchClick={navigate}
         title={data?.title || data?.name}
         description={data?.overview}
         data={data}

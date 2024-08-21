@@ -3,10 +3,10 @@ import './single-promo-card.css';
 
 export default function SinglePromoCardWrapper({
   to = '/',
-  toWatch,
   children,
   title = '',
   description = '',
+  onWatchClick,
   data,
 }) {
   return (
@@ -20,7 +20,7 @@ export default function SinglePromoCardWrapper({
             </a>
             <div className='single-show-card-description'>{description}</div>
 
-            <ActionsContainer to={toWatch} addToList={false} data={data} />
+            <ActionsContainer onWatchClick={onWatchClick} addToList={false} data={data} />
           </div>
         </div>
       </div>
