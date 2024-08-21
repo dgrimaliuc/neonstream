@@ -35,6 +35,7 @@ export default function HeroCard({ data, active, id, mediaType }) {
               className={classes['hero-card-picture']}
               src={getBackdrop(data.backdrop_path, 3)}
               alt='Hero carousel item'
+              shape='none'
               placeholderHeight={9}
               placeholderWidth={16}
             />
