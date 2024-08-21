@@ -108,3 +108,10 @@ small,
 .text-small {
   font-size: 0.64em;
 }
+
+.multiline-ellipsis {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

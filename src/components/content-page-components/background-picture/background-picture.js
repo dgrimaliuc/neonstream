@@ -10,9 +10,12 @@ export default function BackgroundPicture() {
       <div className={styles['img-gradient']} />
       {backdrop_path && (
         <Image
+          placeholderWidth={16}
+          placeholderHeight={9}
           className={styles['header-image']}
           src={getBackdrop(backdrop_path, 3)}
           alt='Background'
+          shape='none'
         />
       )}
     </picture>

@@ -9,7 +9,14 @@ const MediaImageCard = forwardRef(({ image }, ref) => {
   return (
     <MediaCard ref={ref}>
       <picture>
-        <Image className={classes['image-container']} src={getBackdrop(image)} alt='Backdrop' />
+        <Image
+          className={classes['image-container']}
+          src={getBackdrop(image)}
+          alt='Backdrop'
+          placeholderWidth={533}
+          placeholderHeight={300}
+          showPlaceholderOnLoading
+        />
       </picture>
     </MediaCard>
   );

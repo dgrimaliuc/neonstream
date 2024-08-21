@@ -1,6 +1,5 @@
 .thumbnail-wrapper {
   margin-bottom: 15px;
-  /* height: 100%; */
 }
 
 .thumbnail-img-wrapper::after {
@@ -33,5 +32,9 @@
 
 .thumbnail-img-wrapper {
   width: 100%;
-  /* height: 100%; */
+}
+
+.playable-thumbnail .fa-play-circle:hover {
+  color: white;
+  opacity: 1;
 }

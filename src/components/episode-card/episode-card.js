@@ -3,25 +3,14 @@ import classes from './episode-card.module.css';
 import { PlayableThumbnail } from '../playable-thumbnail';
 import { getYear } from '../../utils';
 
-export default function EpisodeCard({
-  showProgress,
-  showIcon,
-  backdrop,
-  title,
-  to,
-  date,
-}) {
+export default function EpisodeCard({ showProgress, showIcon, backdrop, title, to, date }) {
   if (!backdrop) return;
   return (
     <>
       <div>
         <a className={classes['episode-card']} href={to}>
           <div className={classes['thumbnail-container']}>
-            <PlayableThumbnail
-              image={backdrop}
-              showProgress={showProgress}
-              showIcon={showIcon}
-            />
+            <PlayableThumbnail image={backdrop} showProgress={showProgress} showIcon={showIcon} />
           </div>
           <div className={classes['episode-info']}>
             <p className={classes['episode-card-title']}>

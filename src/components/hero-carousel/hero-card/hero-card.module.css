@@ -30,16 +30,6 @@
     margin: 39.3px 0 0;
   }
 
-  .multiline-ellipsis {
-    display: -webkit-box;
-    -webkit-line-clamp: 6;
-    line-clamp: 6;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    height: 150px;
-  }
-
   .hero-card-picture {
     position: relative;
     width: 100%;
@@ -92,4 +82,9 @@
   z-index: 100;
   background: linear-gradient(to bottom, #0000 min(40vh, 50%), var(--main-background-color) 100%),
     linear-gradient(to var(--cr-end-direction), #000c 0, #0009 30%, #0000 70%);
+}
+.hero-card-ellipsis {
+  -webkit-line-clamp: 6;
+  line-clamp: 6;
+  height: 150px;
 }

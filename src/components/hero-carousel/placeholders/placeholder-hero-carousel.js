@@ -1,7 +1,7 @@
 import './hero-carousel-placeholder.css';
 import classes from '../hero-card/hero-card.module.css';
 import { ActionsPlaceholder } from '../../actions';
-import PlaceholderHeroArrowsWrapper from '../components/placeholderhero-arrows-wrapper';
+import PlaceholderHeroArrowsWrapper from '../components/placeholder-hero-arrows-wrapper';
 import HeroCardsWrapper from '../hero-cards-wrapper';
 import PlaceholderCarouselPaginationContainer from '../pagination/placeholder-carousel-pagination-container';
 

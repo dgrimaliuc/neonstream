@@ -57,7 +57,8 @@
 
 .hero-poster {
   user-select: none;
-  max-height: 500px;
+  max-height: 495px;
+  max-width: 330px;
 }
 
 .hero-content-header {
