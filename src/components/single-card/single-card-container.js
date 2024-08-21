@@ -20,8 +20,8 @@ const SingleCardContainer = memo(
     overview,
     data,
   }) => {
-    const to = useNavigateToContent(mediaType, id);
-    console.log('backdrop_path', backdrop_path);
+    const navigate = useNavigateToContent(mediaType, id);
+
     return (
       <div className='single-card-container'>
         <Image
@@ -59,7 +59,7 @@ const SingleCardContainer = memo(
           </div>
 
           <div className='single-card-description'>{overview}</div>
-          <ActionsContainer to={to} addToList={false} data={data} />
+          <ActionsContainer onWatchClick={navigate} addToList={false} data={data} />
         </div>
       </div>
     );

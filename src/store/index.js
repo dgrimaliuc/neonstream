@@ -7,6 +7,7 @@ import { browse, trailer, series, search, watchlist } from './slices';
 import storage from 'redux-persist/lib/storage';
 // The autoMergeLevel1 is the default stateReconciler (https://github.com/rt2zz/redux-persist?tab=readme-ov-file#state-reconciler)
 import autoMergeLevel1 from 'redux-persist/es/stateReconciler/autoMergeLevel1';
+// import hardSet from 'redux-persist/es/stateReconciler/hardSet';
 import persistReducer from 'redux-persist/es/persistReducer';
 import persistStore from 'redux-persist/es/persistStore';
 

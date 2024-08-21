@@ -1,19 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export function useNavigateToContent(mediaType, id) {
-  const [to, setTo] = useState('/');
+  const navigate = useNavigate();
 
-  useEffect(() => {
+  const navigateTo = useCallback(() => {
     switch (mediaType) {
       case 'movie':
-        return setTo(`/${mediaType}/${id}`);
+        return navigate(`/${mediaType}/${id}`);
       case 'tv':
-        return setTo(`/tv/${id}/watch/1/1`);
+        return navigate(`/tv/${id}/watch/1/1`);
 
       default:
         console.error('Invalid media type: ', mediaType);
     }
-  }, [mediaType, id]);
+  }, [id, mediaType, navigate]);
 
-  return to;
+  return navigateTo;
 }

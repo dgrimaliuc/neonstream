@@ -7,7 +7,7 @@ import { getBackdrop } from '../../../utils';
 import { Image } from '../../lazy-image';
 
 export default function HeroCard({ data, active, id, mediaType }) {
-  const to = useNavigateToContent(mediaType, id);
+  const navigate = useNavigateToContent(mediaType, id);
   const {
     c: heroContainerClasses,
     addClass,
@@ -48,7 +48,7 @@ export default function HeroCard({ data, active, id, mediaType }) {
           <div className={classes.description}>
             <p className={`multiline-ellipsis ${classes['hero-card-ellipsis']}`}>{data.overview}</p>
           </div>
-          <ActionsContainer to={to} addToList={false} data={data} />
+          <ActionsContainer onWatchClick={navigate} addToList={false} data={data} />
         </div>
       </div>
     </div>

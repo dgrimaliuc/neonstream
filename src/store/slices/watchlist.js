@@ -21,6 +21,9 @@ const watchlistSlice = createSlice({
       const { media, id } = action.payload;
       delete state.content[`${media}-${id}`];
     },
+    setWatchlist: (state, action) => {
+      state.content = action.payload.content;
+    },
     clear: state => {
       state.content = {};
     },

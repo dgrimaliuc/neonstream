@@ -7,7 +7,7 @@ import {
   ContentHeader,
 } from '../../components/content-page-components';
 import { getSeries } from '../../services/content';
-import { RECOMMENDED_SERIES, SIMILAR_SERIES } from '../../data/constants';
+import { RECOMMENDED_SERIES, SIMILAR_SERIES, TV } from '../../data/constants';
 import {
   composeProps,
   externalIdsProps,
@@ -17,7 +17,7 @@ import {
   videosProps,
 } from '../../api';
 import useSeries from '../../hooks/useSeries';
-import { useInitialScroll } from '../../hooks';
+import { useInitialScroll, useNavigateToContent } from '../../hooks';
 
 export async function loadTv({ params }) {
   return getSeries(
@@ -39,9 +39,11 @@ export default function SeriesPage() {
   useSeries();
   useInitialScroll({ timeout: 50 });
 
+  const navigate = useNavigateToContent(TV, id);
+
   return (
     <>
-      <ContentHeader to={`/tv/${id}/watch/1/1`} />
+      <ContentHeader onWatchClick={navigate} />
       <HeroContent additional={`${number_of_seasons} S - ${number_of_episodes} E`} />
       {seasons.length > 0 && (
         <SeasonsContainer seasonsTotal={number_of_seasons} seasons={seasons} />
