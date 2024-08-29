@@ -5,7 +5,6 @@ const historySlice = createSlice({
   initialState: { content: {} },
   reducers: {
     save: (state, action) => {
-      // console.log('save movie: ', action.payload);
       const { data, progress, isFullyWatched } = action.payload;
       console.log('data: ', data);
       const { id, media_type } = data;
