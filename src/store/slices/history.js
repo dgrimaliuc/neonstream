@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { MOVIE } from '../../data/constants';
 
 const historySlice = createSlice({
   name: 'history',
