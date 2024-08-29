@@ -1,5 +1,3 @@
-const CORST_PORT = 4000;
-
 // Backup proxy
 // 'https://cors557.deno.dev/';
 // 'https://cors.nb557.workers.dev:8443/';
@@ -8,12 +6,15 @@ const CORST_PORT = 4000;
 const config = {
   dev: {
     proxy: {
-      cors: `http://localhost:${CORST_PORT}/`,
+      // cors: `https://188.138.191.203/cors/`,
+      cors: `http://localhost:4000/`,
+      // cors: 'http://localhost:4040/cors/',
     },
   },
   prod: {
     proxy: {
-      cors: 'https://usecors.nodeapp.workers.dev/',
+      // cors: '',
+      cors: 'https://188.138.191.203/cors/',
     },
   },
 };

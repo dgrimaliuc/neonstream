@@ -2,16 +2,48 @@ import { forwardRef } from 'react';
 import ReactPlayer from 'react-player';
 
 const Player = forwardRef(
-  ({ url, playing, controls, playIcon, style, className, light, config, onPause }, ref) => {
+  (
+    {
+      url,
+      playing,
+      controls,
+      playIcon,
+      style,
+      className,
+      onReady,
+      light,
+      config,
+      onPause,
+      onPlay,
+      onBuffer,
+      onSeek,
+      onStart,
+      played,
+      onEnded,
+      onProgress,
+      progressInterval,
+    },
+    ref,
+  ) => {
     return (
       <ReactPlayer
         ref={ref}
         onPause={onPause}
+        onReady={onReady}
+        onBuffer={onBuffer}
+        onPlay={onPlay}
+        fallback={<div>...LOADING</div>}
+        onSeek={onSeek}
+        onStart={onStart}
+        onProgress={onProgress}
+        onEnded={onEnded}
+        played={played}
         className={className}
         light={light}
         url={url}
         width='100%'
         height='100%'
+        progressInterval={progressInterval}
         controls={controls}
         playing={playing}
         playIcon={playIcon}
