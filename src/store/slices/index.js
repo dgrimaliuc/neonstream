@@ -9,3 +9,5 @@ export * from './trailer';
 export * from './series';
 export { default as watchlist } from './watchlist';
 export * from './watchlist';
+export { default as history } from './history';
+export * from './history';

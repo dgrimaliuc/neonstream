@@ -8,8 +8,7 @@ import { useInitialScroll } from '../../hooks';
 import { Image } from '../../components/lazy-image';
 
 export async function loadEpisode({ params }) {
-  const value = await getEpisode(params.id, params.season, params.episode);
-  return value;
+  return await getEpisode(params.id, params.season, params.episode);
 }
 
 export default function WatchEpisode() {

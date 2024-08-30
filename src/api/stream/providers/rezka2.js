@@ -14,7 +14,7 @@ import {
 } from '../utils';
 
 export class Rezka2 {
-  #headers = {};
+  #headers = { 'x-requested-with': 'XMLHttpRequest' };
   extract = {};
   isMultiSeasonSeries = false;
   object = null;
@@ -505,6 +505,7 @@ export class Rezka2 {
       headers: {
         ...options.headers,
         'Content-Type': 'application/x-www-form-urlencoded',
+        'x-requested-with': 'XMLHttpRequest',
       },
       responseType: 'json',
     });

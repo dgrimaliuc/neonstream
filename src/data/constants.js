@@ -3,9 +3,11 @@ export const BROWSE_SERIES = 'browse_series';
 export const BROWSE_ALL = 'browse_all';
 export const SEARCH_ALL = 'search_all';
 export const MOVIE = 'movie';
+export const EPISODE = 'episode';
 export const MULTIPLE = 'multiple';
 export const TV = 'tv';
 
+export const HISTORY = 'history';
 export const WATCHLIST = 'watchlist';
 export const POPULAR_SERIES = 'popular_series';
 export const POPULAR_MOVIES = 'popular_movies';
