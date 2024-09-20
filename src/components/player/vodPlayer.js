@@ -28,7 +28,8 @@ const { isReady, handleReady } = useStreamPlayerSetup(selected);
   const { isTranslationsLoading, translationsData, translationsError, selected, setSelected } =
     useTranslations(content);
 
-  const { streamIsLoading, streamData, streamError } = useStream(
+  const { streamData } = useStream(
+    //streamIsLoading  streamError
     content,
     translationsData?.translations,
     selected,
