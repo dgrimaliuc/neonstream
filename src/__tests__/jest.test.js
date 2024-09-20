@@ -8,15 +8,6 @@ let api = new MovieDb({ apiKey });
 const SECONDS = 10000000;
 jest.setTimeout(10 * SECONDS);
 
-test('rezka parser test', async () => {
-  // const tv = await api.tvInfo({ id: 60625 });
-  const movie = await api.movieInfo({ id: 359410 });
-  const src = await sources(movie);
-  const r = await src.rezka2.search();
-  const streams = await src.rezka2.getStream(r.voice[2]);
-  console.log(streams);
-});
-
 test('should search for Zoolander', async () => {
   const res = await api.searchMovie({ query: 'alien' });
   console.log(JSON.stringify(res, null, 2));

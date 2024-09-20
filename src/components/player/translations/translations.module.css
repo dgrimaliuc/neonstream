@@ -41,6 +41,10 @@
   cursor: pointer;
 }
 
+.translation[data-t='placeholder'] {
+  height: 33.09px;
+}
+
 .expand-button-background {
   background-color: var(--translations-background-color);
 }

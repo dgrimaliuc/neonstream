@@ -6,7 +6,7 @@ const discoverProps = {
   with_original_language: 'en',
   language: 'en-US',
   include_adult: false,
-  timeout: 1000,
+  timeout: 1000, // TODO Rename to delay
   page: 1,
 };
 

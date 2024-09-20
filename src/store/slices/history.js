@@ -6,7 +6,6 @@ const historySlice = createSlice({
   reducers: {
     save: (state, action) => {
       const { data, progress, isFullyWatched } = action.payload;
-      console.log('data: ', data);
       const { id, media_type } = data;
       delete state.content[`${media_type}-${id}`];
 

@@ -1,35 +1,20 @@
-import { useCallback, useState } from 'react';
-import { useCustomRef } from './useCustomRef';
+import { useCallback } from 'react';
+import { useQuery } from './useQuery';
+import { getStream } from '../services/cms';
 
-export function useStream() {
-  const [audioSources, setAudioSources] = useState({});
-  const [selectedStream, setSelectedStream] = useState(0);
-  const [error, setError] = useState(null);
-  const [stream, setStream] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [loadingRef, setLoadingRef] = useCustomRef(loading);
+export default function useStream(content, translations, selected) {
+  const queryFunction = useCallback(() => {
+    if (!translations || !translations[selected]) {
+      return null;
+    }
+    return getStream({ content, translation: translations[selected] });
+  }, [content, translations, selected]);
 
-  const setLoadingState = useCallback(
-    isLoading => {
-      setLoading(isLoading);
-      setLoadingRef(isLoading);
-    },
-    [setLoading, setLoadingRef],
-  );
+  const {
+    loading: streamIsLoading,
+    data: streamData,
+    error: streamError,
+  } = useQuery(queryFunction);
 
-  return {
-    audioSources,
-    setAudioSources,
-    stream,
-    setStream,
-    selectedStream,
-    loading,
-    setLoading,
-    error,
-    setError,
-    setSelectedStream,
-    loadingRef,
-    setLoadingRef,
-    setLoadingState,
-  };
+  return { streamIsLoading, streamData, streamError };
 }

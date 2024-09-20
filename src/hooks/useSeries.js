@@ -5,9 +5,11 @@ import { useDispatchAction } from './useDispatchAction';
 import { useEffect } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import { useLoaderData } from 'react-router-dom';
-import { fetchTranslations } from '../api/stream/actions/rezka2';
 import { loadTv } from '../pages';
 import { isObjEmpty } from '../utils';
+function fetchTranslations() {
+  // TODO remove
+}
 
 export default function useSeries() {
   const dispatch = useDispatchAction(seriesActions);
@@ -18,7 +20,7 @@ export default function useSeries() {
   const { pathname } = useLocation();
   const season_number = +params.season || 1;
 
-  //Set Series selector data
+  // Set Series selector data
   useEffect(() => {
     (async function () {
       //if we on tv or episode page

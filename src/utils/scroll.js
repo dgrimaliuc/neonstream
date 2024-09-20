@@ -1,5 +1,5 @@
-export function smoothScrollTo(selector) {
-  getElement(selector).scrollIntoView({ behavior: 'smooth', block: 'end' });
+export function smoothScrollTo(selector, options) {
+  getElement(selector).scrollIntoView({ behavior: 'smooth', block: 'end', ...options });
 }
 
 function getElement({ id, css }) {
