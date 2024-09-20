@@ -78,5 +78,6 @@ export function usePlayerControls({
     onSeek,
     handleReady,
     saveOnProgress,
+    saveCurrentTime,
   };
 }
