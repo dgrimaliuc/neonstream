@@ -3,40 +3,29 @@ import Player from './player';
 import { useLoaderData } from 'react-router-dom';
 import { Translations } from './translations';
 import { useRef, memo } from 'react';
-import { useHistory, usePlayerControls } from '../../hooks';
+import { useHistory, usePlayerControls, useSession } from '../../hooks';
 import useTranslations from '../../hooks/useTranslations';
 import VODPlayerPlaceholder from './placeholder-vod-player';
 import useStream from '../../hooks/useStream';
 import usePlayerState from '../../hooks/usePlayerState';
 
 const VODPlayer = memo(() => {
-  /*
-const { isPlaying, handlePlay, handlePause } = usePlayerState(ref);
-const { onSeek, saveOnProgress } = usePlayhead(ref, savePlayhead, getPlayhead);
-const { isReady, handleReady } = useStreamPlayerSetup(selected);
-  */
+  useSession();
+
   const content = useLoaderData();
   const ref = useRef(null);
 
-  const { isPlaying, setIsPlaying, handlePlay, handlePause, isReady, setIsReady } =
-    usePlayerState(ref);
-
-  const { savePlayhead, removePlayhead, getPlayhead } = useHistory({
+  const { savePlayhead, removePlayhead, getPlayhead, saveCurrentTime } = useHistory({
     ref,
   });
 
   const { isTranslationsLoading, translationsData, translationsError, selected, setSelected } =
     useTranslations(content);
 
-  const { streamData } = useStream(
-    //streamIsLoading  streamError
-    content,
-    translationsData?.translations,
-    selected,
-  );
+  const { isPlaying, setIsPlaying, handlePlay, handlePause, isReady, setIsReady } =
+    usePlayerState(saveCurrentTime);
 
   const { onSeek, handleReady, saveOnProgress } = usePlayerControls({
-    ref,
     content,
     selected,
     isReady,
@@ -46,6 +35,8 @@ const { isReady, handleReady } = useStreamPlayerSetup(selected);
     getPlayhead,
     savePlayhead,
   });
+
+  const { streamData } = useStream(content, translationsData?.translations[selected]);
 
   if (isTranslationsLoading || !translationsData) {
     return <VODPlayerPlaceholder />;
@@ -70,7 +61,7 @@ const { isReady, handleReady } = useStreamPlayerSetup(selected);
               url={streamData?.qualitys['1080p']}
               playing={isPlaying}
               onPause={handlePause}
-              progressInterval={30000}
+              progressInterval={20000}
               onProgress={saveOnProgress}
               onPlay={handlePlay}
               onStart={handlePlay}

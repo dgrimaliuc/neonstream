@@ -9,6 +9,7 @@ export * from './usePagination';
 export * from './useCarouselControls';
 export * from './useDelayedAction';
 export * from './useBoundingView';
+export * from './useSession';
 export * from './useObserver';
 export * from './useQuery';
 export * from './useBrowseLoader';

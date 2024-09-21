@@ -15,13 +15,16 @@ export function useHistory({ ref }) {
 
   useLocalStorageSync(HISTORY, dispatch.setHistory);
 
-  const savePlayhead = progress => {
-    dispatch.save({
-      data,
-      progress: progress,
-      isFullyWatched: (progress * 100) / ref.current.getDuration() > 93,
-    })();
-  };
+  const savePlayhead = useCallback(
+    progress => {
+      dispatch.save({
+        data,
+        progress: progress,
+        isFullyWatched: (progress * 100) / ref.current.getDuration() > 93,
+      })();
+    },
+    [data, dispatch, ref],
+  );
 
   const getPlayhead = useCallback(() => {
     return history[`${media_type}-${id}`];
@@ -35,5 +38,12 @@ export function useHistory({ ref }) {
     // dispatch.clear()();
   };
 
-  return { savePlayhead, removePlayhead, clearPlayhead, getPlayhead };
+  const saveCurrentTime = useCallback(() => {
+    if (ref.current) {
+      savePlayhead(ref.current.getCurrentTime());
+    }
+    // added ref to dependencies
+  }, [ref, savePlayhead]);
+
+  return { savePlayhead, removePlayhead, clearPlayhead, getPlayhead, saveCurrentTime };
 }

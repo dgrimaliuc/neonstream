@@ -10,7 +10,6 @@ const useLocalStorageSync = (key, action) => {
   useEffect(() => {
     const syncState = event => {
       if (event.key === `persist:root`) {
-        console.log('syncState', event);
         const persistedState = JSON.parse(event.newValue);
         const currentState = store.getState();
 

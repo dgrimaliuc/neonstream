@@ -7,6 +7,7 @@ export async function getStream({ content, translation }) {
     headers: {
       'Content-Type': 'application/json',
     },
+    credentials: 'include',
     body: JSON.stringify({
       content,
       translation,
