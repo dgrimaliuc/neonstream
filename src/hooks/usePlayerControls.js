@@ -33,12 +33,12 @@ export function usePlayerControls({
   const onSeek = useCallback(() => {
     if (shouldSavePlayhead) {
       const id = setTimeout(() => {
-        setIsPlaying(true);
+        // setIsPlaying(true);
       }, 500);
 
       return () => clearTimeout(id);
     }
-  }, [setIsPlaying, shouldSavePlayhead]);
+  }, [shouldSavePlayhead]);
 
   const handleReady = useCallback(
     player => {

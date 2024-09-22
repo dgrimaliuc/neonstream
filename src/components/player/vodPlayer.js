@@ -3,15 +3,13 @@ import Player from './player';
 import { useLoaderData } from 'react-router-dom';
 import { Translations } from './translations';
 import { useRef, memo } from 'react';
-import { useHistory, usePlayerControls, useSession } from '../../hooks';
+import { useHistory, usePlayerControls } from '../../hooks';
 import useTranslations from '../../hooks/useTranslations';
 import VODPlayerPlaceholder from './placeholder-vod-player';
 import useStream from '../../hooks/useStream';
 import usePlayerState from '../../hooks/usePlayerState';
 
 const VODPlayer = memo(() => {
-  useSession();
-
   const content = useLoaderData();
   const ref = useRef(null);
 
@@ -57,6 +55,7 @@ const VODPlayer = memo(() => {
           {
             <Player
               ref={ref}
+              autoPlay={true}
               controls
               url={streamData?.qualitys['1080p']}
               playing={isPlaying}
