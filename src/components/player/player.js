@@ -1,5 +1,5 @@
 import { forwardRef, memo } from 'react';
-import ReactPlayer from 'react-player';
+import ReactPlayer from 'react-player/lazy';
 
 const Player = memo(
   forwardRef(
@@ -21,6 +21,7 @@ const Player = memo(
         onStart,
         played,
         onEnded,
+        autoPlay = false,
         onProgress,
         progressInterval,
       },
@@ -41,6 +42,7 @@ const Player = memo(
           played={played}
           className={className}
           light={light}
+          autoPlay={autoPlay}
           url={url}
           width='100%'
           height='100%'

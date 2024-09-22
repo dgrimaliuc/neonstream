@@ -1,2 +1,2 @@
-export * from './stream';
+export * from './sources';
 export * from './translation';

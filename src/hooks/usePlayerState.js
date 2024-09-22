@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function usePlayerState() {
+export default function usePlayerState(saveCurrentTime) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isReady, setIsReady] = useState(false);
 
@@ -8,8 +8,9 @@ export default function usePlayerState() {
     setIsPlaying(true);
   };
   const handlePause = () => {
+    saveCurrentTime();
     setIsPlaying(false);
   };
 
-  return { isPlaying, setIsPlaying, handlePlay, handlePause, isReady, setIsReady };
+  return { isPlaying, setIsPlaying, isReady, setIsReady, handlePlay, handlePause };
 }
