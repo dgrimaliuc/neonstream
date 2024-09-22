@@ -27,7 +27,6 @@ const Player = memo(
       },
       ref,
     ) => {
-      console.log(playing);
       return (
         <ReactPlayer
           ref={ref}
