@@ -20,5 +20,6 @@ export async function getTranslations(data) {
       downloadIfMissing: true,
     }),
   });
+
   return await response.json();
 }

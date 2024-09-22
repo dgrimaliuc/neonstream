@@ -10,11 +10,6 @@ import useStream from '../../hooks/useStream';
 import usePlayerState from '../../hooks/usePlayerState';
 
 const VODPlayer = memo(() => {
-  /*
-const { isPlaying, handlePlay, handlePause } = usePlayerState(ref);
-const { onSeek, saveOnProgress } = usePlayhead(ref, savePlayhead, getPlayhead);
-const { isReady, handleReady } = useStreamPlayerSetup(selected);
-  */
   const content = useLoaderData();
   const ref = useRef(null);
 
@@ -65,6 +60,7 @@ const { isReady, handleReady } = useStreamPlayerSetup(selected);
           {
             <Player
               ref={ref}
+              autoPlay={true}
               controls
               url={streamData?.qualitys['1080p']}
               playing={isPlaying}
