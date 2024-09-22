@@ -1,13 +1,13 @@
 import { useCallback } from 'react';
 import { useQuery } from './useQuery';
-import { getStream } from '../services/cms';
+import { getSources } from '../services/cms';
 
 export default function useStream(content, translation) {
   const queryFunction = useCallback(() => {
     if (!translation) {
       return null;
     }
-    return getStream({ content, translation });
+    return getSources({ content, translation });
   }, [content, translation]);
 
   const {
