@@ -16,8 +16,8 @@ export default function Translations({ translations, onClick, selected, maxShown
         <div
           className={styles['translation-wrapper']}
           style={{
-            '--translation-flex-basis': translations.length < 3 && '40%',
-            '--translation-max-width': translations.length < maxShown && '1000px',
+            '--translation-flex-basis': translations?.length < 3 && '40%',
+            '--translation-max-width': translations?.length < maxShown && '1000px',
           }}
         >
           <div className={styles['translations']}>
