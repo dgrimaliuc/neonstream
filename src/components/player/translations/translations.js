@@ -20,11 +20,19 @@ export default function Translations({ translations, onClick, selected, maxShown
             '--translation-max-width': translations?.length < maxShown && '1000px',
           }}
         >
-          <div className={styles['translations']}>
-            {translations.map((t, i) => (
-              <Translation key={i} selected={selected} index={i} label={t.name} onClick={onClick} />
-            ))}
-          </div>
+          {translations && (
+            <div className={styles['translations']}>
+              {translations.map((t, i) => (
+                <Translation
+                  key={i}
+                  selected={selected}
+                  index={i}
+                  label={t.name}
+                  onClick={onClick}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </ExpandContainer>
     </>
