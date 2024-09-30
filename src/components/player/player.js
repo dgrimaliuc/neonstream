@@ -58,6 +58,7 @@ const Player = memo(
             ...config,
             attributes: {
               crossOrigin: 'true',
+              allow: 'autoplay',
             },
             file: {
               attributes: {

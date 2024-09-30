@@ -34,7 +34,10 @@ const VODPlayer = memo(() => {
     savePlayhead,
   });
 
-  const { streamData } = useStream(content, translationsData?.translations[selected]);
+  const { streamData } = useStream(
+    content,
+    translationsData?.translations ? translationsData?.translations[selected] : null,
+  );
 
   if (isTranslationsLoading || !translationsData) {
     return <VODPlayerPlaceholder />;
