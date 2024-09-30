@@ -11,7 +11,7 @@ export default function Translations({ translations, onClick, selected, maxShown
         titleClass={styles['section-title']}
         className={styles['section-background']}
         buttonClass={styles['expand-button-background']}
-        allowExpand={translations.length > maxShown}
+        allowExpand={translations?.length > maxShown}
       >
         <div
           className={styles['translation-wrapper']}
