@@ -16,16 +16,16 @@ export async function loadMovie({ params }) {
 }
 
 export default function MoviePage() {
-  const { runtime } = useLoaderData();
+  const movie = useLoaderData();
   useInitialScroll({ timeout: 50 });
 
   return (
     <>
       <ContentHeader onWatchClick={smoothScrollTo.bind(null, { id: 'player-section' })} />
-      <HeroContent additional={getPlayTime(runtime)} />
+      <HeroContent additional={getPlayTime(movie.runtime)} />
       <section id='player-section' className={styles['movie-media-section']}>
         <h2>Watch</h2>
-        <VODPlayer />
+        <VODPlayer content={movie} />
       </section>
 
       <section>

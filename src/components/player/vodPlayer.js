@@ -1,16 +1,14 @@
 import styles from './player.module.css';
 import Player from './player';
-import { useLoaderData } from 'react-router-dom';
 import { Translations } from './translations';
-import { useRef, memo } from 'react';
+import { useRef } from 'react';
 import { useHistory, usePlayerControls } from '../../hooks';
 import useTranslations from '../../hooks/useTranslations';
 import VODPlayerPlaceholder from './placeholder-vod-player';
 import useStream from '../../hooks/useStream';
 import usePlayerState from '../../hooks/usePlayerState';
 
-const VODPlayer = memo(() => {
-  const content = useLoaderData();
+export default function VODPlayer({ content }) {
   const ref = useRef(null);
 
   const { savePlayhead, removePlayhead, getPlayhead, saveCurrentTime } = useHistory({
@@ -60,7 +58,7 @@ const VODPlayer = memo(() => {
               ref={ref}
               autoPlay={true}
               controls
-              url={streamData?.qualitys['1080p']}
+              url={streamData ? Object.values(streamData?.qualitys)[0] : null} //
               playing={isPlaying}
               onPause={handlePause}
               progressInterval={20000}
@@ -76,6 +74,4 @@ const VODPlayer = memo(() => {
       </div>
     </>
   );
-});
-
-export default VODPlayer;
+}

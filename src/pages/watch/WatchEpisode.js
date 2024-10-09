@@ -6,6 +6,7 @@ import { VODPlayer } from '../../components/player';
 import useSeries from '../../hooks/useSeries';
 import { useInitialScroll } from '../../hooks';
 import { Image } from '../../components/lazy-image';
+import { TV } from '../../data/constants';
 
 export async function loadEpisode({ params }) {
   return await getEpisode(params.id, params.season, params.episode);
@@ -16,12 +17,32 @@ export default function WatchEpisode() {
   const { season_number, episode_number, name, overview } = useLoaderData();
 
   const { series } = useSeries();
+  const { id: episode_id } = useLoaderData();
   useInitialScroll({ timeout: 50 });
 
   return (
     <>
       <div className='watch-wrapper'>
-        <VODPlayer />
+        <VODPlayer
+          content={{
+            id: series.id,
+            external_ids: series.external_ids,
+            first_air_date: series.first_air_date,
+            last_air_date: series.last_air_date,
+            media_sub_type: series.media_sub_type,
+            media_type: TV,
+            name: series.name,
+            number_of_episodes: series.number_of_episodes,
+            number_of_seasons: series.number_of_seasons,
+            original_name: series.original_name,
+            seasons: series.seasons,
+            status: series.status,
+            translations: series.translations,
+            season_number: season,
+            episode_number: episode,
+            episode_id,
+          }}
+        />
       </div>
       <div className='watch-info-wrapper'>
         <div className='media-info-container'>
@@ -70,7 +91,7 @@ export default function WatchEpisode() {
               className='up-next-episode-body'
             >
               <div className='up-next-image-container'>
-                <Image className='up-next-image' src={upNexImg} alt='' />
+                <Image className='up-next-image' src={upNexImg} />
               </div>
               <div className='up-next-info'>
                 <div className='up-next-info-box'>
@@ -93,7 +114,7 @@ export default function WatchEpisode() {
               className='up-next-episode-body'
             >
               <div className='up-next-image-container'>
-                <Image className='up-next-image' src={upNexImg} alt='' />
+                <Image className='up-next-image' src={upNexImg} />
               </div>
               <div className='up-next-info'>
                 <div className='up-next-info-box'>
