@@ -32,7 +32,7 @@ export default function VODPlayer({ content }) {
     savePlayhead,
   });
 
-  const { streamData } = useStream(
+  const { streamIsLoading, streamData } = useStream(
     content,
     translationsData?.translations ? translationsData?.translations[selected] : null,
   );
@@ -58,7 +58,7 @@ export default function VODPlayer({ content }) {
               ref={ref}
               autoPlay={true}
               controls
-              url={streamData ? Object.values(streamData?.qualitys)[0] : null} //
+              url={streamData && !streamIsLoading ? Object.values(streamData?.qualitys)[0] : null} //
               playing={isPlaying}
               onPause={handlePause}
               progressInterval={20000}
