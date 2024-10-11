@@ -3,9 +3,16 @@ export const TEASER = 'Teaser';
 export const CLIP = 'Clip';
 
 export function selectMainTrailer(videos) {
-  return videos.results.length > 0
-    ? findByType(videos, TRAILER) || findByType(videos, TEASER) || videos.results[0]
-    : null;
+  let trailer =
+    videos?.results?.length > 0
+      ? findByType(videos, TRAILER) || findByType(videos, TEASER) || videos.results[0]
+      : null;
+
+  return trailer;
+}
+
+export function getYoutubeUrl(key) {
+  return `https://www.youtube.com/watch?v=${key}?rel=0`;
 }
 
 function findByType(videos, type) {

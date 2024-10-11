@@ -3,7 +3,11 @@ import classes from './home.module.css';
 import HeroCarousel from '../../components/hero-carousel/hero-carousel';
 import { SinglePromoCardNeon, SinglePromoCardViolet } from '../../components/single-promo-card';
 import { SingleCard } from '../../components/single-card';
-import { BrowseCollection, WatchlistCollection } from '../../components/carousel';
+import {
+  BrowseCollection,
+  WatchlistCollection,
+  HistoryCollection,
+} from '../../components/carousel';
 import { useObserver, useChunks, useInitialScroll } from '../../hooks';
 import { renderArray, sleep } from '../../utils';
 import { Spinner } from '../../components/spinner';
@@ -26,14 +30,15 @@ import { useMemo, useRef } from 'react';
 function Home() {
   const { chunks, loadIndex, loadMore, isEnd } = useChunks(
     [
+      <HistoryCollection />,
       <WatchlistCollection />,
       <BrowseCollection type={UPCOMING_MOVIES} />,
       <BrowseCollection type={TOP_RATED_SERIES} />,
       <BrowseCollection type={NOW_PLAYING_MOVIES} />,
-      <SinglePromoCardViolet id={792307} mediaType={MOVIE} secondImageIndex={4} />,
+      <SinglePromoCardViolet id={315162} mediaType={MOVIE} secondImageIndex={1} />,
       <BrowseCollection type={POPULAR_SERIES} />,
       <BrowseCollection type={POPULAR_MOVIES} />,
-      <SinglePromoCardNeon id={1399} mediaType={TV} />,
+      <SinglePromoCardNeon id={37854} mediaType={TV} secondImageIndex={2} />,
       <BrowseCollection baseId={1029575} type={RECOMMENDED_MOVIES} />,
       <SingleCard id={1396} mediaType={TV} />,
       <BrowseCollection baseId={42009} type={RECOMMENDED_SERIES} />,

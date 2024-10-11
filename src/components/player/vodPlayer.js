@@ -1,17 +1,21 @@
 import styles from './player.module.css';
 import Player from './player';
 import { Translations } from './translations';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useHistory, usePlayerControls } from '../../hooks';
 import useTranslations from '../../hooks/useTranslations';
 import VODPlayerPlaceholder from './placeholder-vod-player';
 import useStream from '../../hooks/useStream';
 import usePlayerState from '../../hooks/usePlayerState';
+import { getYoutubeUrl, selectMainTrailer } from '../../api';
 
 export default function VODPlayer({ content }) {
   const ref = useRef(null);
 
+  const [trailer, setTrailer] = useState(null);
+
   const { savePlayhead, removePlayhead, getPlayhead, saveCurrentTime } = useHistory({
+    content,
     ref,
   });
 
@@ -37,6 +41,15 @@ export default function VODPlayer({ content }) {
     translationsData?.translations ? translationsData?.translations[selected] : null,
   );
 
+  useEffect(() => {
+    if (!streamData && content.videos) {
+      const trailer = selectMainTrailer(content.videos);
+      if (trailer?.key) {
+        setTrailer(getYoutubeUrl(trailer.key));
+      }
+    }
+  }, [streamData, content.videos]);
+
   if (isTranslationsLoading || !translationsData) {
     return <VODPlayerPlaceholder />;
   }
@@ -58,7 +71,7 @@ export default function VODPlayer({ content }) {
               ref={ref}
               autoPlay={true}
               controls
-              url={streamData ? Object.values(streamData?.qualitys)[0] : null} //
+              url={streamData ? Object.values(streamData?.qualitys)[0] : trailer}
               playing={isPlaying}
               onPause={handlePause}
               progressInterval={20000}
