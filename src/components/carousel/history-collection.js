@@ -13,14 +13,7 @@ const HistoryCollection = () => {
   return (
     <Carousel title='Continue Watching' navigateTo='/history'>
       {cards.map((card, i) => (
-        <PlayableCard
-          key={i}
-          showProgress
-          title={card.title}
-          date={card.date}
-          to={'card'}
-          {...card}
-        />
+        <PlayableCard key={i} showProgress title={card.title} date={card.date} {...card} />
       ))}
     </Carousel>
   );

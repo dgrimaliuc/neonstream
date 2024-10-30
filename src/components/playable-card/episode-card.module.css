@@ -66,11 +66,6 @@
   color: #00e18c;
 }
 
-.fa-heart-o:hover,
-.fa-trash-o:hover {
-  color: white;
-  font-weight: 700;
-}
 
 .episode-actions {
   display: flex;

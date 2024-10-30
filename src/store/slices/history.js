@@ -8,7 +8,8 @@ const historySlice = createSlice({
   reducers: {
     set: (state, action) => {
       const { data, content, progress, isFullyWatched, watched } = action.payload;
-      const { id, media_type, backdrop_path, still_path, air_date, release_date } = data;
+      const { id, media_type, backdrop_path, poster_path, still_path, air_date, release_date } =
+        data;
 
       const map = new OrderedMap(state.content, true);
 
@@ -19,7 +20,8 @@ const historySlice = createSlice({
         tvId: media_type === EPISODE ? content.id : undefined,
         season_number: content.season_number,
         episode_number: content.episode_number,
-        media_type: media_type,
+        media_type,
+        poster_path: content?.poster_path || poster_path,
         isFullyWatched,
         progress,
         watched,

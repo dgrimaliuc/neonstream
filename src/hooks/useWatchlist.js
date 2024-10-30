@@ -1,12 +1,18 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { watchlistActions, watchlistContent } from '../store';
 import { useDispatchAction } from './useDispatchAction';
 import { useSelector } from 'react-redux';
 import useLocalStorageSync from './useLocalStorageSync';
-import { WATCHLIST } from '../data/constants';
+import { EPISODE, TV, WATCHLIST } from '../data/constants';
 
 export function useWatchlist(props) {
   const dispatch = useDispatchAction(watchlistActions);
+
+  useEffect(() => {
+    if (props.media === EPISODE) {
+      props.media = TV;
+    }
+  }, [props]);
 
   const { media, id } = props || { media: null, id: null };
   const watchlist = useSelector(watchlistContent);

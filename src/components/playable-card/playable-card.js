@@ -2,9 +2,11 @@ import classes from './episode-card.module.css';
 
 import { PlayableThumbnail } from '../playable-thumbnail';
 import { getYear } from '../../utils';
-import { useMemo } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useDispatchAction } from '../../hooks/useDispatchAction';
 import { historyActions } from '../../store';
+import { useWatchlist } from '../../hooks';
+import { EPISODE, MOVIE, TV } from '../../data/constants';
 
 function getContentMeta({ media_type, id, season_number, episode_number, tvId }) {
   const meta = {
@@ -27,15 +29,61 @@ export default function PlayableCard({
   watched,
   media_type,
   showProgress,
+  poster_path,
   backdrop_path,
   season_number,
   episode_number,
   date,
 }) {
+  const { add, remove, isInWatchlist } = useWatchlist({
+    media: media_type === EPISODE ? TV : MOVIE,
+    id: tvId || id,
+  });
+
+  const wlClickHandler = useCallback(() => {
+    if (!media_type || !id) return;
+    if (isInWatchlist) {
+      remove();
+    } else {
+      add({
+        id,
+        title,
+        showIcon,
+        watched,
+        media_type,
+        showProgress,
+        poster_path,
+        season_number,
+        episode_number,
+        date,
+      });
+    }
+  }, [
+    media_type,
+    id,
+    isInWatchlist,
+    remove,
+    add,
+    title,
+    showIcon,
+    watched,
+    showProgress,
+    poster_path,
+    season_number,
+    episode_number,
+    date,
+  ]);
+
   const { type, link, metaClass } = useMemo(
     () => getContentMeta({ media_type, id, season_number, episode_number, tvId, date }),
     [media_type, id, season_number, episode_number, tvId, date],
   );
+
+  const [wlClass, setWlClass] = useState(isInWatchlist ? 'fa-heart' : 'fa-heart-o');
+
+  useEffect(() => {
+    setWlClass(isInWatchlist ? 'fa-heart' : 'fa-heart-o');
+  }, [isInWatchlist]);
 
   const dispatch = useDispatchAction(historyActions);
 
@@ -64,8 +112,8 @@ export default function PlayableCard({
           <div className={classes['episode-meta-container']}>
             <div className={`text-caption ${classes[metaClass]}`}>{type}</div>
             <div className={classes['episode-actions']}>
-              <span>
-                <i className='fa-heart-o'></i>
+              <span onClick={wlClickHandler}>
+                <i className={wlClass}></i>
               </span>
               <span onClick={handleRemove}>
                 <i className='fa-trash-o'></i>
