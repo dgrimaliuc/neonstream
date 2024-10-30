@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { smoothScrollTo } from '../utils';
 
 export function usePlayerControls({
@@ -11,8 +11,6 @@ export function usePlayerControls({
   isPlaying,
   content,
 }) {
-  const [shouldSavePlayhead, setShouldSavePlayhead] = useState(true);
-
   useEffect(() => {
     return () => {
       setIsReady(false);
@@ -26,19 +24,17 @@ export function usePlayerControls({
   }, [setIsReady]);
 
   const saveOnProgress = useCallback(
-    progress => isPlaying && savePlayhead(progress?.playedSeconds || progress),
+    progress => isPlaying && savePlayhead(progress.playedSeconds),
     [isPlaying, savePlayhead],
   );
 
   const onSeek = useCallback(() => {
-    if (shouldSavePlayhead) {
-      const id = setTimeout(() => {
-        setIsPlaying(true);
-      }, 500);
+    const id = setTimeout(() => {
+      setIsPlaying(true);
+    }, 500);
 
-      return () => clearTimeout(id);
-    }
-  }, [setIsPlaying, shouldSavePlayhead]);
+    return () => clearTimeout(id);
+  }, [setIsPlaying]);
 
   const handleReady = useCallback(
     player => {
@@ -51,9 +47,7 @@ export function usePlayerControls({
           smoothScrollTo({ id: 'player-section' });
         }
 
-        setShouldSavePlayhead(false);
         player.seekTo(playhead?.progress);
-        setShouldSavePlayhead(true);
         setIsReady(true);
       }
     },

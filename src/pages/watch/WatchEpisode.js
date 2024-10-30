@@ -25,19 +25,9 @@ export default function WatchEpisode() {
       <div className='watch-wrapper'>
         <VODPlayer
           content={{
+            ...series,
             id: series.id,
-            external_ids: series.external_ids,
-            first_air_date: series.first_air_date,
-            last_air_date: series.last_air_date,
-            media_sub_type: series.media_sub_type,
             media_type: TV,
-            name: series.name,
-            number_of_episodes: series.number_of_episodes,
-            number_of_seasons: series.number_of_seasons,
-            original_name: series.original_name,
-            seasons: series.seasons,
-            status: series.status,
-            translations: series.translations,
             season_number: season,
             episode_number: episode,
             episode_id,

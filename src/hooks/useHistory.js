@@ -5,29 +5,35 @@ import useLocalStorageSync from './useLocalStorageSync';
 import { HISTORY } from '../data/constants';
 import { useLoaderData } from 'react-router-dom';
 import { useCallback } from 'react';
+import { OrderedMap } from '../utils/orderedMap';
 
-export function useHistory({ ref }) {
+export function useHistory({ content, ref }) {
   const data = useLoaderData();
   const dispatch = useDispatchAction(historyActions);
   const { media_type, id } = data;
 
   const history = useSelector(historyContent);
 
-  useLocalStorageSync(HISTORY, dispatch.setHistory);
+  useLocalStorageSync(HISTORY, dispatch.syncHistory);
 
   const savePlayhead = useCallback(
     progress => {
-      dispatch.save({
+      dispatch.set({
         data,
+        content,
         progress: progress,
         isFullyWatched: (progress * 100) / ref.current.getDuration() > 93,
+        watched: +((progress * 100) / ref.current.getDuration()).toFixed(2),
       })();
     },
-    [data, dispatch, ref],
+    [content, data, dispatch, ref],
   );
 
   const getPlayhead = useCallback(() => {
-    return history[`${media_type}-${id}`];
+    const playhead = new OrderedMap(history).get(`${media_type}-${id}`);
+    if (playhead && !playhead?.isFullyWatched) {
+      return playhead;
+    }
   }, [history, id, media_type]);
 
   const removePlayhead = () => {

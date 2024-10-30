@@ -17,7 +17,7 @@
   flex-direction: column;
 
   width: 300px;
-  height: 300px;
+  height: 280px;
   cursor: pointer;
 }
 
@@ -58,23 +58,24 @@
   align-items: center;
 }
 
-.movie-meta {
+.tv-meta {
   color: aqua;
 }
 
-.series-meta {
+.movie-meta {
   color: #00e18c;
 }
 
-.fa-heart-o:hover,
-.fa-trash-o:hover {
-  color: white;
-  font-weight: 700;
-}
 
 .episode-actions {
   display: flex;
+  position: relative;
+  z-index: auto;
   justify-content: space-between;
   width: 55px;
   font-size: 1.5rem;
+
+  [class*='fa-']:hover {
+    color: white;
+  }
 }

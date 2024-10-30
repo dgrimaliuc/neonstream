@@ -7,6 +7,7 @@ import './playable-thumbnail.css';
 export default function PlayableThumbnail({
   image,
   showProgress = 'auto',
+  progress,
   showIcon,
   placeholderWidth = 71,
   placeholderHeight = 40,
@@ -42,7 +43,7 @@ export default function PlayableThumbnail({
             />
           )}
         </div>
-        <WatchProgressBar showProgress={showProgress} />
+        <WatchProgressBar progress={progress} showProgress={showProgress} />
       </div>
     </>
   );

@@ -1,36 +1,49 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { OrderedMap } from '../../utils/orderedMap';
+import { EPISODE } from '../../data/constants';
 
 const historySlice = createSlice({
   name: 'history',
   initialState: { content: {} },
   reducers: {
-    save: (state, action) => {
-      const { data, progress, isFullyWatched } = action.payload;
-      const { id, media_type } = data;
-      delete state.content[`${media_type}-${id}`];
+    set: (state, action) => {
+      const { data, content, progress, isFullyWatched, watched } = action.payload;
+      const { id, media_type, backdrop_path, poster_path, still_path, air_date, release_date } =
+        data;
 
-      state.content = {
-        [`${media_type}-${id}`]: {
-          title: data.name || data.title,
-          // poster: data.poster_path,
-          // date: data.release_date || data.first_air_date,
-          media_type: media_type,
-          isFullyWatched,
-          progress,
-          id,
-        },
-        ...state.content,
-      };
+      const map = new OrderedMap(state.content, true);
+
+      map.set(`${media_type}-${id}`, {
+        title: data.name || data.title,
+        backdrop_path: backdrop_path || still_path,
+        date: air_date || release_date,
+        tvId: media_type === EPISODE ? content.id : undefined,
+        season_number: content.season_number,
+        episode_number: content.episode_number,
+        media_type,
+        poster_path: content?.poster_path || poster_path,
+        isFullyWatched,
+        progress,
+        watched,
+        id,
+      });
+
+      state.content = map.toObject();
+    },
+    getOrdered: state => {
+      return new OrderedMap(state.content).getOrdered();
     },
     remove: (state, action) => {
       const { media_type, id } = action.payload;
-      delete state.content[`${media_type}-${id}`];
+      const map = new OrderedMap(state.content);
+      map.delete(`${media_type}-${id}`);
+      state.content = map.toObject();
     },
-    setHistory: (state, action) => {
-      state.content = action.payload.content;
+    syncHistory: (state, action) => {
+      state.content = new OrderedMap(action.payload.content).toObject();
     },
     clear: state => {
-      state.content = {};
+      state.content = new OrderedMap().toObject();
     },
   },
 });

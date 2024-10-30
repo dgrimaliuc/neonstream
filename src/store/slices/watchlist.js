@@ -10,7 +10,7 @@ const watchlistSlice = createSlice({
         [`${media}-${id}`]: {
           title: data.title || data.name,
           poster: data.poster_path,
-          date: data.release_date || data.first_air_date,
+          date: data.release_date || data.first_air_date || data.release_date || data.date,
           media_type: media,
           id,
         },
