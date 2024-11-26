@@ -82,7 +82,6 @@
 .carousel-body {
   overflow-y: hidden;
   overflow-x: scroll;
-  overflow: auto;
   display: flex;
   flex-flow: row nowrap;
   scroll-snap-type: x mandatory;

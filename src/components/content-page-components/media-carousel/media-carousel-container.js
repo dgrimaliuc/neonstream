@@ -44,15 +44,9 @@ export default function MediaCarouselContainer({
     const scrollContainer = scrollRef.current;
 
     if (scrollContainer) {
-      // Reset scroll position
-      // scrollContainer.scrollTop = 0;
-      scrollContainer.scrollLeft = 0;
-      // Temporarily disable scrolling
-      scrollContainer.style.overflow = 'hidden';
-      // Re-enable scrolling after a short delay
       setTimeout(() => {
-        scrollContainer.style.overflow = 'auto';
-      }, 100); // Adjust the delay as needed
+        scrollContainer.scrollLeft = 0;
+      }, 100); 
     }
   }, [scrollRef, selected]);
 

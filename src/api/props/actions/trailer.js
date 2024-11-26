@@ -12,7 +12,7 @@ export function selectMainTrailer(videos) {
 }
 
 export function getYoutubeUrl(key) {
-  return `https://www.youtube.com/watch?v=${key}?rel=0`;
+  return `https://www.youtube.com/watch?v=${key}`;
 }
 
 function findByType(videos, type) {
