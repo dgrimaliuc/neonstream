@@ -31,3 +31,4 @@ export * from './useThrottlingQuery';
 export * from './useThrottling';
 export * from './useInitialScroll';
 export * from './usePlaceholder';
+export * from './useUpNext';
