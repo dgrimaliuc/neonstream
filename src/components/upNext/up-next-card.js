@@ -24,8 +24,9 @@ export default function UpNextCard({ episodeData, loading, title, seriesId }) {
           <Image
             className='up-next-image'
             src={getBackdrop(still_path)}
-            placeholderWidth={126}
-            placeholderHeight={71}
+            placeholderWidth={30}
+            placeholderHeight={17}
+            showPlaceholderOnLoading
           />
         </div>
         <div className='up-next-info'>
