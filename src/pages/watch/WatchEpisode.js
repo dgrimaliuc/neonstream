@@ -1,5 +1,5 @@
 import './watch.css';
-import upNexImg from '../../assets/One Piece/episodes/one-peace-1-1.jpeg';
+
 import { getEpisode } from '../../services/content';
 import { useLoaderData, useParams } from 'react-router-dom';
 import { VODPlayer } from '../../components/player';
@@ -19,7 +19,7 @@ export default function WatchEpisode() {
 
   const { series } = useSeries();
 
-  const { error, loading, next, prev } = useUpNext({
+  const { loading, next, prev } = useUpNext({
     id,
     season: season_number,
     episode: episode_number,
