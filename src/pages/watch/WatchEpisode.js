@@ -5,8 +5,9 @@ import { useLoaderData, useParams } from 'react-router-dom';
 import { VODPlayer } from '../../components/player';
 import useSeries from '../../hooks/useSeries';
 import { useInitialScroll } from '../../hooks';
-import { Image } from '../../components/lazy-image';
 import { TV } from '../../data/constants';
+import useUpNext from '../../hooks/useUpNext';
+import { UpNextCard } from '../../components/upNext';
 
 export async function loadEpisode({ params }) {
   return await getEpisode(params.id, params.season, params.episode);
@@ -17,6 +18,14 @@ export default function WatchEpisode() {
   const { season_number, episode_number, name, overview } = useLoaderData();
 
   const { series } = useSeries();
+
+  const { error, loading, next, prev } = useUpNext({
+    id,
+    season: season_number,
+    episode: episode_number,
+    seasonsLength: series.number_of_seasons,
+  });
+
   const { id: episode_id } = useLoaderData();
   useInitialScroll({ timeout: 50 });
 
@@ -69,52 +78,8 @@ export default function WatchEpisode() {
           </div>
         </div>
         <div className='up-next-episodes'>
-          <div className='up-next-episode'>
-            <a
-              href={`/tv/${id}/watch/${season}/${parseInt(episode) + 1}`}
-              className='container-header'
-            >
-              <span className='up-next-header-text'>Next Episode</span>
-            </a>
-            <a
-              href={`/tv/${id}/watch/${season}/${parseInt(episode) + 1}`}
-              className='up-next-episode-body'
-            >
-              <div className='up-next-image-container'>
-                <Image className='up-next-image' src={upNexImg} />
-              </div>
-              <div className='up-next-info'>
-                <div className='up-next-info-box'>
-                  <h5>Episode title</h5>
-
-                  <p className='description-wrapper'>20m</p>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div className='up-next-episode'>
-            <a
-              href={`/tv/${id}/watch/${season}/${parseInt(episode) - 1}`}
-              className='container-header'
-            >
-              <span className='up-next-header-text'>Previous Episode</span>
-            </a>
-            <a
-              href={`/tv/${id}/watch/${season}/${parseInt(episode) - 1}`}
-              className='up-next-episode-body'
-            >
-              <div className='up-next-image-container'>
-                <Image className='up-next-image' src={upNexImg} />
-              </div>
-              <div className='up-next-info'>
-                <div className='up-next-info-box'>
-                  <h5>Episode title</h5>
-
-                  <p className='description-wrapper'>20m</p>
-                </div>
-              </div>
-            </a>
-          </div>
+          <UpNextCard episodeData={next} loading={loading} title='Next Episode' seriesId={id} />
+          <UpNextCard episodeData={prev} loading={loading} title='Previous Episode' seriesId={id} />
         </div>
       </div>
     </>
