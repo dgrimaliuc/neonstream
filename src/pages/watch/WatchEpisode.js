@@ -4,30 +4,19 @@ import { getEpisode } from '../../services/content';
 import { useLoaderData, useParams } from 'react-router-dom';
 import { VODPlayer } from '../../components/player';
 import useSeries from '../../hooks/useSeries';
-import { useInitialScroll } from '../../hooks';
 import { TV } from '../../data/constants';
-import useUpNext from '../../hooks/useUpNext';
-import { UpNextCard } from '../../components/upNext';
+import { UpNextContainer } from '../../components/upNext';
+import { formatVoteAverage, formatVoteCount } from '../../api';
 
 export async function loadEpisode({ params }) {
   return await getEpisode(params.id, params.season, params.episode);
 }
 
 export default function WatchEpisode() {
-  const { id, season, episode } = useParams();
+  const { id } = useParams();
   const { season_number, episode_number, name, overview } = useLoaderData();
-
   const { series } = useSeries();
-
-  const { loading, next, prev } = useUpNext({
-    id,
-    season: season_number,
-    episode: episode_number,
-    seasonsLength: series.number_of_seasons,
-  });
-
   const { id: episode_id } = useLoaderData();
-  useInitialScroll({ timeout: 50 });
 
   return (
     <>
@@ -35,10 +24,10 @@ export default function WatchEpisode() {
         <VODPlayer
           content={{
             ...series,
-            id: series.id,
+            id,
             media_type: TV,
-            season_number: season,
-            episode_number: episode,
+            season_number,
+            episode_number,
             episode_id,
           }}
         />
@@ -51,7 +40,8 @@ export default function WatchEpisode() {
             </a>
             <span>
               <span>
-                4.9 <span className='icon-star-small' /> (286.9K)
+                {formatVoteAverage(series.vote_average)} <span className='icon-star-small' /> (
+                {formatVoteCount(series.vote_count)})
               </span>
             </span>
           </div>
@@ -77,10 +67,7 @@ export default function WatchEpisode() {
             </div>
           </div>
         </div>
-        <div className='up-next-episodes'>
-          <UpNextCard episodeData={next} loading={loading} title='Next Episode' seriesId={id} />
-          <UpNextCard episodeData={prev} loading={loading} title='Previous Episode' seriesId={id} />
-        </div>
+        <UpNextContainer />
       </div>
     </>
   );

@@ -3,7 +3,6 @@ import { getSeasonDetails } from '../services/content';
 import { useQuery } from './useQuery';
 
 export default function useUpNext({ id, season, episode, seasonsLength }) {
-  console.log(id, season, episode, seasonsLength);
   const [prev, setPrev] = useState(null);
   const [next, setNext] = useState(null);
 
@@ -15,7 +14,7 @@ export default function useUpNext({ id, season, episode, seasonsLength }) {
     if (data) {
       const episodes = data.episodes;
       const currentEpisodeIndex = episodes.findIndex(ep => ep.episode_number === episode);
-      console.log('currentEpisodeIndex', currentEpisodeIndex);
+
       const tempPrev = episodes[currentEpisodeIndex - 1] || null;
       const tempNext = episodes[currentEpisodeIndex + 1] || null;
 
