@@ -1,24 +1,29 @@
-import { historyActions, historyContent } from '../store';
+import { historyActions, historyContent, upNextActions } from '../store';
 import { useDispatchAction } from './useDispatchAction';
 import { useSelector } from 'react-redux';
 import useLocalStorageSync from './useLocalStorageSync';
-import { HISTORY } from '../data/constants';
+import { HISTORY, TV } from '../data/constants';
 import { useLoaderData } from 'react-router-dom';
 import { useCallback } from 'react';
 import { OrderedMap } from '../utils/orderedMap';
 
 export function useHistory({ content, ref }) {
   const data = useLoaderData();
-  const dispatch = useDispatchAction(historyActions);
+
+  const upNextDispatch = useDispatchAction(upNextActions);
+  const historyDispatch = useDispatchAction(historyActions);
   const { media_type, id } = data;
 
   const history = useSelector(historyContent);
 
-  useLocalStorageSync(HISTORY, dispatch.syncHistory);
+  useLocalStorageSync(HISTORY, historyDispatch.syncHistory);
 
   const savePlayhead = useCallback(
     progress => {
-      dispatch.set({
+      if (content.media_type === TV) {
+        upNextDispatch.set(content)();
+      }
+      historyDispatch.set({
         data,
         content,
         progress: progress,
@@ -26,7 +31,7 @@ export function useHistory({ content, ref }) {
         watched: +((progress * 100) / ref.current.getDuration()).toFixed(2),
       })();
     },
-    [content, data, dispatch, ref],
+    [content, data, historyDispatch, ref, upNextDispatch],
   );
 
   const getPlayhead = useCallback(() => {
@@ -37,7 +42,7 @@ export function useHistory({ content, ref }) {
   }, [history, id, media_type]);
 
   const removePlayhead = () => {
-    dispatch.remove(data)();
+    historyDispatch.remove(data)();
   };
 
   const clearPlayhead = () => {
@@ -48,7 +53,6 @@ export function useHistory({ content, ref }) {
     if (ref.current) {
       savePlayhead(ref.current.getCurrentTime());
     }
-    // added ref to dependencies
   }, [ref, savePlayhead]);
 
   return { savePlayhead, removePlayhead, clearPlayhead, getPlayhead, saveCurrentTime };

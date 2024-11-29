@@ -12,6 +12,8 @@ export function useQuery(queryFunction) {
 
     const fetchData = async () => {
       try {
+        setError(null);
+        setData(null);
         setLoading(true);
         promise = makeCancelable(queryFunction());
         const result = await promise;

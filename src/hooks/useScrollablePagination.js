@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 export function useScrollablePagination(
   total,
@@ -9,10 +9,9 @@ export function useScrollablePagination(
 ) {
   const [selected, setSelected] = useState(initialSelected);
 
-  function select(id) {
-    if (id === selected) return;
+  const select = useCallback(id => {
     setSelected(id);
-  }
+  }, []);
 
   function scrollToLeft() {
     const container = document.getElementsByClassName(containerClass)[0];
@@ -62,5 +61,5 @@ export function useScrollablePagination(
     }
   }
 
-  return { selected, select, iterator, prevPage, nextPage };
+  return { selected, select, iterator, prevPage, nextPage, setSelected };
 }
