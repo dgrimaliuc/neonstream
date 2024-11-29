@@ -14,9 +14,7 @@ export default function EpisodeCard({
   still_path,
 }) {
   const history = useSelector(historyContent);
-  const playhead = useMemo(() => {
-    return history.map[`${EPISODE}-${id}`];
-  }, [history, id]);
+  const playhead = useMemo(() => history.map[`${EPISODE}-${id}`], [history, id]);
 
   return (
     <a className={styles.episode} href={`/tv/${show_id}/watch/${season_number}/${episode_number}`}>
