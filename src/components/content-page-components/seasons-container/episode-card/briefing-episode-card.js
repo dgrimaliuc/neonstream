@@ -16,7 +16,7 @@ export default function EpisodeCard({
 }) {
   const history = useSelector(historyContent);
   const playhead = useMemo(() => {
-    return new OrderedMap(history).get(`${EPISODE}-${id}`);
+    return history.map[`${EPISODE}-${id}`];
   }, [history, id]);
 
   return (

@@ -18,13 +18,14 @@ export default function SeasonsContainer({ seasonsTotal, seasons }) {
     seasonsTotal,
     styles['seasons-container'],
     styles.selected,
-    firstSeasonNumber,
+    upNext[`${TV}-${id}`]?.season_number || firstSeasonNumber,
   );
 
   useEffect(() => {
-    if (upNext && upNext[`${TV}-${id}`]) {
-      const { season_number } = upNext[`${TV}-${id}`];
-      select(season_number - (firstSeasonNumber ? 1 : 0));
+    const upNextObj = upNext[`${TV}-${id}`];
+    if (upNextObj) {
+      const { season_number } = upNextObj;
+      select(season_number);
     }
   }, [firstSeasonNumber, id, select, upNext]);
 
