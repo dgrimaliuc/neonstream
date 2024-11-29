@@ -39,7 +39,7 @@ export default function SeasonsContainer({ seasonsTotal, seasons }) {
           return (
             <Season
               key={i}
-              isSelected={selectedSeason.season_number === s.season_number}
+              isSelected={selectedSeason?.season_number === s.season_number}
               seasonTitle={s.name}
               onClick={select.bind(null, i + (firstSeasonNumber ? 1 : 0))}
             />
