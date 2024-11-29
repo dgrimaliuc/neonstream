@@ -8,6 +8,7 @@ import VODPlayerPlaceholder from './placeholder-vod-player';
 import useStream from '../../hooks/useStream';
 import usePlayerState from '../../hooks/usePlayerState';
 import { getYoutubeUrl, selectMainTrailer } from '../../api';
+import { TV } from '../../data/constants';
 
 export default function VODPlayer({ content }) {
   const ref = useRef(null);
@@ -36,7 +37,7 @@ export default function VODPlayer({ content }) {
     savePlayhead,
   });
 
-  const { streamData } = useStream(
+  const { streamIsLoading, streamData, streamError } = useStream(
     content,
     translationsData?.translations ? translationsData?.translations[selected] : null,
   );
@@ -71,7 +72,13 @@ export default function VODPlayer({ content }) {
               ref={ref}
               autoPlay={true}
               controls
-              url={streamData ? Object.values(streamData?.qualitys)[0] : trailer}
+              url={
+                !streamIsLoading && streamData && !streamError
+                  ? Object.values(streamData?.qualitys)[0]
+                  : content.media_type !== TV
+                  ? trailer
+                  : null
+              }
               playing={isPlaying}
               onPause={handlePause}
               progressInterval={20000}

@@ -7,7 +7,7 @@ import './playable-thumbnail.css';
 export default function PlayableThumbnail({
   image,
   showProgress = 'auto',
-  progress,
+  progress = 0,
   showIcon,
   placeholderWidth = 71,
   placeholderHeight = 40,

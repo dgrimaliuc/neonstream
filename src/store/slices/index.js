@@ -11,3 +11,5 @@ export { default as watchlist } from './watchlist';
 export * from './watchlist';
 export { default as history } from './history';
 export * from './history';
+export { default as upNext } from './upNext';
+export * from './upNext';

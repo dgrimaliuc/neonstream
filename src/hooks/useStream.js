@@ -3,7 +3,7 @@ import { useQuery } from './useQuery';
 import { getSources } from '../services/cms';
 
 export default function useStream(content, translation) {
-  const queryFunction = useCallback(() => {
+  const queryFunction = useCallback(async () => {
     if (!translation) {
       return null;
     }

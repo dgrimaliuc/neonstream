@@ -33,11 +33,8 @@
 }
 
 .expand-button {
-  position: absolute;
-  bottom: -37px;
-  transform: translateX(-50%);
+  position: relative;
   color: rgb(216, 218, 218);
-  left: 50%;
   font-size: 0.9rem;
   cursor: pointer;
   z-index: 2;
@@ -46,7 +43,5 @@
 }
 
 .section-gradient {
-  /* cursor: pointer; */
-  /* height: 100%; */
   mask-image: var(--section-gradient);
 }
