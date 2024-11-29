@@ -1,7 +1,5 @@
-import { useMemo } from 'react';
 import { PlayableThumbnail } from '../../../playable-thumbnail';
 import styles from './briefing-episode-card.module.css';
-import { OrderedMap } from '../../../../utils/orderedMap';
 import { useSelector } from 'react-redux';
 import { EPISODE } from '../../../../data/constants';
 import { historyContent } from '../../../../store';
@@ -14,10 +12,7 @@ export default function EpisodeCard({
   show_id,
   still_path,
 }) {
-  const history = useSelector(historyContent);
-  const playhead = useMemo(() => {
-    return new OrderedMap(history).get(`${EPISODE}-${id}`);
-  }, [history, id]);
+  const playhead = useSelector(s => historyContent(s).map[`${EPISODE}-${id}`]);
 
   return (
     <a className={styles.episode} href={`/tv/${show_id}/watch/${season_number}/${episode_number}`}>

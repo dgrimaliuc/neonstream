@@ -10,7 +10,7 @@ export default function ActionsContainer({
 }) {
   return (
     <div className={styles.actions}>
-      <WatchNowButton onClick={onWatchClick} />
+      <WatchNowButton onClick={onWatchClick} data={data} />
       {<WatchlistButton wlMinimal={wlMinimal} data={data} />}
       {addToList && (
         <button className={styles['default-button']}>

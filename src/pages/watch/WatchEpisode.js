@@ -7,6 +7,7 @@ import useSeries from '../../hooks/useSeries';
 import { TV } from '../../data/constants';
 import { UpNextContainer } from '../../components/upNext';
 import { formatVoteAverage, formatVoteCount } from '../../api';
+import { useInitialScroll } from '../../hooks';
 
 export async function loadEpisode({ params }) {
   return await getEpisode(params.id, params.season, params.episode);
@@ -17,6 +18,7 @@ export default function WatchEpisode() {
   const { season_number, episode_number, name, overview } = useLoaderData();
   const { series } = useSeries();
   const { id: episode_id } = useLoaderData();
+  useInitialScroll({ timeout: 50 });
 
   return (
     <>
