@@ -16,10 +16,7 @@ export default function EpisodeCard({
 }) {
   const history = useSelector(historyContent);
   const playhead = useMemo(() => {
-    const playhead = new OrderedMap(history).get(`${EPISODE}-${id}`);
-    if (playhead && !playhead?.isFullyWatched) {
-      return playhead;
-    }
+    return new OrderedMap(history).get(`${EPISODE}-${id}`);
   }, [history, id]);
 
   return (
