@@ -71,7 +71,9 @@ export default function VODPlayer({ content }) {
               ref={ref}
               autoPlay={true}
               controls
-              url={!streamIsLoading & streamData ? Object.values(streamData?.qualitys)[0] : trailer}
+              url={
+                !streamIsLoading && streamData ? Object.values(streamData?.qualitys)[0] : trailer
+              }
               playing={isPlaying}
               onPause={handlePause}
               progressInterval={20000}
