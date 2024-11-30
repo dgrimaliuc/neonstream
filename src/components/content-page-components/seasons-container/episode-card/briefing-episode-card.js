@@ -3,6 +3,7 @@ import styles from './briefing-episode-card.module.css';
 import { useSelector } from 'react-redux';
 import { EPISODE } from '../../../../data/constants';
 import { historyContent } from '../../../../store';
+import { useMemo } from 'react';
 
 export default function EpisodeCard({
   id,
@@ -12,7 +13,8 @@ export default function EpisodeCard({
   show_id,
   still_path,
 }) {
-  const playhead = useSelector(s => historyContent(s).map[`${EPISODE}-${id}`]);
+  const history = useSelector(historyContent);
+  const playhead = useMemo(() => (history ? history?.map[`${EPISODE}-${id}`] : 0), [history, id]);
 
   return (
     <a className={styles.episode} href={`/tv/${show_id}/watch/${season_number}/${episode_number}`}>

@@ -5,25 +5,27 @@ import EpisodesContainer from './episodes-container/episodes-container';
 import { useScrollablePagination } from '../../../hooks';
 import { useSelector } from 'react-redux';
 import { upNextContent } from '../../../store';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { TV } from '../../../data/constants';
+import { smoothScrollToRef } from '../../../utils';
 
 export default function SeasonsContainer({ seasonsTotal, seasons }) {
   const upNext = useSelector(upNextContent);
+  const seasonsRef = useRef(null);
   const { id } = useParams();
   const firstSeasonNumber = useMemo(() => seasons[0].season_number, [seasons]);
-
   const { selected, select, nextPage, prevPage } = useScrollablePagination(
     seasonsTotal,
     styles['seasons-container'],
     styles.selected,
-    upNext[`${TV}-${id}`]?.season_number || firstSeasonNumber,
+    upNext ? upNext[`${TV}-${id}`]?.season_number : firstSeasonNumber,
   );
 
   useEffect(() => {
-    const upNextObj = upNext[`${TV}-${id}`];
-    if (upNextObj) {
+    if (upNext && upNext[`${TV}-${id}`]) {
+      const upNextObj = upNext[`${TV}-${id}`];
+      smoothScrollToRef(seasonsRef);
       const { season_number } = upNextObj;
       select(season_number);
     }
@@ -34,7 +36,7 @@ export default function SeasonsContainer({ seasonsTotal, seasons }) {
   return (
     <section className={styles['seasons-wrapper']}>
       <SeasonsHeader onPrevClick={prevPage} onNextClick={nextPage} />
-      <nav className={styles['seasons-container']}>
+      <nav className={styles['seasons-container']} ref={seasonsRef}>
         {seasons.map((s, i) => {
           return (
             <Season

@@ -10,7 +10,7 @@ export default function WatchNowButton({ onClick, data }) {
 
   useEffect(() => {
     if (
-      upNext[data.media_type + `-${data.id}`] ||
+      (upNext && upNext[data.media_type + `-${data.id}`]) ||
       (history?.map[data.media_type + `-${data.id}`] &&
         !history?.map[data.media_type + `-${data.id}`]?.isFullyWatched)
     ) {

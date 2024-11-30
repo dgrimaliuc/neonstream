@@ -37,7 +37,6 @@ export default function SeriesPage() {
   const { id } = useParams();
   const { number_of_seasons, number_of_episodes, seasons } = data;
   useSeries();
-  useInitialScroll({ timeout: 50 });
 
   const navigate = useNavigateToContent(TV, id);
 
