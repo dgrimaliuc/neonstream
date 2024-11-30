@@ -9,6 +9,7 @@ import { useEffect, useMemo, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { TV } from '../../../data/constants';
 import { smoothScrollToRef } from '../../../utils';
+import { isEmpty } from 'lodash';
 
 export default function SeasonsContainer({ seasonsTotal, seasons }) {
   const upNext = useSelector(upNextContent);
@@ -23,7 +24,7 @@ export default function SeasonsContainer({ seasonsTotal, seasons }) {
   );
 
   useEffect(() => {
-    if (upNext && upNext[`${TV}-${id}`]) {
+    if (!isEmpty(upNext) && upNext[`${TV}-${id}`]) {
       const upNextObj = upNext[`${TV}-${id}`];
       smoothScrollToRef(seasonsRef);
       const { season_number } = upNextObj;

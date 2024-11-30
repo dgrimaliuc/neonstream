@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import styles from './actions.module.css';
 import { historyContent, upNextContent } from '../../store';
 import { useEffect, useState } from 'react';
+import { isEmpty } from 'lodash';
 
 export default function WatchNowButton({ onClick, data }) {
   const upNext = useSelector(upNextContent);
@@ -10,12 +11,13 @@ export default function WatchNowButton({ onClick, data }) {
 
   useEffect(() => {
     if (
-      (upNext && upNext[data.media_type + `-${data.id}`]) ||
-      (history?.map[data.media_type + `-${data.id}`] &&
+      (!isEmpty(upNext) && upNext[data.media_type + `-${data.id}`]) ||
+      (!isEmpty(history) &&
+        history?.map[data.media_type + `-${data.id}`] &&
         !history?.map[data.media_type + `-${data.id}`]?.isFullyWatched)
     ) {
       setText('Continue Watching');
-    } else if (history?.map[data.media_type + `-${data.id}`]?.isFullyWatched) {
+    } else if (!isEmpty(history) && history?.map[data.media_type + `-${data.id}`]?.isFullyWatched) {
       setText('Watch Again');
     } else {
       setText('Watch Now');
