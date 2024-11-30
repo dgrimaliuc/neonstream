@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { upNextContent } from '../store';
 import { TV } from '../data/constants';
+import { isEmpty } from 'lodash';
 
 export function useNavigateToContent(mediaType, id) {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ export function useNavigateToContent(mediaType, id) {
       case 'movie':
         return navigate(`/${mediaType}/${id}`);
       case 'tv':
-        if (upNext && upNext[`${TV}-${id}`]) {
+        if (!isEmpty(upNext) && upNext[`${TV}-${id}`]) {
           const { season_number, episode_number } = upNext[`${TV}-${id}`];
           return navigate(`/tv/${id}/watch/${season_number}/${episode_number}`);
         }

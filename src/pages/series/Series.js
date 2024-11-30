@@ -17,7 +17,7 @@ import {
   videosProps,
 } from '../../api';
 import useSeries from '../../hooks/useSeries';
-import { useInitialScroll, useNavigateToContent } from '../../hooks';
+import { useNavigateToContent } from '../../hooks';
 
 export async function loadTv({ params }) {
   return getSeries(
@@ -37,7 +37,6 @@ export default function SeriesPage() {
   const { id } = useParams();
   const { number_of_seasons, number_of_episodes, seasons } = data;
   useSeries();
-  useInitialScroll({ timeout: 50 });
 
   const navigate = useNavigateToContent(TV, id);
 
