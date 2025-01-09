@@ -24,6 +24,8 @@ const Player = memo(
         autoPlay = false,
         onProgress,
         progressInterval,
+        width = '100%',
+        height = '100%',
       },
       ref,
     ) => {
@@ -44,8 +46,8 @@ const Player = memo(
           light={light}
           autoPlay={autoPlay}
           url={url}
-          width='100%'
-          height='100%'
+          width={width}
+          height={height}
           progressInterval={progressInterval}
           controls={controls}
           playing={playing}

@@ -5,6 +5,7 @@
 .player-wrapper {
   background-color: #000;
   max-height: 75%;
+  height: fit-content;
   display: flex;
   flex-direction: column;
 }
@@ -25,11 +26,10 @@ iframe {
 }
 
 .player-container {
-  position: relative;
-  width: 100%;
-  height: var(--movie-player-height);
+  /* height: 56.25vw; */
   border: none;
   outline: none;
+  /* overflow: hidden; */
 }
 
 .player-container[data-t='placeholder'] {

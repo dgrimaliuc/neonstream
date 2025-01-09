@@ -1,7 +1,7 @@
 import styles from './player.module.css';
 import Player from './player';
 
-import TranslationsPlaceholder from './translations/placeholders/placeholder-translations';
+import TranslationsPlaceholder from '../translations/placeholders/placeholder-translations';
 
 export default function VODPlayerPlaceholder() {
   return (

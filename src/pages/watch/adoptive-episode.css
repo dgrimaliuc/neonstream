@@ -1,21 +1,18 @@
 :root {
-  --hero-content-section-width: 95%;
-  --media-card-height: 100%;
+  --min-player-height-ep: 750px;
 }
 
 /* extra-small-mobile-viewport */
 @media screen and (max-width: 319px) {
   :root {
-    --media-card-width: 200px;
-    --media-card-height: 113px;
+    --min-player-height-ep: 250px;
   }
 }
 
 /* small-mobile-viewport */
 @media screen and (min-width: 320px) {
   :root {
-    --media-card-width: 300px;
-    --media-card-height: 169px;
+    --min-player-height-ep: 300px;
   }
 }
 
@@ -23,37 +20,33 @@
 @media screen and (min-width: 500px) {
   :root {
     /* --movie-player-height: 345px; */
+    --min-player-height-ep: 400px;
   }
 }
 
 /* mobile-viewport */
 @media screen and (min-width: 767px) {
   :root {
-    --media-card-width: 350px;
-    --media-card-height: 197px;
+    --min-player-height-ep: 500px;
   }
 }
 /* tablet-viewport */
 @media screen and (min-width: 834px) {
   :root {
-    --media-card-width: 355px;
-    --media-card-height: 200px;
+    --min-player-height-ep: 600px;
   }
 }
 
 /* desktop-viewport */
 @media screen and (min-width: 1024px) {
   :root {
-    --media-card-width: 433px;
-    --media-card-height: 244px;
+    --min-player-height-ep: 700px;
   }
 }
 
 /* large-desktop-viewport */
 @media screen and (min-width: 1200px) {
   :root {
-    --hero-content-section-width: 1150px;
-    --media-card-width: 533px;
-    --media-card-height: 300px;
+    /*  */
   }
 }

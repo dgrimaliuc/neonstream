@@ -6,3 +6,7 @@
   flex-flow: column nowrap;
   margin-bottom: 80px;
 }
+
+.movie-media-section [class*='player-container'] {
+  min-height: var(--min-player-height-mov);
+}

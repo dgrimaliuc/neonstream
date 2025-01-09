@@ -1,3 +1,19 @@
+.episode-player-section {
+  position: relative;
+  min-height: var(--min-player-height-ep);
+  background: rgba(57, 57, 57, 0.745);
+}
+
+.episode-player-section video {
+  /* position: absolute; */
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-height: 750px; /* 16:9 Aspect Ratio */
+  max-width: 100%;
+  object-fit: cover; /* Adjust this based on your needs */
+}
+
 .watch-info-wrapper {
   display: flex;
   flex-flow: row unwrap;
