@@ -7,6 +7,6 @@
   margin-bottom: 80px;
 }
 
-.movie-media-section [class*='player-container'] {
+.movie-media-section [class*='player-container']:not([available='false']) {
   min-height: var(--min-player-height-mov);
 }
