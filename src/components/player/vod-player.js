@@ -68,7 +68,7 @@ export default function VODPlayer({ content, width, height }) {
             onClick={setSelected}
           />
         </div>
-        <div available={`${!isStreamUnavailable}`} className={styles['player-container']}>
+        <div className={styles['player-container']}>
           {translationsError && <div className={styles['player-error']}>{translationsError}</div>}
           {isStreamUnavailable && <VODPlayerUnavailable img={content.backdrop_path} />}
           {streamData && (

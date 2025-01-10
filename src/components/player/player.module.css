@@ -26,10 +26,15 @@ iframe {
 }
 
 .player-container {
-  /* height: 56.25vw; */
+  position: relative;
   border: none;
   outline: none;
-  /* overflow: hidden; */
+  overflow: hidden;
+}
+
+.player-container video {
+  position: absolute;
+  top: 0;
 }
 
 .player-container[data-t='placeholder'] {
