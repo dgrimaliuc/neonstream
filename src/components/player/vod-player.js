@@ -1,6 +1,6 @@
 import styles from './player.module.css';
 import Player from './player';
-import { Translations } from './translations';
+import { Translations } from '../translations';
 import { useEffect, useRef, useState } from 'react';
 import { useHistory, usePlayerControls } from '../../hooks';
 import useTranslations from '../../hooks/useTranslations';
@@ -9,10 +9,11 @@ import useStream from '../../hooks/useStream';
 import usePlayerState from '../../hooks/usePlayerState';
 import { getYoutubeUrl, selectMainTrailer } from '../../api';
 import { TV } from '../../data/constants';
+import VODPlayerUnavailable from './vod-player-unavailable';
 
-export default function VODPlayer({ content }) {
+export default function VODPlayer({ content, width, height }) {
   const ref = useRef(null);
-
+  console.log('content', content);
   const [trailer, setTrailer] = useState(null);
 
   const { savePlayhead, removePlayhead, getPlayhead, saveCurrentTime } = useHistory({
@@ -55,6 +56,8 @@ export default function VODPlayer({ content }) {
     return <VODPlayerPlaceholder />;
   }
 
+  const isStreamUnavailable = !streamIsLoading && (!streamData || streamError);
+
   return (
     <>
       <div className={styles['player-wrapper']}>
@@ -67,7 +70,8 @@ export default function VODPlayer({ content }) {
         </div>
         <div className={styles['player-container']}>
           {translationsError && <div className={styles['player-error']}>{translationsError}</div>}
-          {
+          {isStreamUnavailable && <VODPlayerUnavailable img={content.backdrop_path} />}
+          {streamData && (
             <Player
               ref={ref}
               autoPlay={true}
@@ -88,8 +92,10 @@ export default function VODPlayer({ content }) {
               onEnded={removePlayhead}
               onSeek={onSeek}
               onReady={handleReady}
+              width={width}
+              height={height}
             />
-          }
+          )}
         </div>
       </div>
     </>

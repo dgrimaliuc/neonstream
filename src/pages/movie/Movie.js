@@ -1,4 +1,6 @@
+import './adoptive-mov.css';
 import styles from './movie.module.css';
+
 import { useLoaderData } from 'react-router-dom';
 import { BrowseCollection } from '../../components/carousel';
 

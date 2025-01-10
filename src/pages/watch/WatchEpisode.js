@@ -1,3 +1,4 @@
+import './adoptive-episode.css';
 import './watch.css';
 
 import { getEpisode } from '../../services/content';
@@ -17,13 +18,14 @@ export default function WatchEpisode() {
   const { id } = useParams();
   const { season_number, episode_number, name, overview } = useLoaderData();
   const { series } = useSeries();
-  const { id: episode_id } = useLoaderData();
+  const { id: episode_id, still_path } = useLoaderData();
   useInitialScroll({ timeout: 50 });
 
   return (
     <>
-      <div className='watch-wrapper'>
+      <div className='episode-player-section'>
         <VODPlayer
+          height='56.25%'
           content={{
             ...series,
             id,
@@ -31,6 +33,7 @@ export default function WatchEpisode() {
             season_number,
             episode_number,
             episode_id,
+            backdrop_path: still_path,
           }}
         />
       </div>

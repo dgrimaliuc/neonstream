@@ -1,5 +1,5 @@
 import styles from '../translations.module.css';
-import { ExpandContainer } from '../../../expand';
+import { ExpandContainer } from '../../expand';
 import TranslationPlaceholder from './placeholder-translation';
 
 export default function TranslationsPlaceholder() {

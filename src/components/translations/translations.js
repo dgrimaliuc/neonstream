@@ -1,4 +1,4 @@
-import { ExpandContainer } from '../../expand';
+import { ExpandContainer } from '../expand';
 import styles from './translations.module.css';
 import Translation from './translation';
 
