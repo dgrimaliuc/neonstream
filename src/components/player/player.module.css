@@ -30,11 +30,8 @@ iframe {
   border: none;
   outline: none;
   overflow: hidden;
-}
-
-.player-container video {
-  position: absolute;
-  top: 0;
+  width: 100%;
+  min-height: max-content;
 }
 
 .player-container[data-t='placeholder'] {
