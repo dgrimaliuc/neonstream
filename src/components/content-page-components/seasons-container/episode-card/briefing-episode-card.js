@@ -5,7 +5,7 @@ import { EPISODE } from '../../../../data/constants';
 import { historyContent } from '../../../../store';
 import { useMemo } from 'react';
 
-export default function EpisodeCard({
+export default function BriefingEpisodeCard({
   id,
   episode_number,
   name,
@@ -14,7 +14,10 @@ export default function EpisodeCard({
   still_path,
 }) {
   const history = useSelector(historyContent);
-  const playhead = useMemo(() => (history ? history?.map[`${EPISODE}-${id}`] : 0), [history, id]);
+  const playhead = useMemo(
+    () => (history?.map ? history?.map[`${EPISODE}-${id}`] : 0),
+    [history, id],
+  );
 
   return (
     <a className={styles.episode} href={`/tv/${show_id}/watch/${season_number}/${episode_number}`}>
