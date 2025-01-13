@@ -10,3 +10,8 @@
 .movie-media-section [class*='player-container'] {
   min-height: var(--min-player-height-mov);
 }
+
+.movie-media-section video {
+  position: absolute;
+  top: 0;
+}
