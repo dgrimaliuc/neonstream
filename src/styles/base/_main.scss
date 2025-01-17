@@ -1,3 +1,5 @@
+@use './../abstracts/variables/colors' as *;
+
 * {
   margin: 0;
   padding: 0;
@@ -10,8 +12,8 @@ a {
 }
 
 body {
-  color: #a6b9aff5;
-  background: var(--main-background-color);
+  color: $text-primary;
+  background: var(--background-main);
 }
 
 [class^='icon-'],

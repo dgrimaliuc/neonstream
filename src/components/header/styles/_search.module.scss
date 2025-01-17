@@ -1,3 +1,5 @@
+@use '~styles/main' as *;
+
 .search_container {
   flex: 2;
   width: 100%;
@@ -18,7 +20,7 @@
       outline: 0;
       background-color: transparent;
       &::placeholder {
-        color: #a6b9aff5;
+        color: $text-primary;
       }
     }
   }

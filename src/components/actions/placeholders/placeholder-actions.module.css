@@ -1,5 +1,5 @@
 .placeholder {
-  background: var(--placeholder-background-color-l1);
+  background: var(--placeholder-background-light);
 }
 
 [class*='watch-now-btn'].placeholder,

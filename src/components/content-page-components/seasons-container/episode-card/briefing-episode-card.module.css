@@ -1,5 +1,5 @@
 :root {
-  --episode-card-background-color: #2b2b2b5b;
+  --episode-background-card: #2b2b2b5b;
 }
 
 .episode {
@@ -10,7 +10,7 @@
   width: 313px;
   height: 264.5px;
   overflow: hidden;
-  background-color: var(--episode-card-background-color);
+  background-color: var(--episode-background-card);
   border-radius: 5px;
 }
 

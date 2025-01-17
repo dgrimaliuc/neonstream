@@ -4,7 +4,7 @@
 }
 
 .browse-card {
-  background-color: var(--card-background-color);
+  background-color: var(--background-card);
   position: relative;
   width: 160px;
   height: 100%;
@@ -42,7 +42,7 @@
 .browse-card-poster.placeholder {
   width: 160px;
   height: 240px;
-  background-color: var(--placeholder-background-color-l1);
+  background-color: var(--placeholder-background-light);
 }
 
 .browse-card p {
@@ -100,7 +100,7 @@ div[inert] .browse-card {
   .placeholder_title {
     width: 87%;
     height: 14px;
-    background-color: var(--placeholder-background-color-l1);
+    background-color: var(--placeholder-background-light);
     margin-left: 1px;
   }
 }

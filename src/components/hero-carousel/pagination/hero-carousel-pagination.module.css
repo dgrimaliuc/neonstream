@@ -17,7 +17,7 @@
 
 .hero-carousel__page-pill.placeholder {
   cursor: auto;
-  background: var(--placeholder-background-color-l1);
+  background: var(--placeholder-background-light);
 }
 
 .hero-carousel__page {

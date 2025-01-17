@@ -19,7 +19,7 @@
   align-items: center;
   height: 460px;
   background: linear-gradient(to right, #1e0036a0, rgba(11, 136, 147, 0.26));
-  background-color: var(--main-background-color);
+  background-color: var(--background-main);
   min-width: 500px;
   width: 45vh;
   margin: auto;

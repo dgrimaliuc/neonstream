@@ -60,5 +60,5 @@
 
 .bookmarks-tab:hover {
   color: #fff;
-  background-color: var(--hover-menu-item-color);
+  background-color: var(--hover-menu-item);
 }
