@@ -3,9 +3,9 @@
 .login {
   display: flex;
   flex: 1;
-  align-items: flex-start;
   gap: 1.3rem;
   justify-content: flex-end;
+  padding-inline-end: 1.5rem;
 
   a {
     @extend .text-uppercase-bold;
