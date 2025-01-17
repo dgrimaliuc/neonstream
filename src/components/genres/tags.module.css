@@ -23,7 +23,7 @@
 }
 
 .tag.placeholder {
-  background: var(--placeholder-background-color-l1);
+  background: var(--placeholder-background-light);
   width: 60px;
   height: 30px;
 }

@@ -22,7 +22,7 @@
   }
 
   .notify-button {
-    background-color: var(--green-color);
+    background-color: var(--accent-green);
     color: #081118;
     font-size: 16px;
     padding: 12px 15px;

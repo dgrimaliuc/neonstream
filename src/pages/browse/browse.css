@@ -40,6 +40,6 @@
 .filter:hover,
 .sorting:hover {
   color: #fff;
-  background-color: var(--hover-menu-item-color);
+  background-color: var(--hover-menu-item);
   /* border: 1px solid red; */
 }

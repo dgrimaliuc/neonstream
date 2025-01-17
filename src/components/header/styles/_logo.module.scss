@@ -1,0 +1,29 @@
+@use '~styles/main';
+
+.logo {
+  @extend .neonText;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  flex: 1;
+
+  .saturn {
+    width: 55px;
+    height: 55px;
+  }
+
+  img {
+    width: 4rem;
+    height: 4rem;
+    margin: 0 20px;
+  }
+
+  &__text {
+    font-size: 40px;
+    font-weight: 700;
+    color: #0de2a5;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Alegreya Sans SC';
+  }
+}

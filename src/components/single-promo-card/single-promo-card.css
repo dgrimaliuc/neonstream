@@ -24,7 +24,7 @@
   right: 0;
   top: 0;
   z-index: 0;
-  background: linear-gradient(to bottom, #0000 min(40vh, 50%), var(--main-background-color) 100%),
+  background: linear-gradient(to bottom, #0000 min(40vh, 50%), var(--background-main) 100%),
     linear-gradient(to var(--cr-end-direction), #000c 0, #0009 30%, #0000 70%);
 }
 
@@ -109,7 +109,7 @@
 .image-right.placeholder {
   width: 172px;
   height: 258px;
-  background: var(--placeholder-background-color-no-transparency);
+  background: var(--placeholder-background-solid);
 }
 
 .content-card-info.placeholder {
@@ -125,12 +125,12 @@
 
 .single-show-card-title.placeholder {
   height: 46px;
-  background-color: var(--placeholder-background-color-l1);
+  background-color: var(--placeholder-background-light);
 }
 
 .single-show-card-description.placeholder {
   height: 132px;
-  background-color: var(--placeholder-background-color-l1);
+  background-color: var(--placeholder-background-light);
 }
 
 .single-show-card-title {

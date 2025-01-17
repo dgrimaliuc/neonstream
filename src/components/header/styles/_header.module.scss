@@ -1,0 +1,37 @@
+@use '~styles/main' as *;
+
+$header-height: 6.5rem;
+
+.header_container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: $header-height;
+  background-color: $header-background;
+  color: $text-primary;
+  display: flex;
+  flex-flow: column;
+  z-index: 1000;
+
+  a[class*='active'] span {
+    color: white;
+    border-bottom: $accent-green solid 1.8px;
+  }
+
+  &__column {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+  }
+
+  &__primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+}
+
+body {
+  padding-top: $header-height;
+}

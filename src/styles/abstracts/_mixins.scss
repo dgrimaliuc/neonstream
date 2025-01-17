@@ -1,0 +1,10 @@
+@mixin mixin-example($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+//    Example how to use
+//   .button {
+//     @include mixin-example(10px);
+//   }

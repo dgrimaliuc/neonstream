@@ -1,0 +1,14 @@
+@use '~styles/main' as *;
+
+.login {
+  display: flex;
+  flex: 1;
+  gap: 1.3rem;
+  justify-content: flex-end;
+  padding-inline-end: 1.5rem;
+
+  a {
+    @extend .text-uppercase-bold;
+    text-wrap: nowrap;
+  }
+}

@@ -69,7 +69,7 @@
 
 .permission_denied h3 span:after {
   content: '';
-  border-bottom: 2px solid var(--green-color);
+  border-bottom: 2px solid var(--accent-green);
   position: absolute;
   left: 0;
   top: 43%;
@@ -95,8 +95,8 @@
 }
 
 .denied__link:hover {
-  color: var(--green-color);
-  border-color: var(--green-color);
+  color: var(--accent-green);
+  border-color: var(--accent-green);
   cursor: pointer;
   opacity: 1;
 }

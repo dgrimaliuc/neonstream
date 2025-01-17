@@ -38,7 +38,7 @@
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: var(--hover-menu-item-color);
+  background-color: var(--hover-menu-item);
   opacity: var(--hover-opacity);
 }
 
@@ -65,7 +65,6 @@
 .movie-meta {
   color: #00e18c;
 }
-
 
 .episode-actions {
   display: flex;

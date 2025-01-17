@@ -3,7 +3,7 @@
 }
 
 .single-card-wrapper {
-  background-color: var(--main-background-color);
+  background-color: var(--background-main);
   margin: 40px 0px 40px 0px;
 }
 
@@ -25,7 +25,7 @@
 }
 
 .average-card-ratings.placeholder {
-  background: var(--placeholder-background-color-l1);
+  background: var(--placeholder-background-light);
   width: 210px;
   height: 19px;
 }
@@ -64,7 +64,7 @@
 }
 
 .single-card-image.placeholder {
-  background: var(--placeholder-background-color-l1);
+  background: var(--placeholder-background-light);
   height: 450px;
   width: 500px;
 }
@@ -118,7 +118,7 @@
 }
 
 .single-card-poster.placeholder {
-  background: var(--placeholder-background-color-l1);
+  background: var(--placeholder-background-light);
   height: 255px;
   width: 165px;
 }
@@ -128,7 +128,7 @@
 }
 
 .single-card-title.placeholder {
-  background: var(--placeholder-background-color-l1);
+  background: var(--placeholder-background-light);
   width: 276.34px;
   height: 89.78px;
 }
@@ -145,7 +145,7 @@
 }
 
 .single-card-description.placeholder {
-  background: var(--placeholder-background-color-l1);
+  background: var(--placeholder-background-light);
   width: 100%;
   height: 105px;
   margin-top: 10px;

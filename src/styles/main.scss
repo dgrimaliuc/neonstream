@@ -1,0 +1,14 @@
+// Base
+@forward 'base/main';
+@forward 'base/animations';
+@forward 'base/typography';
+@forward 'base/utilities';
+
+// Abstracts
+@forward 'abstracts/functions';
+@forward 'abstracts/mixins';
+@forward 'abstracts/placeholders';
+
+// Variables
+@forward 'abstracts/variables/colors';
+@forward 'abstracts/variables/sizes';

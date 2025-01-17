@@ -1,6 +1,7 @@
 import styles from './expand.module.css';
-import { useCombineClasses, useClasses } from '../../hooks';
+import { useClasses } from '../../hooks';
 import { useEffect, useRef, useState } from 'react';
+import { combineClasses } from '../../utils';
 
 export default function ExpandContainer({
   children,
@@ -19,7 +20,6 @@ export default function ExpandContainer({
   const [maxHeight, setMaxHeight] = useState(0);
   const childrenRef = useRef(null);
   const titleRef = useRef(null);
-  const buttonClasses = useCombineClasses(styles['expand-button'], buttonClass);
 
   const {
     c: expandClasses,
@@ -28,15 +28,12 @@ export default function ExpandContainer({
   } = useClasses(styles['expand-section-wrapper'], className);
 
   function expandHandler() {
-    setIsExpanded((prev) => !prev);
+    setIsExpanded(prev => !prev);
   }
 
   useEffect(() => {
     const totalHeight =
-      childrenRef.current?.clientHeight +
-      titleRef.current?.clientHeight +
-      extraHeight +
-      'px';
+      childrenRef.current?.clientHeight + titleRef.current?.clientHeight + extraHeight + 'px';
     setMaxHeight(totalHeight);
   }, [children.props.className, extraHeight]);
 
@@ -67,7 +64,7 @@ export default function ExpandContainer({
       </div>
       {allowExpand && buttonExpandMode && (
         <button
-          className={buttonClasses}
+          className={combineClasses(styles['expand-button'], buttonClass)}
           onClick={buttonExpandMode ? expandHandler : null}
         >
           {isExpanded ? '-- Show Less --' : '-- Show More --'}

@@ -5,5 +5,5 @@
   flex-flow: row nowrap;
   justify-content: space-between;
   position: relative;
-  background-color: var(--main-background-color);
+  background-color: var(--background-main);
 }

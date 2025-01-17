@@ -1,0 +1,13 @@
+@keyframes example {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Usage example
+// div {
+//   animation: example 2s infinite;
+// }

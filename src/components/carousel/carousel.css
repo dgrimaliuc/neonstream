@@ -38,7 +38,7 @@
   opacity: 1;
   width: 300px;
   height: 23.69px;
-  background: var(--placeholder-background-color-l1);
+  background: var(--placeholder-background-light);
 }
 
 .carousel-header {
@@ -67,5 +67,5 @@
 
 .scrolling-section .episode-card {
   min-width: 300px;
-  background-color: var(--card-background-color);
+  background-color: var(--background-card);
 }

@@ -110,7 +110,7 @@ export default function PlayableCard({
             </p>
           </div>
           <div className={classes['episode-meta-container']}>
-            <div className={`text-caption ${classes[metaClass]}`}>{type}</div>
+            <div className={`text-medium ${classes[metaClass]}`}>{type}</div>
             <div className={classes['episode-actions']}>
               <span onClick={wlClickHandler}>
                 <i className={wlClass}></i>

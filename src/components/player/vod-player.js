@@ -13,7 +13,6 @@ import VODPlayerUnavailable from './vod-player-unavailable';
 
 export default function VODPlayer({ content, width, height }) {
   const ref = useRef(null);
-  console.log('content', content);
   const [trailer, setTrailer] = useState(null);
 
   const { savePlayhead, removePlayhead, getPlayhead, saveCurrentTime } = useHistory({
