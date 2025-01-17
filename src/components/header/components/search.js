@@ -3,7 +3,7 @@ import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
 import styles from '../styles/index.module.scss';
 
-export default function SearchInput() {
+export default function SearchBar() {
   const navigate = useNavigate();
   const location = useLocation();
   const [value, setValue] = useState('');
@@ -48,8 +48,8 @@ export default function SearchInput() {
   }, [location, removeParam, searchParams, setSearchParams]);
 
   return (
-    <div className={styles['search-container']}>
-      <div className={styles['search-container__input']}>
+    <div className={styles['search_container']}>
+      <div className={styles['search_container__input']}>
         <input
           value={value}
           type='text'

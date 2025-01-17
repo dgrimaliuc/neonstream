@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom';
-import Search from './search';
 import styles from '../styles/index.module.scss';
 import { useMemo } from 'react';
 
@@ -37,7 +36,6 @@ export default function Navigation() {
 
   return (
     <div className={styles['header-navigation-wrapper']}>
-      <Search />
       <div className={styles['navigation-items-container']}>{links}</div>
     </div>
   );

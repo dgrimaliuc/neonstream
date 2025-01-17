@@ -1,4 +1,8 @@
-.search-container {
+.search_container {
+  flex: 2;
+  width: 100%;
+  max-width: 60rem;
+  min-width: 5.3rem;
   &__input {
     width: 97%;
     padding: 5px;
@@ -10,10 +14,10 @@
       width: 100%;
       padding: 2px 0px 0px 10px;
       font-size: 17px;
-      border: none;
+      border: 0;
+      outline: 0;
       background-color: transparent;
-
-      &[type='text']::placeholder {
+      &::placeholder {
         color: #a6b9aff5;
       }
     }

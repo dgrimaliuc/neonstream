@@ -1,4 +1,4 @@
-@use '~styles/main';
+@use '~styles/main' as *;
 
 .header-navigation-wrapper {
   display: flex;
@@ -9,11 +9,10 @@
   .navigation-items-container {
     @extend .text-uppercase-bold;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 2.1rem;
     padding: 0 20px;
-    justify-content: flex-start;
 
     span {
       padding: 10px 20px;
@@ -21,6 +20,14 @@
       &:hover {
         color: #fff;
         background-color: var(--hover-menu-item-color);
+      }
+    }
+
+    @media screen and (max-width: $mobile-viewport) {
+      font-size: 15px;
+      gap: 0.2rem;
+      span {
+        padding: 7px 15px;
       }
     }
   }

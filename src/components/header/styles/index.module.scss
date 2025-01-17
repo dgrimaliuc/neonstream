@@ -1,5 +1,5 @@
-@use 'login.module';
-@use 'logo.module';
-@use 'navigation.module';
-@use 'search.module';
-@use 'header.module';
+@forward 'login.module';
+@forward 'logo.module';
+@forward 'navigation.module';
+@forward 'search.module';
+@forward 'header.module';

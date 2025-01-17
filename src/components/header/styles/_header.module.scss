@@ -1,6 +1,6 @@
 @use '~styles/main' as *;
 
-$header-height: 6rem;
+$header-height: 6.5rem;
 
 .header_container {
   position: fixed;
@@ -10,12 +10,25 @@ $header-height: 6rem;
   background-color: #0c1013;
   color: #a6b9aff5;
   display: flex;
-  gap: 20px;
+  flex-flow: column;
   z-index: 1000;
 
   a[class*='active'] span {
     color: white;
     border-bottom: $accent-green solid 1.8px;
+  }
+
+  &__column {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+  }
+
+  &__primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
   }
 }
 
