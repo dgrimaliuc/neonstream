@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
+import styles from '../styles/index.module.scss';
+
 export default function SearchInput() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -46,8 +48,8 @@ export default function SearchInput() {
   }, [location, removeParam, searchParams, setSearchParams]);
 
   return (
-    <div className='search'>
-      <div id='cover'>
+    <div className={styles['search-container']}>
+      <div className={styles['search-container__input']}>
         <input
           value={value}
           type='text'

@@ -1,7 +1,6 @@
 const config = {
   dev: {
     api: 'http://localhost:80',
-    // api: 'https://neon-stream.online',
   },
   prod: {
     api: 'https://neon-stream.online',

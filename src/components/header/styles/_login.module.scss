@@ -1,8 +1,15 @@
+@use '~styles/main';
+
 .login {
   display: flex;
+  flex: 1;
   align-items: flex-start;
   gap: 20px;
   justify-content: flex-end;
   padding: 20px 40px;
   min-width: 240px;
+
+  a {
+    @extend .text-uppercase-bold;
+  }
 }

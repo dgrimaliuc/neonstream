@@ -1,5 +1,5 @@
 export async function sleep(ms) {
-  await new Promise((resolve) => setTimeout(resolve, ms));
+  await new Promise(resolve => setTimeout(resolve, ms));
 }
 
 export function noop() {
@@ -14,3 +14,6 @@ export function isObjEmpty(obj) {
   return Object.keys(obj ?? {}).length === 0;
 }
 
+export function combineClasses(...args) {
+  return args.filter(Boolean).join(' ');
+}

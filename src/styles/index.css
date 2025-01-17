@@ -1,0 +1,17 @@
+:root {
+  --main-background-color: #0a1016;
+  --hover-menu-item-color: #a0a0a016;
+  --accent-green: #00dc89;
+  --card-background-color: rgba(22, 23, 23, 0.358);
+
+  /* Viewport sizes */
+  --small-mobile-viewport: 320px;
+  --mobile-viewport: 767px;
+  --tablet-viewport: 834px;
+  --desktop-viewport: 1024px;
+  --large-desktop-viewport: 1200px;
+
+  /* Placeholder Colors */
+  --placeholder-background-color-l1: #32323563;
+  --placeholder-background-color-no-transparency: #1d1f22;
+}

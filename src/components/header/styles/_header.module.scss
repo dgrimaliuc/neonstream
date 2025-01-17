@@ -1,0 +1,24 @@
+@use '~styles/main' as *;
+
+$header-height: 6rem;
+
+.header_container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: $header-height;
+  background-color: #0c1013;
+  color: #a6b9aff5;
+  display: flex;
+  gap: 20px;
+  z-index: 1000;
+
+  a[class*='active'] span {
+    color: white;
+    border-bottom: $accent-green solid 1.8px;
+  }
+}
+
+body {
+  padding-top: $header-height;
+}

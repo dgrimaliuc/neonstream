@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer>
       <div className='footer-container'>
-        <div className='flx-1'>
+        <div className='footer-column'>
           <h4>Navigation</h4>
           <ul>
             <li className='erc-footer-section-item'>
@@ -25,7 +25,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div className='flx-1'>
+        <div className='footer-column'>
           <h4>Connect With Us</h4>
           <ul className='list'>
             <li className='erc-footer-section-item'>
@@ -108,7 +108,7 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-        <div className='flx-1'>
+        <div className='footer-column'>
           <h4>Account</h4>
           <ul className='list'>
             <li className='erc-footer-section-item'>

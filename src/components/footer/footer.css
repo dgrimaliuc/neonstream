@@ -21,7 +21,9 @@ footer span {
 .footer-container {
   display: flex;
   width: 100%;
-  /* justify-content: space-between; */
+  .footer-column {
+    flex: 1;
+  }
 }
 
 .footer-container .left-icon {

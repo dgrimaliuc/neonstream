@@ -1,0 +1,27 @@
+@use '~styles/main';
+
+.header-navigation-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex: 2;
+
+  .navigation-items-container {
+    @extend .text-uppercase-bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    padding: 0 20px;
+    justify-content: flex-start;
+
+    span {
+      padding: 10px 20px;
+
+      &:hover {
+        color: #fff;
+        background-color: var(--hover-menu-item-color);
+      }
+    }
+  }
+}
