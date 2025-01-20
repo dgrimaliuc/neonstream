@@ -1,5 +1,5 @@
 import { getBackdrop } from '../../utils';
-import { Image } from '../lazy-image';
+import { Image } from 'components/lazy-image';
 import { UnavailableVideoContent } from '../unavailable-video-content';
 import unavailableStyles from './unavailable.module.css';
 

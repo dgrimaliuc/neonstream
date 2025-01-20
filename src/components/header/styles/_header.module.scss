@@ -1,4 +1,8 @@
 @use '~styles/main' as *;
+.header_wrapper {
+  position: relative;
+  height: $header-height;
+}
 
 .header_container {
   position: fixed;
@@ -28,8 +32,4 @@
     justify-content: center;
     gap: 1.5rem;
   }
-}
-
-body {
-  margin-top: $header-height;
 }

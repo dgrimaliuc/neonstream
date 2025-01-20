@@ -1,6 +1,6 @@
 import styles from './hero-content.module.css';
 import { getPoster } from '../../../utils/images';
-import { Image } from '../../lazy-image';
+import { Image } from 'components/lazy-image';
 
 export default function HeroPoster({ picture }) {
   return (

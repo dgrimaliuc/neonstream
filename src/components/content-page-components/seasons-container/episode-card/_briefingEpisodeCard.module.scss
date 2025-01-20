@@ -1,0 +1,12 @@
+@use '~styles/main' as *;
+
+.episode-title {
+  @extend .multiline-ellipsis;
+  color: rgba(220, 220, 220, 0.891);
+  font-size: 15px;
+  line-height: 18px;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  height: 60px;
+}

@@ -1,12 +1,12 @@
-import './hero-carousel.css';
-import HeroCard from './hero-card/hero-card';
-import HeroCarouselPagination from './pagination/hero-carousel-pagination-container';
+import styles from '../styles/index.module.scss';
+import HeroCard from './heroCard';
+import HeroCarouselPagination from '../pagination/hero-carousel-pagination-container';
 import HeroCardsWrapper from './hero-cards-wrapper';
-import { useTabs } from '../../hooks';
+import { useTabs } from '../../../hooks';
 import { memo, useEffect } from 'react';
-import { useMultipleContentLoader } from '../../hooks/useMultipleContentLoader';
-import HeroCarouselPlaceholder from './placeholders/placeholder-hero-carousel';
-import HeroArrowsWrapper from './components/hero-arrows-wrapper';
+import { useMultipleContentLoader } from '../../../hooks/useMultipleContentLoader';
+import HeroCarouselPlaceholder from './placeholderHeroCarousel';
+import HeroArrowsWrapper from './hero-arrows-wrapper';
 
 const HeroCarousel = memo(({ objects = [] }) => {
   const { loading, data } = useMultipleContentLoader(objects);
@@ -28,7 +28,7 @@ const HeroCarousel = memo(({ objects = [] }) => {
 
   return (
     <div>
-      <div className='hero-carousel-wrapper'>
+      <div className={styles['hero-carousel-wrapper']}>
         <HeroArrowsWrapper data={data} onPrevClick={prevPage} onNextClick={nextPage}>
           <HeroCardsWrapper>
             {data?.map((ob, i) => (

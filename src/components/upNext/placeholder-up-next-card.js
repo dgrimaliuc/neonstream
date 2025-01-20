@@ -1,5 +1,5 @@
 import './upNext.css';
-import { Image } from '../lazy-image';
+import { Image } from 'components/lazy-image';
 
 export default function UpNextCardPlaceholder() {
   return (

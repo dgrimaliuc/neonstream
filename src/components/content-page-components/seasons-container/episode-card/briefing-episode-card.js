@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { EPISODE } from '../../../../data/constants';
 import { historyContent } from '../../../../store';
 import { useMemo } from 'react';
+import { combineClasses } from 'utils';
 
 export default function BriefingEpisodeCard({
   id,
@@ -34,7 +35,9 @@ export default function BriefingEpisodeCard({
         <h5>
           S{season_number} E{episode_number}
         </h5>
-        <span className={`multiline-ellipsis ${styles['episode-title']}`}>{name}</span>
+        <span className={combineClasses('multiline-ellipsis', styles['episode-title'])}>
+          {name}
+        </span>
       </div>
     </a>
   );

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { getBackdrop } from '../../utils';
-import { Image } from '../lazy-image';
+import { Image } from 'components/lazy-image';
 import { WatchProgressBar } from '../watch-progress-bar';
 import './playable-thumbnail.css';
 

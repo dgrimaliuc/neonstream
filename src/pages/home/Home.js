@@ -1,6 +1,6 @@
 import classes from './home.module.css';
 
-import HeroCarousel from '../../components/hero-carousel/hero-carousel';
+import { HeroCarousel } from '../../components/hero-carousel';
 import { SinglePromoCardNeon, SinglePromoCardViolet } from '../../components/single-promo-card';
 import { SingleCard } from '../../components/single-card';
 import {
@@ -35,10 +35,10 @@ function Home() {
       <BrowseCollection type={UPCOMING_MOVIES} />,
       <BrowseCollection type={TOP_RATED_SERIES} />,
       <BrowseCollection type={NOW_PLAYING_MOVIES} />,
-      <SinglePromoCardViolet id={315162} mediaType={MOVIE} secondImageIndex={1} />,
+      <SinglePromoCardViolet id={912649} mediaType={MOVIE} secondImageIndex={2} />,
       <BrowseCollection type={POPULAR_SERIES} />,
       <BrowseCollection type={POPULAR_MOVIES} />,
-      <SinglePromoCardNeon id={37854} mediaType={TV} secondImageIndex={2} />,
+      <SinglePromoCardNeon id={94605} mediaType={TV} secondImageIndex={2} />,
       <BrowseCollection baseId={1029575} type={RECOMMENDED_MOVIES} />,
       <SingleCard id={1396} mediaType={TV} />,
       <BrowseCollection baseId={42009} type={RECOMMENDED_SERIES} />,
@@ -57,11 +57,14 @@ function Home() {
   const objects = useMemo(
     () => [
       { id: 365177, mediaType: MOVIE },
-      { id: 76479, mediaType: TV },
-      { id: 746036, mediaType: MOVIE },
+      { id: 94605, mediaType: TV },
+      { id: 1063877, mediaType: MOVIE },
       { id: 219532, mediaType: TV },
-      { id: 359410, mediaType: MOVIE },
+      { id: 912649, mediaType: MOVIE },
+      { id: 1241982, mediaType: MOVIE },
+      { id: 539972, mediaType: MOVIE },
       { id: 60059, mediaType: TV },
+      { id: 746036, mediaType: MOVIE },
     ],
     [],
   );
