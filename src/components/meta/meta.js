@@ -9,10 +9,10 @@ export default function Meta({ title, overview, poster_path, still_path }) {
       <meta property='og:description' content={overview} />
       <meta
         property='og:image'
-        content='https://neon-stream--pr36-hero-carousel-refact-oiwetk6s.web.app/logo.svg'
+        content='https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=1200,height=675/catalog/crunchyroll/93216d743b442175f0a06e5693ae4439.jpg'
       />
       {/* <meta property='og:image' content={`${window.location.origin}/logo.svg`} /> */}
-      <meta property='og:image:width' content='86' data-rh='true'></meta>
+      <meta property='og:image:width' content='1200' data-rh='true'></meta>
       {/* poster_path
             ? getPoster(poster_path, 1)
             : still_path
