@@ -30,7 +30,11 @@ export default function WatchEpisode() {
 
   return (
     <div>
-      <Meta title={name} overview still_path={still_path} />
+      <Meta
+        title={`S${season_number} E${episode_id} - ${series.name}`}
+        overview
+        still_path={still_path}
+      />
       <div className='episode-player-section'>
         <VODPlayer
           height='56.25%'
