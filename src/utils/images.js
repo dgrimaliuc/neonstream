@@ -15,11 +15,11 @@ const { images } = config;
 const { secure_base_url, poster_sizes, backdrop_sizes, still_sizes } = images;
 
 export function getPoster(path, size = 'default') {
-  let posterSize = getOrDefault(size, poster_sizes, '/w220_and_h330_face');
+  let posterSize = getOrDefault(size, poster_sizes, 'w220_and_h330_face');
   return `${secure_base_url}${posterSize}${path}`;
 }
 export function getStill(path, size = 'default') {
-  let stillSize = getOrDefault(size, still_sizes, '/w342');
+  let stillSize = getOrDefault(size, still_sizes, 'w342');
   return `${secure_base_url}${stillSize}${path}`;
 }
 
