@@ -32,7 +32,7 @@ export default function WatchEpisode() {
     <div>
       <Meta
         title={`S${season_number} E${episode_id} - ${series.name}`}
-        overview
+        overview={overview}
         still_path={still_path}
       />
       <div className='episode-player-section'>

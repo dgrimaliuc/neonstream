@@ -41,7 +41,7 @@ export default function HeroContent({ additional, to }) {
 
   return (
     <div>
-      <Meta title={title || name} overview poster_path />
+      <Meta title={title || name} overview={overview} poster_path={poster_path} />
       <TrailerModal onOutsideClick={dispatch.unselectTrailer()} trailer={trailer} />
       <div className={heroStyles['hero-content-section']}>
         <div className={heroStyles['hero-content-wrapper']}>
