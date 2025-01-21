@@ -12,19 +12,19 @@ const config = JSON.parse(localStorage.getItem(STORAGE_CONFIG_KEY)) || {
   },
 };
 const { images } = config;
-const { secure_base_url, poster_sizes, backdrop_sizes } = images;
+const { secure_base_url, poster_sizes, backdrop_sizes, still_sizes } = images;
 
 export function getPoster(path, size = 'default') {
   let posterSize = getOrDefault(size, poster_sizes, '/w220_and_h330_face');
   return `${secure_base_url}${posterSize}${path}`;
 }
+export function getStill(path, size = 'default') {
+  let stillSize = getOrDefault(size, still_sizes, '/w342');
+  return `${secure_base_url}${stillSize}${path}`;
+}
 
 export function getBackdrop(path, size = 'default') {
-  let backdropSize = getOrDefault(
-    size,
-    backdrop_sizes,
-    '/w710_and_h400_multi_faces'
-  );
+  let backdropSize = getOrDefault(size, backdrop_sizes, '/w710_and_h400_multi_faces');
   return `${secure_base_url}${backdropSize}${path}`;
 }
 

@@ -1,6 +1,6 @@
 import './upNext.css';
 import { Image } from 'components/lazy-image';
-import { getBackdrop } from '../../utils';
+import { getStill } from '../../utils';
 import UpNextCardPlaceholder from './placeholder-up-next-card';
 
 export default function UpNextCard({ episodeData, loading, title, seriesId }) {
@@ -23,7 +23,7 @@ export default function UpNextCard({ episodeData, loading, title, seriesId }) {
         <div className='up-next-image-container'>
           <Image
             className='up-next-image'
-            src={getBackdrop(still_path)}
+            src={getStill(still_path)}
             placeholderWidth={30}
             placeholderHeight={17}
             showPlaceholderOnLoading
