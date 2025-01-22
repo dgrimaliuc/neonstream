@@ -1,4 +1,4 @@
-import { Image } from '../lazy-image';
+import { Image } from 'components/lazy-image';
 import './custom-border-violet.css';
 import './single-promo-card-violet.css';
 import './single-promo-card.css';

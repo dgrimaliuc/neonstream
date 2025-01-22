@@ -11,4 +11,15 @@
     @extend .text-uppercase-bold;
     text-wrap: nowrap;
   }
+
+  @media screen and (max-width: $mobile-viewport) {
+    font-size: 15px;
+    gap: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    a {
+      padding: 5px 0px;
+    }
+  }
 }

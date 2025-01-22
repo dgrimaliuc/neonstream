@@ -5,7 +5,7 @@ import SearchBar from './search';
 
 export default function Header() {
   return (
-    <>
+    <div className={styles['header_wrapper']}>
       <header className={styles['header_container']}>
         <div className={styles['header_container__column']}>
           <div className={styles['header_container__primary']}>
@@ -18,6 +18,6 @@ export default function Header() {
         </div>
       </header>
       <div className={styles.spacer} />
-    </>
+    </div>
   );
 }

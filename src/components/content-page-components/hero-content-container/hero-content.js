@@ -15,6 +15,7 @@ import { useSelector } from 'react-redux';
 import { selectedTrailer, trailerActions } from '../../../store';
 import { useDispatchAction } from '../../../hooks/useDispatchAction';
 import { useEffect } from 'react';
+import { Meta } from '../../meta';
 
 export default function HeroContent({ additional, to }) {
   const dispatch = useDispatchAction(trailerActions);
@@ -39,7 +40,8 @@ export default function HeroContent({ additional, to }) {
   }, [dispatch]);
 
   return (
-    <>
+    <div>
+      <Meta title={title || name} overview={overview} poster_path={poster_path} />
       <TrailerModal onOutsideClick={dispatch.unselectTrailer()} trailer={trailer} />
       <div className={heroStyles['hero-content-section']}>
         <div className={heroStyles['hero-content-wrapper']}>
@@ -60,6 +62,6 @@ export default function HeroContent({ additional, to }) {
         </div>
         <MediaCarousel />
       </div>
-    </>
+    </div>
   );
 }

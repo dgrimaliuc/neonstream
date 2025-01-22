@@ -4,13 +4,24 @@
   flex: 2;
   width: 100%;
   max-width: 60rem;
-  min-width: 5.3rem;
+  // min-width: 6rem;
+
+  &__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    min-width: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $text-primary;
+  }
   &__input {
     width: 97%;
     padding: 5px;
     background-color: #0c1013;
     border-radius: 9px;
     box-shadow: 0 1px 2px #92ff7c, 0 0 0 2px #ffffffeb;
+    display: flex;
 
     input {
       width: 100%;
@@ -19,6 +30,11 @@
       border: 0;
       outline: 0;
       background-color: transparent;
+
+      @media screen and (max-width: $medium-mobile-viewport) {
+        display: none;
+      }
+
       &::placeholder {
         color: $text-primary;
       }

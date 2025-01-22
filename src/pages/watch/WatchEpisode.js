@@ -9,6 +9,7 @@ import { TV } from '../../data/constants';
 import { UpNextContainer } from '../../components/upNext';
 import { formatVoteAverage, formatVoteCount } from '../../api';
 import { useInitialScroll } from '../../hooks';
+import { Meta } from '../../components/meta';
 
 export async function loadEpisode({ params }) {
   return await getEpisode(params.id, params.season, params.episode);
@@ -16,13 +17,24 @@ export async function loadEpisode({ params }) {
 
 export default function WatchEpisode() {
   const { id } = useParams();
-  const { season_number, episode_number, name, overview } = useLoaderData();
+  const {
+    id: episode_id,
+    still_path,
+    season_number,
+    episode_number,
+    name,
+    overview,
+  } = useLoaderData();
   const { series } = useSeries();
-  const { id: episode_id, still_path } = useLoaderData();
   useInitialScroll({ timeout: 50 });
 
   return (
-    <>
+    <div>
+      <Meta
+        title={`S${season_number} E${episode_id} - ${series.name}`}
+        overview={overview}
+        still_path={still_path}
+      />
       <div className='episode-player-section'>
         <VODPlayer
           height='56.25%'
@@ -74,6 +86,6 @@ export default function WatchEpisode() {
         </div>
         <UpNextContainer />
       </div>
-    </>
+    </div>
   );
 }

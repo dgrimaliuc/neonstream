@@ -3,7 +3,7 @@ import classes from './media-carousel.module.css';
 import MediaCard from './media-card';
 import { getBackdrop } from '../../../utils';
 import { forwardRef } from 'react';
-import { Image } from '../../lazy-image';
+import { Image } from 'components/lazy-image';
 
 const MediaImageCard = forwardRef(({ image }, ref) => {
   return (

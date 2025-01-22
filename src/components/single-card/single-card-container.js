@@ -3,7 +3,7 @@ import { useNavigateToContent } from '../../hooks';
 import { getBackdrop, getPoster, getYear } from '../../utils';
 import { ActionsContainer } from '../actions';
 import { Genres } from '../genres';
-import { Image } from '../lazy-image';
+import { Image } from 'components/lazy-image';
 import { AverageRatingInfo } from '../ratings';
 
 const SingleCardContainer = memo(

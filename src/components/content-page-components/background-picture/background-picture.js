@@ -1,7 +1,7 @@
 import styles from './background-picture.module.css';
 import { getBackdrop } from '../../../utils/images';
 import { useLoaderData } from 'react-router-dom';
-import { Image } from '../../lazy-image';
+import { Image } from 'components/lazy-image';
 
 export default function BackgroundPicture() {
   const { backdrop_path } = useLoaderData();
