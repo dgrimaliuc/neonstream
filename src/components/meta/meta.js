@@ -17,7 +17,8 @@ export default function Meta({ title, overview, poster_path, still_path }) {
             : '/./logo.svg'
         }
       />
-      <meta property='og:image:width' content='1200' data-rh='true'></meta>
+      <meta property='og:image:height' content='85' data-rh='true' />
+      <meta property='og:image:width' content='85' data-rh='true' />
       <meta property='og:url' content={`${window.location.origin}${window.location.pathname}`} />
       <meta property='og:type' content='website' />
     </Helmet>
