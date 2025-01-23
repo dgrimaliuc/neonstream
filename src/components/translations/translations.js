@@ -6,7 +6,7 @@ export default function Translations({ translations, onClick, selected, maxShown
   return (
     <>
       <ExpandContainer
-        title='Select audio'
+        title={translations?.length ? 'Select audio' : ''}
         buttonExpandMode
         titleClass={styles['section-title']}
         className={styles['section-background']}

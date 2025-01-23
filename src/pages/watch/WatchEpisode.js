@@ -26,6 +26,7 @@ export default function WatchEpisode() {
     overview,
   } = useLoaderData();
   const { series } = useSeries();
+
   useInitialScroll({ timeout: 50 });
 
   return (
@@ -45,7 +46,7 @@ export default function WatchEpisode() {
             season_number,
             episode_number,
             episode_id,
-            backdrop_path: still_path,
+            backdrop_path: still_path || series?.backdrop_path,
           }}
         />
       </div>

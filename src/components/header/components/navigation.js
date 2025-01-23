@@ -28,7 +28,7 @@ const templates = [
 export default function Navigation() {
   let links = useMemo(() => {
     return templates.map(link => (
-      <NavLink key={link.name} to={link.to} role='button'>
+      <NavLink end key={link.name} to={link.to} role='button'>
         <span>{link.name}</span>
       </NavLink>
     ));
