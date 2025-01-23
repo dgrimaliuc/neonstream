@@ -10,14 +10,6 @@
   flex-direction: column;
 }
 
-.player-error {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  color: white;
-}
-
 iframe {
   width: 100%;
   height: 100%;

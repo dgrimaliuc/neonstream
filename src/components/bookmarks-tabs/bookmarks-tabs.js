@@ -20,12 +20,12 @@ export default function BookmarksTabs() {
         >
           Watchlist
         </NavLink>
-        <NavLink
+        {/* <NavLink
           to='/custom-lists'
           className={({ isActive }) => (isActive ? 'bookmarks-tab tab-active' : 'bookmarks-tab')}
         >
           Custom Lists
-        </NavLink>
+        </NavLink> */}
         <NavLink
           to='/history'
           className={({ isActive }) => (isActive ? 'bookmarks-tab tab-active' : 'bookmarks-tab')}
