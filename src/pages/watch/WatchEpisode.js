@@ -32,7 +32,7 @@ export default function WatchEpisode() {
   return (
     <div>
       <Meta
-        title={`S${season_number} E${episode_id} - ${series.name}`}
+        title={`S${season_number} E${episode_number} - ${series.name}`}
         overview={overview}
         still_path={still_path}
       />

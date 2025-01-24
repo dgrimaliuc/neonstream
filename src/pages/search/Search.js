@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { SEARCH_ALL } from '../../data/constants';
 import { useInitialScroll, useQueryParams, useSearchLoader } from '../../hooks';
 import SearchContainer from './SearchContainer';
+import { Meta } from 'components/meta';
 
 const searchMode = SEARCH_ALL;
 
@@ -24,6 +25,7 @@ export default function Search() {
 
   return (
     <div className={styles['search-wrapper']}>
+      <Meta title={query?.q || 'Neon Stream'} />
       {!query && isInitial && <EmptyState isInitial />}
       {!isInitial && (
         <SearchContainer
